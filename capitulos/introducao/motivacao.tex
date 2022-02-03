@@ -68,29 +68,35 @@ Segundo \citeauthor{bragg-2019-slr-interdisciplinary}, essas tecnologias também
 
 % Um passo importante para redução dessas barreiras na comunicação entre usuários e não-usuários da língua sinalizada compreende a pesquisa e desenvolvimento de tecnologias capazes de realizar o reconhecimento, tradução e transcrição dessa língua para outros idiomas e vice-versa. Essa é uma tarefa desafiadora que vem sendo abordada de forma multidisciplinar no decorrer das últimas décadas por subáreas da Ciência da Computação -- a exemplo do \acrfull{slr}, que aplica reconhecimento de padrões, visão computacional, processamento de linguagem natural e linguística para construir métodos e algoritmos objetivam identificar sinais produzidos e compreender seu significado~\cite{wadhawan-2021-slr-systems-review}.
 
-O \acrfull{slr} é uma das áreas de pesquisa empenhadas em contribuir para que tecnologias como essas sejam desenvolvidas. Ela é uma área colaborativa que envolve reconhecimento de padrões, visão computacional, processamento de linguagem natural e linguística para construir métodos e algoritmos capazes de identificar sinais produzidos e compreender seu significado~\cite{wadhawan-2021-slr-systems-review}. 
-Apesar disso, \citeauthor{cooper-2011-slr} acreditam que o progresso demonstrado por essa área nas últimas décadas ainda foi pouco expressivo:
+O \acrfull{slr} é uma das áreas de pesquisa empenhadas em contribuir para que tecnologias como essas sejam desenvolvidas. Trata-se de uma área colaborativa que envolve reconhecimento de padrões, visão computacional, processamento de linguagem natural e linguística para construir métodos e algoritmos capazes de identificar sinais produzidos e compreender seu significado~\cite{wadhawan-2021-slr-systems-review}. 
+Apesar disso, \citeauthor{cooper-2011-slr} acreditam que o progresso apresentado por ela nas últimas décadas ainda foi pouco expressivo:
 
 \begin{quote}
-    Enquanto sistemas de reconhecimento da fala avançaram ao ponto de estarem comercialmente disponíveis, o reconhecimento automático de sinais ainda está em sua infância. Atualmente, todos os serviços comerciais de tradução de sinais são baseados em humanos e, portanto, são caros -- devido à necessidade de pessoal especializado~\cite[tradução nossa]{cooper-2011-slr}.
+    Enquanto sistemas de reconhecimento automático da fala avançaram ao ponto de estarem comercialmente disponíveis, o reconhecimento de sinais ainda está em sua infância. Atualmente, todos os serviços comerciais de tradução de sinais são baseados em humanos e requerem pessoal especializado -- o que os tornam caros~\cite[tradução nossa]{cooper-2011-slr}.
 \end{quote}
 
-Os autores acreditam que parte disso deve-se ao fato de que muitas pesquisas em \acrshort{slr} abordam o problema de forma incorreta: eles encaram o reconhecimento da língua de sinais como uma tarefa de reconhecimento de gestos, concentrando-se na identificação de características e métodos para rotular um sinal dentre um conjunto de possibilidades bem definidas -- porém, essas línguas vão muito além disso.
+% \citeauthor{bragg-2019-slr-interdisciplinary} argumentam que 
+%Current research in sign language processing occurs in disciplinary silos, and as a result does not address the problem comprehensively. For example, there are many computer science publications presenting algorithms for recognizing (and less frequently translating) signed content. The teams creating these algorithms often lack Deaf members with lived experience of the problems the technology could or should solve, and lack knowledge of the linguistic complexities of the language for which their algorithms must account. The algorithms are also often trained on datasets that do not reflect real-world use cases. As a result, such single-disciplinary approaches to sign language processing have limited real-world value [39].
+%To overcome these problems, we argue for an interdisciplinary approach to sign language processing. Deaf studies must be included in order to understand the community that the technology is built to serve. Linguistics is essential for identifying the structures of sign languages that algorithms must handle. Natural Language Processing (NLP) and machine translation (MT) provide powerful methods for modeling, analyzing, and translating. Computer vision is required for detecting signed content, and computer graphics are required for generating signed content. Finally, Human-Computer Interaction (HCI) and design are essential for creating end-to-end systems that meet the community's needs and integrate into people's lives.
 
-\citeauthor{bragg-2019-slr-interdisciplinary} argumentam que Current research in sign language processing occurs in disciplinary silos (e carecem de uma abordagem interdisciplinar), and as a result does not address the problem comprehensively. For example, there are many computer science publications presenting algorithms for recognizing (and less frequently translating) signed content. The teams creating these algorithms often lack Deaf members with lived experience of the problems the technology could or should solve, and lack knowledge of the linguistic complexities of the language for which their algorithms must account. The algorithms are also often trained on datasets that do not refect real-world use cases. As a result, such single-disciplinary approaches to sign language processing have limited real-world value [39].
-To overcome these problems, we argue for an interdisciplinary approach to sign language processing. Deaf studies must be included in order to understand the community that the technology is built to serve. Linguistics is essential for identifying the structures of sign languages that algorithms must handle. Natural Language Processing (NLP) and machine translation (MT) provide powerful methods for modeling, analyzing, and translating. Computer vision is required for detecting signed content, and computer graphics are required for generating signed content. Finally, Human-Computer Interaction (HCI) and design are essential for creating end-to-end systems that meet the community’s needs and integrate into people’s lives.
+% Os autores acreditam que parte disso deve-se ao fato de que muitas pesquisas em \acrshort{slr} abordam o problema de forma incorreta: eles encaram o reconhecimento da língua de sinais como uma tarefa de reconhecimento de gestos, concentrando-se na identificação de características e métodos para rotular um sinal dentre um conjunto de possibilidades bem definidas -- porém, essas línguas vão muito além disso.
 
 
-
-
-% Porém, essas línguas vão muito além disso e apresentam desafios particulares, dentre os quais enumeram-se:
+\citeauthor{bragg-2019-slr-interdisciplinary} e \citeauthor{cooper-2011-slr} acreditam que, de uma forma geral, isso está relacionado a fatores como a abordagem inadequada do problema pelas pesquisas nessa área -- o que faz com que elas tenham um valor limitado no mundo real -- e também aos desafios particulares apresentados pelas línguas visuais. 
+Em resumo, podemos enumerar esses itens da seguinte forma:
 
 \begin{enumerate}
-    \item Natureza multicanal: essas línguas transmitem significado através de múltiplos canais ao mesmo tempo -- ou seja, não é suficiente considerar apenas os gestos desenhados pelas mãos no espaço; deve-se também estar atento a suas configurações, intensidade dos movimentos, suas interações com outras partes do corpo, expressões faciais, entre outros traços que compõem os sinais.
+    \item Abordagem inadequada: pesquisas atuais em processamento de linguagem de sinais ocorrem em silos disciplinares e, como resultado, não abordam o problema de uma forma abrangente. Por exemplo, há muito mais publicações com apresentam algoritmos para reconhecer (e menos frequentemente para traduzir) conteúdo sinalizado.
+    Além disso, muitas delas encaram o reconhecimento da língua de sinais como uma tarefa de reconhecimento de gestos, concentrando-se na identificação de características e métodos para rotular um sinal dentre um conjunto de possibilidades bem definidas -- porém, essas línguas vão muito além disso.
+
+    \item Equipes inexperientes no problema: muitas equipes carecem de membros surdos com experiência vivida nos problemas em questão ou que conheçam as complexidades linguísticas com as quais seus algoritmos deveriam lidar.
     
-    \item Linguística particular: já é evidente através dos estudos da linguística das línguas sinalizadas que suas particularidades enquanto línguas visuais tornam muitas das técnicas utilizadas para reconhecimento da fala inadequadas para o \acrshort{slr} -- dessa forma, não é correto simplesmente reproduzir abordagens de processamento de fala; é preciso compreender e desenvolver técnicas que levem em consideração tais particularidades.
+    \item Linguística particular: já é evidente através dos estudos da linguística das línguas sinalizadas que suas particularidades enquanto línguas visuais tornam muitas das técnicas utilizadas para reconhecimento da fala inadequadas para o \acrshort{slr}. Dessa forma, não é correto simplesmente reproduzir abordagens de processamento de fala; mas é preciso compreender e desenvolver técnicas que levem em consideração tais particularidades.
+    
+    \item Natureza multicanal: essas línguas transmitem significado através de múltiplos canais ao mesmo tempo -- ou seja, não é suficiente considerar apenas os gestos realizados pelas mãos no espaço; deve-se também estar atento a suas configurações, intensidade dos movimentos, suas interações com outras partes do corpo, expressões faciais, entre outros traços que compõem os sinais.  
     
     \item \textit{Datasets} limitados: os \textit{datasets} de língua de sinais disponíveis publicamente são limitados em quantidade e qualidade, e isso impõe um desafio significativo para o progresso do \acrshort{slr}. Técnicas modernas de aprendizagem de máquina demandam uma quantidade crescente de dados, os quais também precisam ser capazes de replicar o contexto real de aplicação, para resolver problemas de complexidade equivalente à do reconhecimento de sinais.
+    % frequentemente também são utilizados \textit{datasets} que não refletem casos de uso do mundo real
 \end{enumerate}
 
 
@@ -170,7 +176,7 @@ Em face a esses desafios, o presente trabalho objetiva
 % IBGE - Pesquisa Nacional de Saúde (PNS) - 2019:
 % - 8,4% (17,3 milhões) da população com 2+ anos com algum grau de deficiência
 %
-% Com deficiencia auditiva:
+% Com deficiência auditiva:
 % - 1,3% da população em idade de trabalhar (14+ anos)
 % - 2,6% da população fora da força de trabalho
 %
