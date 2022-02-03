@@ -20,25 +20,13 @@
 	brazil,
 	]{abntex2/abntex2}
 	\renewcommand{\baselinestretch}{1.5} %para customizar o espaço entre as linhas do texto
-% --
-% SETTINGS
-
-\usepackage{abntex2/abntex2-cin-ufpe}
-
-% \usepackage[noframe]{showframe}
-% \usepackage{showframe}
-
-%\overfullrule=4mm %para identificar onde existem os alertas de linhas grandes mal formatada pelo LaTex, basta comentar para não aparecer a barra lateral preta na linha em questão.
-
-\renewcommand*\arraystretch{1.2} %para customizar o espaço entre as linhas das tabelas
 
 
-\usepackage{pdfpages} %para incluir pdf como páginas
-
-
-% ---
+% -----------------------------------------------------------
 % PACOTES
-% ---
+% -----------------------------------------------------------
+\usepackage{abntex2/abntex2-cin-ufpe}
+\usepackage{pdfpages}           %para incluir pdf como páginas
 \usepackage{float}
 \usepackage{cmap}				% Mapear caracteres especiais no PDF
 \usepackage{lmodern}			% Usa a fonte Latin Modern			
@@ -52,12 +40,31 @@
 \usepackage[versalete,alf,abnt-and-type=e,abnt-etal-list=0,abnt-etal-cite=3]{abntex2/abntex2cite} 
 \usepackage{multirow}
 \usepackage[section]{placeins}
+\usepackage{lscape} 
+\usepackage{rotating}           %rotates the figures, page
+\usepackage{tikz}
+\usepackage[section]{placeins}
+\usepackage{setspace} 
+\usepackage{inconsolata}
+\usepackage{listings}
+\usepackage{adjustbox}          % ajustar tabela ao tamanho da pagina
+\usepackage{csquotes}
+
+
+% -----------------------------------------------------------
+% CONFIGURAÇÃO DO DOCUMENTO
+% -----------------------------------------------------------
+% \usepackage[noframe]{showframe}
+% \usepackage{showframe}
+
+%\overfullrule=4mm %para identificar onde existem os alertas de linhas grandes mal formatada pelo LaTex, basta comentar para não aparecer a barra lateral preta na linha em questão.
+
+\renewcommand*\arraystretch{1.2} %para customizar o espaço entre as linhas das tabelas
 
 
 
 % -----------------------------------------------------------
-% lista de abreviaturas e siglas
-% início
+% ABREVIATURAS E SIGLAS
 % -----------------------------------------------------------
 % \usepackage[noredefwarn,acronym]{glossaries} %GLOSSÁRIO
 \usepackage[acronym,nonumberlist,nogroupskip,noredefwarn]{glossaries}
@@ -80,20 +87,10 @@
   }%
 }
 
-% -----------------------------------------------------------
-% lista de abreviaturas e siglas
-% fim
-% -----------------------------------------------------------
-\usepackage{lscape} 
-\usepackage{rotating} %rotates the figures, page
-\usepackage{tikz}
-\usepackage[section]{placeins}
-\usepackage{setspace} 
-
 
 
 % ----------------------------------------------------------
-% PERSONALIZAÇÃO DE CORES
+% CORES
 % ----------------------------------------------------------
 \definecolor{blue}{RGB}{41,5,195}
 \definecolor{gray}{rgb}{.4,.4,.4}
@@ -108,14 +105,14 @@
 \definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
 \definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
 \definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
-\definecolor{meucinza}{rgb}{0.5, 0.5, 0.5}
+\definecolor{gray}{rgb}{0.5, 0.5, 0.5}
 %\definecolor{lightgray}{gray}{0.9}
 
 
 % ----------------------------------------------------------
 % PERSONALIZAÇÃO DO USUÁRIO
 % ----------------------------------------------------------
-\input{trabalho}
+\input{dados}
 
 
 % ----------------------------------------------------------
@@ -126,17 +123,15 @@
 
 
 % ----------------------------------------------------------
-% LISTA E ABREVIATURAS E SIGLAS
+% ACRONIMOS
 % ----------------------------------------------------------
 \input{outros/acronimos}
 
 \makenoidxglossaries
 \renewcommand*{\glsseeformat}[3][\seename]{\textit{#1}  
 \glsseelist{#2}}
-
 \renewcommand*{\glspostdescription}{} % remove trailing dot
 \renewcommand{\glsnamefont}[1]{\textbf{#1}}
-
 \renewcommand{\familydefault}{\sfdefault}
 
 
@@ -145,7 +140,6 @@
 % ----------------------------------------------------------
 \input{outros/glossario}
 
-%\input{packages}
 
 
 % ----------------------------------------------------------
@@ -157,9 +151,9 @@
 
 \imprimircapa
 \imprimirfolhaderosto*~
-%\input{outros/ficha}
-%\input{outros/ata_defesa}
-%\input{outros/folha_aprovacao_original}
+\input{outros/biblioteca/ficha_catalografica}
+\input{outros/biblioteca/ata_defesa}
+\input{outros/biblioteca/folha_aprovacao}
 \input{outros/dedicatoria}
 \input{outros/agradecimentos}
 \input{outros/epigrafe}
@@ -177,10 +171,30 @@
 % ----------------------------------------------------------
 % LISTA DE CÓDIGOS FONTES
 % ----------------------------------------------------------
-%\pdfbookmark[0]{\lstlistingname}{lol} % caso não tenha quadros, comente esta linha 
+% define formato e estilo dos elementos do tipo Codigo Fonte
+\lstset{
+    language=Java,
+    basicstyle=\ttfamily\scriptsize,
+    %basicstyle=\ttfamily,
+    keywordstyle=\color{javapurple}\bfseries,
+    stringstyle=\color{pblue},
+    commentstyle=\color{javagreen},
+    morecomment=[s][\color{javadocblue}]{/**}{*/},
+    morecomment=[s][\color{gray}]{@}{\ },
+    numbers=left,
+    numberstyle=\tiny\color{black},
+    backgroundcolor=\color{gray},
+    stepnumber=2,
+    numbersep=8pt,
+    xleftmargin=14pt,
+    tabsize=4,
+    showspaces=false,
+    showstringspaces=false,
+    breaklines=true,
+}
+
+\pdfbookmark[0]{\lstlistingname}{lol} % caso não tenha código fonte, comente esta linha 
 \counterwithout{lstlisting}{chapter}
-
-
 
 % Altera o nome padrão do rótulo usado no comando \autoref{}
 \renewcommand{\lstlistingname}{Código Fonte}
@@ -188,7 +202,7 @@
 % Altera o rótulo a ser usando no elemento pré-textual "Lista de código"
 \renewcommand{\lstlistlistingname}{Lista de códigos}
 
-% Configura a ``Lista de Códigos'' conforme as regras da ABNT (para abnTeX2)
+% Configura a 'Lista de Códigos' conforme as regras da ABNT (para abnTeX2)
 \begingroup\makeatletter
 \let\newcounter\@gobble\let\setcounter\@gobbletwo
   \globaldefs\@ne \let\c@loldepth\@ne
@@ -200,13 +214,13 @@
 
 \let\oldlstlistoflistings\lstlistoflistings
 {
-\let\oldnumberline\numberline
-\newcommand{\algnumberline}[1]{Código Fonte~#1~\enspace--~\enspace}
-\renewcommand{\numberline}{\algnumberline}
-
-\begin{KeepFromToc}
-\lstlistoflistings
-\end{KeepFromToc}
+    \let\oldnumberline\numberline
+    \newcommand{\algnumberline}[1]{Código Fonte~#1~\enspace--~\enspace}
+    \renewcommand{\numberline}{\algnumberline}
+    
+    \begin{KeepFromToc}
+    \lstlistoflistings
+    \end{KeepFromToc}
 }
 \cleardoublepage
 
@@ -224,7 +238,6 @@
 % ----------------------------------------------------------
 % LISTA DE TABELAS
 % ----------------------------------------------------------
-
 \pdfbookmark[0]{\listtablename}{lot}
 \listoftables*
 \cleardoublepage
@@ -235,13 +248,11 @@
 % ----------------------------------------------------------
 % LISTA E ABREVIATURAS E SIGLAS
 % ----------------------------------------------------------
-% \printglossary[type=\acronymtype,title={\listadesiglasname},nonumberlist]
-% \printglossaries
+%\printglossary[type=\acronymtype,title={\listadesiglasname},nonumberlist]
+%\printglossaries
 % compile uma vez com o comando \printglossaries e depois compile novamente com o comando \printglossaries comentado para as páginas glossário e siglas serem ocultadas.
 
-% ----------------------------------------------------------
-% LISTA E ABREVIATURAS E SIGLAS
-% ----------------------------------------------------------
+
 % \setglossarystyle{modsuper}
 \printnoidxglossary[style=modsuper,type=\acronymtype,title={\listadesiglasname},nonumberlist]
 % \printglossary[style=super, type=\acronymtype]
@@ -252,11 +263,7 @@
 % ----------------------------------------------------------
 % LISTA DE SIMBOLOS
 % ----------------------------------------------------------
-%\input{others/list_simbol}
-
-% ----------------------------------------------------------
-%\input{others/list_simbol}
-
+\input{outros/simbolos}
 
 
 % ----------------------------------------------------------
@@ -275,14 +282,11 @@
 
 
 
-
 % ----------------------------------------------------------
 % ELEMENTOS TEXTUAIS
 % ----------------------------------------------------------
 \textual
-
-\input{sumario}
-
+\input{capitulos/conteudo}
 \bookmarksetup{startatroot}% 
 
 
@@ -293,7 +297,7 @@
 
 
 % ----------------------------------------------------------
-% Referências bibliográficas
+% BIBLIOGRAFIA
 % ----------------------------------------------------------
 %\bibliographystyle{abntexalfenglish} %caso seja em inglês, retire o comentário desta linha
 
@@ -304,17 +308,50 @@
 
 
 % ----------------------------------------------------------
-% Apêndices
+% APENDICES
 % ----------------------------------------------------------
-%\include{appendix}
+% força para que não exiba subtítulos em apêndices no sumário
+\begin{apendicesenv}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+\makeatletter
+\addtocontents{toc}{%
+  \begingroup
+  \let\protect\l@chapter\protect\l@section
+  \let\protect\l@section\protect\l@subsection
+}
+\makeatother
+
+% Imprime uma página indicando o início dos apêndices
+% \partapendices
+\include{outros/apendices}
+
+\addtocontents{toc}{\endgroup}
+\end{apendicesenv}
+
+
+
+% ----------------------------------------------------------
+% ANEXOS
+% ----------------------------------------------------------
+% força para que não exiba subtítulos em apêndices no sumário
+\begin{anexosenv}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+\makeatletter
+\addtocontents{toc}{%
+  \begingroup
+  \let\protect\l@chapter\protect\l@section
+  \let\protect\l@section\protect\l@subsection
+}
+\makeatother
+% Imprime uma página indicando o início dos apêndices
+% \partapendices
+\include{outros/anexos}
+
+\addtocontents{toc}{\endgroup}
+\end{anexosenv}
 
 
 % ----------------------------------------------------------
-% Anexos
-% ----------------------------------------------------------
-%\include{anexos}
-
 \printindex
-
 
 \end{document}
