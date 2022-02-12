@@ -9,5 +9,16 @@
     ],
     "cSpell.words": [
         
-    ]
+    ],
+    "todo-tree.general.tags": [
+        "BUG",
+        "HACK",
+        "FIXME",
+        "TODO",
+        "XXX",
+        "[ ]",
+        "[x]",
+        "% TODO"
+    ],
+    "editor.wordWrap": "on"
 }
