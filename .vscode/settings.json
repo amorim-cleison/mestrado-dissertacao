@@ -2,13 +2,16 @@
     "cSpell.enableFiletypes": [
         "tex"
     ],
+    "cSpell.useGitignore": true,
     "cSpell.language": "en,pt-BR",
     "cSpell.ignoreWords": [
         "Meirelles",
         "Sarvat"
     ],
     "cSpell.words": [
-        
+        "Gallaudet",
+        "handshape",
+        "Stokoe"
     ],
     "todo-tree.general.tags": [
         "BUG",
