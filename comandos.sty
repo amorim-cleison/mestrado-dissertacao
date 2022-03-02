@@ -1,0 +1,25 @@
+% Definição de comandos customizados
+
+\ProvidesPackage{comandos}
+
+% =================================================
+% IMAGEM
+% -------------------------------------------------
+% Argumentos: 
+% 1) Label
+% 2) Path
+% 3) Size (width or height)
+% 4) Caption
+% 5) Citation
+% =================================================
+\newcommand{\imagem}[5] {
+    \begin{figure}[ht!]
+        \centering
+        \caption{\textmd{#4}}
+        \fcolorbox{gray}{white}{
+            \includegraphics[#3]{#2}
+        }
+        \par\medskip\ABNTEXfontereduzida\selectfont\textbf{Fonte:} \citeauthor{#5} (\citeyear{#5}) \par\medskip
+        \label{#1}
+    \end{figure}
+}
