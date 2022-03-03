@@ -11,15 +11,25 @@
 % 3) Size (width or height)
 % 4) Caption
 % 5) Citation
+%
+%Exemplo:
+%
+%\figura[p. 1]
+%    {fig:label} % Label
+%    {imagens/caminho/imagem_sem_extensao} % Path
+%    {width=0.5\linewidth} % Size
+%    {Exemplo de uso do comando 'imagem'} % Caption
+%    {autor-1999-titulo-livro} % Citation
+%
 % =================================================
-\newcommand{\imagem}[5] {
+\newcommand{\figura}[6][] {
     \begin{figure}[ht!]
         \centering
-        \caption{\textmd{#4}}
+        \caption{\textmd{#5}}
         \fcolorbox{gray}{white}{
-            \includegraphics[#3]{#2}
+            \includegraphics[#4]{#3}
         }
-        \par\medskip\ABNTEXfontereduzida\selectfont\textbf{Fonte:} \citeauthor{#5} (\citeyear{#5}) \par\medskip
-        \label{#1}
+        \par\medskip\ABNTEXfontereduzida\selectfont\textbf{Fonte:} \citeonline[#1]{#6} \par\medskip
+        \label{#2}
     \end{figure}
 }
