@@ -1,0 +1,23 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+    \centering
+    \caption{???}
+    \label{tab:dados-intrusivos-naointrusivos}
+    \resizebox{0.4\textwidth}{!}{%
+        \begin{tabular}{r|cc}
+            \hline
+            Ano            & Não intrusiva                & Intrusiva                    \\ \hline
+            \textless 1990 & \cellcolor[HTML]{FFD47F}50\% & \cellcolor[HTML]{FFD47F}50\% \\
+            1990 - 1995    & \cellcolor[HTML]{FFE6B5}29\% & \cellcolor[HTML]{FFC249}71\% \\
+            1995 - 2000    & \cellcolor[HTML]{FFE8BA}27\% & \cellcolor[HTML]{FFC144}73\% \\
+            2000 - 2005    & \cellcolor[HTML]{FFE5B2}30\% & \cellcolor[HTML]{FFC34B}70\% \\
+            2005 - 2010    & \cellcolor[HTML]{FFC146}72\% & \cellcolor[HTML]{FFE7B7}28\% \\
+            2010 - 2015    & \cellcolor[HTML]{FFB520}87\% & \cellcolor[HTML]{FFE7B7}13\% \\
+            2015 - 2020    & \cellcolor[HTML]{FFB31A}89\% & \cellcolor[HTML]{FFF6E3}11\% \\ \hline
+        \end{tabular}%
+    }
+    \nomefonte[p. 5]{koller-2020-quantitative-survey-slr}
+\end{table}

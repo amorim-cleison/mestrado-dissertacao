@@ -29,7 +29,27 @@
         \fcolorbox{gray}{white}{
             \includegraphics[#4]{#3}
         }
-        \par\medskip\ABNTEXfontereduzida\selectfont\textbf{Fonte:} \citeonline[#1]{#6} \par\medskip
+        \nomefonte[#1]{#6}
         \label{#2}
     \end{figure}
 }
+
+
+
+% =================================================
+% FONTE
+% -------------------------------------------------
+% Argumentos: 
+% 1) Citation
+%
+%Exemplo:
+%
+%\fonte[p. 1]
+%    {autor-1999-titulo-livro} % Citation
+%
+% =================================================
+\newcommand{\nomefonte}[2][] {
+    \par\medskip\ABNTEXfontereduzida\selectfont\textbf{Fonte:} \citeonline[#1]{#2} \par\medskip
+}
+
+
