@@ -4,12 +4,14 @@
 % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 \begin{table}[]
     \centering
-    \caption{????}
+    \caption{
+        Proporção de estudos em \acrshort{slr} que fazem uso de um tipo de dados de entrada específico (como RGB, profundidade, luvas, etc.) em comparação com o total publicado no mesmo intervalo de anos.
+    }
     \label{tab:tipos-dados-entrada}
-    \resizebox{0.65\textwidth}{!}{%
+    \resizebox{0.75\textwidth}{!}{%
         \begin{tabular}{rccccc}
             \hline
-            \multicolumn{1}{r|}{Ano}            & RGB                          & Depth                        & Color Glove                  & Elect. Glove                 & Mocap                        \\ \hline
+            \multicolumn{1}{r|}{Ano}            & RGB                          & Profundidade                 & Luvas coloridas              & Luvas eletrônicas            & \textit{Mocap}               \\ \hline
             \multicolumn{1}{r|}{\textless 1990} & \cellcolor[HTML]{FFD47F}50\% & 0\%                          & 0\%                          & \cellcolor[HTML]{FFD47F}50\% & 0\%                          \\
             \multicolumn{1}{r|}{1990 - 1995}    & \cellcolor[HTML]{FFE6B5}29\% & 0\%                          & 0\%                          & \cellcolor[HTML]{FFC249}71\% & \cellcolor[HTML]{FFE6B5}29\% \\
             \multicolumn{1}{r|}{1995 - 2000}    & \cellcolor[HTML]{FFE0A3}36\% & 0\%                          & \cellcolor[HTML]{FFF0D1}18\% & \cellcolor[HTML]{FFDC96}41\% & \cellcolor[HTML]{FFEBC4}23\% \\

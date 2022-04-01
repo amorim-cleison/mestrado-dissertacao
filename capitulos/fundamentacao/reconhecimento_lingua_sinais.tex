@@ -1,5 +1,5 @@
 \section{Reconhecimento de língua de sinais}
-\label{reconhecimento-lingua-sinais}
+\label{sec:slr}
 
 % - Introduction (what is it?)
 Conforme introduzido anteriormente, o \acrfull{slr} é uma área de pesquisa colaborativa que envolve subáreas da \acrfull{ia} (como o reconhecimento de padrões, visão computacional e processamento de linguagem natural) e linguística. Seu objetivo é construir métodos e algoritmos para identificar sinais produzidos e perceber seu significado~\cite{wadhawan-2019-slr-literature-review}. 
@@ -59,31 +59,37 @@ Essa necessidade evidencia-se pela observação de \citeonline{rastgoo-2021-slr-
 % - Panorama (numbers / state of the art)
 
 \subsection{Um breve panorama da área}
-\label{breve-panorama-slr}
+\label{sec:slr-breve-panorama}
 
 \citeonline{koller-2020-quantitative-survey-slr} elaborou uma análise quantitativa baseada nos 300 estudos mais relevantes publicados desde 1983, a qual se faz fundamental para compreendermos a evolução da área de \acrshort{slr} bem como o estado da arte atual. Além disso, autores como \citeonline{rastgoo-2021-slr-deep-survey,papastratis-2021-ai-technologies-sl,wadhawan-2019-slr-literature-review} contribuíram nos anos posteriores com pesquisas e revisões literárias que nos permitem esboçar um panorama mais concreto acerca dessa área e aprofundar-nos na breve análise que realizaremos nesta seção.
 
 
 \subsubsection{Reconhecimento de sinais isolados x contínuos}
+\label{sec:slr-sinais-isolados-continuos}
 
 A \autoref{tab:sinais-isolados-continuos} apresenta uma perspectiva detalhada do número de estudos identificados por \citeonline{koller-2020-quantitative-survey-slr} publicados até 2020. Os números estão ordenados na horizontal em intervalos de cinco anos e, na vertical, em grupos que representam o tamanho do vocabulário utilizado na pesquisa. Na parte central, estão os números para os estudos que abordaram o reconhecimento de sinais isolados (onde utiliza-se sinais segmentados); na parte inferior, estão aqueles que abordaram o reconhecimento de sinais contínuos (onde utilizam-se sentenças completas utilizando sinais); na parte superior, estão os números conjuntos para ambos os tipos.
 
 \input{tabelas/fundamentacao/sinais-isolados-continuos}
 
-À primeira vista, percebe-se que o crescimento do número de estudos com sinais isolados no decorrer dos anos é mais acelerado em comparação àqueles que utilizam sinais contínuos. Isso pode refletir a complexidade mais elevada de reconhecer sinais contínuos e a escassez de \textit{datasets} de treinamento disponíveis para isso. Além disso, os números revelam que a grande maioria dos trabalhos com sinais isolados costumam modelar vocabulários com uma quantidade muito limitada de sinais (principalmente abaixo de 50 sinais), ao passo que os vocabulários modelados por trabalhos com sinais contínuos distribuem-se de forma relativamente uniforme quanto ao tamanho e, com o surgimento de novos \textit{datasets} para essa finalidade em 2015, passaram a se concentrar naqueles maiores (acima de 1000 sinais).
+À primeira vista, percebe-se que o crescimento do número de estudos no decorrer dos anos é mais acelerado para aqueles que utilizam sinais isolados em comparação com aqueles que utilizam sinais contínuos. Isso pode refletir uma maior complexidade de reconhecer sinais contínuos e uma escassez de \textit{datasets} de treinamento disponíveis para isso. 
+
+Além disso, os números revelam que grande maioria dos trabalhos com sinais isolados costumam modelar vocabulários de tamanho limitado (principalmente abaixo de 200 ou 50 sinais), ao passo que trabalhos com sinais contínuos modelam uma diversidade maior de tamanhos de vocabulários e, com o surgimento de novos \textit{datasets} para essa finalidade em 2015, começaram a se concentrar nos vocabulários maiores (acima de 1000 sinais).
 
 
 
 \subsubsection{Tipos de dados de entrada}
+\label{sec:slr-tipos-dados-entrada}
 
 De acordo com \citeonline{papastratis-2021-ai-technologies-sl}, o tipo de dados utilizados nas pesquisas de reconhecimento de sinais possui uma relação estreita com os tipos de sensores e técnicas que estiveram disponíveis no decorrer dos anos. 
 
-A \autoref{tab:tipos-dados-entrada} mostra o tipo de dados de entrada adotados com relação ao total de estudos, organizados em intervalos de cinco anos. Podemos ver que os dados RGB vem sendo utilizados como alternativa desde as primeiras pesquisas nessa área e tornaram-se populares sobretudo a partir de 2005. O uso de dados de profundidade apenas tornou-se popular após o lançamento do sensor Kinect, em 2010. Luvas eletrônicas também tiveram uma participação significativa desde os anos iniciais e foram gradativamente dando espaço para as luvas coloridas, entre 1995 e 2010, quando iniciou-se uma fase de transição para métodos de processamento baseados em visão.
+A \autoref{tab:tipos-dados-entrada} mostra o tipo de dados de entrada adotados com relação ao total de estudos, organizados em intervalos de cinco anos. Podemos ver que os dados RGB vem sendo utilizados como alternativa desde as primeiras pesquisas nessa área e tornaram-se populares sobretudo a partir de 2005. O uso de dados de profundidade apenas tornou-se popular com o lançamento do sensor Kinect, em 2010. Luvas eletrônicas também tiveram uma participação expressiva nos anos iniciais e foram gradativamente dando espaço para as luvas coloridas, entre 1995 e 2010, quando iniciou-se uma fase de transição para métodos de processamento baseados em visão. O \textit{mocap}\footnote{
+    \textit{Mocap} (\textit{motion capture} ou captura de movimento) consiste na amostragem e captura de movimentos humanos ou de objetos inanimados por meio de equipamentos específicos, que geralmente incluem marcadores ou trajes especiais afixados ao corpo dos indivíduos ou objetos alvos da captura~\cite{kitagawa-2017-mocap}.
+}, por sua vez, esteve presente entre 1990 e 2005, mas a dificuldade de acesso a esse equipamento e de aplicação no contexto real da língua de sinais certamente foram barreiras importantes para sua adesão.
 
-\input{tabelas/fundamentacao/tipos-dados-entrada}
+\input{tabelas/fundamentacao/dados-entrada-tipos}
 
 
-% A Tabela 2 mostra na parte superior o tipo de dados de entrada empregados em diferentes tamanhos de vocabulário modelado. Os dados de entrada referem-se aos dados que são consumidos pelos algoritmos de reconhecimento para extrair recursos e realizar cálculos. Podemos observar que RGB é o tipo mais popular de dados de entrada tanto para intervalos de vocabulário de pequena quanto para maior escala. As luvas coloridas só foram aplicadas em tarefas de vocabulário pequeno e médio e nunca receberam atenção significativa. A parte inferior da Tabela 2 mostra o tipo de dados de entrada empregados em relação a todos os resultados publicados no mesmo intervalo de anos. Podemos ver que os dados RGB atraem mais atenção desde 2005. A profundidade como modalidade de entrada só se tornou popular após o lançamento do sensor Kinect em 2010. Houve um trabalho que empregou dados de profundidade antes [Fujimura e Xia Liu, 2006] que teve acesso a sensores de tempo de voo iniciais. As luvas coloridas ganharam força entre 1995 e 2010, que parece uma fase de transição de dispositivos de medição eletrônicos para processamento baseado em visão pura.
+Segundo \citeonline{papastratis-2021-ai-technologies-sl}, cada um desses dispositivos apresenta particularidades que os tornam mais ou menos adequadas para diferentes aplicações. Sensores como o Kinect fornecem imagens RGB de alta resolução e dados de profundidade, mas sua precisão é restrita pela distância até o indivíduo rastreado. O uso de múltiplas câmeras RGB pode fornecer resultados altamente precisos, porém demanda uma maior complexidade de processamento e de requisitos computacionais. As luvas eletrônicas, por sua vez, fornecem dados altamente precisos em tempo real, mas a configuração de seus componentes (sensores flexíveis, acelerômetros, giroscópios, etc.) exige um processo de tentativa e erro que é impraticável e demorado. Além disso, os indivíduos tendem a não preferir essas luvas por serem invasivas.
 
 
 
@@ -97,19 +103,37 @@ A \autoref{tab:tipos-dados-entrada} mostra o tipo de dados de entrada adotados c
 
 
 
-Na \autoref{tab:dados-intrusivos-naointrusivos} temos uma comparação dessas técnicas agrupadas segundo as categorias ``intrusiva'' e ``não-intrusiva''. Intrusão, nesse contexto, refere-se à necessidade da técnica interferir no indivíduo articulando o sinal para realizar a estimativa de pose corporal ou extração de características para o reconhecimento. Por exemplo, técnicas baseadas em imagens RGB e dados de profundidade são consideradas não-intrusivas, enquanto que aquelas utilizando luvas (como \textit{Color Glove}, \textit{Electronic Glove} e \textit{Motion Capturing}) são consideradas intrusivas. Percebe-se claramente que houve uma mudança de paradigma após 2005, quando os métodos de captura intrusivos anteriormente dominantes foram cada vez menos utilizados e sua prevalência diminuiu de cerca de 70\% para menos de 30\%, e continuou reduzindo ainda mais ao longo do tempo.
+Na \autoref{tab:dados-intrusivos-naointrusivos} temos uma comparação dessas técnicas agrupadas em duas categorias: ``não intrusiva'' e ``intrusiva''. Intrusão, nesse contexto, refere-se à necessidade da técnica interferir no indivíduo articulando o sinal para realizar a estimativa de pose corporal ou extração de características para o reconhecimento. Por exemplo, técnicas baseadas em imagens RGB e dados de profundidade são consideradas não intrusivas, enquanto que aquelas utilizando luvas e \textit{mocap}) são consideradas intrusivas. 
 
-\input{tabelas/fundamentacao/dados-intrusivos-naointrusivos}
+Pela tabela, percebe-se claramente uma mudança de paradigma iniciada por volta de 2005 na direção de técnicas de processamento baseadas em visão, que são menos intrusivas. Com isso, os métodos de captura intrusivos anteriormente dominantes foram cada vez menos utilizados e sua prevalência diminuiu de cerca de 70\% para menos de 30\%, e continuou reduzindo ainda mais ao longo do tempo.
 
-
-
-% Como pode ser visto na Tabela 3 à esquerda, métodos de captura intrusivos podem ser encontrados em cerca de um quarto de todos os experimentos com um vocabulário de até 500 sinais. Eles são mais raros em tamanhos de vocabulário maiores, possivelmente devido ao fato de terem sido pesquisados ​​principalmente após 2010 (compare a Tabela 1).
+\input{tabelas/fundamentacao/dados-entrada-intrusivos-naointrusivos}
 
 
 
+\subsubsection{Tipos de parâmetros modelados}
+\label{slr-parametros-modelados}
+
+Nesta seção, analisaremos os tipos de parâmetros que foram extraídos a partir dos dados de entrada apresentados anteriormente. Os parâmetros serão classificados entre parâmetros manuais (ou seja, configuração de mão, movimento, locação e orientação) e não-manuais (como cabeça, boca, olhos, piscar de olhos, sobrancelhas e movimento dos olhos). Além disso, também foram rastreados parâmetros comuns que capturam uma visão global dos indivíduos (ou seja, articulações do corpo, imagens RGB, imagens de profundidade e imagens de movimento de fluxo óptico que abrangem o corpo inteiro do indivíduo).
+
+A \autoref{tab:parametros-tipos} mostra a proporção dos tipos de parâmetros utilizados com relação ao total de estudos identificados, agrupados em ordem cronológica de intervalos de cinco anos. 
+
+
+% É preciso ressaltar que, embora a maioria dos estudos publicados após 2015 utilize um patch de mão recortado como entrada para seus sistemas de reconhecimento, nós o marcamos com o parâmetro de formato de mão. No entanto, usando extratores de recursos baseados em aprendizado profundo, essas entradas de mão podem aprender implicitamente os parâmetros de postura/orientação da mão. Da mesma forma, recursos de entrada global, como entradas de quadro completo, podem ajudar implicitamente a aprender os parâmetros de localização e movimento e, em menor grau, todos os outros parâmetros, bem como a imagem completa, abrange todas as informações disponíveis.
+
+
+Por meio dela, observa-se uma predominância dos parâmetros manuais 
+
+
+\input{tabelas/fundamentacao/parametros-tipos}
 
 
 
+%A Tabela 6 agrega a localização, movimento, forma e orientação da mão em parâmetros manuais. Cabeça, boca, olhos, piscar de olhos, sobrancelhas e olhares são referidos como parâmetros não manuais. As articulações do corpo, fullframe, profundidade e movimento são todos computados na imagem completa e, portanto, os chamamos de recursos globais. Podemos ver que com vocabulários modelados maiores a tendência vai de recursos manuais para globais (lado esquerdo da Tabela 6), onde estes últimos aumentam de 18% de uso em todos os resultados publicados com vocabulários de até 50 sinais para 62% com vocabulários grandes acima 1000 sinais. O aumento de recursos globais pode ter dois motivos:
+% 1. A disponibilidade de articulações do corpo e recursos de imagem de profundidade total com o lançamento do Kinect em 2010.
+% 2. A mudança para o aprendizado profundo e a tendência de inserir fullframes em vez da engenharia manual de recursos.
+
+% Ambas as hipóteses podem ser confirmadas olhando para o lado direito da Tabela 6. Lá, vemos que os recursos globais começaram a ganhar força logo após 2010 (lançamento do Kinect) e também coincide com quando o aprendizado profundo para linguagem de sinais decolou em 2015.
 
 
 

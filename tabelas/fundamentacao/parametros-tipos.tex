@@ -1,0 +1,25 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+    \centering
+    \caption{
+        Proporção de estudos em \acrshort{slr} que utilizam parâmetros manuais, não-manuais ou globais em relação ao total publicado no mesmo intervalo de anos.
+    }
+    \label{tab:parametros-tipos}
+    \resizebox{0.45\textwidth}{!}{%
+        \begin{tabular}{r|ccc}
+            \hline
+            Ano            & Manuais                       & Não manuais                  & Globais                      \\ \hline
+            \textless 1990 & \cellcolor[HTML]{FFAA00}100\% & 0\%                          & 0\%                          \\
+            1990 - 1995    & \cellcolor[HTML]{FFAA00}100\% & 0\%                          & 0\%                          \\
+            1995 - 2000    & \cellcolor[HTML]{FFAA00}100\% & \cellcolor[HTML]{FFFBF2}5\%  & 0\%                          \\
+            2000 - 2005    & \cellcolor[HTML]{FFAA00}100\% & 0\%                          & 0\%                          \\
+            2005 - 2010    & \cellcolor[HTML]{FFAA01}99\%  & \cellcolor[HTML]{FFF4DE}13\% & \cellcolor[HTML]{FFDFA0}1\%  \\
+            2010 - 2015    & \cellcolor[HTML]{FFAA00}100\% & \cellcolor[HTML]{FFF0D3}17\% & \cellcolor[HTML]{FFDFA0}37\% \\
+            2015 - 2020    & \cellcolor[HTML]{FFD786}47\%  & \cellcolor[HTML]{FFF8EA}8\%  & \cellcolor[HTML]{FFC656}66\% \\ \hline
+        \end{tabular}%
+    }
+    \nomefonte[p. 7]{koller-2020-quantitative-survey-slr}
+\end{table}
