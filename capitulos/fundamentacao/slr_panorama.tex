@@ -1,0 +1,285 @@
+\subsection{Um breve panorama}
+\label{sec:slr-breve-panorama}
+
+\citeonline{koller-2020-quantitative-survey-slr} elaborou uma análise quantitativa baseada nos 300 estudos mais relevantes publicados desde 1983, a qual se faz fundamental para compreendermos a evolução da área de \acrshort{slr} bem como o estado da arte atual. Além disso, autores como \citeonline{rastgoo-2021-slr-deep-survey,papastratis-2021-ai-technologies-sl,wadhawan-2019-slr-literature-review} contribuíram nos anos posteriores com pesquisas e revisões literárias que nos permitem esboçar um panorama mais concreto acerca dessa área e aprofundar-nos na breve análise que realizaremos nesta seção.
+
+
+\subsubsection{Estudos por sinais isolados x contínuos}
+\label{sec:slr-sinais-isolados-continuos}
+
+A \autoref{tab:sinais-isolados-continuos} apresenta uma perspectiva detalhada do número de estudos identificados por \citeonline{koller-2020-quantitative-survey-slr} publicados até 2020. Os números estão ordenados na horizontal em intervalos de cinco anos e, na vertical, em grupos que representam o tamanho do vocabulário utilizado na pesquisa. Na parte central, estão os números para os estudos que abordaram o reconhecimento de sinais isolados (onde os sinais são apresentados individualmente aos algoritmos de reconhecimento, para simplificar este processo); na parte inferior, estão aqueles que abordaram o reconhecimento de sinais contínuos (onde utilizam-se sequências de sinais ao invés de sinais individuais); na parte superior, estão os números conjuntos para ambos os tipos.
+
+\input{tabelas/fundamentacao/sinais-isolados-continuos}
+
+À primeira vista, percebe-se que o crescimento do número de estudos no decorrer dos anos é mais acelerado para aqueles que utilizam sinais isolados em comparação com aqueles que utilizam sinais contínuos. Isso pode refletir uma maior complexidade de reconhecer sinais contínuos e uma escassez de \textit{datasets} de treinamento disponíveis para isso. 
+
+Além disso, os números revelam que grande maioria dos trabalhos com sinais isolados costumam modelar vocabulários de tamanho limitado (principalmente abaixo de 200 ou 50 sinais), ao passo que trabalhos com sinais contínuos modelam uma diversidade maior de tamanhos de vocabulários e, com o surgimento de novos \textit{datasets} para essa finalidade em 2015, começaram a se concentrar nos vocabulários maiores (acima de 1000 sinais).
+
+
+
+\subsubsection{Estudos por língua de sinais}
+\label{sec:slr-linguas-sinais}
+
+Na \autoref{tab:linguas-sinais}, estão relacionados as línguas de sinais abordadas pelos estudos analisados por \citeonline{koller-2020-quantitative-survey-slr}. É possível perceber que a \acrfull{asl} se sobressai quanto ao número de estudos publicados e que sua adoção data desde as primeiras pesquisas na década de 90. Um dos motivos para isso pode estar relacionado ao fato de que essa língua foi pioneira nos estudos linguísticos dos sinais -- iniciados com \citeonline{stokoe-1960-sl-structure} (vide \autoref{sec:linguistica-lingua-sinais}) --, os quais produziram uma base sólida acerca dos componentes dessa língua que serviu de alicerce para pesquisas posteriores e que foi disseminada para outras línguas de sinais. Além disso, a facilidade maior de encontrar \textit{datasets} em \acrshort{asl} também pode ter influenciado pesquisadores a preferirem abordar essa língua.
+
+A \acrfull{csl} e a \acrfull{dgs} aparecem em seguida na tabela, com um número também relevante de trabalhos publicados, o qual tem crescido desde 2010 e se equiparado ao patamar alcançado pela \acrshort{asl}.
+
+\input{tabelas/fundamentacao/linguas-sinais.tex}
+
+Uma outra observação importante constatada pela tabela é o crescimento ano após ano do total de estudos em \acrshort{slr}, o qual praticamente duplicou na última década -- saindo de 86 (entre 2010 e 2015) para 176 (entre 2015 e 2020). Isso evidencia uma maior atenção que essa área passou a receber mais recentemente, conforme discutimos nas seções anteriores.
+
+
+
+\subsubsection{Estudos por tipos de dados de entrada}
+\label{sec:slr-tipos-dados-entrada}
+
+De acordo com \citeonline{papastratis-2021-ai-technologies-sl}, o tipo de dados utilizados nas pesquisas de reconhecimento de sinais possui uma relação estreita com os tipos de sensores e técnicas que estiveram disponíveis no decorrer dos anos. 
+
+A \autoref{tab:tipos-dados-entrada} mostra o tipo de dados de entrada adotados com relação ao total de estudos, organizados em intervalos de cinco anos. Podemos ver que os dados RGB vem sendo utilizados como alternativa desde as primeiras pesquisas nessa área e tornaram-se populares sobretudo a partir de 2005. O uso de dados de profundidade apenas tornou-se popular com o lançamento do sensor Kinect, em 2010. Luvas eletrônicas também tiveram uma participação expressiva nos anos iniciais e foram gradativamente dando espaço para as luvas coloridas, entre 1995 e 2010, quando iniciou-se uma fase de transição para métodos de processamento baseados em visão. O \textit{mocap}\footnote{
+    \textit{Mocap} (\textit{motion capture} ou captura de movimento) consiste na amostragem e captura de movimentos humanos ou de objetos inanimados por meio de equipamentos específicos, que geralmente incluem marcadores ou trajes especiais afixados ao corpo dos indivíduos ou objetos alvos da captura~\cite{kitagawa-2017-mocap}.
+}, por sua vez, esteve presente entre 1990 e 2005, mas a dificuldade de acesso a esse equipamento e de aplicação no contexto real da língua de sinais certamente foram barreiras importantes para sua adesão.
+
+\input{tabelas/fundamentacao/dados-entrada-tipos}
+
+
+Segundo \citeonline{papastratis-2021-ai-technologies-sl}, cada um desses dispositivos apresenta particularidades que os tornam mais ou menos adequadas para diferentes aplicações. Sensores como o Kinect fornecem imagens RGB de alta resolução e dados de profundidade, mas sua precisão é restrita pela distância até o indivíduo rastreado. O uso de múltiplas câmeras RGB pode fornecer resultados altamente precisos, porém demanda uma maior complexidade de processamento e de requisitos computacionais. As luvas eletrônicas, por sua vez, fornecem dados altamente precisos em tempo real, mas a configuração de seus componentes (sensores flexíveis, acelerômetros, giroscópios, etc.) exige um processo de tentativa e erro que é impraticável e demorado. Além disso, os indivíduos tendem a não preferir essas luvas por serem invasivas.
+
+
+
+% \cite{papastratis-2021-ai-technologies-sl}
+
+% 3.1. Capturing Sensors
+% - sensors
+% [...]
+% Each of the aforementioned sensor setups for sign language capturing has different  characteristics, which makes it suitable for different applications. Kinect sensors provide high resolution RGB and depth information but their accuracy is restricted by the distance  from the sensors. Leap Motion also requires a small distance between the sensor and the subject, but their low computational requirements enable its usage in real-time applications.
+% Multi-camera setups are capable of providing highly accurate results at the expense of increased complexity and computational requirements. A myo armband that can detect EMG and inertial signals is also used in few works but the inertial signals may be distorted by body motions when people are walking. Smartwatches are really popular nowadays and they can also be used for sign language capturing but their output can be quite noisy due to unexpected body movements. Finally, datagloves can provide highly accurate sign language capturing results in real-time. However, the tuning of its components (i.e., flex sensor, accelerometer, gyroscope) may require a trial and error process that is impractical and time-consuming. In addition, signers tend to not prefer datagloves for sign language capturing as they are considered invasive.
+
+
+
+Na \autoref{tab:dados-intrusivos-naointrusivos} temos uma comparação dessas técnicas agrupadas em duas categorias: ``não-intrusiva'' e ``intrusiva''. Intrusão, nesse contexto, refere-se à necessidade da técnica interferir no indivíduo articulando o sinal para realizar a estimativa de pose corporal ou extração de características para o reconhecimento. Por exemplo, técnicas baseadas em imagens RGB e dados de profundidade são consideradas não-intrusivas, enquanto que aquelas utilizando luvas e \textit{mocap}) são consideradas intrusivas. 
+
+Pela tabela, percebe-se claramente uma mudança de paradigma iniciada por volta de 2005 na direção de técnicas de processamento baseadas em visão, que são menos intrusivas. Com isso, os métodos de captura intrusivos anteriormente dominantes foram cada vez menos utilizados e sua prevalência diminuiu de cerca de 70\% para menos de 30\%, e continuou reduzindo ainda mais ao longo do tempo.
+
+\input{tabelas/fundamentacao/dados-entrada-intrusivos-naointrusivos}
+
+
+% TODO: trocar parâmetros por 'features'
+\subsubsection{Estudos por tipos de parâmetros modelados}
+\label{slr-parametros-modelados}
+
+Nesta seção, serão analisados os tipos de parâmetros extraídos a partir dos dados de entrada utilizados pelos estudos. Os parâmetros serão categorizados entre manuais e não-manuais, conforme parâmetros da língua de sinais introduzidos na \autoref{sec:linguistica-fonologia}. Além disso, também será estabelecida uma categoria para parâmetros que capturam uma visão global dos indivíduos (como as coordenadas do corpo, imagens RGB de \textit{frame} inteiro, imagens de profundidade de \textit{frame} inteiro e imagens de movimento de \textit{frame} inteiro com fluxo óptico).
+
+É importante ressaltar, no entanto, algumas decisões tomadas por \citeonline{koller-2020-quantitative-survey-slr} ao classificar esses estudos. Vários trabalhos publicados após 2015 utilizaram imagens com recortes da mão como entrada para o reconhecimento e o autor atribuiu a estes categoria de parâmetro manual de configuração de mão. Além disso, extratores de características presentes em algoritmos de aprendizagem profunda são capazes de aprender implicitamente parâmetros manuais como a orientação da mão a partir desses mesmos recortes -- e isso foi levado em consideração ao classificá-los. Da mesma forma, uma vez que parâmetros globais (como as coordenadas do corpo ou imagens de \textit{frame} inteiro) contêm todas as informações disponíveis sobre o indivíduo, eles podem ajudar os algoritmos a aprender implicitamente parâmetros manuais como a locação e o movimento e, em menor grau, todos os demais parâmetros. Por fim, para os parâmetros não-manuais, apenas foram considerados trabalhos que explicitamente modelam um problema de reconhecimento de língua de sinais.
+
+
+% É preciso ressaltar que, embora a maioria dos estudos publicados após 2015 utilize um patch de mão recortado como entrada para seus sistemas de reconhecimento, nós o marcamos com o parâmetro de formato de mão. No entanto, usando extratores de recursos baseados em aprendizado profundo, essas entradas de mão podem aprender implicitamente os parâmetros de postura/orientação da mão. Da mesma forma, recursos de entrada global, como entradas de quadro completo, podem ajudar implicitamente a aprender os parâmetros de localização e movimento e, em menor grau, todos os outros parâmetros, bem como a imagem completa, abrange todas as informações disponíveis.
+
+% Para parâmetros não manuais, é preciso ressaltar que focamos em estudos que visam explicitamente o reconhecimento da língua de sinais e também incluem não manuais. Existem muitos trabalhos que se concentram no reconhecimento de marcadores não-manuais para linguagem de sinais, mas esses trabalhos normalmente não modelam um problema de reconhecimento de linguagem de sinais. 
+
+
+A \autoref{tab:parametros-tipos} mostra a proporção dos tipos de parâmetros com relação ao total de estudos identificados, agrupados em ordem cronológica de intervalos de cinco anos. 
+Ela evidencia uma predominância dos parâmetros manuais sobre os demais tipos de parâmetros até o ano de 2015. Percebe-se que a configuração de mão é o parâmetro mais adotado e isso deve-se principalmente ao fato de que uma grande quantidade de trabalhos nessa área aborda o problema de forma extremamente limitada, reconhecendo apenas recortes de mãos estáticas isoladas configuradas como uma letra ou número -- o que não é propriamente o contexto real das línguas de sinais. A locação e movimento aparecem na sequência como o segundo e terceiro parâmetros mais populares, os quais são modelados através de diferentes técnicas.
+
+\input{tabelas/fundamentacao/parametros-tipos}
+
+A partir de 2015, no entanto, as imagens RGB de \textit{frame} inteiro do indivíduo passaram a figurar como o tipo de parâmetro mais frequentemente encontrado, apesar de ainda permanecerem muito próximas da proporção de trabalhos utilizando configuração de mão. Percebe-se também que por volta desse mesmo período a adoção de parâmetros globals, que era praticamente inexistente em anos anteriores, começou a crescer. \citeonline{koller-2020-quantitative-survey-slr} afirma que isso se deve a dois motivos principais: primeiro, a disponibilização de coordenadas corporais e de imagens de profundidade de \textit{frame} inteiro, que se deu com o lançamento do Kinect em 2010; e, segundo, a introdução de técnicas de aprendizagem profunda nessa área a partir de 2015, que também impulsionou a tendência de utilizar \textit{frames} inteiros ao invés de realizar a engenharia manual de parâmetros.
+
+
+%A Tabela 6 agrega a localização, movimento, forma e orientação da mão em parâmetros manuais. Cabeça, boca, olhos, piscar de olhos, sobrancelhas e olhares são referidos como parâmetros não manuais. As articulações do corpo, fullframe, profundidade e movimento são todos computados na imagem completa e, portanto, os chamamos de recursos globais. Podemos ver que com vocabulários modelados maiores a tendência vai de recursos manuais para globais (lado esquerdo da Tabela 6), onde estes últimos aumentam de 18% de uso em todos os resultados publicados com vocabulários de até 50 sinais para 62% com vocabulários grandes acima 1000 sinais. O aumento de recursos globais pode ter dois motivos:
+% 1. A disponibilidade de articulações do corpo e recursos de imagem de profundidade total com o lançamento do Kinect em 2010.
+% 2. A mudança para o aprendizado profundo e a tendência de inserir fullframes em vez da engenharia manual de recursos.
+
+% Ambas as hipóteses podem ser confirmadas olhando para o lado direito da Tabela 6. Lá, vemos que os recursos globais começaram a ganhar força logo após 2010 (lançamento do Kinect) e também coincide com quando o aprendizado profundo para linguagem de sinais decolou em 2015.
+
+
+
+
+
+% \cite{koller-2020-quantitative-survey-slr}
+% - published papers 
+%       isolated x continuos signs
+%       (static / dynamic signs)
+%       single x double handed signs
+%       sensors?
+%       datasets
+% - type of input data
+% - modeled parameters
+% - accuracy, coverage?
+
+
+% \cite{rastgoo-2021-slr-deep-survey}
+% In this survey, we reviewed the
+% proposed models of sign language recognition area using deep learning
+% in recent four years based on a proposed taxonomy. Many models have
+% been proposed by researchers in recent years. Most of the models have
+% used the CNN model for feature extraction from input image due to the
+% impressive capabilities of CNN for this goal. In the case of video input,
+% RNN, LSTM, and GRU have been used in most of the models to cover
+% the sequence information. Also, some models have combined two or
+% more approaches in order to boost the recognition accuracy. Moreover,
+% different types of input data, such as RGB, depth, thermal, skeleton,
+% flow information have been used in the models. Tables 4–9 show the
+% proposed models details for sign language recognition in recent four
+% years. Furthermore, the pros and cons of these models are presented in
+% the Table 10.
+
+
+% \cite{wadhawan-2019-slr-literature-review}
+% 2007 - 2017
+% - type of input data
+% RQ2: What is the usage of different data acquisition techniques in sign language recognition systems?
+% (To identify and analyze various data acquisition devices that are required to capture data for sign language recognition)
+% we observed that 55% of the  research work on sign language recognition systems has been done using cameras, followed by 20% using Kinect, 8% using gloves, 7% using arm band, 6% using leap motion and rest 4% using other acquisition devices as shown in Fig. 21a.
+
+% - (static x dynamic signs)
+% RQ3: What is the percentage of research carried out on static/dynamic signs in sign language recognition systems?
+% (To classify static/dynamic signs based on the research work carried out on SL recognition)
+% Fig. 21b depicts that the majority of
+% research on sign language recognition systems has been done
+% for static signs (45%), followed by dynamic signs (40%) and
+% for both static and dynamic signs (15%). 
+
+% - isolated x continuos signs
+% RQ4: What is the percentage of research work carried out on the basis of signing mode of SL?
+% (To identify different signing modes like isolated and continuous signs)
+% it has been observed from Fig. 21c that majority of
+% work has been performed on isolated signs (83%), followed
+% by continuous signs (12%) and isolated and continuous both
+% the signs (5%) sign language recognition systems. 
+
+% - single x double handed signs
+% RQ5: What is the percentage of research work carried out on the basis of single and double handed signs?
+% (To identify the work done on single and double handed signs)
+% we found that 48% of work on sign language
+% recognition systems has been performed on single handed
+% signs, followed by 20% on double handed signs and 32% on
+% both single and double handed signs as shown in Fig. 21d.
+
+% - accuracy, coverage?
+% RQ7: What is the accuracy and coverage of existing sign language recognition systems?
+% (To identify the recognition rate of existing sign language recognition systems on the trained dataset)
+% we observed that for all the sign language systems there are 66%
+% of sign language recognition systems who achieved average
+% accuracy of greater than 90%, while 23% of the systems have
+% accuracy between 80 and 89%. There are only 11% systems
+% whose accuracy is less than 80% as shown in Fig. 21f.
+
+
+
+% \cite{papastratis-2021-ai-technologies-sl}
+% 3. Sign Language Capturing
+% Sign language capturing involves the recording of sign gestures using appropriate sensor setups. The purpose is to capture discriminative information from the signs that will allow the study, recognition and 3D representation of signs at later stages. Moreover, sign language capturing enables the construction of large datasets that can be used to accurately train and evaluate machine learning sign language recognition and translation algorithms.
+
+% 3.1. Capturing Sensors
+% - sensors
+% [...]
+% Each of the aforementioned sensor setups for sign language capturing has different  characteristics, which makes it suitable for different applications. Kinect sensors provide high resolution RGB and depth information but their accuracy is restricted by the distance  from the sensors. Leap Motion also requires a small distance between the sensor and the subject, but their low computational requirements enable its usage in real-time applications.
+% Multi-camera setups are capable of providing highly accurate results at the expense of increased complexity and computational requirements. A myo armband that can detect EMG and inertial signals is also used in few works but the inertial signals may be distorted by body motions when people are walking. Smartwatches are really popular nowadays and they can also be used for sign language capturing but their output can be quite noisy due to unexpected body movements. Finally, datagloves can provide highly accurate sign language capturing results in real-time. However, the tuning of its components (i.e., flex sensor, accelerometer, gyroscope) may require a trial and error process that is impractical and time-consuming. In addition, signers tend to not prefer datagloves for sign language capturing as they are considered invasive.
+
+% 3.2. Datasets
+% - datasets
+% Datasets are crucial for the performance of methodologies regarding sign language
+% recognition, translation and synthesis and as a result a lot of attention has been drawn
+% towards the accurate capturing of signs and their meticulous annotation. The majority
+% of the existing publicly available datasets are captured with visual sensors and are
+% presented below.
+% [...]
+% A discussion about the aforementioned datasets can be made at this stage, while a
+% detailed overview of the dataset characteristics is provided on Table 1. It can be seen
+% that over time datasets become larger in size (i.e., number of samples) with more signers
+% involved in them, as well as contain high resolution videos captured under various and
+% challenging illumination and background conditions. Moreover, new datasets usually
+% include different modalities (i.e., RGB, depth and skeleton). Recording sign language
+% videos using many signers is very important, since each person performs signs with
+% different speed, body posture and face expression. Moreover, high resolution videos
+% capture more clearly small but important details, such as finger movements and face
+% expressions, which are crucial cues for sign language understanding. Datasets with videos
+% captured under different conditions enable deep networks to extract highly discriminative
+% features for sign language classification. As a result, methodologies trained in such datasets
+% can obtain greatly enhanced representation and generalization capabilities and achieve high
+% recognition performances. Furthermore, although RGB information is the predominant
+% modality used for sign language recognition, additional modalities, such as skeleton and
+% depth information, can provide complementary information to the RGB modality and
+% significantly improve the performance of SLR methods.
+
+
+% 7. Conclusions and Future Directions
+% The aim of this review is to familiarize researchers with sign language technologies and assist them
+% towards developing better approaches.
+% - sensors
+% In the field of sign language capturing, it is essential to select an optimal sensor for
+% capturing signs for a task that highly depends on various constraints (e.g., cost, speed,
+% accuracy, etc.). For instance, wearable sensors (i.e., gloves) are expensive and capture only
+% hand joints and arm movements, while in recognition applications, the user is required
+% to use gloves. On the other hand, camera sensors, such as web or smartphone cameras,
+% are inexpensive and capture the most substantial information, like the face and the body
+% posture, which are crucial for sign language.
+% - techniques
+% Concerning CSLR approaches, most of the existing works adopt 2D CNNs with
+% temporal convolutional networks or recurrent neural networks that use video as input.
+% In general, 2D methods have lower training complexity compared to 3D architectures and
+% produce better CSLR performance. Moreover, it is experimentally shown that multi-modal
+% architectures that utilize optical flow or human pose information, achieve slightly higher
+% recognition rates than unimodal methods. In addition, CSLR performance on datasets with
+% large vocabularies of more than 1000 words, such as Phoenix-2014, or datasets with unseen
+% words on the test sets, such as CSL Split 2 and GSL SD, is far from perfect. Furthermore,
+% ISLR methods have been extensively explored and have achieved high recognition rates on
+% large-scale datasets. However, they are not suitable for real-life applications since they are
+% trained to detect and classify isolated signs on pre-segmented videos.
+% Sign language translation methods have shown promising results although they are
+% not exhaustively explored. The majority of the SLT methods adopt architectures from the
+% field of neural machine translation and video captioning. These approaches are of great
+% importance, since they translate sign language into spoken counterparts and can be used
+% to facilitate the communication between the Deaf community and other groups. To this
+% end, this research field requires additional attention from the research community.
+% [...]
+% From the chart in Figure 3a, it can be seen that most existing works deal with sign
+% language recognition, while sign language capturing and translation methods are still not
+% thoroughly explored. It is strongly believed that these research areas should be explored
+% more in future works.
+
+
+
+
+% \cite{cooper-2011-slr}
+% ---
+% 3 Data Acquisition and Feature Extraction
+% Acquiring data is the first step in a SLR system. Given that much of the meaning
+% in sign language is conveyed through manual features, this has been the area of
+% focus of the research up to the present as noted by Ong and Ranganath in their 2005
+% survey [82].
+% - sensors
+% Many early SLR systems used data gloves and accelerometers to acquire specifics
+% of the hands. The measurements (x,y,z, orientation, velocity etc) were measured directly
+% using a sensor such as the Polhemus tracker [103] or DataGlove [54, 99].
+% More often than not, the sensor input was of sufficient discriminatory power that feature
+% extraction was bypassed and the measurements used directly as features [34].
+% While these techniques gave the advantage of accurate positions, they did not allow
+% full natural movement and constricted the mobility of the signer, altering the
+% signs performed. Trials with a modified glove-like device, which was less constricting
+% [43], attempted to address this problem. However, due to the the prohibitive
+% costs of such approaches, the use of vision has become more popular. In the case of
+% vision input, a sequence of images are captured from a combination of cameras (e.g.
+% monocular [115], stereo [47], orthogonal [90]) or other non-invasive sensors. Segen
+% and Kumar [87] used a camera and calibrated light source to compute depth, and
+% Feris et al. [30] used a number of external light sources to illuminate a scene and
+% then used multi-view geometry to construct a depth image. Starner et al. [91] used
+% a front view camera in conjunction with a head mounted camera facing down on
+% the subject’s hands to aid recognition. Depth can also be inferred using stereo cameras
+% as was done by Munoz-Salinas et al. [72] or by using side/vertical mounted
+% cameras as with Vogler and Metaxas [100] or the Boston ASL data set [75]. There
+% are several projects which are creating sign language data sets; in Germany there is
+% the DGS-Korpus dictionary project collecting data across the country over a 15yr
+% period [22] or the similar project on a smaller scale in the UK by the BSL Corpus
+% Project [14]. However, these data sets are directed at linguistic research, whereas
+% the cross domain European project DictaSign [23] aims to produce a multi-lingual
+% data set suitable for both linguists and computer vision scientists.
+
+% 6 Conclusions
+% SLR has long since advanced beyond classifying isolated signs or alphabet forms for finger spelling. While the field may continue to draw on the advances in GR the focus has shifted to approach the more linguistic features associated with the challenge. Work has developed on extracting signs from continuous streams and using linguistic grammars to aid recognition. However, there is still much to be learnt from relevant fields such as speech recognition or hand writing recognition.
+% In addition, while some have imposed grammatical rules from linguistics, others have looked at data driven approaches, both have their merits since the linguistics of most sign languages are still in their infancy.
+% While the community continues to discuss the need for including non-manual features, few have actually done so. Those which have [2, 5], concentrate solely on the facial expressions of sign. There is still much to be explored in the veins of body posture or placement and classifier (hand shape) combinations.
+% Finally, to compound all these challenges, there is the issue of signer independence.
+% While larger data sets are starting to appear, few allow true tests of signer independence over long continuous sequences. Maybe this is one of the most urgent problems in SLR that of creating data sets which are not only realistic, but also well annotated to facilitate machine learning.
+% Despite these problems recent uses of SLR include translation to spoken language, or to another sign language when combined with avatar technology [3, 25].
+

@@ -5,21 +5,23 @@
 \begin{table}[]
     \centering
     \caption{
-        Proporção de estudos em \acrshort{slr} que utilizam parâmetros manuais, não-manuais ou globais em relação ao total publicado no mesmo intervalo de anos.
+        Proporção de estudos em \acrshort{slr} que utilizam parâmetros manuais, não-manuais ou globais (aqueles que capturam o corpo inteiro do indivíduo) em relação ao total publicado no mesmo intervalo de anos. 
+        ``Loc.'', ``Mov.'', ``Conf'' e ``Orient.'' representam a locação, movimento, configuração de mão e orientação; ``Sobranc.'' corresponde à sobrancelha; ``Coord.'' refere-se às coordenadas do corpo dos indivíduos; ``RGB'' e ``Profund.'' correspondem a \textit{frame} inteiro em imagem RGB ou de profundidade, respectivamente; ``Est. Mov.'' une todos os tipos de estimativa de movimento em \textit{frame} inteiro (geralmente fluxo óptico).
     }
     \label{tab:parametros-tipos}
-    \resizebox{0.45\textwidth}{!}{%
-        \begin{tabular}{r|ccc}
+    \resizebox{\textwidth}{!}{%
+        \begin{tabular}{r|cccc|cccc|cccc}
             \hline
-            Ano            & Manuais                       & Não manuais                  & Globais                      \\ \hline
-            \textless 1990 & \cellcolor[HTML]{FFAA00}100\% & 0\%                          & 0\%                          \\
-            1990 - 1995    & \cellcolor[HTML]{FFAA00}100\% & 0\%                          & 0\%                          \\
-            1995 - 2000    & \cellcolor[HTML]{FFAA00}100\% & \cellcolor[HTML]{FFFBF2}5\%  & 0\%                          \\
-            2000 - 2005    & \cellcolor[HTML]{FFAA00}100\% & 0\%                          & 0\%                          \\
-            2005 - 2010    & \cellcolor[HTML]{FFAA01}99\%  & \cellcolor[HTML]{FFF4DE}13\% & \cellcolor[HTML]{FFDFA0}1\%  \\
-            2010 - 2015    & \cellcolor[HTML]{FFAA00}100\% & \cellcolor[HTML]{FFF0D3}17\% & \cellcolor[HTML]{FFDFA0}37\% \\
-            2015 - 2020    & \cellcolor[HTML]{FFD786}47\%  & \cellcolor[HTML]{FFF8EA}8\%  & \cellcolor[HTML]{FFC656}66\% \\ \hline
+            \multicolumn{1}{l|}{} & \multicolumn{4}{c|}{Manuais} & \multicolumn{4}{c|}{Não-manuais} & \multicolumn{4}{c}{Globais}                                                                                                                                                                                                                                                                                     \\
+            Ano                   & Loc.                         & Mov.                             & Conf.                         & Orient.                      & Cabeça                       & Boca                        & Olhos                       & Sobranc.                    & Coord.                       & RGB                          & Profund.                    & Est. Mov.                   \\ \hline
+            \textless 1990        & \cellcolor[HTML]{FFD47F}50\% & \cellcolor[HTML]{FFD47F}50\%     & \cellcolor[HTML]{FFAA00}100\% & \cellcolor[HTML]{FFD47F}50\% & 0\%                          & 0\%                         & 0\%                         & 0\%                         & 0\%                          & 0\%                          & 0\%                         & 0\%                         \\
+            1990 - 1995           & \cellcolor[HTML]{FFCE6D}57\% & \cellcolor[HTML]{FFCE6D}57\%     & \cellcolor[HTML]{FFB522}86\%  & \cellcolor[HTML]{FFC249}71\% & 0\%                          & 0\%                         & 0\%                         & 0\%                         & 0\%                          & 0\%                          & 0\%                         & 0\%                         \\
+            1995 - 2000           & \cellcolor[HTML]{FFC550}68\% & \cellcolor[HTML]{FFD88B}45\%     & \cellcolor[HTML]{FFBD39}77\%  & \cellcolor[HTML]{FFD072}55\% & \cellcolor[HTML]{FFFBF2}5\%  & 0\%                         & 0\%                         & 0\%                         & 0\%                          & 0\%                          & 0\%                         & 0\%                         \\
+            2000 - 2005           & \cellcolor[HTML]{FFB520}87\% & \cellcolor[HTML]{FFCE6D}57\%     & \cellcolor[HTML]{FFBB32}80\%  & \cellcolor[HTML]{FFBB32}53\% & 0\%                          & 0\%                         & 0\%                         & 0\%                         & 0\%                          & 0\%                          & 0\%                         & 0\%                         \\
+            2005 - 2010           & \cellcolor[HTML]{FFC144}73\% & \cellcolor[HTML]{FFC249}71\%     & \cellcolor[HTML]{FFC758}65\%  & \cellcolor[HTML]{FFC249}8\%  & \cellcolor[HTML]{FFF6E5}10\% & \cellcolor[HTML]{FFFAF0}6\% & 0\%                         & 0\%                         & 0\%                          & \cellcolor[HTML]{FFFEFC}1\%  & 0\%                         & 0\%                         \\
+            2010 - 2015           & \cellcolor[HTML]{FFC758}65\% & \cellcolor[HTML]{FFC653}67\%     & \cellcolor[HTML]{FFBA2F}81\%  & \cellcolor[HTML]{FFF5E0}12\% & \cellcolor[HTML]{FFF5E0}17\% & \cellcolor[HTML]{FFFDFA}2\% & \cellcolor[HTML]{FFFDFA}2\% & \cellcolor[HTML]{FFFDFA}2\% & \cellcolor[HTML]{FFE4AF}31\% & \cellcolor[HTML]{FFFAF0}6\%  & 0\%                         & 0\%                         \\
+            2015 - 2020           & \cellcolor[HTML]{FFEBC4}23\% & \cellcolor[HTML]{FFECC7}22\%     & \cellcolor[HTML]{FFDA91}43\%  & \cellcolor[HTML]{FFF7E8}9\%  & \cellcolor[HTML]{FFFAF0}6\%  & \cellcolor[HTML]{FFFBF2}5\% & \cellcolor[HTML]{FFFBF2}3\% & \cellcolor[HTML]{FFFBF2}3\% & \cellcolor[HTML]{FFECC7}22\% & \cellcolor[HTML]{FFD889}46\% & \cellcolor[HTML]{FFFEFC}1\% & \cellcolor[HTML]{FFFCF5}4\% \\ \hline
         \end{tabular}%
     }
-    \nomefonte[p. 7]{koller-2020-quantitative-survey-slr}
+    \nomefonte[p. 6]{koller-2020-quantitative-survey-slr}
 \end{table}
