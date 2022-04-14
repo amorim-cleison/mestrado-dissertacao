@@ -1,14 +1,92 @@
 % TODO: revisar se essa introdução continua abrangendo o conteúdo do capítulo
 Neste capítulo, discutiremos a abordagem proposta por este trabalho, bem como as justificativas para sua adoção, suas contribuições para a área de \acrshort{slr} e os detalhes das técnicas e experimentos envolvidos.
 
-
 % proposta
-
-
-
 % justificativas
+% beneficio
+%   - desafios (da SLR) que resolve
+
 % técnicas
 % experimentos
+
+
+esta pesquisa possui como proposta adotar uma abordagem centrada na linguística da língua de sinais para realizar o reconhecimento dos sinais
+- ao analisar a linguistica, vemos que ela se divide o estudo da língua em três partes distintas, que descrevem níveis crescentes de significado: vão desde seus menores elementos constituintes (na fonologia), passam pela articulação desses elementos para um nível maior de significado -- que seriam as palavras (na morfologia) e alcançam um nível mais complexo, que articula essas palavras para compor sentenças e estruturas mais complexas (na sintaxe).
+- como percebe-se, a fonologia é o nível mais fundamental para se abordar uma língua sob uma abordagem linguistica. na língua de sinais, ela descreve os parâmetros mínimos que precisam ser compreendidos e dominados antes de avançar para os próximos níveis de significado. 
+
+- por este motivo, este trabalho adota a hipótese de que este é também o nível mais básico e fundamental para representar e abordar a língua de sinais em técnicas de \acrshort{slr}, o qual deve ser dominado antes de partirmos para explorar níveis de significado mais elevados e complexos. 
+- dessa forma, ao invés de utilizar imagens RGB ou coordenadas brutas do corpo dos indivíduos como entrada para as técnicas aplicadas -- como observa-se em muitos estudos na área --, nesta pesquisa representando os sinais segundo o nível fonológico da língua.
+
+imagens RGB e coordenadas do corpo humano não carregam semântica por si só. ao contrário, é necessário um nível de interpretação sobre elas para que seja possível inferir, por exemplo, que um conjunto de coordenadas de dedos e corpo se refere a "uma mão com orientação voltada para o corpo numa trajetória para a esquerda". 
+além disso, a quantidade de pixels contidos nessas imagens ou de coordenadas corporais brutas são comumente grandes, mas apenas uma parcela pequena é realmente relevante para os sinais que se deseja interpretar.
+de fato, essa necessidade de lidar com dados brutos tem exigido de pesquisadores um esforço adicional para que suas técnicas interpretem-os corretamente e consigam contornar essa complexidade antes de progredir para níveis semânticos maiores da língua de sinais. Por exemplo, é comum observar técnicas como fluxo óptico, 
+\acrshort{mei}\footnote{
+    \acrlong{mei}: é uma imagem binária, onde a região branca representa onde há movimento ocorrendo e o preto denota a região onde não há movimento \cite{ahad-2012-mhi-for-action}.
+}
+e
+\acrshort{mhi}\footnote{
+    \acrlong{mhi}: expressa a sequência de movimento de forma compacta, em uma única imagem, onde pixels em escala de cinza com intensidade menor descrevem frames de movimentos mais antigos nessa sequência \cite{ahad-2012-mhi}.
+} 
+sendo aplicadas para capturar os movimentos a partir dos pixels dos frames, ou ainda camadas extras sendo adicionadas aos modelos de aprendizagem profunda para lidar com isso, mas que os tornam mais caros e complexos. 
+
+
+% - reduz a complexidade de aprender o mapeamento coordenadas -> linguistica / foca no aprendizado da linguistica
+ao prover parâmetros fonológicos ao invés de dados brutos aos modelos de aprendizagem, retiramos o foco do aprender a interpretar pixels ou coordenadas sem significado e fazemos com que ele passe a aprender as relações e regras linguísticas contidas na língua. conforme discutimos na seção XXX, a linguística da língua já apresenta um conjunto de complexidades e regras que precisam ser abordadas para que a \acrshort{slr} avance de forma consistente. englobar a interpretação desses dados brutos como parte do problema faz com que a complexidade seja redobrada e limita a velocidade desses avanços.
+
+apesar dessa complexidade, muitos desses parâmetros fonológicos poderiam ser computados algebricamente a partir de coordenadas 3d para formatos semanticamente mais elevados de forma mais barata antes de serem ingeridos por algoritmos.
+
+
+
+
+
+
+
+
+sendo assim, a abordagem deste trabalho adotará parâmetros fonológicos como dados de entrada para o processo de reconhecimento dos sinais. como pode-se imaginar, atualmente não existem \textit{datasets} disponíveis com esse tipo de parâmetros e, portanto, o primeiro desafio nessa direção foi desenvolver um \textit{dataset} que pudesse suportar essa pesquisa. 
+
+dentre as alternativas mais viáveis para isso, optamos por derivar um novo \textit{dataset} a partir do \acrfull{asllvd}, o qual é um dos mais relevantes da \acrshort{asl} e foi desenvolvido na Universidade de Boston por \citeonline{athitsos-2008-asllvd} e \citeonline{neidle-2012-asllvd}. % Ele é composto por um vocabulário de 2.745 sinais representados em cerca de 9.763 sequências de vídeos anotadas que, por sua vez, são articuladas por Surdos nativos nessa língua.
+
+aplicamos um conjunto de processos para computar as representações fonológicas a partir dos frames RGB em 2D das amostras do \acrshort{asllvd}, o que incluiu a criação de uma representação intermediária em 3D sob a qual foi possível aplicar um conjunto de operações algébricas para alcançar nosso objetivo. Discutiremos esse processo em detalhes nas seções a seguir.
+
+% para isso, primeiro foi necessário desenvolver um dataset -- desafios:
+% - estabelecer técnicas para computar e representar no nível de parâmetros fonológicos as  coordenadas do corpo humano
+%     - mas antes disso: sair de imagens 2D para coordenadas em 3D
+
+% para isso, desafios:
+%  - nao ha datasets da fonologia -> construir dataset -> necessário coordenadas 3d
+%  - dataset produz imagens 2d -> estimar coordenadas 2d -> reconstruir coordenadas 3d
+%  - computar parametros fonologicos a partir das coordenadas 3d
+%     - estabelecer funções algebricas
+
+
+uma vez que os parâmetros de entrada foram estabelecidos, podemos então prosseguir realizando o reconhecimento dos sinais. para isso, aplicaremos algumas arquiteturas clássicas de modelos sequenciais de aprendizagem profunda, além de um \textit{transformer} -- que é comumente adotado em tarefas de \acrshort{nlp} --. para que assim possamos quantificar a eficácia e estabelecer uma linha de base para a abordagem proposta. este processo será discutido em mais detalhes nas seções seguintes.
+
+% TODO: criar imagem detalhando o processo/abordagem proposto
+observamos na imagem XXX um diagrama que ilustra a abordagem proposta.
+
+
+entre os desafios que esta proposta contribui a superar, temos os seguintes:
+
+\begin{enumerate}
+    \item aborda o \acrshort{slr} sob uma perspectiva orientada às particularidades da língua de sinais, considerando sua linguística e natureza visual intrínseca como fatores primordiais.
+    
+    \item por ser centrado na linguística da língua de sinais, este trabalho ajuda a criar consciência e reconhecimento dela como sendo um pilar fundamental para novas técnicas na área de \acrshort{slr}.
+
+    \item é uma abordagem independente de variações nos traços e dimensões corporais, iluminação do ambiente, qualidade das câmeras, etc., bem como separada de complexidades atreladas à detecção partes do corpo ou interpretação de seus movimentos no espaço. isso porque, uma vez que o foco é colocado na fonologia da língua, tais complexidades são terceirizados para algoritmos especializados nesse tipo tarefa. sendo assim, o papel da \acrshort{slr} passa a englobar tão somente a língua de sinais e suas particularidades.
+    
+    \item as anotações contendo os parâmetros fonológicos são geradas automaticamente por meio de expressões algébricas que analisam o corpo no espaço tridimensional. isso pode ser replicado para outros \textit{datasets} (ou em aplicações do mundo real), o que contribuiria para reduzir a necessidade de produção de anotações manuais e, como consequência, as limitações ao combinar \textit{datasets} distintos com o intuito de elevar a quantidade e diversidade de amostras utilizadas pelas pesquisas em \acrshort{slr}.
+    
+    \item este trabalho contribui com dos novos \textit{datasets} para a língua de sinais, os quais podem ser utilizados para derivar outros novos \textit{datasets} ou para continuar evoluindo técnicas centradas na linguística. além disso, por se basearem no \acrshort{asllvd}, estes \textit{datasets} são criados a partir de sinais articulados por indivíduos Surdos nativos na língua.
+
+    \item apesar do conjunto específico de parâmetros fonológicos contemplados e de lidar apenas com sinais isolados, entendemos que a abordagem proposta é passível de ser estendida para outros parâmetros e também para sinais contínuos.
+
+\end{enumerate}
+
+
+
+
+
+
 
 
 
