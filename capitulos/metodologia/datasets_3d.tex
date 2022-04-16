@@ -1,30 +1,32 @@
 \subsection{ASL-Skeleton3D}
 \label{sec:metodologia-datasets-3d}
 
-O ASL-Skeleton3D é um \dataset intermediário oriundo deste trabalho que introduz a representação em coordenadas 3D das amostras do \acrshort{asllvd}. Esse tipo de representação possibilita uma observação mais precisa do corpo dos indivíduos enquanto articulam os sinais, permitindo a pesquisadores em \acrshort{slr} explorar novas técnicas ou derivar outros \datasets computados a partir dessas coordenadas.
+O ASL-Skeleton3D é um \textit{dataset} intermediário oriundo deste trabalho que introduz a representação em coordenadas 3D das amostras do \acrshort{asllvd}. Esse tipo de representação possibilita uma observação mais precisa do corpo dos indivíduos enquanto articulam os sinais, permitindo a pesquisadores em \acrshort{slr} explorar novas técnicas ou derivar outros \textit{dataset}s computados a partir dessas coordenadas.
 
 A estratégia adotada para projetar os sinais do \acrshort{asllvd} dentro do espaço 3D consistiu em combinar duas de suas perspectivas 2D capturadas por câmeras posicionadas perpendicularmente entre si: a vista frontal e a vista lateral. Com isso, a vista frontal fornecerá a observação dos eixos \(x\) e \(y\), e a vista lateral nos fornecerá a dimensão de profundidade (ou eixo \( z\)), conforme ilustra a \autoref{fig:our-strategy-3d}.
 
+
+% TODO: criar componente para sub-figuras (lembrar de formatar bordas e espaçamento horizontal, conforme padrão ABNT)
 \begin{figure}[ht!]
     \centering
     \caption{\textmd{Estratégia adotada para representar os sinais no espaço 3D: as visões 2D para a frente~(\subref{subfig:our-strategy-3d-front}) e lateral~(\subref{subfig:our-strategy-3d-side}) são posicionadas perpendicularmente para reconstruir a visão 3D do objeto~(\subref{subfig:our-strategy-3d-persp}).}}
     \subcaptionbox{\label{subfig:our-strategy-3d-front}}{
-        \includegraphics[height=4cm]{imagens/metodologia/datasets/chair_front}
+        \includegraphics[height=4cm]{capitulos/metodologia/imagens/chair_front}
     }%
     \hfill
     \subcaptionbox{\label{subfig:our-strategy-3d-side}}{
-        \includegraphics[height=4cm]{imagens/metodologia/datasets/chair_side}
+        \includegraphics[height=4cm]{capitulos/metodologia/imagens/chair_side}
     }%
     \hfill
     \subcaptionbox{\label{subfig:our-strategy-3d-persp}}{
-        \includegraphics[height=4cm]{imagens/metodologia/datasets/chair_perspective}
+        \includegraphics[height=4cm]{capitulos/metodologia/imagens/chair_perspective}
     }%
     \nomefonte{}
     \label{fig:our-strategy-3d}
 \end{figure}
 
 
-Os passos utilizados para gerar o ASL-Skeleton3D basearam-se no processamento realizado por \citeonline{amorim-2019-stgcn-sl} na construção de um \dataset de esqueletos 2D da \acrshort{asl}. De um modo geral, eles envolvem a obtenção das amostras, a segmentação dos sinais, a estimativa e a normalização dos esqueletos. Apesar disso, várias adaptações foram necessárias a cada passo para acomodar a estratégia descrita acima e lidar com os desafios encontrados aqui, conforme discutiremos a seguir:
+Os passos utilizados para gerar o ASL-Skeleton3D basearam-se no processamento realizado por \citeonline{amorim-2019-stgcn-sl} na construção de um \textit{dataset} de esqueletos 2D da \acrshort{asl}. De um modo geral, eles envolvem a obtenção das amostras, a segmentação dos sinais, a estimativa e a normalização dos esqueletos. Apesar disso, várias adaptações foram necessárias a cada passo para acomodar a estratégia descrita acima e lidar com os desafios encontrados aqui, conforme discutiremos a seguir:
 
 \begin{enumerate}
     \item \textbf{Obtenção das amostras}: essa etapa consiste em recuperar as amostras de vídeos do \acrshort{asllvd}, porém considerando duas câmeras -- frontal e lateral -- para aplicar a estratégia descrita acima. Existem dois formatos originalmente disponíveis para as câmeras: \textit{mov} (vídeos compactados, geralmente menores e mais fáceis de processar) e \textit{vid} (vídeos brutos, mais longos para baixar e processar).
@@ -49,15 +51,15 @@ Os passos utilizados para gerar o ASL-Skeleton3D basearam-se no processamento re
               \centering
               \caption{\textmd{As coordenadas \(x\) e \(y\) do esqueleto 3D final são obtidas das coordenadas estimadas para a perspectiva frontal~(\subref{subfig:front-side-persp-skeletons-front}). A coordenada \(z\) é originada do eixo \(x\) do esqueleto lateral~(\subref{subfig:front-side-persp-skeletons-side}). Quando colocados juntos, eles são visualizados como em (\subref{subfig:front-side-persp-skeletons-persp}).}}
               \subcaptionbox{\label{subfig:front-side-persp-skeletons-front}}{
-                  \includegraphics[height=3cm]{imagens/metodologia/datasets/asllvd_example_front_skeleton}
+                  \includegraphics[height=3cm]{capitulos/metodologia/imagens/asllvd_example_front_skeleton}
               }%
               \hfill
               \subcaptionbox{\label{subfig:front-side-persp-skeletons-side}}{
-                  \includegraphics[height=3cm]{imagens/metodologia/datasets/asllvd_example_side_skeleton}
+                  \includegraphics[height=3cm]{capitulos/metodologia/imagens/asllvd_example_side_skeleton}
               }%
               \hfill
               \subcaptionbox{\label{subfig:front-side-persp-skeletons-persp}}{
-                  \includegraphics[height=4.5cm]{imagens/metodologia/datasets/asllvd_front_side_perspective_skeleton}
+                  \includegraphics[height=4.5cm]{capitulos/metodologia/imagens/asllvd_front_side_perspective_skeleton}
               }%
               \nomefonte{}
               \label{fig:front-side-persp-skeletons}
@@ -68,7 +70,7 @@ Os passos utilizados para gerar o ASL-Skeleton3D basearam-se no processamento re
 
           \figura
           {fig:shoulders-width} % Label
-          {imagens/metodologia/datasets/shoulders_width} % Path
+          {capitulos/metodologia/imagens/shoulders_width} % Path
           {height=3cm} % Size
           {Largura entre ombros, que foi utilizada como referência para normalizar as coordenadas nos esqueletos 3D.} % Caption
           {} % Citation
@@ -96,7 +98,7 @@ Por exemplo, se observarmos o segundo índice de cada um dos arrays contidos no 
 
 \figura
     {fig:sample-json-datasetTD} % Label
-    {imagens/metodologia/datasets/code_3d} % Path
+    {capitulos/metodologia/imagens/code_3d} % Path
     {width=0.7\linewidth} % Size
     {Exemplo de amostra do ASL-Skeleton3D e propriedades fornecidas para ela.} % Caption
     {} % Citation

@@ -29,11 +29,11 @@ Dessa forma, analisemos adiante os passos utilizados para computá-los:
             A direção da palma \(O_{palm}\) é então calculada a partir de \(\protect \overrightarrow{n}\) e descrita dentre um conjunto de direções possíveis~(\subref{ subfig:palm-directions}).}
         }
         \subcaptionbox{\label{subfig:palm-orientation}}{
-            \includegraphics[height=4cm]{imagens/metodologia/datasets/palm_orientation_algebra}
+            \includegraphics[height=4cm]{capitulos/metodologia/imagens/palm_orientation_algebra}
         }%
         \hspace{1cm}
         \subcaptionbox{\label{ subfig:palm-directions}}{
-            \includegraphics[height=4cm]{imagens/metodologia/datasets/hand_orientations}
+            \includegraphics[height=4cm]{capitulos/metodologia/imagens/hand_orientations}
         }%
         \nomefonte{}
         \label{fig:palm-orientation-directions}
@@ -92,11 +92,11 @@ Dessa forma, analisemos adiante os passos utilizados para computá-los:
             O movimento da mão \(V_{hand}\) é então calculado a partir de \(\protect \overrightarrow{m}\) e descrito dentre um conjunto de direções possíveis~(\subref{subfig:hand-directions}).}
         }
         \subcaptionbox{\label{subfig:hand-movement}}{
-            \includegraphics[height=4cm]{imagens/metodologia/datasets/hand_movement}
+            \includegraphics[height=4cm]{capitulos/metodologia/imagens/hand_movement}
         }%
         \hspace{1cm}
         \subcaptionbox{\label{subfig:hand-directions}}{
-            \includegraphics[height=4cm]{imagens/metodologia/datasets/hand_movement_2}
+            \includegraphics[height=4cm]{capitulos/metodologia/imagens/hand_movement_2}
         }%
         \nomefonte{}
         \label{fig:hand-movement-directions}
@@ -123,20 +123,20 @@ Dessa forma, analisemos adiante os passos utilizados para computá-los:
 
 
     % -----
-    \item \textbf{Expressão não-manual - abertura da boca}:
-    
-    Para o atributo abertura da boca, consideramos a pesquisa desenvolvida por \cite{ferrario-2000-study-lips}, que analisa e estabelece alguns parâmetros de referência para os lábios humanos.
+    \item \textbf{Expressão não-manual - abertura da boca}: refere-se à abertura da boca, a cada frame, a qual pode prover significado adicional ao sinal.
+    Para calculá-lo, nos baseamos no trabalho de \citeonline{ferrario-2000-study-lips}, o qual analisa e propõe algumas medidas antropométricas para os lábios.
 
-    % A partir desses parâmetros, selecionamos o \textit{largura altura-boca do vermelhão} porque ele pode medir os lábios em termos de uma única relação (entre a altura do vermelhão e a largura da boca, como em \autoref{fig:abertura da boca }). Assim, a altura do vermelhão é a distância \(d\) entre o labiale superius \(LS\) e o labiale inferius \(LI\), que são os pontos-chave mais externos dos lábios superior e inferior. A largura da boca, por sua vez, é a distância \(d\) entre o cheilion direito \(CH_r\) e o cheilion esquerdo \(CH_l\), que são os pontos-chave do lado direito e esquerdo da boca~\cite{ ferrario2000normal}.
+    Dentre essas medidas apresentadas, selecionamos a \textit{vermilion height to mouth width} (ou altura dos lábios com relação à largura da boca), visto que ela é capaz de capturar a abertura dos lábios em termos de uma única proporção. A altura dos lábios é dada pela distância \(d\) entre o \textit{labiale superius} \(LS\) e o \textit{labiale inferius} \(LI\), que são as coordenadas mais externas dos lábios superior e inferior. A largura da boca, por sua vez, é a distância \(d\) entre o \textit{cheilion direito} \(CH_r\) e o \textit{cheilion esquerdo} \(CH_l\), que são as coordenadas do lado direito e esquerdo da boca (vide \autoref{fig:mouth-openness}).
 
     \figura
         {fig:mouth-openness} % Label
-        {imagens/metodologia/datasets/mouth_openness} % Path
+        {capitulos/metodologia/imagens/mouth_openness} % Path
         {height=4cm} % Size
-        {A abertura da boca foi calculada com base no parâmetro \textit{largura altura-boca do vermelhão} apresentado por \cite{ferrario-2000-study-lips}, que é obtido a partir das coordenadas \(LS\), \(LI\), \(CH_r\) e \(CH_l\).} % Caption
+        {A abertura da boca foi calculada com base na medida \textit{vermilion height to mouth width} (ou altura dos lábios com relação à largura da boca) apresentada por \cite{ferrario-2000-study-lips}, a qual considera as coordenadas \(LS\), \(LI\), \(CH_r\) e \(CH_l\).} % Caption
         {ferrario-2000-study-lips} % Citation
 
-    Este cálculo acima foi adotado para determinar a abertura de boca \(P_{mouth}\), da seguinte forma:
+        
+    Sendo assim, a abertura de boca \(P_{mouth}\) pode ser então definida como na \autoref{eqn:mouth-openness}:
 
     % Abertura da boca:
     \begin{equation}
@@ -145,3 +145,32 @@ Dessa forma, analisemos adiante os passos utilizados para computá-los:
     \end{equation}
 
 \end{enumerate}
+
+
+% Estatísticas:
+Na \autoref{tab:dataset-phono-stats}, podemos observar algumas estatísticas calculadas a partir do ASL-Phono, que nos permitem compreender como as amostras ficaram organizadas no \textit{dataset} após o processamento acima. 
+Nela, os números são listados segundo três perspectivas: 
+
+\begin{itemize}
+    \item \textit{Dataset} inteiro: contabiliza o número total de amostras, sinais, movimentos distintos, entre outros, para todo o \textit{dataset}. Por exemplo, pode-se ler que o \textit{dataset} possui 9.747 amostras, 2.284 sinais e 26 movimentos para a mão dominante.
+    
+    \item Por amostra: contém estatísticas de números mínimos, máximos, médios e desvio padrão para os parâmetros computados acima. Por exemplo, lê-se que, em média, as amostras possuem 3,02 frames, sendo que a mais curta contém apenas 1 frame e a mais longa possui 12 frames. De maneira semelhante, as amostras têm em média de 1,94 movimentos e 2,20 orientações de mão distintas para a mão dominante.
+
+    \item Por sinal: contém estatísticas de números mínimos, máximos, médios e desvio padrão para os sinais contidos no \textit{dataset}. Por exemplo, lê-se que cada sinal possui em média de 4,11 amostras, sendo que alguns deles possuem apenas 2 e outros possuem valores atípicos de 59 amostras (a considerar pelo desvio padrão apresentado). Além disso, cada sinal apresenta em média 6,04 movimentos e 5,37 orientações de mão distintas para a mão dominante.
+\end{itemize}
+
+\input{capitulos/metodologia/tabelas/dataset_phono_stats}
+
+
+% Exemplo de amostra:
+As amostras no ASL-Phono possuem uma estrutura semelhante àquela apresentada para o ASL-Skeleton3D. A diferença, no entanto, está na propriedade "frames", que ao invés de listar coordenadas 3D agora inclui os respectivos atributos fonológicos computados para os frames. Cada atributo, por sua vez, contém o seu respectivo valor e pode conter um \textit{score}, que identifica sua acurácia com base na acurácia das coordenadas envolvidas no seu processamento.
+
+\figura
+    {fig:sample-json-phono} % Label
+    {capitulos/metodologia/imagens/code_phono} % Path
+    {width=0.65\linewidth} % Size
+    {Exemplo de amostra do ASL-Phono e propriedades fornecidas para ela.} % Caption
+    {} % Citation
+
+
+O \textit{dataset} resultante do processamento acima e o código-fonte utilizado para isso estão disponíveis publicamente na URL listada abaixo\footnote{Disponível em \url{http://www.cin.ufpe.br/~cca5/asl-phono}}.

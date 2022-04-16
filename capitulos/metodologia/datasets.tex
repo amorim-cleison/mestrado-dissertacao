@@ -1,9 +1,9 @@
-\section{Novos \datasets para a língua de sinais}
+\section{Novos \textit{dataset}s para a língua de sinais}
 \label{sec:metodologia-datasets}
 
-Conforme introduzimos acima, o primeiro passo para que possamos desenvolver e avaliar uma abordagem de aprendizagem de máquina centrada na linguística da língua de sinais consiste em definir um conjunto de dados que viabilize isso. Como a proposta apresentada aqui é nova e, devido a isso, não há \datasets diretamente compatíveis com ela, optamos por derivar um novo \dataset a partir de outro já existente -- o \acrfull{asllvd}.
+Conforme introduzimos acima, o primeiro passo para que possamos desenvolver e avaliar uma abordagem de aprendizagem de máquina centrada na linguística da língua de sinais consiste em definir um conjunto de dados que viabilize isso. Como a proposta apresentada aqui é nova e, devido a isso, não há \textit{dataset}s diretamente compatíveis com ela, optamos por derivar um novo \textit{dataset} a partir de outro já existente -- o \acrfull{asllvd}.
 
-O \acrshort{asllvd} consiste em um amplo \dataset público\footnote{Disponível em \url{http://www.bu.edu/asllrp/av/dai-asllvd.html}} da \acrshort{asl} que contém aproximadamente 2.745 sinais representados em cerca de 9.763 sequências de vídeo articuladas por indivíduos Surdos nativos. Suas amostras são capturadas por meio de quatro câmeras sincronizadas: uma visão frontal de alta resolução a meia velocidade, outra visão frontal de resolução total, uma visão lateral e uma visão da face, conforme ilustrado na \autoref{fig:asllvd-example}~\cite{athitsos-2008-asllvd,neidle-2012-asllvd}.
+O \acrshort{asllvd} consiste em um amplo \textit{dataset} público\footnote{Disponível em \url{http://www.bu.edu/asllrp/av/dai-asllvd.html}} da \acrshort{asl} que contém aproximadamente 2.745 sinais representados em cerca de 9.763 sequências de vídeo articuladas por indivíduos Surdos nativos. Suas amostras são capturadas por meio de quatro câmeras sincronizadas: uma visão frontal de alta resolução a meia velocidade, outra visão frontal de resolução total, uma visão lateral e uma visão da face, conforme ilustrado na \autoref{fig:asllvd-example}~\cite{athitsos-2008-asllvd,neidle-2012-asllvd}.
 
 \begin{figure}[ht!]
     \centering
@@ -12,33 +12,33 @@ O \acrshort{asllvd} consiste em um amplo \dataset público\footnote{Disponível 
     vista lateral (\subref{subfig:asllvd-example-side}) e 
     vista da face (\subref{subfig:asllvd-example-close}).}}
     \subcaptionbox{\label{subfig:asllvd-example-front}}{
-        \includegraphics[width=0.25\textwidth]{imagens/metodologia/datasets/asllvd_example_front}
+        \includegraphics[width=0.25\textwidth]{capitulos/metodologia/imagens/asllvd_example_front}
     }%
     \hfill
     \subcaptionbox{\label{subfig:asllvd-example-side}}{
-        \includegraphics[width=0.25\textwidth]{imagens/metodologia/datasets/asllvd_example_side}
+        \includegraphics[width=0.25\textwidth]{capitulos/metodologia/imagens/asllvd_example_side}
     }%
     \hfill
     \subcaptionbox{\label{subfig:asllvd-example-close}}{
-        \includegraphics[width=0.25\textwidth]{imagens/metodologia/datasets/asllvd_example_close}
+        \includegraphics[width=0.25\textwidth]{capitulos/metodologia/imagens/asllvd_example_close}
     }%
     \nomefonte[p. 2]{athitsos-2008-asllvd}
     \label{fig:asllvd-example}
 \end{figure}
 
 
-Para computar parâmetros fonológicos a partir dos frames das amostras do \acrshort{asllvd}, compostos essencialmente de imagens RGB bidimensionais, precisamos realizar um processo de duas etapas: primeiro, estimamos as coordenadas 2D dos esqueletos dos sinalizadores para duas câmeras distintas, frame-a-frame, e as combinamos para projetar um esqueleto no espaço 3D -- isso deu origem ao \dataset intermediário chamado ASL-Skeleton3D; em seguida, aplicamos um conjunto de operações algébricas sob o esqueleto 3D para calcular os parâmetros fonológicos -- o que gerou assim o nosso \dataset final chamado ASL-Phono.
+Para computar parâmetros fonológicos a partir dos frames das amostras do \acrshort{asllvd}, compostos essencialmente de imagens RGB bidimensionais, precisamos realizar um processo de duas etapas: primeiro, estimamos as coordenadas 2D dos esqueletos dos sinalizadores para duas câmeras distintas, frame-a-frame, e as combinamos para projetar um esqueleto no espaço 3D -- isso deu origem ao \textit{dataset} intermediário chamado ASL-Skeleton3D; em seguida, aplicamos um conjunto de operações algébricas sob o esqueleto 3D para calcular os parâmetros fonológicos -- o que gerou assim o nosso \textit{dataset} final chamado ASL-Phono.
 
 Como pode-se imaginar, esse processo envolveu alguns desafios computacionais, entre os quais enumeram-se :
 
 \begin{enumerate}
-    \item Definição de abordagens para representar indivíduos no espaço 3D utilizando apenas frames de vídeo simples em 2D do \acrshort{asllvd}, bem como para lidar com as amostras ausentes ou de baixa qualidade encontradas nesse \dataset.
+    \item Definição de abordagens para representar indivíduos no espaço 3D utilizando apenas frames de vídeo simples em 2D do \acrshort{asllvd}, bem como para lidar com as amostras ausentes ou de baixa qualidade encontradas nesse \textit{dataset}.
 
     \item Estabelecimento de um subconjunto de atributos fonológicos iniciais que pudessem capturar e representar variações significativas no corpo dos indivíduos para o reconhecimento dos sinais, mas que também pudessem ser modelados computacionalmente.
     
     \item Identificação de técnicas matemáticas e medidas antropométricas que suportassem o cálculo e a modelagem dos atributos selecionados.
     
-    \item Disponibilização de recursos computacionais significativos para viabilizar o processamento de mais de 9.000 amostras contidas em cada \dataset, as quais envolveram duas câmeras distintas. Para isso, foram consumidas cerca 40 horas contínuas de processamento em cluster dispondo de CPU e GPU, e gerados mais de 1 TB de dados cada vez que ambos \datasets precisaram ser completamente processados.
+    \item Disponibilização de recursos computacionais significativos para viabilizar o processamento de mais de 9.000 amostras contidas em cada \textit{dataset}, as quais envolveram duas câmeras distintas. Para isso, foram consumidas cerca 40 horas contínuas de processamento em cluster dispondo de CPU e GPU, e gerados mais de 1 TB de dados cada vez que ambos \textit{dataset}s precisaram ser completamente processados.
 \end{enumerate}
 
 

@@ -10,22 +10,22 @@
 
 A \autoref{tab:sinais-isolados-continuos} apresenta uma perspectiva detalhada do número de estudos identificados por \citeonline{koller-2020-quantitative-survey-slr} publicados até 2020. Os números estão ordenados na horizontal em intervalos de cinco anos e, na vertical, em grupos que representam o tamanho do vocabulário utilizado na pesquisa. Na parte central, estão os números para os estudos que abordaram o reconhecimento de sinais isolados (onde os sinais são apresentados individualmente aos algoritmos de reconhecimento, para simplificar este processo); na parte inferior, estão aqueles que abordaram o reconhecimento de sinais contínuos (onde utilizam-se sequências de sinais ao invés de sinais individuais); na parte superior, estão os números conjuntos para ambos os tipos.
 
-\input{tabelas/fundamentacao/sinais-isolados-continuos}
+\input{capitulos/fundamentacao/tabelas/sinais-isolados-continuos}
 
-À primeira vista, percebe-se que o crescimento do número de estudos no decorrer dos anos é mais acelerado para aqueles que utilizam sinais isolados em comparação com aqueles que utilizam sinais contínuos. Isso pode refletir uma maior complexidade de reconhecer sinais contínuos e uma escassez de \datasets de treinamento disponíveis para isso. 
+À primeira vista, percebe-se que o crescimento do número de estudos no decorrer dos anos é mais acelerado para aqueles que utilizam sinais isolados em comparação com aqueles que utilizam sinais contínuos. Isso pode refletir uma maior complexidade de reconhecer sinais contínuos e uma escassez de \textit{dataset}s de treinamento disponíveis para isso. 
 
-Além disso, os números revelam que grande maioria dos trabalhos com sinais isolados costumam modelar vocabulários de tamanho limitado (principalmente abaixo de 200 ou 50 sinais), ao passo que trabalhos com sinais contínuos modelam uma diversidade maior de tamanhos de vocabulários e, com o surgimento de novos \datasets para essa finalidade em 2015, começaram a se concentrar nos vocabulários maiores (acima de 1000 sinais).
+Além disso, os números revelam que grande maioria dos trabalhos com sinais isolados costumam modelar vocabulários de tamanho limitado (principalmente abaixo de 200 ou 50 sinais), ao passo que trabalhos com sinais contínuos modelam uma diversidade maior de tamanhos de vocabulários e, com o surgimento de novos \textit{dataset}s para essa finalidade em 2015, começaram a se concentrar nos vocabulários maiores (acima de 1000 sinais).
 
 
 
 \subsubsection{Línguas de sinais abordadas}
 \label{sec:slr-linguas-sinais}
 
-Na \autoref{tab:linguas-sinais}, estão relacionados as línguas de sinais abordadas pelos estudos analisados por \citeonline{koller-2020-quantitative-survey-slr}. É possível perceber que a \acrfull{asl} se sobressai quanto ao número de estudos publicados desde os anos iniciais. Um dos motivos para isso pode estar relacionado ao fato de que essa língua foi pioneira nos estudos linguísticos dos sinais -- iniciados com \citeonline{stokoe-1960-sl-structure} (vide \autoref{sec:linguistica-lingua-sinais}) --, os quais produziram uma base sólida acerca dos componentes dessa língua que serviu de alicerce para pesquisas posteriores e que foi disseminada para outras línguas de sinais. Além disso, a facilidade maior de encontrar \datasets em \acrshort{asl} também pode ter influenciado pesquisadores a preferirem abordar essa língua.
+Na \autoref{tab:linguas-sinais}, estão relacionados as línguas de sinais abordadas pelos estudos analisados por \citeonline{koller-2020-quantitative-survey-slr}. É possível perceber que a \acrfull{asl} se sobressai quanto ao número de estudos publicados desde os anos iniciais. Um dos motivos para isso pode estar relacionado ao fato de que essa língua foi pioneira nos estudos linguísticos dos sinais -- iniciados com \citeonline{stokoe-1960-sl-structure} (vide \autoref{sec:linguistica-lingua-sinais}) --, os quais produziram uma base sólida acerca dos componentes dessa língua que serviu de alicerce para pesquisas posteriores e que foi disseminada para outras línguas de sinais. Além disso, a facilidade maior de encontrar \textit{dataset}s em \acrshort{asl} também pode ter influenciado pesquisadores a preferirem abordar essa língua.
 
 A \acrfull{csl} e a \acrfull{dgs} aparecem em seguida na tabela, com um número também relevante de trabalhos publicados, o qual tem crescido desde 2010 e se equiparado ao patamar alcançado pela \acrshort{asl}.
 
-\input{tabelas/fundamentacao/linguas-sinais.tex}
+\input{capitulos/fundamentacao/tabelas/linguas-sinais.tex}
 
 Uma outra observação importante constatada pela tabela é o crescimento ano após ano do total de estudos em \acrshort{slr}, o qual praticamente duplicou na última década -- saindo de 86 (entre 2010 e 2015) para 176 (entre 2015 e 2020). Isso evidencia uma maior atenção que essa área passou a receber mais recentemente, conforme discutimos nas seções anteriores.
 
@@ -40,7 +40,7 @@ A \autoref{tab:tipos-dados-entrada} mostra o tipo de dados de entrada adotados c
     \textit{Mocap} (\textit{motion capture} ou captura de movimento) consiste na amostragem e captura de movimentos humanos ou de objetos inanimados por meio de equipamentos específicos, que geralmente incluem marcadores ou trajes especiais afixados ao corpo dos indivíduos ou objetos alvos da captura~\cite{kitagawa-2017-mocap}.
 }, por sua vez, esteve presente entre 1990 e 2005, mas a dificuldade de acesso a esse equipamento e de aplicação no contexto real da língua de sinais certamente foram barreiras importantes para sua adesão.
 
-\input{tabelas/fundamentacao/dados-entrada-tipos}
+\input{capitulos/fundamentacao/tabelas/dados-entrada-tipos}
 
 Segundo \citeonline{papastratis-2021-ai-technologies-sl}, cada um desses dispositivos apresenta particularidades que os tornam mais ou menos adequadas para diferentes aplicações. Sensores como o Kinect fornecem imagens RGB de alta resolução e dados de profundidade, mas sua precisão é restrita pela distância até o indivíduo rastreado. O uso de múltiplas câmeras RGB pode fornecer resultados altamente precisos, porém demanda uma maior complexidade de processamento e de requisitos computacionais. As luvas eletrônicas, por sua vez, fornecem dados altamente precisos em tempo real, mas a configuração de seus componentes (sensores flexíveis, acelerômetros, giroscópios, etc.) exige um processo de tentativa e erro que é impraticável e demorado. Além disso, os indivíduos tendem a não preferir essas luvas por serem invasivas.
 
@@ -58,7 +58,7 @@ Na \autoref{tab:dados-intrusivos-naointrusivos} temos uma comparação dessas t�
 
 Pela tabela, percebe-se claramente uma mudança de paradigma iniciada por volta de 2005 na direção de técnicas de processamento baseadas em visão, que são menos intrusivas. Com isso, os métodos de captura intrusivos anteriormente dominantes foram cada vez menos utilizados e sua prevalência diminuiu de cerca de 70\% para menos de 30\%, e continuou reduzindo ainda mais ao longo do tempo.
 
-\input{tabelas/fundamentacao/dados-entrada-intrusivos-naointrusivos}
+\input{capitulos/fundamentacao/tabelas/dados-entrada-intrusivos-naointrusivos}
 
 
 
@@ -79,7 +79,7 @@ Nesta seção, serão analisados os tipos de parâmetros extraídos a partir dos
 A \autoref{tab:parametros-tipos} mostra a proporção dos tipos de parâmetros com relação ao total de estudos identificados, agrupados em ordem cronológica de intervalos de cinco anos. 
 Ela evidencia uma predominância dos parâmetros manuais sobre os demais tipos de parâmetros até o ano de 2015. Percebe-se que a configuração de mão é o parâmetro mais adotado e isso deve-se principalmente ao fato de que uma grande quantidade de trabalhos nessa área aborda o problema de forma extremamente limitada, reconhecendo apenas recortes de mãos estáticas isoladas configuradas como uma letra ou número -- o que não é propriamente o contexto real das línguas de sinais. A locação e movimento aparecem na sequência como o segundo e terceiro parâmetros mais populares, os quais são modelados através de diferentes técnicas.
 
-\input{tabelas/fundamentacao/parametros-tipos}
+\input{capitulos/fundamentacao/tabelas/parametros-tipos}
 
 A partir de 2015, no entanto, as imagens RGB de \textit{frame} inteiro do indivíduo passaram a figurar como o tipo de parâmetro mais frequentemente encontrado, apesar de ainda permanecerem muito próximas da proporção de trabalhos utilizando configuração de mão. Percebe-se também que por volta desse mesmo período a adoção de parâmetros globals, que era praticamente inexistente em anos anteriores, começou a crescer. \citeonline{koller-2020-quantitative-survey-slr} afirma que isso se deve a dois motivos principais: primeiro, a disponibilização de coordenadas corporais e de imagens de profundidade de \textit{frame} inteiro, que se deu com o lançamento do Kinect em 2010; e, segundo, a introdução de técnicas de aprendizagem profunda nessa área a partir de 2015, que também impulsionou a tendência de utilizar \textit{frames} inteiros ao invés de realizar a engenharia manual de parâmetros.
 
