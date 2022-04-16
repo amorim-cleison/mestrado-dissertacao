@@ -1,3 +1,19 @@
-\section{Reconhecimento dos sinais}
+\section{Reconhecendo os sinais}
 \label{sec:metodologia-reconhecimento}
 
+Uma vez que temos os atributos processados no ASL-Phono, prosseguiremos com a preparação das features e dos modelos para reconhecimentos dos sinais utilizando a abordagem proposta.
+
+Para preparar as features de entrada dos modelos, aplicamos uma codificação às propriedades das amostras para representar os atributos fonológicos num formato mais compacto, como único bloco ou ``palavra''. Dessa forma, ao invés de frames que contêm propriedades associadas, agora as amostras são representadas como sequências de blocos compactos que codificam a mesma informação.
+
+Observe na \autoref{tab:codificacao-bloco} \dots
+
+\input{capitulos/metodologia/tabelas/codificacao_bloco}
+
+% Experimento
+%   Preparação das features (asl-phono -> palavras)
+%       Transformação das sequências no dataset: frames -> palavras
+%       Justificativa??
+%   Preparação dos modelos (Transformer, LSTM, GRU, etc) -- por modelo
+%       Arquitetura + Parâmetros
+%       lr scheduler, optimizer, loss function
+%       Busca de parâmetros (dimensionar os modelos/parâmetros)

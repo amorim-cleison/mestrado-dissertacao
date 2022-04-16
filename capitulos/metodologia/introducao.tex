@@ -33,6 +33,12 @@ sendo aplicadas para capturar os movimentos a partir dos pixels dos frames, ou a
 % - reduz a complexidade de aprender o mapeamento coordenadas -> linguistica / foca no aprendizado da linguistica
 ao prover parâmetros fonológicos ao invés de dados brutos aos modelos de aprendizagem, retiramos o foco do aprender a interpretar pixels ou coordenadas sem significado e fazemos com que ele passe a aprender as relações e regras linguísticas contidas na língua. conforme discutimos na seção XXX, a linguística da língua já apresenta um conjunto de complexidades e regras que precisam ser abordadas para que a \acrshort{slr} avance de forma consistente. englobar a interpretação desses dados brutos como parte do problema faz com que a complexidade seja redobrada e limita a velocidade desses avanços.
 
+% TODO avaliar isto: retirar a complexidade dos modelos de SLR torna-os menores e reduz os requisitos computacionais -- como consequência, eles podem ser rodados em browsers ou aparelhos moveis, por exemplo
+
+% TODO avaliar isto: numa metáfora, hoje estamos caminhando como se tentássemos reconhecer um texto escrito ao mesmo tempo em que a mão está desenhando as letras no papel (ao invés de utilizar o artefato intermediário, que é o texto no papel) -- percebe a extensão do problema? detecção da mão, detecção do movimento, para finalmente alcançar o real objetivo.
+
+% TODO avaliar isto: a proposta aqui é quebrar o problema grande em problemas menores, delegando as partes aos algoritmos que são especializados naquilo: detecção do corpo humano/coordenadas em imagens, rastreamento do movimento, reconhecimento de sinais
+
 apesar dessa complexidade, muitos desses parâmetros fonológicos poderiam ser computados algebricamente a partir de coordenadas 3d para formatos semanticamente mais elevados de forma mais barata antes de serem ingeridos por algoritmos.
 
 
