@@ -42,9 +42,9 @@ apesar dessa complexidade, muitos desses parâmetros fonológicos poderiam ser c
 
 
 
-sendo assim, a abordagem deste trabalho adotará parâmetros fonológicos como dados de entrada para o processo de reconhecimento dos sinais. como pode-se imaginar, atualmente não existem \textit{datasets} disponíveis com esse tipo de parâmetros e, portanto, o primeiro desafio nessa direção foi desenvolver um \textit{dataset} que pudesse suportar essa pesquisa. 
+sendo assim, a abordagem deste trabalho adotará parâmetros fonológicos como dados de entrada para o processo de reconhecimento dos sinais. como pode-se imaginar, atualmente não existem \datasets disponíveis com esse tipo de parâmetros e, portanto, o primeiro desafio nessa direção foi desenvolver um \dataset que pudesse suportar essa pesquisa. 
 
-dentre as alternativas mais viáveis para isso, optamos por derivar um novo \textit{dataset} a partir do \acrfull{asllvd}, o qual é um dos mais relevantes da \acrshort{asl} e foi desenvolvido na Universidade de Boston por \citeonline{athitsos-2008-asllvd} e \citeonline{neidle-2012-asllvd}. % Ele é composto por um vocabulário de 2.745 sinais representados em cerca de 9.763 sequências de vídeos anotadas que, por sua vez, são articuladas por Surdos nativos nessa língua.
+dentre as alternativas mais viáveis para isso, optamos por derivar um novo \dataset a partir do \acrfull{asllvd}, o qual é um dos mais relevantes da \acrshort{asl} e foi desenvolvido na Universidade de Boston por \citeonline{athitsos-2008-asllvd} e \citeonline{neidle-2012-asllvd}. % Ele é composto por um vocabulário de 2.745 sinais representados em cerca de 9.763 sequências de vídeos anotadas que, por sua vez, são articuladas por Surdos nativos nessa língua.
 
 aplicamos um conjunto de processos para computar as representações fonológicas a partir dos frames RGB em 2D das amostras do \acrshort{asllvd}, o que incluiu a criação de uma representação intermediária em 3D sob a qual foi possível aplicar um conjunto de operações algébricas para alcançar nosso objetivo. Discutiremos esse processo em detalhes nas seções a seguir.
 
@@ -74,9 +74,9 @@ entre os desafios que esta proposta contribui a superar, temos os seguintes:
 
     \item é uma abordagem independente de variações nos traços e dimensões corporais, iluminação do ambiente, qualidade das câmeras, etc., bem como separada de complexidades atreladas à detecção partes do corpo ou interpretação de seus movimentos no espaço. isso porque, uma vez que o foco é colocado na fonologia da língua, tais complexidades são terceirizados para algoritmos especializados nesse tipo tarefa. sendo assim, o papel da \acrshort{slr} passa a englobar tão somente a língua de sinais e suas particularidades.
     
-    \item as anotações contendo os parâmetros fonológicos são geradas automaticamente por meio de expressões algébricas que analisam o corpo no espaço tridimensional. isso pode ser replicado para outros \textit{datasets} (ou em aplicações do mundo real), o que contribuiria para reduzir a necessidade de produção de anotações manuais e, como consequência, as limitações ao combinar \textit{datasets} distintos com o intuito de elevar a quantidade e diversidade de amostras utilizadas pelas pesquisas em \acrshort{slr}.
+    \item as anotações contendo os parâmetros fonológicos são geradas automaticamente por meio de expressões algébricas que analisam o corpo no espaço tridimensional. isso pode ser replicado para outros \datasets (ou em aplicações do mundo real), o que contribuiria para reduzir a necessidade de produção de anotações manuais e, como consequência, as limitações ao combinar \datasets distintos com o intuito de elevar a quantidade e diversidade de amostras utilizadas pelas pesquisas em \acrshort{slr}.
     
-    \item este trabalho contribui com dos novos \textit{datasets} para a língua de sinais, os quais podem ser utilizados para derivar outros novos \textit{datasets} ou para continuar evoluindo técnicas centradas na linguística. além disso, por se basearem no \acrshort{asllvd}, estes \textit{datasets} são criados a partir de sinais articulados por indivíduos Surdos nativos na língua.
+    \item este trabalho contribui com dos novos \datasets para a língua de sinais, os quais podem ser utilizados para derivar outros novos \datasets ou para continuar evoluindo técnicas centradas na linguística. além disso, por se basearem no \acrshort{asllvd}, estes \datasets são criados a partir de sinais articulados por indivíduos Surdos nativos na língua.
 
     \item apesar do conjunto específico de parâmetros fonológicos contemplados e de lidar apenas com sinais isolados, entendemos que a abordagem proposta é passível de ser estendida para outros parâmetros e também para sinais contínuos.
 

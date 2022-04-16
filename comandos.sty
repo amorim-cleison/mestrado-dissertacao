@@ -12,9 +12,9 @@
 % 4) Caption
 % 5) Citation
 %
-%Exemplo:
+% Exemplo:
 %
-%\figura[p. 1]
+% \figura[p. 1]
 %    {fig:label} % Label
 %    {imagens/caminho/imagem_sem_extensao} % Path
 %    {width=0.5\linewidth} % Size
@@ -35,21 +35,40 @@
 }
 
 
-
 % =================================================
 % FONTE
 % -------------------------------------------------
 % Argumentos: 
 % 1) Citation
 %
-%Exemplo:
+% Exemplo:
 %
-%\fonte[p. 1]
+% \nomefonte[p. 1]
 %    {autor-1999-titulo-livro} % Citation
 %
 % =================================================
 \newcommand{\nomefonte}[2][] {
-    \par\medskip\ABNTEXfontereduzida\selectfont\textbf{Fonte:} \citeonline[#1]{#2} \par\medskip
+    \ifthenelse{\equal{#2}{}}{
+        % Sem citação:
+        \par\medskip\ABNTEXfontereduzida\selectfont\textbf{Fonte:} Elaborado pelo autor. \par\medskip
+    }{
+        % Com citação:
+        \par\medskip\ABNTEXfontereduzida\selectfont\textbf{Fonte:} \citeonline[#1]{#2} \par\medskip
+    }
 }
 
 
+% =================================================
+% DATASET[S]
+% -------------------------------------------------
+% Exemplo:
+%
+% \dataset[s]
+%
+% =================================================
+\newcommand{\dataset} {
+    \textit{dataset}
+}
+\newcommand{\datasets} {
+    \textit{datasets}
+}
