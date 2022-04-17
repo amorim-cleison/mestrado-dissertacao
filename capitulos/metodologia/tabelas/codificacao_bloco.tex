@@ -1,17 +1,22 @@
 % Please add the following required packages to your document preamble:
 % \usepackage{graphicx}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 \begin{table}[]
     \centering
-    \caption{}
+    \caption{Geração de blocos compactos a partir dos atributos fonológicos providos para as mãos dominante e não-dominante.}
     \label{tab:codificacao-bloco}
-    \resizebox{\textwidth}{!}{%
-    \begin{tabular}{|c|cccccc|}
-    \hline
-    \multicolumn{1}{|l|}{} & \multicolumn{3}{c|}{Atributos (mão dominante)}                                                      & \multicolumn{3}{c|}{Atributos (mão não-dominante)}                                                           \\ \hline
-    \multicolumn{1}{|r|}{} & \multicolumn{1}{r|}{Movimento} & \multicolumn{1}{r|}{Orientação} & \multicolumn{1}{r|}{Config. mão} & \multicolumn{1}{r|}{Movimento}         & \multicolumn{1}{r|}{Orientação}  & \multicolumn{1}{r|}{Config. mão} \\ \hline
-    Original               & \multicolumn{1}{c|}{right\_up} & \multicolumn{1}{c|}{left}       & \multicolumn{1}{c|}{bentBL}      & \multicolumn{1}{c|}{left\_front\_down} & \multicolumn{1}{c|}{back\_right} & bentBL                           \\ \hline
-    Abreviação             & \multicolumn{1}{c|}{ru}        & \multicolumn{1}{c|}{l}          & \multicolumn{1}{c|}{bentBL}      & \multicolumn{1}{c|}{lfd}               & \multicolumn{1}{c|}{br}          & bentBL                           \\ \hline
-    Bloco (Compacta)       & \multicolumn{6}{c|}{ru-l-bentBL-lfd-br-bentBL}                                                                                                                                                                     \\ \hline
-    \end{tabular}%
+    \resizebox{0.8\textwidth}{!}{%
+        \begin{tabular}{|r|cccccc|}
+            \hline
+            \rowcolor[HTML]{EFEFEF}
+                           & \multicolumn{3}{c}{\cellcolor[HTML]{EFEFEF}Mão dominante} & \multicolumn{3}{c|}{\cellcolor[HTML]{EFEFEF}Mão não-dominante}                                                               \\
+            \rowcolor[HTML]{EFEFEF}
+                           & Movimento                                                 & Orientação                                                     & Config. mão & Movimento         & Orientação  & Config. mão \\ \hline
+            Original       & right\_up                                                 & left                                                           & bentBL      & left\_front\_down & back\_right & bentBL      \\
+            Abreviação     & ru                                                        & l                                                              & bentBL      & lfd               & br          & bentBL      \\ \hline
+            \textit{Bloco} & \multicolumn{6}{c|}{\textit{ru-l-bentBL-lfd-br-bentBL}}                                                                                                                                  \\ \hline
+        \end{tabular}%
     }
-    \end{table}
+    \nomefonte{}
+\end{table}
