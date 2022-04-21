@@ -4,18 +4,20 @@
 % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 \begin{table}[]
     \centering
-    \caption{Geração de blocos compactos a partir dos atributos fonológicos providos para as mãos dominante e não-dominante.}
+    \caption{Exemplo de geração de blocos compactos a partir dos atributos fonológicos providos no ASL-Phono. Uma amostra passa a ser representada então como uma sequência desses blocos.}
     \label{tab:codificacao-bloco}
-    \resizebox{0.8\textwidth}{!}{%
-        \begin{tabular}{|r|cccccc|}
+    \resizebox{0.90\textwidth}{!}{%
+        \begin{tabular}{rcccccc}
             \hline
             \rowcolor[HTML]{EFEFEF}
-                           & \multicolumn{3}{c}{\cellcolor[HTML]{EFEFEF}Mão dominante} & \multicolumn{3}{c|}{\cellcolor[HTML]{EFEFEF}Mão não-dominante}                                                               \\
+            \multicolumn{1}{r|}{\cellcolor[HTML]{EFEFEF}} & \multicolumn{3}{c}{\cellcolor[HTML]{EFEFEF}Mão dominante}                                               & \multicolumn{3}{c}{\cellcolor[HTML]{EFEFEF}Mão não-dominante}                                                                                             \\
             \rowcolor[HTML]{EFEFEF}
-                           & Movimento                                                 & Orientação                                                     & Config. mão & Movimento         & Orientação  & Config. mão \\ \hline
-            Original       & right\_up                                                 & left                                                           & bentBL      & left\_front\_down & back\_right & bentBL      \\
-            Abreviação     & ru                                                        & l                                                              & bentBL      & lfd               & br          & bentBL      \\ \hline
-            \textit{Bloco} & \multicolumn{6}{c|}{\textit{ru-l-bentBL-lfd-br-bentBL}}                                                                                                                                  \\ \hline
+            \multicolumn{1}{r|}{\cellcolor[HTML]{EFEFEF}} & Movimento                                                                                               & Orientação                                                    & Config. mão          & Movimento            & Orientação           & Config. mão          \\ \hline
+            \multicolumn{1}{r|}{Original}                 & right\_up                                                                                               & left                                                          & bentBL               & left\_front\_down    & back\_right          & bentBL               \\
+            \multicolumn{1}{r|}{Acrônimo}                 & ru                                                                                                      & l                                                             & bentBL               & lfd                  & br                   & bentBL               \\ \hline
+            \multicolumn{1}{r|}{\textit{Bloco compacto}}  & \multicolumn{6}{c}{\textit{ru-l-bentBL-lfd-br-bentBL}}                                                                                                                                                                                                              \\ \hline
+            \multicolumn{1}{l}{}                          & \multicolumn{1}{l}{}                                                                                    & \multicolumn{1}{l}{}                                          & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\ \hline
+            \multicolumn{1}{r|}{\textit{Amostra}}         & \multicolumn{6}{c}{\textit{{[} ru-l-bentBL-lfd-br-bentBL, d-f-UH-d-r-bentBL, d-f-UH-d-r-F9, ... {]}}}                                                                                                                                                             \\ \hline
         \end{tabular}%
     }
     \nomefonte{}
