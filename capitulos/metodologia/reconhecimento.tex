@@ -10,11 +10,45 @@ Observe na \autoref{tab:codificacao-bloco} um exemplo deste processo. Na primeir
 \input{capitulos/metodologia/tabelas/codificacao_bloco}
 
 
-% TODO: falar do re-sampling do dataset
+% RESAMPLING DO DATASET -------------------------------------------
 
+Conforme observa-se pela \autoref{tab:dataset-phono-stats}, o ASL-Phono apresenta um desbalanceamento no número de amostras disponíveis por sinal. Em média, há 3,68 amostras disponíveis por sinal porém, enquanto alguns sinais têm apenas 1 amostra, outros apresentam um número atípico de 59. Isso poderia influenciar o desempenho dos modelos utilizados adiante, uma vez que durante o treinamento alguns sinais seriam favorecidos e, outros, penalizados. 
+
+Por conta disso, aplicamos dois procedimentos para reduzir o desbalanceamento desses dados: primeiro, eliminamos os sinais com apenas 1 amostra, uma vez que esse número é insuficiente para que o modelo seja capaz de aprender e generalizar acerca desses sinais, sobretudo quando o \textit{dataset} é particionado durante o treinamento; segundo, realizamos uma reamostragem do \textit{dataset} para equilibrar o número de amostras.
+
+Observe na \autoref{subfig:dataset-resampling-antes} um perfil detalhado dos dados antes da reamostragem. É possível perceber que o número de amostras é bastante disperso pelo eixo horizontal do gráfico: por exemplo, 726 sinais apresentam 2 amostras disponíveis; seguidos por 552 sinais com 4 amostras; mas, no outro extremo, temos que apenas um número muito pequeno de sinais (entre 1 e 3) apresentam um grande número de amostras disponíveis (entre 13 e 59), respectivamente.
+
+\begin{figure}[ht!]
+    \centering
+    \caption{
+        \textmd{Contagem de número de amostras por sinal (\subref{subfig:dataset-resampling-antes}) no \textit{dataset} original e (\subref{subfig:dataset-resampling-depois}) no \textit{dataset} balanceado, após re-amostragem dos dados.}
+    }
+    \subcaptionbox{\label{subfig:dataset-resampling-antes}}{
+        \includegraphics[height=6cm]{capitulos/metodologia/imagens/dataset_resampling_antes}
+    }%
+    \hspace{1cm}
+    \subcaptionbox{\label{subfig:dataset-resampling-depois}}{
+        \includegraphics[height=6cm]{capitulos/metodologia/imagens/dataset_resampling_depois}
+    }%
+    \nomefonte{}
+    \label{fig:dataset-resampling}
+\end{figure}
+
+Aplicamos então uma reamostragem \textit{naive random under-sampling} (ou sub-amostragem aleatória ingênua, que reduz o número de amostras através de uma seleção aleatória de algumas delas para os sinais que estão super-representados) seguida de uma \textit{naive random over-sampling} (ou sobre-amostragem aleatória ingênua, que replica aleatoriamente algumas das amostras existentes para os sinais que estão sub-representados).
+Para estabelecer o novo número de amostras por sinal \(x'\), utilizamos a \autoref{eqn:resampling-target}: 
+
+\begin{equation}
+    \label{eqn:resampling-target}
+    x' = round( \overline{a} + \ln(x) )
+\end{equation}
+
+Onde \(\overline{a}\) refere-se ao número médio de amostras por sinal no \textit{dataset} e \(x\) é o número de amostras para aquele sinal. Observe na \autoref{subfig:dataset-resampling-depois} como os dados ficaram organizados após a reamostragem. Em resumo, a equação faz com que o número de amostras por sinal se distribua mais uniformemente em torno da média.
+
+
+
+% SELEÇÃO DOS MODELOS -------------------------------------------
 
 % Com relação aos modelos utilizados para avaliar a eficácia da abordagem proposta ao reconhecer sinais, selecionamos três arquiteturas clássicas de modelos sequenciais -- que são LSTM \cite{hochreiter-1997-lstm}, GRU \cite{cho-2014-gru} e Transformer \cite{vaswani-2017-transformer} --, as quais nos ajudarão a estabelecer uma linha de base de referência. A partir do desempenho aferidos para essas arquiteturas, objetiva-se também prover clareza acerca de qual delas lida aborda melhor o problema em questão e é mais promissora para novas pesquisas nessa mesma linha.
-
 
 Segundo \citeonline{jurafsky-2022-speech-lang-processing}, a linguagem é um fenômeno inerentemente temporal, e pode ser compreendida como uma sequência de eventos que se desdobram ao longo do tempo, como um fluxo contínuo de dados.
 Por esse motivo, para avaliar a eficácia da abordagem proposta, selecionamos três arquiteturas clássicas de aprendizagem profunda de processamento de sequências, as quais são: \acrfull{lstm}~\cite{hochreiter-1997-lstm} e \acrfull{gru}~\cite{cho-2014-gru} -- que são extensões da arquitetura \acrfull{rnn}~\cite{mikolov-2010-rnn} -- e o Transformer~\cite{vaswani-2017-transformer}. Essas arquiteturas possuem mecanismos que lhes permitem capturar e explorar a natureza temporal da linguagem. 
