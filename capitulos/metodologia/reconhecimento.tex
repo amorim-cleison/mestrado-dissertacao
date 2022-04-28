@@ -3,6 +3,23 @@
 
 Uma vez que temos um \textit{dataset} com atributos fonológicos processados, agora podemos prosseguir com a preparação das features e dos modelos para reconhecimentos dos sinais utilizando a abordagem proposta.
 
+
+% Experimento
+%   Preparação das features (asl-phono -> palavras)
+%       Transformação das sequências no dataset: frames -> palavras
+%       Justificativa??
+%   Preparação dos modelos (Transformer, LSTM, GRU, etc) -- por modelo
+%       Arquitetura + Parâmetros
+%       lr scheduler, optimizer, loss function
+%       Busca de parâmetros (dimensionar os modelos/parâmetros)
+
+
+
+% PREPARAÇÃO DO DATASET -------------------------------------------
+
+\subsection{Preparação do \textit{dataset}}
+\label{sec:metodologia-reconhecimento-dataset}
+
 Para tornar as amostras do ASL-Phono compatíveis com a entrada dos modelos que serão utilizados mais adiante, aplicamos uma transformação simples que consiste em codificar seus atributos fonológicos como blocos ou ``palavras'' únicas, mais compactas. Ou seja, ao invés de utilizar como entrada sequências de frames que contêm propriedades aninhadas, adotamos aqui sequências de blocos compactos que codificam a mesma informação de uma forma mais amigável a modelos sequenciais.
 
 Observe na \autoref{tab:codificacao-bloco} um exemplo deste processo. Na primeira linha, temos os valores originais das propriedades providas para o frame de uma amostra do ASL-Phono; na segunda linha, geram-se acrônimos a partir desses atributos para realizar uma primeira compactação -- mas que não é um passo necessariamente obrigatório; na terceira linha, temos um bloco ou palavra única gerada pela composição desses acrônimos; finalmente, na última linha, temos o exemplo de uma sequência desses blocos.
@@ -21,7 +38,7 @@ Observe na \autoref{subfig:dataset-resampling-antes} um perfil detalhado dos dad
 \begin{figure}[ht!]
     \centering
     \caption{
-        \textmd{Contagem de número de amostras por sinal (\subref{subfig:dataset-resampling-antes}) no \textit{dataset} original e (\subref{subfig:dataset-resampling-depois}) no \textit{dataset} balanceado, após re-amostragem dos dados.}
+        \textmd{Número de amostras disponíveis por sinal (\subref{subfig:dataset-resampling-antes}) antes da reamostragem e (\subref{subfig:dataset-resampling-depois}) após a reamostragem do ASL-Phono. Por exemplo, lê-se que 726 sinais possuem 2 amostras disponíveis antes da reamostragem.}
     }
     \subcaptionbox{\label{subfig:dataset-resampling-antes}}{
         \includegraphics[height=6cm]{capitulos/metodologia/imagens/dataset_resampling_antes}
@@ -42,36 +59,54 @@ Para estabelecer o novo número de amostras por sinal \(x'\), utilizamos a \auto
     x' = round( \overline{a} + \ln(x) )
 \end{equation}
 
-Onde \(\overline{a}\) refere-se ao número médio de amostras por sinal no \textit{dataset} e \(x\) é o número de amostras para aquele sinal. Observe na \autoref{subfig:dataset-resampling-depois} como os dados ficaram organizados após a reamostragem. Em resumo, a equação faz com que o número de amostras por sinal se distribua mais uniformemente em torno da média.
+Onde \(\overline{a}\) refere-se ao número médio de amostras por sinal no \textit{dataset} e \(x\) é o número de amostras para aquele sinal. Observe na \autoref{subfig:dataset-resampling-depois} como os dados ficaram organizados após a reamostragem. Em resumo, a equação faz com que o número de amostras por sinal se concentre mais uniformemente a partir do valor da média.
 
 
 
 % SELEÇÃO DOS MODELOS -------------------------------------------
 
+\subsection{Preparação dos modelos}
+\label{sec:metodologia-reconhecimento-MODELOS}
+
 % Com relação aos modelos utilizados para avaliar a eficácia da abordagem proposta ao reconhecer sinais, selecionamos três arquiteturas clássicas de modelos sequenciais -- que são LSTM \cite{hochreiter-1997-lstm}, GRU \cite{cho-2014-gru} e Transformer \cite{vaswani-2017-transformer} --, as quais nos ajudarão a estabelecer uma linha de base de referência. A partir do desempenho aferidos para essas arquiteturas, objetiva-se também prover clareza acerca de qual delas lida aborda melhor o problema em questão e é mais promissora para novas pesquisas nessa mesma linha.
 
-Segundo \citeonline{jurafsky-2022-speech-lang-processing}, a linguagem é um fenômeno inerentemente temporal, e pode ser compreendida como uma sequência de eventos que se desdobram ao longo do tempo, como um fluxo contínuo de dados.
-Por esse motivo, para avaliar a eficácia da abordagem proposta, selecionamos três arquiteturas clássicas de aprendizagem profunda de processamento de sequências, as quais são: \acrfull{lstm}~\cite{hochreiter-1997-lstm} e \acrfull{gru}~\cite{cho-2014-gru} -- que são extensões da arquitetura \acrfull{rnn}~\cite{mikolov-2010-rnn} -- e o Transformer~\cite{vaswani-2017-transformer}. Essas arquiteturas possuem mecanismos que lhes permitem capturar e explorar a natureza temporal da linguagem. 
+Segundo \citeonline{jurafsky-2022-speech-lang-processing}, a linguagem é um fenômeno inerentemente temporal. Ela pode ser compreendida como uma sequência de eventos que se desdobram ao longo do tempo como um fluxo contínuo de dados. Arquiteturas sequenciais de aprendizagem profunda, por sua vez, são redes neurais projetadas para lidar diretamente com essa natureza sequencial, o que as torna capazes de capturar e explorar o aspecto temporal da língua.
 
-\acrshortpl{rnn} são redes que contém um ciclo (ou recorrência) em suas conexões, significando que o valor de uma unidade é direta ou indiretamente dependente de seu próprias saídas anteriores, afirmam \citeonline{jurafsky-2022-speech-lang-processing}. 
-Elas processam a sequência de entrada uma palavra por vez, tentando prever a próxima palavra com base na palavra atual e no estado oculto anterior. Essas redes não sofrem do problema do contexto limitado, uma vez que o estado oculto pode, em princípio, representar informações sobre todas as palavras anteriores desde o início da sequência. No entanto, essas redes podem ser difíceis de racionar a respeito ou de treinar. 
+Entre as mais populares dessas arquiteturas, estão a \acrfull{rnn} (e suas extensões, entre as quais o \acrfull{lstm} e a \acrfull{gru} são atualmente as principais) e o \textit{Transformer}. 
 
-\citeonline{lecun-2015-deep-learning} afirmam que apesar do principal objetivo das \acrshortpl{rnn} ser aprender dependências de longo prazo, evidências teóricas e empíricas mostram que há desafios em aprender a armazenar informações por um tempo muito longo. Entre esses desafios estão os problemas de desaparecimento e explosão de gradientes, aos quais as \acrshortpl{rnn} estão passíveis. Devido a isso, várias extensões dessa arquitetura foram desenvolvidas no decorrer dos anos com o intuito de abordar melhor esses problemas.
+% Devido a isso, neste trabalho selecionamos algumas dessas arquiteturas para avaliar a eficácia da abordagem proposta, as quais são: \acrfull{lstm}~\cite{hochreiter-1997-lstm} e \acrfull{gru}~\cite{cho-2014-gru} -- que são extensões da arquitetura \acrfull{rnn}~\cite{mikolov-2010-rnn} -- e o \textit{Transformer}~\cite{vaswani-2017-transformer}. 
 
-O \acrshort{lstm} é a mais popular dentre elas. Ele divide o gerenciamento do contexto em duas partes: na primeira, está a adição de informação que provavelmente será necessária para tomada de decisão posterior ao contexto; na segunda, está a remoção de informação que não é mais necessária. Com isso, o \acrshort{lstm} é capaz de aprender como gerenciar esse contexto e lidar com ambas as partes, e não exige que uma estratégia para isso seja codificada na arquitetura.
-Isso é feito utilizando-se uma camada explícita para representar o contexto e também unidades neurais especializadas que utilizam três portas (\textit{update gate}, \textit{forget gate} e \textit{output gate}) para controlar o fluxo de informações para dentro e para fora das unidades que compõem as camadas da rede neural. Essas portas, por sua vez, são implementadas como pesos adicionais que são ajustados durante o processo de treinamento e operam sequencialmente na entrada, na camada oculta e nas camadas de contexto anteriores \cite{jurafsky-2022-speech-lang-processing}.
+As \acrshortpl{rnn}~\cite{mikolov-2010-rnn} são redes que contêm ciclos (ou recorrências) em suas conexões, que fazem com que o valor de suas unidades sejam direta ou indiretamente dependentes de suas próprias saídas anteriores. 
+Elas processam sequências de entrada uma palavra por vez, tentando prever a próxima palavra com base na atual e no contexto (ou estado oculto) anterior que, por sua vez, pode representar as informações de todas as palavras anteriores da sequência \cite{jurafsky-2022-speech-lang-processing}.
+No entanto, \citeonline{lecun-2015-deep-learning} afirmam que essas redes apresentam limitações em armazenar informações por um período muito longo de tempo -- dentre as quais estão os problemas de desaparecimento e explosão de gradiente --, o que demandou o desenvolvimento de extensões dessa arquitetura capazes de abordar melhor tais limitações.
 
-\citeonline{goodfellow-2016-deep-learning,lecun-2015-deep-learning} ressaltam que as redes \acrshort{lstm} mostraram ser extremamente bem-sucedidas em diferentes tipos de aplicações, como reconhecimento de caligrafia, reconhecimento de fala, geração de caligrafia, tradução automática, legendagem de imagens e análise sintática.
+% \citeonline{lecun-2015-deep-learning} afirmam que apesar do principal objetivo das \acrshortpl{rnn} ser aprender dependências de longo prazo, evidências teóricas e empíricas mostram que há desafios em aprender a armazenar informações por um tempo muito longo. Entre esses desafios estão os problemas de desaparecimento e explosão de gradientes, aos quais as \acrshortpl{rnn} estão passíveis. Devido a isso, várias extensões dessa arquitetura foram desenvolvidas no decorrer dos anos com o intuito de abordar melhor esses problemas.
 
-A arquitetura \acrshort{gru} surgiu com o objetivo de simplificar o desenho das unidades internas do \acrshort{lstm} e, devido a isso, é considerada uma evolução desta. Segundo \citeonline{goodfellow-2016-deep-learning}, a principal diferença entre elas está na forma como elas controlam o fluxo de informação entre suas camadas. Enquanto que nas unidades do \acrshort{lstm} são utilizadas três portas para controlar a atualização, esquecimento e a saída de informação, no \acrshort{gru} uma única porta realiza o controle simultâneo do fator de esquecimento e da atualização do estado da unidade -- o que faz com que ela apresentem um total duas portas (denominadas \textit{update gate} e \textit{reset gate}) \cite{ravanelli-2018-li-gru,goodfellow-2016-deep-learning}.
+O \acrshort{lstm}~\cite{hochreiter-1997-lstm} é a mais popular entre elas. Ele é capaz de aprender a gerenciar o contexto por conta própria, adicionando informação necessária e removendo aquela que não é mais, sem exigir que uma estratégia para isso seja codificada em sua arquitetura. Para isso, é utilizada uma camada específica para representar o contexto e um conjunto de portas, as quais controlam o fluxo de informações para dentro e para fora de suas células \cite{jurafsky-2022-speech-lang-processing}.
+Segundo \citeonline{goodfellow-2016-deep-learning,lecun-2015-deep-learning}, essas redes são extremamente bem-sucedidas em diferentes aplicações, como reconhecimento de caligrafia, reconhecimento de fala, geração de caligrafia, tradução automática, legendagem de imagens e análise sintática.
+
+%O \acrshort{lstm} é a mais popular delas e divide o gerenciamento do contexto em duas partes: na primeira, está a adição de informação que provavelmente será necessária para tomada de decisão posterior ao contexto; na segunda, está a remoção de informação que não é mais necessária. Com isso, o \acrshort{lstm} é capaz de aprender como gerenciar esse contexto e lidar com ambas as partes, e não exige que uma estratégia para isso seja codificada na arquitetura.
+%Isso é feito utilizando-se uma camada explícita para representar o contexto e também unidades neurais especializadas que utilizam três portas (\textit{update gate}, \textit{forget gate} e \textit{output gate}) para controlar o fluxo de informações para dentro e para fora das unidades que compõem as camadas da rede neural. Essas portas, por sua vez, são implementadas como pesos adicionais que são ajustados durante o processo de treinamento e operam sequencialmente na entrada, na camada oculta e nas camadas de contexto anteriores \cite{jurafsky-2022-speech-lang-processing}.
+
+% \citeonline{goodfellow-2016-deep-learning,lecun-2015-deep-learning} ressaltam que as redes \acrshort{lstm} mostraram ser extremamente bem-sucedidas em diferentes tipos de aplicações, como reconhecimento de caligrafia, reconhecimento de fala, geração de caligrafia, tradução automática, legendagem de imagens e análise sintática.
+
+A \acrshort{gru}~\cite{cho-2014-gru}, por sua vez, é uma evolução do \acrshort{lstm}. De acordo com \citeonline{goodfellow-2016-deep-learning}, a principal diferença está na forma como elas controlam o fluxo de informações entre suas camadas: enquanto o \acrshort{lstm} adota três portas em suas células internas para isso (\textit{update gate}, \textit{forget gate} e \textit{output gate}), o \acrshort{gru} propõe uma simplificação das células e utiliza apenas duas portas (\textit{update gate} e \textit{reset gate}) \cite{ravanelli-2018-li-gru,goodfellow-2016-deep-learning}.
+
+
+% A arquitetura \acrshort{gru} surgiu com o objetivo de simplificar o desenho das unidades internas do \acrshort{lstm} e, devido a isso, é considerada uma evolução desta. Segundo \citeonline{goodfellow-2016-deep-learning}, a principal diferença entre elas está na forma como elas controlam o fluxo de informação entre suas camadas. Enquanto que nas unidades do \acrshort{lstm} são utilizadas três portas para controlar a atualização, esquecimento e a saída de informação, no \acrshort{gru} uma única porta realiza o controle simultâneo do fator de esquecimento e da atualização do estado da unidade -- o que faz com que ela apresentem um total duas portas (denominadas \textit{update gate} e \textit{reset gate}) \cite{ravanelli-2018-li-gru,goodfellow-2016-deep-learning}.
 
 % TODO: falar de encoder-decoder?
 
 
-O Transformer, por sua vez, é uma arquitetura que não utiliza recorrência (como acontece nas \acrshortpl{rnn}) e, ao invés disso, baseia-se inteiramente em um mecanismo de \textit{attention} (ou atenção) para estabelecer dependências globais entre os dados de entrada e saída \cite{vaswani-2017-transformer}. 
-Essa arquitetura é composta por blocos empilhados, que consistem de redes multicamadas contendo camadas lineares simples, redes \textit{feed-forward} e camadas de \textit{self-attention} (ou auto-atenção) -- que é a principal inovação dos Transformers. O \textit{self-attention} permite que uma rede neural extraia e utilize diretamente informações de contextos arbitrariamente grandes sem a necessidade de transmiti-los por meio de conexões recorrentes intermediárias como nas \acrshortpl{rnn} \cite{jurafsky-2022-speech-lang-processing}.
+Por outro lado, o \textit{Transformer}~\cite{vaswani-2017-transformer} é uma arquitetura que não é recorrente -- ao invés disso, baseia-se inteiramente num mecanismo de \textit{attention} (ou atenção) para estabelecer dependências globais entre os dados de entrada e saída. 
+Ele é composta por blocos empilhados de redes multicamadas, as quais combinam camadas lineares simples, redes \textit{feed-forward} e camadas de \textit{self-attention} (ou auto-atenção) -- que, por sua vez, é a principal inovação desse tipo de arquitetura.
+\citeonline{wolf-2020-transformers} afirmam que o \textit{Transformer} tornou-se rapidamente a arquitetura dominante para o \acrshort{nlp} e tem superado modelos alternativos como \acrshortpl{cnn} e \acrshortpl{rnn} sobretudo em tarefas de compreensão e geração de linguagem natural. Além disso, sua arquitetura escalável facilita o treinamento paralelo eficiente e a captura do contexto de sequências muito longas 
+\cite{vaswani-2017-transformer,jurafsky-2022-speech-lang-processing,wolf-2020-transformers}.
 
-Segundo \citeonline{wolf-2020-transformers}, o Transformer tornou-se rapidamente a arquitetura dominante para o \acrshort{nlp}, e tem superado modelos alternativos como \acrshortpl{cnn} e \acrshortpl{rnn} no desempenho de tarefas de compreensão e geração de linguagem natural. Sua arquitetura é escalável de acordo com os dados de treinamento e o tamanho do modelo, e facilita o treinamento paralelo eficiente e a captura do contexto de sequências de longo alcance \cite{wolf-2020-transformers}.
+
+
+
+
 
 
 
@@ -115,14 +150,39 @@ Segundo \citeonline{wolf-2020-transformers}, o Transformer tornou-se rapidamente
 % The Transformer (Vaswani et al., 2017) has rapidly become the dominant architecture for natural language processing, surpassing alternative neural models such as convolutional and recurrent neural networks in performance for tasks in both natural language understanding and natural language generation. The architecture scales with training data and model size, facilitates efficient parallel training, and captures long-range sequence features
 
 
-% Experimento
-%   Preparação das features (asl-phono -> palavras)
-%       Transformação das sequências no dataset: frames -> palavras
-%       Justificativa??
-%   Preparação dos modelos (Transformer, LSTM, GRU, etc) -- por modelo
-%       Arquitetura + Parâmetros
-%       lr scheduler, optimizer, loss function
-%       Busca de parâmetros (dimensionar os modelos/parâmetros)
+
+% 10. MACHINE TRANSLATION AND ENCODER-DECODER MODELS
+% \cite{jurafsky-2022-speech-lang-processing}
+
+% This chapter introduces machine translation (MT), the use of computers to translate from one language to another.
+% Of course translation, in its full generality, such as the translation of literature, or poetry, is a difficult, fascinating, and intensely human endeavor, as rich as any other area of human creativity.
+% Machine translation in its present form therefore focuses on a number of very practical tasks. Perhaps the most common current use of machine translation is information for information access.
+
+% Another common use of machine translation is to aid human translators. MT systems are routinely used to produce a draft translation that is fixed up in a post-editing phase by a human translator. This task is often called computer-aided translation or CAT. CAT is commonly used as part of localization: the task of adapting content or a product to a particular language community.
+
+% Finally, a more recent application of MT is to in-the-moment human communication needs. This includes incremental translation, translating speech on-the-fly before the entire sentence is complete, as is commonly used in simultaneous interpretation. Image-centric translation can be used for example to use OCR of the text on a phone camera image as input to an MT system to translate menus or street signs.
+
+% The standard algorithm for MT is the encoder-decoder network, also called the sequence to sequence network, an architecture that can be implemented with RNNs or with Transformers. We’ve seen in prior chapters that RNN or Transformer architecture can be used to do classification (for example to map a sentence to a positive or negative sentiment tag for sentiment analysis), or can be used to do sequence labeling (for example to assign each word in an input sentence with a part-of-speech, or with a named entity tag). For part-of-speech tagging, recall that the output tag is associated directly with each input word, and so we can just model the tag as output yt for each input word xt .
+% Encoder-decoder or sequence-to-sequence models are used for a different kind of sequence modeling in which the output sequence is a complex function of the entire input sequencer; we must map from a sequence of input words or tokens to a sequence of tags that are not merely direct mappings from individual words. 
+% Machine translation is exactly such a task: the words of the target language don’t necessarily agree with the words of the source language in number or order.
+% [...]
+% Encoder-decoder networks are very successful at handling these sorts of complicated cases of sequence mappings. Indeed, the encoder-decoder algorithm is not just for MT; it’s the state of the art for many other tasks where complex mappings between two sequences are involved. These include summarization (where we map from a long text to its summary, like a title or an abstract), dialogue (where we map from what the user said to what our dialogue system should respond), semantic parsing (where we map from a string of words to a semantic representation like logic or SQL), and many others.
+
+% 10.2 The Encoder-Decoder Model
+% Encoder-decoder networks, or sequence-to-sequence networks, are models capable of generating contextually appropriate, arbitrary length, output sequences. Encoder-decoder networks have been applied to a very wide range of applications including machine translation, summarization, question answering, and dialogue.
+% The key idea underlying these networks is the use of an encoder network that takes an input sequence and creates a contextualized representation of it, often called the context. This representation is then passed to a decoder which generates a task specific output sequence. Fig. 10.3 illustrates the architecture
+% [FIGURE]
+
+% Encoder-decoder networks consist of three components:
+% 1. An encoder that accepts an input sequence, xn1, and generates a corresponding sequence of contextualized representations, hn1. LSTMs, convolutional networks, and Transformers can all be employed as encoders.
+% 2. A context vector, c, which is a function of hn1, and conveys the essence of the input to the decoder.
+% 3. A decoder, which accepts c as input and generates an arbitrary length sequence of hidden states hm1, from which a corresponding sequence of output states ym1, can be obtained. Just as with encoders, decoders can be realized by any kind of sequence architecture.
+
+
+
+
+
+
 
 
 
