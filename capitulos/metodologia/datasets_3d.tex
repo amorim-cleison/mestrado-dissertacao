@@ -37,7 +37,7 @@ Os passos utilizados para gerar o ASL-Skeleton3D basearam-se no processamento re
     \item \textbf{Segmentação dos sinais}: consiste em segmentar as sequências de vídeos do \acrshort{asllvd}, que são extensas e contemplam múltiplos sinais, em pedaços menores com apenas um sinal. Nesse processo, reduzimos a taxa de quadros de 60 para 3 FPS uma vez que, dadas as condições em que os indivíduos foram filmados, assumimos que eles não conseguiriam realizar mais de três movimentos em um único segundo -- consequentemente, muitos dos frames originais conteriam informação duplicada. Isso também nos ajudou a reduzir em cerca de 20 vezes o número de frames a serem processados nas etapas posteriores.
 
           % -----
-    \item \textbf{Estimativa dos esqueletos 3D}: aqui realizamos a estimativa dos esqueletos dos sinalizadores utilizando o OpenPose~\cite{cao-2019-openpose,simon-2017-openpose-hand-face}. Isso foi feito para ambas as câmeras frontal e lateral, o que nos rendeu dois esqueletos 2D:
+    \item \textbf{Estimativa dos esqueletos 3D}: aqui realizamos a estimativa dos esqueletos dos sinalizadores utilizando o OpenPose~\cite{cao-2017-openpose,simon-2017-openpose-hand-face}. Isso foi feito para ambas as câmeras frontal e lateral, o que nos rendeu dois esqueletos 2D:
 
           \begin{enumerate}
               \item \textit{Esqueleto frontal}, contendo as coordenadas plotadas sobre o eixos \(x\) e \(y\) (vide \autoref{subfig:front-side-persp-skeletons-front}).
