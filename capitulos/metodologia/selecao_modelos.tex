@@ -1,5 +1,5 @@
 \section{Seleção dos modelos}
-\label{sec:metodologia-reconhecimento}
+\label{sec:metodologia-selecao-modelos}
 
 % Uma vez que temos um \textit{dataset} com atributos fonológicos processados, agora podemos prosseguir com a preparação das features e dos modelos para reconhecimentos dos sinais utilizando a abordagem proposta.
 
@@ -65,17 +65,11 @@ Por fim, o \textit{Encoder-Decoder} pode ser implementado utilizando-se \acrshor
     {fig:encoder-decoder-arquitetura}
     {capitulos/metodologia/imagens/encoder_decoder_arquitetura}
     {width=0.95\textwidth}
-    {Exemplo de arquitetura \textit{Encoder-Decoder}. O \textit{encoder} (ou codificador) (à esquerda) recebe a sequência de entrada \(\{x_1, x_2, x_3, ..., x_n\}\) e gera o contexto \(c\) (em verde, ao centro) que, por sua vez, é utilizado pelo \textit{decoder} (ou decodificador) (à direita) para produzir a sequência de saída \(\{y_1, y_2, y_3, ..., y_n\}\).}
+    {Exemplo de arquitetura \textit{Encoder-Decoder}. O \textit{encoder} (ou codificador) (à esquerda) recebe a sequência de entrada \(x_1, x_2, x_3, ..., x_n\) e gera o contexto \(c\) (em verde, ao centro) que, por sua vez, é utilizado pelo \textit{decoder} (ou decodificador) (à direita) para produzir a sequência de saída \(y_1, y_2, y_3, ..., y_n\).}
     {jurafsky-2022-speech-lang-processing}
 
 
-Tomando como base a discussão apresentada acima, para este trabalho utilizaremos os seguintes modelos:
-
-\begin{enumerate}
-    \item \textit{Encoder-Decoder} (com \textit{attention}) implementado com \acrshort{lstm}
-    \item \textit{Encoder-Decoder} (com \textit{attention}) implementado com \acrshort{gru}
-    \item \textit{Transformer}
-\end{enumerate}
+Tomando como base a discussão apresentada acima, para este trabalho selecionamos a arquitetura \textit{Encoder-Decoder} implementada em duas versões utilizando \textit{attention} -- uma utilizando \acrshort{lstm} e outra com \acrshort{gru} -- e também o \textit{Transformer}.
 
 
 % Encoder-decoder or sequence-to-sequence models are used for a different kind of sequence modeling in which the output sequence is a complex function of the entire input sequencer; we must map from a sequence of input words or tokens to a sequence of tags that are not merely direct mappings from individual words. 
