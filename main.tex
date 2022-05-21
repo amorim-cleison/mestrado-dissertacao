@@ -173,9 +173,9 @@
 
 
 % ----------------------------------------------------------
-% LISTA DE CÓDIGOS FONTES
+% LISTA DE CÓDIGOS
 % ----------------------------------------------------------
-% define formato e estilo dos elementos do tipo Codigo Fonte
+% define formato e estilo dos elementos do tipo Código Fonte
 % \lstset{
 %     language=Java,
 %     basicstyle=\ttfamily\scriptsize,
@@ -197,45 +197,45 @@
 %     breaklines=true,
 % }
 
-\pdfbookmark[0]{\lstlistingname}{lol} % caso não tenha código fonte, comente esta linha 
-\counterwithout{lstlisting}{chapter}
+% \pdfbookmark[0]{\lstlistingname}{lol} % caso não tenha código fonte, comente esta linha 
+% \counterwithout{lstlisting}{chapter}
 
-% Altera o nome padrão do rótulo usado no comando \autoref{}
-\renewcommand{\lstlistingname}{Código Fonte}
+% % Altera o nome padrão do rótulo usado no comando \autoref{}
+% \renewcommand{\lstlistingname}{Código Fonte}
 
-% Altera o rótulo a ser usando no elemento pré-textual "Lista de código"
-\renewcommand{\lstlistlistingname}{Lista de códigos}
+% % Altera o rótulo a ser usando no elemento pré-textual "Lista de código"
+% \renewcommand{\lstlistlistingname}{Lista de códigos}
 
-% Configura a 'Lista de Códigos' conforme as regras da ABNT (para abnTeX2)
-\begingroup\makeatletter
-\let\newcounter\@gobble\let\setcounter\@gobbletwo
-  \globaldefs\@ne \let\c@loldepth\@ne
-  \newlistof{listings}{lol}{\lstlistlistingname}
-  \newlistentry{lstlisting}{lol}{0}
-\endgroup
+% % Configura a 'Lista de Códigos' conforme as regras da ABNT (para abnTeX2)
+% \begingroup\makeatletter
+% \let\newcounter\@gobble\let\setcounter\@gobbletwo
+%   \globaldefs\@ne \let\c@loldepth\@ne
+%   \newlistof{listings}{lol}{\lstlistlistingname}
+%   \newlistentry{lstlisting}{lol}{0}
+% \endgroup
 
-\renewcommand{\cftlstlistingaftersnum}{\hfill--\hfil}
+% \renewcommand{\cftlstlistingaftersnum}{\hfill--\hfil}
 
-\let\oldlstlistoflistings\lstlistoflistings
-{
-    \let\oldnumberline\numberline
-    \newcommand{\algnumberline}[1]{Código Fonte~#1~\enspace--~\enspace}
-    \renewcommand{\numberline}{\algnumberline}
+% \let\oldlstlistoflistings\lstlistoflistings
+% {
+%     \let\oldnumberline\numberline
+%     \newcommand{\algnumberline}[1]{Código Fonte~#1~\enspace--~\enspace}
+%     \renewcommand{\numberline}{\algnumberline}
     
-    \begin{KeepFromToc}
-    \lstlistoflistings
-    \end{KeepFromToc}
-}
-\cleardoublepage
+%     \begin{KeepFromToc}
+%     \lstlistoflistings
+%     \end{KeepFromToc}
+% }
+% \cleardoublepage
 
 
 
 % ----------------------------------------------------------
 % LISTA DE QUADROS
 % ----------------------------------------------------------
-\pdfbookmark[0]{\listofquadrosname}{loq} % caso não tenha quadros, comente esta linha 
-\listofquadros* % caso não tenha quadros, comente esta linha 
-\cleardoublepage
+% \pdfbookmark[0]{\listofquadrosname}{loq} % caso não tenha quadros, comente esta linha 
+% \listofquadros* % caso não tenha quadros, comente esta linha 
+% \cleardoublepage
 
 
 
@@ -267,7 +267,7 @@
 % ----------------------------------------------------------
 % LISTA DE SIMBOLOS
 % ----------------------------------------------------------
-\input{outros/simbolos}
+% \input{outros/simbolos}
 
 
 % ----------------------------------------------------------
