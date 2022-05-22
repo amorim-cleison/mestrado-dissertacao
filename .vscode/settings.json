@@ -33,5 +33,6 @@
         "[x]",
         "% TODO"
     ],
-    "editor.wordWrap": "on"
+    "editor.wordWrap": "on",
+    "todo-tree.tree.showBadges": true
 }

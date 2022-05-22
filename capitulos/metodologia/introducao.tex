@@ -1,66 +1,69 @@
-% TODO: revisar se essa introdução continua abrangendo o conteúdo do capítulo
-Neste capítulo, discutiremos a abordagem proposta por este trabalho, bem como as justificativas para sua adoção, suas contribuições para a área de \acrshort{slr} e os detalhes das técnicas e experimentos envolvidos.
+Neste capítulo discutiremos em mais detalhes a abordagem proposta, as justificativas para sua adoção, bem como as técnicas que foram aplicadas e a preparação dos experimentos realizados.
 
-Esta pesquisa apresenta uma proposta de reconhecimento da linguagem de sinais que segue uma abordagem linguística, baseada em seus constituintes mínimos fonológicos, que se diferencia da abordagem predominantemente observada na \acrshort{slr} que, por sua vez, analisa os sinais a partir das informações brutas capturadas do corpo dos indivíduos -- como frames de imagens e vídeos, dados de luvas eletrônicas, coordenadas 3D, entre outras.
+A abordagem proposta nesta pesquisa consiste em realizar o reconhecimento da linguagem de sinais a partir de uma perspectiva estritamente linguística, baseada nos constituintes fonológicos mínimos que a descrevem, e centrada no aprendizado das complexidades e regras que convém contexto e significado aos sinais.
 
-A hipótese adotada aqui assume que lidar com esse tipo de informações brutas traz complexidades adicionais que extrapolam o escopo que deveria ser efetivamente abordado pelo \acrshort{slr} -- que é a língua propriamente dita, bem como suas regras linguísticas e particularidades de suas diferentes modalidades. 
-Em outras palavras, esse foco inadequado faz com que pesquisas em \acrshort{slr} deixem de tratar essa tarefa como um problema de  \acrfull{nlp} e passem a dedicar esforços consideráveis tentando lidar com um conjunto de problemas que a Visão Computacional comumente já aborda ou soluciona em uma de suas subáreas específicas -- os quais incluem a detecção, segmentação e rastreamento de partes do corpo em imagens e vídeos; a interação entre mãos e oclusões decorrentes disso; as variações de tom de pele, cores de roupa e luminosidade do ambiente; entre outros listados nas revisões literárias da \acrshort{slr} elaboradas no decorrer da última década \cite{papastratis-2021-ai-technologies-sl,rastgoo-2021-slr-deep-survey,koller-2020-quantitative-survey-slr,bragg-2019-slr-interdisciplinary,wadhawan-2019-slr-literature-review,suharjito-2018-feature-extraction-survey,joksimoski-2022-scoping-review,cooper-2011-slr}.
+Isso assemelha-se à forma como hoje outras línguas são abordadas com sucesso pelo \acrfull{nlp} e diferencia-se daquela predominante no \acrfull{slr} que, por sua vez, trata os sinais como gestos não-estruturados mapeados a partir de dados brutos capturados dos indivíduos -- como pixels de imagens ou frames de vídeos, pontos lidos de luvas eletrônicas, coordenadas 2D ou 3D, entre outros -- e colocam em segundo plano a importância linguística.
+
+% Esta pesquisa apresenta uma proposta de reconhecimento da linguagem de sinais que segue uma abordagem linguística, baseada em seus constituintes mínimos fonológicos, que se diferencia da abordagem predominantemente observada na \acrshort{slr} que, por sua vez, analisa os sinais a partir das informações brutas capturadas do corpo dos indivíduos -- como frames de imagens e vídeos, dados de luvas eletrônicas, coordenadas 3D, entre outras.
+
+Nossa hipótese assume que, além de deixar de abordar uma parte muito importante dessa língua, lidar com esse tipo de dados brutos traz complexidades adicionais que extrapolam o escopo que deveria ser efetivamente abordado pelo \acrshort{slr}.
+Em outras palavras, esse foco inadequado faz com que pesquisas em \acrshort{slr} deixem de solucionar um problema intrinsecamente de \acrshort{nlp} e passem a investir esforços consideráveis tentando lidar com um conjunto de desafios pertinentes à área de \acrfull{cv} -- os quais comumente já estão abordados ou solucionados por uma de suas subáreas, como a detecção, segmentação e rastreamento de partes do corpo em imagens e vídeos; a interação entre mãos e oclusões decorrentes disso; as variações de tom de pele, cores de roupa e luminosidade do ambiente; entre outros listados nas revisões literárias elaboradas no decorrer da última década para a \acrshort{slr} \cite{papastratis-2021-ai-technologies-sl,rastgoo-2021-slr-deep-survey,koller-2020-quantitative-survey-slr,bragg-2019-slr-interdisciplinary,wadhawan-2019-slr-literature-review,suharjito-2018-feature-extraction-survey,joksimoski-2022-scoping-review,cooper-2011-slr}.
 
 % - problem statement / motivation
 
-    % hipótese principal: a área de reconhecimento de sinais hoje dedica muita energia tentando lidar com problemas que deveriam (e são) abordados por outras áreas (como detecção de partes do corpo, variações de luminosidade e tom de pele, interpretação de movimento a partir de coordenadas ou de pixels dos frames) mas ainda não chegaram a abordar efetivamente as complexidades da linguística da língua de sinais em si, que por si só é um universo extremamente complexo (e ilustro isso dando uma introdução da linguística na seção de fundamentação teórica). 
-    % Essa "perda de energia" atrasa progressos realmente importantes dessa área. 
-    %     -> essa argumentação precisa estar no documento com as referencias que corroboram essa análise. 
+% hipótese principal: a área de reconhecimento de sinais hoje dedica muita energia tentando lidar com problemas que deveriam (e são) abordados por outras áreas (como detecção de partes do corpo, variações de luminosidade e tom de pele, interpretação de movimento a partir de coordenadas ou de pixels dos frames) mas ainda não chegaram a abordar efetivamente as complexidades da linguística da língua de sinais em si, que por si só é um universo extremamente complexo (e ilustro isso dando uma introdução da linguística na seção de fundamentação teórica). 
+% Essa "perda de energia" atrasa progressos realmente importantes dessa área. 
+%     -> essa argumentação precisa estar no documento com as referencias que corroboram essa análise. 
 
 
-    % confusão - reconhecimento de gestos (detecção/rastreamento de mãos) x SLR corrobora
-    %     - desperdiçam energia com: hand detection, hand segmentation, hand tracking, detecção de caracteristicas corporais (mas não da linguagem propriamente dita)
+% confusão - reconhecimento de gestos (detecção/rastreamento de mãos) x SLR corrobora
+%     - desperdiçam energia com: hand detection, hand segmentation, hand tracking, detecção de caracteristicas corporais (mas não da linguagem propriamente dita)
 
-    %     Copper - "Sign language offers a more complex challenge than the traditionally more confined domain of gesture recognition."
-    %     Copper - The task of recognition is often simplified by forcing the possible word sequence to conform to a grammar which limits the potential choices and thereby improves recognition rates [91, 104, 12, 45].
+%     Copper - "Sign language offers a more complex challenge than the traditionally more confined domain of gesture recognition."
+%     Copper - The task of recognition is often simplified by forcing the possible word sequence to conform to a grammar which limits the potential choices and thereby improves recognition rates [91, 104, 12, 45].
 
-    % problemas que precisam lidar
-    %     Suharjito, Copper - in natural scenario hands move fast / tracking hand, hands are dynamic, occlusion, interaction with each other / skin color detection / segmentation of body or hand / 
+% problemas que precisam lidar
+%     Suharjito, Copper - in natural scenario hands move fast / tracking hand, hands are dynamic, occlusion, interaction with each other / skin color detection / segmentation of body or hand / 
 
-    % tecnicas usadas
-    %     Suharjito, Copper - (tracking based: ) kalman filter, optical flow, MHI, HOG / (non-tracking based: ) PCA, ICA (independent component analysis), sobel filters, Haar, DTW (dynamic time warping)
+% tecnicas usadas
+%     Suharjito, Copper - (tracking based: ) kalman filter, optical flow, MHI, HOG / (non-tracking based: ) PCA, ICA (independent component analysis), sobel filters, Haar, DTW (dynamic time warping)
 
-    % Copper, Joskimoski, Suharjito, Bragg, Rastgoo - data gloves, gloves, imagens, videos, RF sensor, armband, kinect, leap motion
-    %     Papastratis - electromyography (EMG), inertial measurement unit (IMU)
+% Copper, Joskimoski, Suharjito, Bragg, Rastgoo - data gloves, gloves, imagens, videos, RF sensor, armband, kinect, leap motion
+%     Papastratis - electromyography (EMG), inertial measurement unit (IMU)
 
-    % Copper, Rastgoo, Joskimoski, Suharjito
+% Copper, Rastgoo, Joskimoski, Suharjito
 
-    % Joksimoski -> Copper: Various approaches using various types
-    % of Neural Networks, Hidden Markov Models and their
-    % variations (like Parallel HMM), decision trees, and self-organizing
-    % maps are utilized for various parts of SLR.
-
-
-Se fizéssemos uma analogia com outras tarefas de \acrshort{nlp}, a complexidade de abordar a língua de sinais a partir dessas informações brutas e lidar com todos esses problemas seria equivalente, por exemplo, a tentar reconhecer textos manuscritos rastreando-se o movimento da mão enquanto o autor desenha as letras no papel (ao invés de simplesmente utilizar o texto escrito escaneado como entrada para isso). Ou ainda, tentar reconhecer a fala de um indivíduo apenas rastreando-se os movimentos de seus lábios (ao invés de utilizar os sinais de áudio processados). 
-
-    % avaliar isto: numa metáfora, hoje estamos caminhando como se tentássemos reconhecer um texto escrito ao mesmo tempo em que a mão está desenhando as letras no papel (ao invés de utilizar o artefato intermediário, que é o texto no papel) -- percebe a extensão do problema? detecção da mão, detecção do movimento, para finalmente alcançar o real objetivo.
-    % Fazendo uma metáfora, é como se a gente tivesse tentando reconhecer textos escritos a mão, mas ao invés de escanear o papel com o texto escrito (assumindo-se o texto escrito como um produto intermediário deste processo), estivéssemos dando vários passos para atrás e tentando fazer esse reconhecimento através da detecção do movimento da mão enquanto o autor escreve (o que abrange um escopo muito maior do que o problema de reconhecer a escrita, por si só).
+% Joksimoski -> Copper: Various approaches using various types
+% of Neural Networks, Hidden Markov Models and their
+% variations (like Parallel HMM), decision trees, and self-organizing
+% maps are utilized for various parts of SLR.
 
 
-
-
-Exemplos práticos de que hoje muitos desses problemas já são endereçados consistentemente dentro da Visão Computacional são as ferramentas OpenPose~\cite{wei-2016-conv-machines-openpose,cao-2017-openpose,simon-2017-openpose-hand-face} e MediaPipe~\cite{lugaresi-2019-mediapipe,bazarevsky-2019-mediapipe-blazeface,vakunov-2020-mediapipe-hands,bazarevsky-2020-mediapipe-blazepose}, desenvolvidos pela Carnegie Mellon University e Google Research, respectivamente. 
-Ambas são o resultado de anos de pesquisas em torno desses problemas que alcançaram um nível de maturidade elevado capaz de abordar em tempo real tarefas de estimativa de pose e rastreamento do corpo, mãos e face (inclusive envolvendo múltiplos indivíduos) de forma robusta a variações corporais, de luminosidade e de ambientes, utilizando apenas uma câmera simples.
+Alguns exemplos populares desses problemas sendo consistentemente endereçados dentro da \acrshort{cv} incluem as ferramentas OpenPose~\cite{wei-2016-conv-machines-openpose,cao-2017-openpose,simon-2017-openpose-hand-face} e MediaPipe~\cite{lugaresi-2019-mediapipe,bazarevsky-2019-mediapipe-blazeface,vakunov-2020-mediapipe-hands,bazarevsky-2020-mediapipe-blazepose}, desenvolvidas pela Carnegie Mellon University e Google Research, respectivamente.
+Ambas são o resultado de anos de pesquisa em torno de tais questões, as quais alcançaram um nível de maturidade elevado capaz de abordar em tempo real tarefas de estimativa de pose e rastreamento do corpo, mãos e face (inclusive envolvendo múltiplos indivíduos) de forma robusta a variações corporais, de luminosidade e de ambientes, utilizando apenas uma câmera comum RGB.
 Elas estão disponíveis abertamente\footnote{
     O OpenPose está disponível em \url{https://github.com/CMU-Perceptual-Computing-Lab/openpose} e o MediaPipe em \url{https://mediapipe.dev/}.
-} e a reutilização desse conhecimento nas etapas de captura e geração de \textit{features} de níveis mais elevados pelas pequisas em \acrshort{slr} pode conduzir a progressos mais efetivos dessa área.
-
-    
-    % % TODO avaliar isto: a proposta aqui é quebrar o problema grande em problemas menores, delegando as partes aos algoritmos que são especializados naquilo: detecção do corpo humano/coordenadas em imagens, rastreamento do movimento, reconhecimento de sinais
-    %     Então, nessa minha abordagem eu proponho retirar o foco desses problemas (de reconhecer pixels, rastrear partes do corpo, etc.) que são objeto de estudo de outras áreas da visão computacional (e que hoje já tem muitos algoritmos muitos melhores do que eu poderia propor dentro de minha arquitetura)...
-    %         -> Acho válido. Um ponto que pode ajudar é talvez vc mostrar que essas coisas são bem resolvidas na outra área e que vc pode reusar esse conhecimento/métodos para essa fase de aquisição dos dados.
-    %             -> explorar os papers do OpenPose e do MediaPipe (Google)
-    
+} e a reutilização desse conhecimento nas etapas para capturar e gerar \textit{features} de níveis mais elevados para o \acrshort{slr} certamente contribuirá para progressos mais efetivos.
 
 
-Como resultado do enquadramento inadequado apresentado acima, que se destaca entre os outros desafios que discutimos na \autoref{sec:slr-desafios}, constata-se um progresso muito pouco expressivo da área de \acrshort{slr} no decorrer das últimas décadas, sobretudo sob os aspectos de linguagem e de aplicabilidade no mundo real. 
-Na prática, há uma carência de trabalhos que abordem a língua de sinais como uma língua e, consequentemente, produzam resultados úteis ao contexto real.
-\citeonline{cooper-2011-slr} reiteram:
+Fazendo uma analogia com outras tarefas de \acrshort{nlp}, abordar a língua de sinais por meio dos dados brutos discutidos acima e lidar com os desafios apresentados, por exemplo, possui uma complexidade equivalente a tentar interpretar textos manuscritos apenas rastreando-se o movimento da mão do autor enquanto ele desenha as letras no papel -- ao invés de simplesmente escanear o texto final escrito como entrada para isso; ou ainda, tentar reconhecer a fala de um indivíduo apenas realizando a detecção e o rastreamento dos movimentos de seus lábios -- ao invés de consider os sinais de áudio capturados para tal.
+
+% avaliar isto: numa metáfora, hoje estamos caminhando como se tentássemos reconhecer um texto escrito ao mesmo tempo em que a mão está desenhando as letras no papel (ao invés de utilizar o artefato intermediário, que é o texto no papel) -- percebe a extensão do problema? detecção da mão, detecção do movimento, para finalmente alcançar o real objetivo.
+% Fazendo uma metáfora, é como se a gente tivesse tentando reconhecer textos escritos a mão, mas ao invés de escanear o papel com o texto escrito (assumindo-se o texto escrito como um produto intermediário deste processo), estivéssemos dando vários passos para atrás e tentando fazer esse reconhecimento através da detecção do movimento da mão enquanto o autor escreve (o que abrange um escopo muito maior do que o problema de reconhecer a escrita, por si só).
+
+
+% % TODO avaliar isto: a proposta aqui é quebrar o problema grande em problemas menores, delegando as partes aos algoritmos que são especializados naquilo: detecção do corpo humano/coordenadas em imagens, rastreamento do movimento, reconhecimento de sinais
+%     Então, nessa minha abordagem eu proponho retirar o foco desses problemas (de reconhecer pixels, rastrear partes do corpo, etc.) que são objeto de estudo de outras áreas da visão computacional (e que hoje já tem muitos algoritmos muitos melhores do que eu poderia propor dentro de minha arquitetura)...
+%         -> Acho válido. Um ponto que pode ajudar é talvez vc mostrar que essas coisas são bem resolvidas na outra área e que vc pode reusar esse conhecimento/métodos para essa fase de aquisição dos dados.
+%             -> explorar os papers do OpenPose e do MediaPipe (Google)
+
+
+
+Como resultado desse enquadramento inadequado por parte das pesquisas em \acrshort{slr}, no decorrer das últimas décadas constata-se um progresso muito pouco expressivo dessa área sobretudo nos aspectos da linguagem e aplicabilidade no mundo real, acerca do qual \citeonline{cooper-2011-slr} reiteram:
+
+% apresentado acima, que se destaca entre os outros desafios que discutimos na \autoref{sec:slr-desafios}, constata-se um progresso muito pouco expressivo da área de \acrshort{slr} no decorrer das últimas décadas, sobretudo sob os aspectos de linguagem e de aplicabilidade no mundo real. 
+% Na prática, há uma carência de trabalhos que abordem a língua de sinais como uma língua e, consequentemente, produzam resultados úteis ao contexto real.
+% \citeonline{cooper-2011-slr} reiteram:
 
 \begin{citacao}
     Enquanto sistemas de reconhecimento automático da fala avançaram ao ponto de estarem comercialmente disponíveis, o reconhecimento de sinais ainda está em sua infância. Atualmente, todos os serviços comerciais de tradução de sinais são baseados em humanos e requerem pessoal especializado – o que os tornam caros \cite[tradução nossa]{cooper-2011-slr}.
@@ -68,23 +71,23 @@ Na prática, há uma carência de trabalhos que abordem a língua de sinais como
 
 
 
-    % Apesar disso, Cooper, Holt e Bowden (2011) acreditam que o progresso apresentado por ela nas últimas décadas ainda foi pouco expressivo:
-    %     Enquanto sistemas de reconhecimento automático da fala avançaram ao
-    %     ponto de estarem comercialmente disponíveis, o reconhecimento de sinais
-    %     ainda está em sua infância. Atualmente, todos os serviços comerciais de tra
-    %     dução de sinais são baseados em humanos e requerem pessoal especializado
-    %     – o que os tornam caros (COOPER; HOLT; BOWDEN, 2011, tradução nossa).
-    % Bragg et al. (2019) e Cooper, Holt e Bowden (2011) acreditam que, de uma forma geral, isso está relacionado a fatores como os desafios particulares a essas línguas e a forma com que as pesquisas desenvolvidas na área têm abordando o problema no decorrer das últimas décadas.
+% Apesar disso, Cooper, Holt e Bowden (2011) acreditam que o progresso apresentado por ela nas últimas décadas ainda foi pouco expressivo:
+%     Enquanto sistemas de reconhecimento automático da fala avançaram ao
+%     ponto de estarem comercialmente disponíveis, o reconhecimento de sinais
+%     ainda está em sua infância. Atualmente, todos os serviços comerciais de tra
+%     dução de sinais são baseados em humanos e requerem pessoal especializado
+%     – o que os tornam caros (COOPER; HOLT; BOWDEN, 2011, tradução nossa).
+% Bragg et al. (2019) e Cooper, Holt e Bowden (2011) acreditam que, de uma forma geral, isso está relacionado a fatores como os desafios particulares a essas línguas e a forma com que as pesquisas desenvolvidas na área têm abordando o problema no decorrer das últimas décadas.
 
 
-Com base nos argumentos apresentados acima, nesta pesquisa posicionaremos a \acrshort{slr} como uma tarefa de \acrshort{nlp}, delimitando seu escopo ao âmbito da linguística e representando os sinais a partir dos seus componentes linguísticos mínimos -- que são os fonemas, conforme discutido na \autoref{sec:linguistica-lingua-sinais}.
-Os fonemas são os parâmetros em termos dos quais as línguas de sinais são formalmente definidas e aprendidas pelos indivíduos.
-Com isso, objetivamos eliminar a complexidade pertinente ao escopo da Visão Computacional e concentraremos a capacidade dos modelos aplicados adiante à aprendizagem das regras e restrições linguísticas da língua de sinais.
+Dessa forma, considerando a discussão desenvolvida até aqui, nesta pesquisa posicionaremos a \acrshort{slr} como uma tarefa de \acrshort{nlp}, delimitando seu escopo ao âmbito da linguística e representando os sinais através de seus fonemas. Além disso, aplicaremos o conhecimento disponibilizado pelas ferramentas acima para criar \textit{features} que representem estes fonemas, viabilizando este processo.
+Com isso, objetivamos eliminar o escopo pertinente a outras áreas de pesquisa e concentrar a capacidade dos modelos aplicados ao aprendizado das regras e restrições linguísticas da língua de sinais.
 
-Essa estratégia de abordar a linguagem a partir de seus componentes mínimos é também observada em outros tipos de tarefas da \acrshort{nlp}. Segundo \citeonline{jurafsky-2022-speech-lang-processing}, a ideia de que a palavra falada é composta de unidades menores de fala é subjacente a algoritmos utilizados nas tarefas de reconhecimento da fala e de conversão de texto em voz, por exemplo.
-Os autores ilustram na \autoref{fig:exemplo-waveform-phone} a forma de onda para a sentença em inglês ``\textit{she just had a baby}'' (ou ``ela acabou de ter um bebê'') rotulada com suas partículas mínimas de som conhecidas como ``fones'' transcritas utilizando o ARPAbet\footnote{
-    ARPAbet é um alfabeto fonético simples introduzido por \citeonline{shoup-1980-arpabet} que convenientemente utiliza símbolos ASCII para representar um subconjunto do \acrfull{ipa} referente ao idioma inglês-americano. O \acrshort{ipa}, por sua vez, é a representação fonética padrão para transcrição das línguas ao redor do mundo \cite{jurafsky-2022-speech-lang-processing}.
-} (vide linha inferior da imagem). Essas partículas são também utilizadas como \textit{features} de entrada para o reconhecimento da fala.
+Tal estratégia de abordar a linguagem por meio de suas unidades constituintes mínimas é também observada em outras tarefas de \acrshort{nlp}. \citeonline{jurafsky-2022-speech-lang-processing} afirmam que a ideia da palavra falada ser composta por unidades menores da fala é adotada, por exemplo, por algoritmos utilizados em tarefas de reconhecimento de fala e de conversão de texto em voz.
+Observe na \autoref{fig:exemplo-waveform-phone} o exemplo ilustrado pelos autores da forma de onda da fala para a sentença em inglês ``\textit{she just had a baby}'' (ou ``ela acabou de ter um bebê'').
+Cada trecho é rotulado na linha inferior com suas respectivas partículas mínimas de som (ou ``fones''), as quais são transcritas utilizando-se o ARPAbet\footnote{
+    ARPAbet é um alfabeto fonético simples introduzido por \citeonline{shoup-1980-arpabet} que utiliza símbolos ASCII para representar um subconjunto do \acrshort{ipa} que se refere ao idioma inglês-americano. O \acrfull{ipa}, por sua vez, é a representação fonética padrão para a transcrição das línguas ao redor do mundo \cite{jurafsky-2022-speech-lang-processing}.
+}. Esse tipo de partículas são comumente utilizadas como \textit{features} de entrada para tarefas envolvendo o processamento da fala.
 
 
 % The characters that make up the texts we’ve been discussing in this book aren’t just random symbols. They are also an amazing scientific invention: a theoretical model of the elements that make up human speech.
@@ -93,26 +96,38 @@ Os autores ilustram na \autoref{fig:exemplo-waveform-phone} a forma de onda para
 % \cite{jurafsky-2022-speech-lang-processing}
 
 \figura[p. 586]
-    {fig:exemplo-waveform-phone}
-    {capitulos/metodologia/imagens/exemplo_waveform_phone}
-    {width=\textwidth}
-    {Formas de onda para a frase ``\textit{she just had a baby}'' (na primeira linha), rotuladas com seus respectivos blocos de palavras (segunda linha) e partículas de som transcritas utilizando ARPAbet (terceira linha).}
-    {jurafsky-2022-speech-lang-processing}
-
-
-        
-    % ... e começo a focar a língua de sinais a partir de sua fonologia (que é justamente a forma como essas línguas são descritas e aprendidas). Os fonemas ou parâmetros fonológicos são componentes mínimos em termos dos quais as línguas são representadas e ensinadas; e que permitem aos modelos começarem a aprender a semântica e regras linguísticas efetivamente, ao invés de lidar com pixels e coordenadas brutas sem significado. 
-    %     -> Essencial vc destacar a importância de focar nessa abordagem fonológica e os potenciais ganhos de ir nessa direção. Você pode inclusive usar exemplos de outras áreas como o reconhecimento de escrita. Um ponto que talvez você precise tocar é a questão que hoje o NLP está indo na direção de aprendizado a partir de dados, sem formalizar todas as regras de linguagem. Não sei se isso se aplica a seu contexto também, mas pode ser uma pergunta da banca.
-    %         % TODO avaliar isto: retirar a complexidade dos modelos de SLR torna-os menores e reduz os requisitos computacionais -- como consequência, eles podem ser rodados em browsers ou aparelhos moveis, por exemplo
-    %         -> potenciais ganhos disso:
-    %             Retira escopo (e complexidade) de outras áreas e foca na língua
-    %             Torna os modelos de SLR menos complexos (de partida)
-                
+{fig:exemplo-waveform-phone}
+{capitulos/metodologia/imagens/exemplo_waveform_phone}
+{width=\textwidth}
+{Formas de onda da fala para a sentença ``\textit{she just had a baby}'' (primeira linha) rotuladas com suas respectivas partículas de som transcritas em ARPAbet (linha inferior).}
+{jurafsky-2022-speech-lang-processing}
 
 
 
+% ... e começo a focar a língua de sinais a partir de sua fonologia (que é justamente a forma como essas línguas são descritas e aprendidas). Os fonemas ou parâmetros fonológicos são componentes mínimos em termos dos quais as línguas são representadas e ensinadas; e que permitem aos modelos começarem a aprender a semântica e regras linguísticas efetivamente, ao invés de lidar com pixels e coordenadas brutas sem significado. 
+%     -> Essencial vc destacar a importância de focar nessa abordagem fonológica e os potenciais ganhos de ir nessa direção. Você pode inclusive usar exemplos de outras áreas como o reconhecimento de escrita. Um ponto que talvez você precise tocar é a questão que hoje o NLP está indo na direção de aprendizado a partir de dados, sem formalizar todas as regras de linguagem. Não sei se isso se aplica a seu contexto também, mas pode ser uma pergunta da banca.
+%         % TODO avaliar isto: retirar a complexidade dos modelos de SLR torna-os menores e reduz os requisitos computacionais -- como consequência, eles podem ser rodados em browsers ou aparelhos moveis, por exemplo
+%         -> potenciais ganhos disso:
+%             Retira escopo (e complexidade) de outras áreas e foca na língua
+%             Torna os modelos de SLR menos complexos (de partida)
 
 
+
+No caso da abordagem proposta aqui, substituiremos essas partículas por alguns dos parâmetros fonológicos introduzidos na \autoref{sec:linguistica}. Uma vez que não há \textit{datasets} disponíveis com esse tipo de representação para as línguas de sinais, nosso primeiro passo consistirá em gerá-lo. Para isso, utilizaremos o \acrshort{asllvd} como base e processaremos suas amostras utilizando o OpenPose, o qual nos fornece coordenadas que possibilitam a extração de nossas \textit{features} fonológicas, de nível semântico mais elevado.
+Esse processo será discutido em mais detalhes na sessão seguinte.
+
+% Discutiremos em detalhes os processos de seleção dos modelos e criação do \textit{dataset} nas seções a seguir.
+
+
+% Como dados de entrada, utilizaremos os sinais representados a partir seus parâmetros fonológicos. Contudo, como não há \textit{datasets} disponíveis com esse tipo de representação, nosso primeiro passo para viabilizar a pesquisa consistirá em gerar um novo \textit{dataset} da fonologia da língua de sinais. Para isso, utilizaremos o \acrshort{asllvd} como base e processaremos suas amostras utilizando o OpenPose, o qual fornecerá coordenadas que serão utilizadas para a extração de nossas \textit{features}, que possuem um nível mais elevado. 
+
+
+Por fim, selecionaremos alguns dos modelos de aprendizagem de máquina comumente utilizados em tarefas de \acrshort{nlp} e os aplicaremos aqui com o intuito de avaliar seu desempenho no contexto em questão e a eficácia da abordagem proposta. Isso também será melhor detalhado nas sessões adiante.
+
+% Para aplicar a abordagem proposta, selecionaremos alguns modelos de aprendizagem  profunda comumente utilizados em tarefas de \acrshort{nlp} e os aplicaremos ao contexto introduzido aqui afim de avaliar o seu desempenho.
+
+
+% Discutiremos em detalhes os processos de seleção dos modelos e criação do \textit{dataset} nas seções a seguir.
 
 
 
@@ -151,15 +166,6 @@ Os autores ilustram na \autoref{fig:exemplo-waveform-phone} a forma de onda para
 
 
 % apesar dessa complexidade, muitos desses parâmetros fonológicos poderiam ser computados algebricamente a partir de coordenadas 3d para formatos semanticamente mais elevados de forma mais barata antes de serem ingeridos por algoritmos.
-
-
-Para aplicar a abordagem proposta, selecionaremos alguns modelos de aprendizagem  profunda comumente utilizados em tarefas de \acrshort{nlp} e os aplicaremos ao contexto introduzido aqui afim de avaliar o seu desempenho.
-
-Como dados de entrada, utilizaremos os sinais representados a partir seus parâmetros fonológicos. Contudo, como não há \textit{datasets} disponíveis com esse tipo de representação, nosso primeiro passo para viabilizar a pesquisa consistirá em gerar um novo \textit{dataset} da fonologia da língua de sinais. Para isso, utilizaremos o \acrshort{asllvd} como base e processaremos suas amostras utilizando o OpenPose, o qual fornecerá coordenadas que serão utilizadas para a extração de nossas \textit{features}, que possuem um nível mais elevado. 
-
-Discutiremos em detalhes os processos de seleção dos modelos e criação do \textit{dataset} nas seções a seguir.
-
-
 
 
 
