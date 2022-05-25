@@ -154,16 +154,16 @@ Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia ut
           \figura
           {fig:mouth-openness} % Label
           {capitulos/metodologia/imagens/mouth_openness} % Path
-          {height=4cm} % Size
+          {height=3.5cm} % Size
           {A abertura da boca \(P_{mouth}\) é obtida a partir da medida antropométrica \textit{vermilion height to mouth width} que utiliza quatro coordenadas dos lábios para calcular uma única proporção.} % Caption
           {ferrario-2000-study-lips} % Citation
 
 \end{enumerate}
 
 
-Essas são as \textit{features} extraídas para o ASL-Phono. 
+Essas são as \textit{features} extraídas para o ASL-Phono.
 A \autoref{fig:sample-json-phono} exemplifica uma amostra resultante desse processo, bem como a disposição dos atributos fonológicos em suas propriedades.
-Sua estrutura é muito semelhante àquela apresentada para o ASL-Skeleton3D, com exceção apenas da propriedade ``frames'' que, ao invés de coordenadas 3D, aqui apresenta os atributos fonológicos computados acima. Além do respectivo valor computado, cada atributo pode conter também um \textit{score}, que é obtido a partir da precisão estimada para as coordenadas envolvidas naquele cálculo.
+Sua estrutura é muito semelhante àquela apresentada para o ASL-Skeleton3D, exceto pela propriedade ``frames'' que, ao invés de coordenadas 3D, aqui contém os atributos computados acima. Além do seu respectivo valor computado, cada atributo pode apresentar também um \textit{score}, que é obtido a partir da precisão estimada para as coordenadas envolvidas no seu cálculo.
 
 \figura
 {fig:sample-json-phono} % Label
@@ -173,22 +173,41 @@ Sua estrutura é muito semelhante àquela apresentada para o ASL-Skeleton3D, com
 {} % Citation
 
 
-
-% TODO: continuar daqui
-
 % Estatísticas:
-Na \autoref{tab:dataset-phono-stats}, podemos observar algumas estatísticas calculadas a partir do ASL-Phono, que nos permitem compreender como as amostras ficaram organizadas no \textit{dataset} após o processamento acima.
-Nela, os números são listados segundo três perspectivas:
+A \autoref{tab:dataset-phono-stats}, por sua vez, apresenta estatísticas calculadas para o \textit{dataset} resultante que nos fornecem um panorama da distribuição final de suas amostras, bem como do número de movimentos, orientações, configurações de mão e variação na abertura de boca computados acima.
 
-\begin{itemize}
-    \item \textit{Dataset} inteiro: contabiliza o número total de amostras, sinais, movimentos distintos, entre outros, para todo o \textit{dataset}. Por exemplo, pode-se ler que o \textit{dataset} possui 9.747 amostras, 2.650 sinais e 26 movimentos para a mão dominante.
-
-    \item Por amostra: contém estatísticas de números mínimos, máximos, médios e desvio padrão para os parâmetros computados acima. Por exemplo, lê-se que, em média, as amostras possuem 3,02 frames, sendo que a mais curta contém apenas 1 frame e a mais longa possui 12 frames. De maneira semelhante, as amostras têm em média de 1,94 movimentos e 2,20 orientações de mão distintas para a mão dominante.
-
-    \item Por sinal: contém estatísticas de números mínimos, máximos, médios e desvio padrão para os sinais contidos no \textit{dataset}. Por exemplo, lê-se que cada sinal possui em média de 3,68 amostras, sendo que alguns deles possuem apenas 1 e outros possuem valores atípicos de 59 amostras (a considerar pelo desvio padrão apresentado). Além disso, cada sinal apresenta em média 6,04 movimentos e 5,37 orientações de mão distintas para a mão dominante.
-\end{itemize}
+% Na \autoref{tab:dataset-phono-stats}, podemos observar algumas estatísticas calculadas a partir do ASL-Phono, que nos permitem compreender como as amostras ficaram organizadas no \textit{dataset} após o processamento acima.
 
 \input{capitulos/metodologia/tabelas/dataset_phono_stats}
 
+Existem três agrupamentos contidos nela:
 
-O \textit{dataset} resultante do processamento acima e o código-fonte utilizado para isso estão disponíveis publicamente na URL listada abaixo\footnote{Disponível em \url{http://www.cin.ufpe.br/~cca5/asl-phono}}.
+\begin{itemize}
+    \item \textit{Dataset}: sumariza o total de amostras, de sinais e de cada um dos atributos computados para o \textit{dataset}.
+          Por exemplo, há um total de 9.747 amostras e 26 movimentos possíveis para a mão dominante.
+
+    \item Por amostra: fornece estatísticas de mínimo, máximo, média e desvio padrão calculadas agrupando-se o \textit{dataset} por amostra.
+        Por exemplo, há em média 3,02 frames por amostra e esse número varia de 1 a 12 frames; de maneira semelhante, as amostras têm em média 1,94 movimentos distintos para a mão dominante, o que varia entre 0 e 10 movimentos.
+    
+    % contém estatísticas de números mínimos, máximos, médios e desvio padrão para os parâmetros computados acima. Por exemplo, lê-se que, em média, as amostras possuem 3,02 frames, sendo que a mais curta contém apenas 1 frame e a mais longa possui 12 frames. De maneira semelhante, as amostras têm em média de 1,94 movimentos e 2,20 orientações de mão distintas para a mão dominante.
+
+    \item Por sinal: fornece estatísticas de mínimo, máximo, média e desvio padrão calculadas agrupado-se o \textit{dataset} por sinal.
+        Por exemplo, cada sinal tem em média 3,68 amostras e isso pode variar de 1 até 59 -- no entanto, o desvio padrão nos revela que tal variação concentra-se muito mais em torno da média; nota-se também que a mão dominante realiza em média 6,04 movimentos distintos em um único sinal, o que pode variar de 1 a 24 para outros.
+
+    % contém estatísticas de números mínimos, máximos, médios e desvio padrão para os sinais contidos no \textit{dataset}. Por exemplo, lê-se que cada sinal possui em média de 3,68 amostras, sendo que alguns deles possuem apenas 1 e outros possuem valores atípicos de 59 amostras (a considerar pelo desvio padrão apresentado). Além disso, cada sinal apresenta em média 6,04 movimentos e 5,37 orientações de mão distintas para a mão dominante.
+\end{itemize}
+
+
+Por fim, a \autoref{fig:dataset-resampling-antes} detalha a relação entre o número de sinais e o número de amostras existentes no ASL-Phono. Por meio dela, percebe-se mais claramente que a maior parte dos sinais concentra-se na faixa dos que possuem entre 1 e 6 amostras, que é exatamente o intervalo descrito pela média e desvio padrão da tabela acima.
+No entanto, há sinais que apresentam 7 ou mais amostras e ainda outros casos atípicos em que 1, 2 ou 3 sinais concentram sozinhos um número muito grande de amostras -- de 13 até 59.
+Discutiremos na seção seguinte nossa abordagem para lidar com esse desbalanceamento e homogeneizar as amostras antes de prosseguirmos com os experimentos.
+
+\figura
+{fig:dataset-resampling-antes} % Label
+{capitulos/metodologia/imagens/dataset_resampling_antes} % Path
+{height=5.5cm} % Size
+{Relação entre número de sinais e número de amostras disponíveis no ASL-Phono.} % Caption
+{} % Citation
+
+
+O \textit{dataset} e o código-fonte resultantes do processamento apresentado nesta seção estão disponíveis publicamente na URL listada abaixo\footnote{Disponível em \url{http://www.cin.ufpe.br/~cca5/asl-phono}}.

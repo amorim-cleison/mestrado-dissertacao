@@ -4,20 +4,20 @@
 % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 \begin{table}[]
     \centering
-    \caption{Exemplo de geração de blocos compactos a partir dos atributos fonológicos providos no ASL-Phono. Uma amostra passa a ser representada então como uma sequência desses blocos.}
+    \caption{Exemplo de compactação dos atributos fonológicos do frame de uma amostra do ASL-Phono em uma ``palavra''.}
     \label{tab:codificacao-bloco}
-    \resizebox{0.90\textwidth}{!}{%
-        \begin{tabular}{rcccccc}
+    \resizebox{0.95\textwidth}{!}{%
+        \begin{tabular}{r|cccccc}
             \hline
             \rowcolor[HTML]{EFEFEF}
-            \multicolumn{1}{r|}{\cellcolor[HTML]{EFEFEF}} & \multicolumn{3}{c}{\cellcolor[HTML]{EFEFEF}Mão dominante}                                               & \multicolumn{3}{c}{\cellcolor[HTML]{EFEFEF}Mão não-dominante}                                                                                             \\
+            \multicolumn{1}{l|}{\cellcolor[HTML]{EFEFEF}} & \multicolumn{6}{c}{\cellcolor[HTML]{EFEFEF}Atributos}                                                                                                                                                                                                                          \\ \cline{2-7}
             \rowcolor[HTML]{EFEFEF}
-            \multicolumn{1}{r|}{\cellcolor[HTML]{EFEFEF}} & Movimento                                                                                               & Orientação                                                    & Config. mão          & Movimento            & Orientação           & Config. mão          \\ \hline
-            \multicolumn{1}{r|}{Original}                 & right\_up                                                                                               & left                                                          & bentBL               & left\_front\_down    & back\_right          & bentBL               \\
-            \multicolumn{1}{r|}{Acrônimo}                 & ru                                                                                                      & l                                                             & bentBL               & lfd                  & br                   & bentBL               \\ \hline
-            \multicolumn{1}{r|}{\textit{Bloco compacto}}  & \multicolumn{6}{c}{\textit{ru-l-bentBL-lfd-br-bentBL}}                                                                                                                                                                                                              \\ \hline
-            \multicolumn{1}{l}{}                          & \multicolumn{1}{l}{}                                                                                    & \multicolumn{1}{l}{}                                          & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\ \hline
-            \multicolumn{1}{r|}{\textit{Amostra}}         & \multicolumn{6}{c}{\textit{{[} ru-l-bentBL-lfd-br-bentBL, d-f-UH-d-r-bentBL, d-f-UH-d-r-F9, ... {]}}}                                                                                                                                                             \\ \hline
+                                                          & \multicolumn{3}{c|}{\cellcolor[HTML]{EFEFEF}Mão dominante}                    & \multicolumn{3}{c}{\cellcolor[HTML]{EFEFEF}Mão não-dominante}                                                                                                                                  \\
+            \rowcolor[HTML]{EFEFEF}
+                                                          & Movimento                                                                     & Orientação                                                    & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}Config. mão} & Movimento                  & Orientação           & Config. mão     \\ \hline
+            Valores originais                             & \textit{right\_up}                                                            & \textit{left}                                                 & \multicolumn{1}{c|}{\textit{bentBL}}                     & \textit{left\_front\_down} & \textit{back\_right} & \textit{bentBL} \\
+            Valores abreviados                            & \textit{ru}                                                                   & \textit{l}                                                    & \multicolumn{1}{c|}{\textit{bentBL}}                     & \textit{lfd}               & \textit{br}          & \textit{bentBL} \\ \hline
+            {\color[HTML]{3531FF} Palavra}                & \multicolumn{6}{c}{{\color[HTML]{3531FF} \textit{ru-l-bentBL-lfd-br-bentBL}}}                                                                                                                                                                                                  \\ \hline
         \end{tabular}%
     }
     \nomefonte{}

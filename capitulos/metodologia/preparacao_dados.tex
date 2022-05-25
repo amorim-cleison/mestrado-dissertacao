@@ -1,45 +1,67 @@
-% PREPARAÇÃO DO DATASET -------------------------------------------
-
-\section{Preparação dos dados}
-\label{sec:metodologia-preparacao-dados}
-
-Para tornar as amostras do ASL-Phono compatíveis com a entrada dos modelos que serão utilizados mais adiante, aplicamos uma transformação simples que consiste em codificar seus atributos fonológicos como blocos ou ``palavras'' únicas, mais compactas. Ou seja, ao invés de utilizar como entrada sequências de frames que contêm propriedades aninhadas, adotamos aqui sequências de blocos compactos que codificam a mesma informação de uma forma mais amigável a modelos sequenciais.
-
-Observe na \autoref{tab:codificacao-bloco} um exemplo deste processo. Na primeira linha, temos os valores originais das propriedades providas para o frame de uma amostra do ASL-Phono; na segunda linha, geram-se acrônimos a partir desses atributos para realizar uma primeira compactação -- mas que não é um passo necessariamente obrigatório; na terceira linha, temos um bloco ou palavra única gerada pela composição desses acrônimos; finalmente, na última linha, temos o exemplo de uma sequência desses blocos.
-
-\input{capitulos/metodologia/tabelas/codificacao_bloco}
-
+\section{Preparação do \textit{dataset}}
+\label{sec:metodologia-preparacao-dataset}
 
 % RESAMPLING DO DATASET -------------------------------------------
 
-Conforme observa-se pela \autoref{tab:dataset-phono-stats}, o ASL-Phono apresenta um desbalanceamento no número de amostras disponíveis por sinal. Em média, há 3,68 amostras disponíveis por sinal porém, enquanto alguns sinais têm apenas 1 amostra, outros apresentam um número atípico de 59. Isso poderia influenciar o desempenho dos modelos utilizados adiante, uma vez que durante o treinamento alguns sinais seriam favorecidos e, outros, penalizados. 
+Conforme introduzimos na seção anterior, o número de amostras disponíveis por sinal não está balanceado homogeneamente no ASL-Phono e, como consequência, isso poderia influenciar de maneira indesejada o desempenho dos modelos utilizados em nossos experimentos, fazendo com que algumas classes fossem extremamente favorecidas e, outras, severamente penalizadas.
 
-Por conta disso, aplicamos dois procedimentos para reduzir o desbalanceamento desses dados: primeiro, eliminamos os sinais com apenas 1 amostra, uma vez que esse número é insuficiente para que o modelo seja capaz de aprender e generalizar acerca desses sinais, sobretudo quando o \textit{dataset} é particionado durante o treinamento; segundo, realizamos uma reamostragem do \textit{dataset} para equilibrar o número de amostras.
+% Conforme observa-se pela \autoref{tab:dataset-phono-stats}, o ASL-Phono apresenta um desbalanceamento no número de amostras disponíveis por sinal. Em média, há 3,68 amostras disponíveis por sinal porém, enquanto alguns sinais têm apenas 1 amostra, outros apresentam um número atípico de 59. Isso poderia influenciar o desempenho dos modelos utilizados adiante, uma vez que durante o treinamento alguns sinais seriam favorecidos e, outros, penalizados. 
 
-Observe na \autoref{subfig:dataset-resampling-antes} um perfil detalhado dos dados antes da reamostragem. É possível perceber que o número de amostras é bastante disperso pelo eixo horizontal do gráfico: por exemplo, 726 sinais apresentam 2 amostras disponíveis; seguidos por 552 sinais com 4 amostras; mas, no outro extremo, temos que apenas um número muito pequeno de sinais (entre 1 e 3) apresentam um grande número de amostras disponíveis (entre 13 e 59), respectivamente.
+Devido a isso, aplicaremos dois procedimentos para tentar equalizar essa proporção. Primeiro, descartaremos aqueles sinais que apresentam apenas 1 amostra disponível, uma vez que esse número é insuficiente para permitir o modelo aprender e generalizar tais sinais, sobretudo porque o \textit{dataset} será particionado em mais de um subconjunto durante seu treinamento e todas as classes precisam estar igualmente representadas neles.
 
-\begin{figure}[ht!]
-    \centering
-    \caption{
-        \textmd{Número de amostras disponíveis por sinal (\subref{subfig:dataset-resampling-antes}) antes da reamostragem e (\subref{subfig:dataset-resampling-depois}) após a reamostragem do ASL-Phono. Por exemplo, lê-se que 726 sinais possuem 2 amostras disponíveis antes da reamostragem.}
-    }
-    \subcaptionbox{\label{subfig:dataset-resampling-antes}}{
-        \includegraphics[height=6cm]{capitulos/metodologia/imagens/dataset_resampling_antes}
-    }%
-    \hspace{1cm}
-    \subcaptionbox{\label{subfig:dataset-resampling-depois}}{
-        \includegraphics[height=6cm]{capitulos/metodologia/imagens/dataset_resampling_depois}
-    }%
-    \nomefonte{}
-    \label{fig:dataset-resampling}
-\end{figure}
+Em seguida, realizaremos uma reamostragem do \textit{dataset} com o intuito de balancear melhor a proporção de amostras.
+Utilizaremos para isso uma reamostragem \textit{Naive Random Under-Sampling} (ou sub-amostragem aleatória ingênua), que reduz o número de amostras super-representadas selecionando aleatoriamente algumas delas e, em seguida, uma \textit{Naive Random Over-Sampling} (ou sobre-amostragem aleatória ingênua) que, por sua vez, aumenta o número de amostras sub-representadas replicando aleatoriamente algumas existentes \cite{he-2013-imbalanced}.
 
-Aplicamos então uma reamostragem \textit{naive random under-sampling} (ou sub-amostragem aleatória ingênua, que reduz o número de amostras através de uma seleção aleatória de algumas delas para os sinais que estão super-representados) seguida de uma \textit{naive random over-sampling} (ou sobre-amostragem aleatória ingênua, que replica aleatoriamente algumas das amostras existentes para os sinais que estão sub-representados).
-Para estabelecer o novo número de amostras por sinal \(x'\), utilizamos a \autoref{eqn:resampling-target}: 
+A \autoref{eqn:resampling-target} define a operação aplicada para definir o número de amostras \(n'\) a ser obtido para cada sinal por processo de reamostragem. Nela, \(\overline{m}\) refere-se à média de amostras por sinal e \(n\) é o número atual de amostras para aquele sinal:
 
 \begin{equation}
     \label{eqn:resampling-target}
-    x' = round( \overline{a} + \ln(x) )
+    n' = round( \overline{m} + \ln(n) )
 \end{equation}
 
-Onde \(\overline{a}\) refere-se ao número médio de amostras por sinal no \textit{dataset} e \(x\) é o número de amostras para aquele sinal. Observe na \autoref{subfig:dataset-resampling-depois} como os dados ficaram organizados após a reamostragem. Em resumo, a equação faz com que o número de amostras por sinal se concentre mais uniformemente a partir do valor da média.
+% Onde \(\overline{m}\) refere-se ao número médio de amostras por sinal no \textit{dataset} e \(n\) é o número de amostras para aquele sinal. 
+
+Observe na \autoref{fig:dataset-resampling-depois} a nova distribuição das amostras no \textit{dataset}. De uma forma resumida, ao comparar com a \autoref{fig:dataset-resampling-antes}, percebemos que a reamostragem homogeneizou a relação de amostras por sinal em torno da nova média do conjunto, trazendo para essa região também os antigos outliers.
+
+% Observe na \autoref{subfig:dataset-resampling-antes} um perfil detalhado dos dados antes da reamostragem. É possível perceber que o número de amostras é bastante disperso pelo eixo horizontal do gráfico: por exemplo, 726 sinais apresentam 2 amostras disponíveis; seguidos por 552 sinais com 4 amostras; mas, no outro extremo, temos que apenas um número muito pequeno de sinais (entre 1 e 3) apresentam um grande número de amostras disponíveis (entre 13 e 59), respectivamente.
+
+\figura
+{fig:dataset-resampling-depois} % Label
+{capitulos/metodologia/imagens/dataset_resampling_depois} % Path
+{height=5.5cm} % Size
+{Distribuição do número de amostras por sinal após a reamostragem.} % Caption
+{} % Citation
+
+
+% \begin{figure}[ht!]
+%     \centering
+%     \caption{
+%         \textmd{Número de amostras disponíveis por sinal (\subref{subfig:dataset-resampling-antes}) antes da reamostragem e (\subref{subfig:dataset-resampling-depois}) após a reamostragem do ASL-Phono. Por exemplo, lê-se que 726 sinais possuem 2 amostras disponíveis antes da reamostragem.}
+%     }
+%     \subcaptionbox{\label{subfig:dataset-resampling-antes}}{
+%         \includegraphics[height=6cm]{capitulos/metodologia/imagens/dataset_resampling_antes}
+%     }%
+%     \hspace{1cm}
+%     \subcaptionbox{\label{subfig:dataset-resampling-depois}}{
+%         \includegraphics[height=6cm]{capitulos/metodologia/imagens/dataset_resampling_depois}
+%     }%
+%     \nomefonte{}
+%     \label{fig:dataset-resampling}
+% \end{figure}
+
+
+
+% COMPACTAÇÃO DAS FEATURES -------------------------------------------
+
+Por fim, aplicaremos uma transformação às amostras do ASL-Phono para tornar a estrutura apresentada na \autoref{fig:sample-json-phono} compatível com a entrada dos modelos que serão aplicados mais adiante.
+Para isso, compactaremos os valores informados para os atributos fonológicos de cada frame em uma ``palavra'' única, fazendo com que a sequência de frames seja então representada como uma sequência dessas palavras.
+
+Por exemplo, se considerássemos um frame contendo dois atributos com valores ``\textit{valor\_atributo\_1}'' e ``\textit{valor\_atributo\_2}'', ao compactá-los, nós primeiro os abreviaríamos para ``\textit{va1}'' e ``\textit{va2}'' e, em seguida, os concatenaríamos formando uma palavra ``\textit{va1-va2}''.  A sequência de frames da amostra tornaria-se, portanto, algo semelhante a uma sequência de palavras \textit{\{``va1-va2'', ``va3-va4'', \dots, ``vaN-vaN''\}}.
+
+Observe na \autoref{tab:codificacao-bloco} um exemplo mais próximo do contexto real para esse processo. Na primeira linha temos os valores originais dos atributos do frame; na segunda, os valores abreviados; na terceira, a palavra formada através da concatenação deles.
+
+% Para tornar as amostras do ASL-Phono compatíveis com a entrada dos modelos que serão utilizados mais adiante, aplicamos uma transformação simples que consiste em codificar seus atributos fonológicos como blocos ou ``palavras'' únicas, mais compactas. Ou seja, ao invés de utilizar como entrada sequências de frames que contêm propriedades aninhadas, adotamos aqui sequências de blocos compactos que codificam a mesma informação de uma forma mais amigável a modelos sequenciais.
+
+% Observe na \autoref{tab:codificacao-bloco} um exemplo deste processo. Na primeira linha, temos os valores originais das propriedades providas para o frame de uma amostra do ASL-Phono; na segunda linha, geram-se acrônimos a partir desses atributos para realizar uma primeira compactação -- mas que não é um passo necessariamente obrigatório; na terceira linha, temos um bloco ou palavra única gerada pela composição desses acrônimos; finalmente, na última linha, temos o exemplo de uma sequência desses blocos.
+
+\input{capitulos/metodologia/tabelas/codificacao_bloco}
