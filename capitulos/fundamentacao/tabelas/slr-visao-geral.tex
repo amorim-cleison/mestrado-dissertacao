@@ -1,0 +1,25 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+    \centering
+    \caption{Estudos em \acrshort{slr} publicados até 2020, agrupados por intervalos de cinco anos (na horizontal) e tamanho de vocabulário modelado (na vertical).}
+    \label{tab:slr-visao-geral}
+    \resizebox{\textwidth}{!}{%
+        \begin{tabular}{r|ccccccc|c}
+            \hline
+            \rowcolor[HTML]{EFEFEF}
+            \cellcolor[HTML]{EFEFEF}                              & \multicolumn{7}{c|}{\cellcolor[HTML]{EFEFEF}Ano} & \cellcolor[HTML]{EFEFEF}                                                                                                                                                                                                     \\
+            \rowcolor[HTML]{EFEFEF}
+            \multirow{-2}{*}{\cellcolor[HTML]{EFEFEF}Vocabulário} & \textless 1990                                   & 1990 - 1995               & 1995 - 2000                & 2000 - 2005                & 2005 - 2010                & 2010 - 2015                & 2015 - 2020                & \multirow{-2}{*}{\cellcolor[HTML]{EFEFEF}Total} \\ \hline
+            0 - 50                                                & \cellcolor[HTML]{FFFCF5}2                        & \cellcolor[HTML]{FFF7E6}5 & \cellcolor[HTML]{FFEBC4}12 & \cellcolor[HTML]{FFEBC4}12 & \cellcolor[HTML]{FFBD39}40 & \cellcolor[HTML]{FFC552}35 & \cellcolor[HTML]{FFAD08}50 & 156                                             \\
+            50 - 200                                              & 0                                                & \cellcolor[HTML]{FFFDFA}1 & \cellcolor[HTML]{FFF5E1}6  & \cellcolor[HTML]{FFEFCE}10 & \cellcolor[HTML]{FFD37A}27 & \cellcolor[HTML]{FFDB92}22 & \cellcolor[HTML]{FFAB03}51 & 117                                             \\
+            200 - 500                                             & 0                                                & \cellcolor[HTML]{FFFDFA}1 & \cellcolor[HTML]{FFFAF0}3  & \cellcolor[HTML]{FFFCF5}2  & \cellcolor[HTML]{FFF3DC}7  & \cellcolor[HTML]{FFE6B5}15 & \cellcolor[HTML]{FFD684}25 & 53                                              \\
+            500 - 1000                                            & 0                                                & 0                         & 0                          & 0                          & \cellcolor[HTML]{FFFDFA}1  & \cellcolor[HTML]{FFEABF}13 & \cellcolor[HTML]{FFEABF}13 & 27                                              \\
+            \textgreater 1000                                     & 0                                                & 0                         & \cellcolor[HTML]{FFFDFA}1  & \cellcolor[HTML]{FFF5E1}6  & \cellcolor[HTML]{FFFAF0}3  & \cellcolor[HTML]{FFF8EB}4  & \cellcolor[HTML]{FFBD39}40 & 54                                              \\ \hline
+            Total                                                 & 2                                                & 7                         & 22                         & 30                         & 78                         & 89                         & 179                        &                                                 \\ \hline
+        \end{tabular}%
+    }
+    \nomefonte[p. 3]{koller-2020-quantitative-survey-slr}
+\end{table}
