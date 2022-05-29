@@ -1,17 +1,17 @@
 \subsection{Breve panorama}
 \label{sec:slr-breve-panorama}
 
-Nesta seção, discutiremos brevemente o panorama observado para a \acrshort{slr} no decorrer das últimas décadas tomando como base as revisões literárias apresentadas por \citeonline{koller-2020-quantitative-survey-slr,rastgoo-2021-slr-deep-survey,papastratis-2021-ai-technologies-sl,wadhawan-2019-slr-literature-review}.
+Nesta seção discutiremos brevemente o panorama observado para a \acrshort{slr} ao longo das últimas décadas, tomando como base as revisões literárias apresentadas por \citeonline{koller-2020-quantitative-survey-slr,rastgoo-2021-slr-deep-survey,papastratis-2021-ai-technologies-sl,wadhawan-2019-slr-literature-review}.
 
 % \citeonline{koller-2020-quantitative-survey-slr} elaborou uma análise quantitativa baseada nos 300 estudos mais relevantes publicados desde 1983, a qual se faz fundamental para compreendermos a evolução da área de \acrshort{slr} bem como o estado da arte atual. Além disso, autores como \citeonline{rastgoo-2021-slr-deep-survey,papastratis-2021-ai-technologies-sl,wadhawan-2019-slr-literature-review} contribuíram nos anos posteriores com pesquisas e revisões literárias que nos permitem esboçar um panorama mais concreto acerca dessa área e aprofundar-nos na breve análise que realizaremos nesta seção.
 
 
 % Visão geral -------------
 
-Iniciemos essa discussão através de uma perspectiva geral do número de estudos que foram publicados nessa área até 2020, conforme identificado por \citeonline{koller-2020-quantitative-survey-slr} e detalhado na \autoref{tab:slr-visao-geral}.
-Por meio dela, percebemos que esse número praticamente dobrou a cada intervalo de 5 anos e, com o advento de novos dispositivos e algoritmos de \acrshort{ia} por volta dos anos 2010, cresceu de forma ainda mais expressiva. Isso evidencia a ênfase recebida pela área mais recentemente.
+Iniciaremos essa discussão através de uma perspectiva geral do número de estudos que foram publicados nessa área até 2020, conforme identificado por \citeonline{koller-2020-quantitative-survey-slr} e detalhado na \autoref{tab:slr-visao-geral}.
+Por meio dela, percebemos que esse número praticamente dobrou a cada intervalo de 5 anos e, com o advento de novos dispositivos e algoritmos de \acrshort{ia} por volta dos anos 2010, cresceu de forma ainda mais expressiva. Isso evidencia a ênfase maior recebida pela área recentemente.
 
-Apesar disso, a tabela também nos revela que a maioria desses estudos aborda o \acrshort{slr} utilizando vocabulários muito pequenos, com menos de 200 sinais. Isso corresponde a conjuntos limitados que são geralmente selecionados para simplificar as pesquisas mas que, na prática, acaba limitando também a representatividade da língua de sinais perante seu contexto real de aplicação.
+Apesar disso, a tabela também nos revela que a maioria desses estudos aborda o \acrshort{slr} utilizando vocabulários muito pequenos, com menos de 200 sinais. Isso corresponde a conjuntos limitados que são geralmente selecionados para simplificar as pesquisas mas que, na prática, acabam limitando também a representatividade da língua de sinais perante seu contexto real de aplicação.
 Apenas a partir de 2015 percebe-se um crescimento mais significativo na adoção de vocabulários com mais de 1000 sinais.
 
 \input{capitulos/fundamentacao/tabelas/slr-visao-geral}
@@ -23,9 +23,9 @@ Apenas a partir de 2015 percebe-se um crescimento mais significativo na adoção
 
 % Sinais isolados x contínuos -------------
 
-A \autoref{tab:slr-isolados-continuos} divide os estudos acima entre aqueles que abordaram a língua utilizando sinais isolados, os quais são reconhecidos separadamente do contexto do discurso, e os que utilizaram sinais contínuos, onde sequências completas são utilizadas nesse processo.
-Percebe-se que a maior parte desses estudos segue pela linha de adotar sinais isolados, uma vez que a abordagem de sinais contínuos é certamente mais complexa e apenas por volta dos anos 2015 surgiram os primeiros \textit{datasets} para essa finalidade.
-Os dados também mostram que ao passo em que estudos com sinais isolados comumente modelam vocabulários pequenos, aqueles que optam por sinais contínuos passaram a preferir vocabulários acima de 1000 sinais desde o surgimento desses \textit{datasets}.
+A \autoref{tab:slr-isolados-continuos} divide os estudos acima entre aqueles que abordam a língua utilizando sinais isolados, os quais são reconhecidos separadamente do contexto do discurso, e os que utilizam sinais contínuos, onde sequências completas são utilizadas nesse processo.
+Percebe-se que a maior parte desses estudos segue pela linha dos sinais isolados, uma vez que a abordagem de sinais contínuos é certamente mais complexa e apenas teve seus primeiros \textit{datasets} disponibilizados por volta dos anos 2015.
+Os dados também nos mostram que, ao passo em que estudos com sinais isolados comumente modelam vocabulários pequenos, aqueles que optam por sinais contínuos passaram a preferir vocabulários acima de 1000 sinais desde o surgimento desses \textit{datasets}.
 
 \input{capitulos/fundamentacao/tabelas/slr-isolados-continuos}
 
@@ -41,8 +41,8 @@ Os dados também mostram que ao passo em que estudos com sinais isolados comumen
 
 % Línguas de sinais  -------------
 
-Ao analisarmos as línguas de sinais abordadas pelos estudos em \acrshort{slr} na \autoref{tab:slr-linguas-sinais}, percebemos que a \acrshort{asl} foi predominante dentre as demais. Isso provavelmente deve-se ao pioneirismo recebido por ela nos estudos de \citeonline{stokoe-1960-sl-structure} que, além de produzir maior clareza acerca de sua estrutura, viabilizou o desenvolvimento de recursos importantes, como \textit{datasets}, que suportaram tais pesquisas.
-As línguas \acrfull{csl} e \acrfull{dgs} aparecem em seguida na tabela com uma participação também relevante que, desde 2010, apresenta números muito semelhantes àqueles da \acrshort{asl}. A \acrfull{libras}, por sua vez, aparece com uma participação mais modesta nesse levantamento realizado por \citeonline{koller-2020-quantitative-survey-slr}.
+Ao analisarmos as línguas de sinais que foram abordadas pelas pesquisas em \acrshort{slr}, conforme \autoref{tab:slr-linguas-sinais}, percebemos que a \acrshort{asl} foi predominante dentre as demais. Isso provavelmente deve-se ao pioneirismo recebido por ela nos estudos de \citeonline{stokoe-1960-sl-structure} que, além de produzir maior clareza acerca de sua estrutura, viabilizou o desenvolvimento de recursos importantes como \textit{datasets}, que suportaram tais pesquisas.
+As línguas \acrfull{csl} e \acrfull{dgs} aparecem em seguida na tabela com uma participação também relevante, a qual desde 2010 apresenta números muito próximos àqueles da \acrshort{asl}. A \acrfull{libras}, por sua vez, aparece de forma mais modesta nesse levantamento realizado por \citeonline{koller-2020-quantitative-survey-slr}.
 
 \input{capitulos/fundamentacao/tabelas/slr-linguas-sinais}
 
@@ -58,14 +58,15 @@ As línguas \acrfull{csl} e \acrfull{dgs} aparecem em seguida na tabela com uma 
 
 % Tipos de dados de entrada -------------
 
-Na \autoref{tab:slr-dados-entrada}, por sua vez, podemos observar a proporção de tipos de dados de entrada utilizados na \acrshort{slr}. Imagens ou frame de vídeos em RGB aparecem em destaque e têm sido adotados desdes os anos iniciais até atualmente. Elas dividiram espaço com outros tipos de dados e dispositivos até por volta dos anos 2005 mas, desde então, tornaram-se predominantes com a maior adoção de técnicas baseadas em \acrfull{cv}.
-Luvas eletrônicas aparecem principalmente nos anos iniciais, quando técnicas envolvendo dispositivos conectados ao corpo dos indivíduos foram muito utilizadas.
-Apesar disso, elas foram gradativamente dando espaço às luvas coloridas e ao \textit{mocap}\footnote{
+Na \autoref{tab:slr-dados-entrada} podemos observar os tipos de dados de entrada utilizados por tais estudos. Imagens ou frame de vídeos em RGB aparecem em destaque e vêm sendo adotados desde os anos iniciais até a atualidade. Ao longo da história da \acrshort{slr} eles dividiram espaço com outros tipos de dados mas, a partir de 2005, tornaram-se predominantes provavelmente pela maior adoção de técnicas baseadas em \acrfull{cv} desde então.
+Luvas eletrônicas estiveram presentes principalmente nos anos iniciais da \acrshort{slr}, quando técnicas envolvendo dispositivos conectados ao corpo dos indivíduos foram muito utilizadas.
+Apesar disso, elas foram gradativamente cedendo espaço a outros tipos como as luvas coloridas e ao \textit{mocap}\footnote{
       \textit{Mocap} (\textit{motion capture} ou captura de movimento): é uma técnica de captura de movimentos que utiliza equipamentos específicos como marcadores ou trajes especiais afixados ao corpo dos indivíduos ou objetos~\cite{kitagawa-2017-mocap}.
-}. Esse último, no entanto, acabou sendo mais limitado por conta da dificuldade de acesso a esse tipo de equipamento, a qual também restringiria sua aplicação no mundo real.
+} até por volta de 2005.
+% Esse último, no entanto, acabou sendo abandonado mais recentemente por conta da dificuldade de acesso a esse tipo de equipamento, a qual também restringiria sua aplicação no mundo real.
 
-O surgimento do Kinect em 2010 representou uma revolução para as pesquisas nessa área, devido à capacidade que ele introduziu de rastrear corpos de indivíduos e de fornecer dados de profundidade além das imagens RGB, o qual não existia na época. Nos anos posteriores ao seu lançamento, vários outros dispositivos também foram introduzidos com o mesmo propósito.
-Na \autoref{tab:slr-dados-entrada}, é possível perceber de forma clara essa mudança para a adoção de dados RGB combinados aos dados de profundidade, decorrente disso.
+O surgimento do Kinect em 2010 representou uma revolução para a área de \acrfull{slr}, devido à capacidade que ele introduziu de rastrear os corpos dos indivíduos e de fornecer dados como coordenadas e imagens profundidade além daquelas RGB, o qual não  existia na época. Nos anos posteriores ao seu lançamento, vários outros dispositivos também foram introduzidos com o mesmo propósito.
+Na \autoref{tab:slr-dados-entrada}, é possível perceber claramente uma mudança para a adoção de dados RGB combinados aos dados de profundidade, decorrente disso.
 
 \input{capitulos/fundamentacao/tabelas/slr-dados-entrada}
 
@@ -100,10 +101,14 @@ Na \autoref{tab:slr-dados-entrada}, é possível perceber de forma clara essa mu
 
 % Tipos de features modeladas -------------
 
-% TODO: trocar parâmetros por 'features'
-\textbf{Tipos de parâmetros modelados}: Nesta seção, serão analisados os tipos de parâmetros extraídos a partir dos dados de entrada utilizados pelos estudos. Os parâmetros serão categorizados entre manuais e não-manuais, conforme parâmetros da língua de sinais introduzidos na \autoref{sec:linguistica-fonologia}. Além disso, também será estabelecida uma categoria para parâmetros que capturam uma visão global dos indivíduos (como as coordenadas do corpo, imagens RGB de \textit{frame} inteiro, imagens de profundidade de \textit{frame} inteiro e imagens de movimento de \textit{frame} inteiro com fluxo óptico).
+Por fim, a \autoref{tab:slr-tipos-features} apresenta os tipos de \textit{features} utilizadas pelos estudos acima. Elas estão categorizados entre \textit{features} manuais, que correspondem aos parâmetros de configuração de mão, orientação, movimento e locação introduzidos na \autoref{sec:linguistica-fonologia}; não-manuais, que referem-se às expressões não-manuais introduzidas na mesma seção; e globais, que são aquelas que capturam uma visão completa do corpo dos indivíduos, como coordenadas, imagens RGB, de profundidade, ou de fluxo óptico.
 
-É importante ressaltar, no entanto, algumas decisões tomadas por \citeonline{koller-2020-quantitative-survey-slr} ao classificar esses estudos. Vários trabalhos publicados após 2015 utilizaram imagens com recortes da mão como entrada para o reconhecimento e o autor atribuiu a estes categoria de parâmetro manual de configuração de mão. Além disso, extratores de características presentes em algoritmos de aprendizagem profunda são capazes de aprender implicitamente parâmetros manuais como a orientação da mão a partir desses mesmos recortes -- e isso foi levado em consideração ao classificá-los. Da mesma forma, uma vez que parâmetros globais (como as coordenadas do corpo ou imagens de \textit{frame} inteiro) contêm todas as informações disponíveis sobre o indivíduo, eles podem ajudar os algoritmos a aprender implicitamente parâmetros manuais como a locação e o movimento e, em menor grau, todos os demais parâmetros. Por fim, para os parâmetros não-manuais, apenas foram considerados trabalhos que explicitamente modelam um problema de reconhecimento de língua de sinais.
+% \textbf{Tipos de parâmetros modelados}: Nesta seção, serão analisados os tipos de parâmetros extraídos a partir dos dados de entrada utilizados pelos estudos. Os parâmetros serão categorizados entre manuais e não-manuais, conforme parâmetros da língua de sinais introduzidos na \autoref{sec:linguistica-fonologia}. Além disso, também será estabelecida uma categoria para parâmetros que capturam uma visão global dos indivíduos (como as coordenadas do corpo, imagens RGB de \textit{frame} inteiro, imagens de profundidade de \textit{frame} inteiro e imagens de movimento de \textit{frame} inteiro com fluxo óptico).
+
+
+% É importante ressaltar, no entanto, algumas decisões tomadas por \citeonline{koller-2020-quantitative-survey-slr} ao classificar esses estudos. Vários trabalhos publicados após 2015 utilizaram imagens com recortes da mão como entrada para o reconhecimento e o autor atribuiu a estes categoria de parâmetro manual de configuração de mão. 
+% Além disso, extratores de características presentes em algoritmos de aprendizagem profunda são capazes de aprender implicitamente parâmetros manuais como a orientação da mão a partir desses mesmos recortes -- e isso foi levado em consideração ao classificá-los.
+% Da mesma forma, uma vez que parâmetros globais (como as coordenadas do corpo ou imagens de \textit{frame} inteiro) contêm todas as informações disponíveis sobre o indivíduo, eles podem ajudar os algoritmos a aprender implicitamente parâmetros manuais como a locação e o movimento e, em menor grau, todos os demais parâmetros. Por fim, para os parâmetros não-manuais, apenas foram considerados trabalhos que explicitamente modelam um problema de reconhecimento de língua de sinais.
 
 
 % É preciso ressaltar que, embora a maioria dos estudos publicados após 2015 utilize um patch de mão recortado como entrada para seus sistemas de reconhecimento, nós o marcamos com o parâmetro de formato de mão. No entanto, usando extratores de recursos baseados em aprendizado profundo, essas entradas de mão podem aprender implicitamente os parâmetros de postura/orientação da mão. Da mesma forma, recursos de entrada global, como entradas de quadro completo, podem ajudar implicitamente a aprender os parâmetros de localização e movimento e, em menor grau, todos os outros parâmetros, bem como a imagem completa, abrange todas as informações disponíveis.
@@ -111,13 +116,25 @@ Na \autoref{tab:slr-dados-entrada}, é possível perceber de forma clara essa mu
 % Para parâmetros não manuais, é preciso ressaltar que focamos em estudos que visam explicitamente o reconhecimento da língua de sinais e também incluem não manuais. Existem muitos trabalhos que se concentram no reconhecimento de marcadores não-manuais para linguagem de sinais, mas esses trabalhos normalmente não modelam um problema de reconhecimento de linguagem de sinais. 
 
 
-A \autoref{tab:slr-tipos-features} mostra a proporção dos tipos de parâmetros com relação ao total de estudos identificados, agrupados em ordem cronológica de intervalos de cinco anos.
-Ela evidencia uma predominância dos parâmetros manuais sobre os demais tipos de parâmetros até o ano de 2015. Percebe-se que a configuração de mão é o parâmetro mais adotado e isso deve-se principalmente ao fato de que uma grande quantidade de trabalhos nessa área aborda o problema de forma extremamente limitada, reconhecendo apenas recortes de mãos estáticas isoladas configuradas como uma letra ou número -- o que não é propriamente o contexto real das línguas de sinais. A locação e movimento aparecem na sequência como o segundo e terceiro parâmetros mais populares, os quais são modelados através de diferentes técnicas.
+Percebe-se uma predominância da adoção de \textit{features} manuais desde os anos iniciais até por volta de 2015. Isso explica-se principalmente pelo fato de que um grande número dessas pesquisas aborda os sinais através de recortes das mãos dos indivíduos, muitas vezes estáticas e fora do seu contexto original. A esse tipo de abordagem \citeonline{koller-2020-quantitative-survey-slr} enquadrou em seu levantamento como sendo refente à configuração de mão e, consequentemente, uma \textit{feature} manual. \textit{Features} relacionadas à locação e ao movimento das mãos também são encontradas modeladas de diferentes maneiras e contribuem para essa predominância.
+
+
+% Ela evidencia uma predominância dos parâmetros manuais sobre os demais tipos de parâmetros até o ano de 2015. Percebe-se que a configuração de mão é o parâmetro mais adotado e isso deve-se principalmente ao fato de que uma grande quantidade de trabalhos nessa área aborda o problema de forma extremamente limitada, reconhecendo apenas recortes de mãos estáticas isoladas configuradas como uma letra ou número -- o que não é propriamente o contexto real das línguas de sinais. A locação e movimento aparecem na sequência como o segundo e terceiro parâmetros mais populares, os quais são modelados através de diferentes técnicas.
+
+
+% A \autoref{tab:slr-tipos-features} mostra a proporção dos tipos de parâmetros com relação ao total de estudos identificados, agrupados em ordem cronológica de intervalos de cinco anos.
+% Ela evidencia uma predominância dos parâmetros manuais sobre os demais tipos de parâmetros até o ano de 2015. Percebe-se que a configuração de mão é o parâmetro mais adotado e isso deve-se principalmente ao fato de que uma grande quantidade de trabalhos nessa área aborda o problema de forma extremamente limitada, reconhecendo apenas recortes de mãos estáticas isoladas configuradas como uma letra ou número -- o que não é propriamente o contexto real das línguas de sinais. A locação e movimento aparecem na sequência como o segundo e terceiro parâmetros mais populares, os quais são modelados através de diferentes técnicas.
 
 % \input{capitulos/fundamentacao/tabelas/parametros-tipos}
+
+
+Com o advento do Kinect e das técnicas de \acrlong{dl} a partir de 2010, as \textit{features} globais passaram a assumir uma posição bastante expressiva nesses estudos. Isso porque, ao mesmo tempo em que aquele dispositivo passou a fornecer novos tipos de informações, como coordenadas corporais e dados de profundidade combinados com RGB, essas técnicas introduziram um poder de processamento que possibilitou com que essas informações fossem utilizadas diretamente como \textit{features} de entrada para eles.
+Por outro lado, as \textit{features} não-manuais não chegaram a apresentar uma adoção significativa perante os demais tipos, ao analisá-los de um modo geral.
+
 \input{capitulos/fundamentacao/tabelas/slr-tipos-features}
 
-A partir de 2015, no entanto, as imagens RGB de \textit{frame} inteiro do indivíduo passaram a figurar como o tipo de parâmetro mais frequentemente encontrado, apesar de ainda permanecerem muito próximas da proporção de trabalhos utilizando configuração de mão. Percebe-se também que por volta desse mesmo período a adoção de parâmetros globals, que era praticamente inexistente em anos anteriores, começou a crescer. \citeonline{koller-2020-quantitative-survey-slr} afirma que isso se deve a dois motivos principais: primeiro, a disponibilização de coordenadas corporais e de imagens de profundidade de \textit{frame} inteiro, que se deu com o lançamento do Kinect em 2010; e, segundo, a introdução de técnicas de aprendizagem profunda nessa área a partir de 2015, que também impulsionou a tendência de utilizar \textit{frames} inteiros ao invés de realizar a engenharia manual de parâmetros.
+
+% A partir de 2015, no entanto, as imagens RGB de \textit{frame} inteiro do indivíduo passaram a figurar como o tipo de parâmetro mais frequentemente encontrado, apesar de ainda permanecerem muito próximas da proporção de trabalhos utilizando configuração de mão. Percebe-se também que por volta desse mesmo período a adoção de parâmetros globals, que era praticamente inexistente em anos anteriores, começou a crescer. \citeonline{koller-2020-quantitative-survey-slr} afirma que isso se deve a dois motivos principais: primeiro, a disponibilização de coordenadas corporais e de imagens de profundidade de \textit{frame} inteiro, que se deu com o lançamento do Kinect em 2010; e, segundo, a introdução de técnicas de aprendizagem profunda nessa área a partir de 2015, que também impulsionou a tendência de utilizar \textit{frames} inteiros ao invés de realizar a engenharia manual de parâmetros.
 
 
 %A Tabela 6 agrega a localização, movimento, forma e orientação da mão em parâmetros manuais. Cabeça, boca, olhos, piscar de olhos, sobrancelhas e olhares são referidos como parâmetros não manuais. As articulações do corpo, fullframe, profundidade e movimento são todos computados na imagem completa e, portanto, os chamamos de recursos globais. Podemos ver que com vocabulários modelados maiores a tendência vai de recursos manuais para globais (lado esquerdo da Tabela 6), onde estes últimos aumentam de 18% de uso em todos os resultados publicados com vocabulários de até 50 sinais para 62% com vocabulários grandes acima 1000 sinais. O aumento de recursos globais pode ter dois motivos:
