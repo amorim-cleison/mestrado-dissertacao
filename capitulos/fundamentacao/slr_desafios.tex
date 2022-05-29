@@ -1,7 +1,7 @@
 \subsection{Desafios da área}
 \label{sec:slr-desafios}
 
-Nesta seção, discutiremos alguns dos principais desafios identificados para o \acrfull{slr} segundo as perspectivas de diferentes autores.
+Nesta seção, discutiremos alguns dos principais desafios identificados para o \acrfull{slr} segundo perspectivas apresentadas por \citeonline{bragg-2019-slr-interdisciplinary,cooper-2011-slr}.
 Apesar de serem constatados vários avanços e um aumento no interesse por essa área ao longo dos últimos anos, muitos desses desafios ainda representam barreiras importantes que limitam a produção de progressos mais expressivos.
 
 Dessa forma, essa discussão nos ajudará a conscientizar acerca deles e compreender a jornada ainda a ser percorrida pela área, bem como a direção que precisamos adotar para isso.
@@ -20,74 +20,88 @@ Sendo assim, iniciemos enumerando esses desafios:
 
 
 \begin{enumerate}
-    \item \textbf{Abordagem inadequada}:
-          de acordo com \citeonline{bragg-2019-slr-interdisciplinary}, muitas pesquisas em \acrshort{slr} ocorrem em silos disciplinares e, por conta disso, acabam por não abordar o problema de forma abrangente.
-          Por exemplo, publicações que limitam-se a rotular imagens de mãos estáticas em determinadas configurações deixam de considerar o contexto em volta delas ou como aquilo se conecta com a linguística.
-          Em outros casos, prosseguem \citeonline{cooper-2011-slr}, o \acrshort{slr} é tratado como uma tarefa simples de reconhecimento de gestos, onde os sinais são considerados apenas um conjunto de possibilidades bem definidas a serem rotuladas.
-          %   Por exemplo, muitas publicações apresentam algoritmos de detecção ou reconhecimento de sinais, mas poucas realizam a tradução para uma outra língua; ou ainda, várias pesquisas limitam-se a rotular imagens de mãos paradas na configuração de uma letra ou número isolados, mas não observam o contexto real em volta delas ou o que aquilo significa perante a linguística.
+      \item \textbf{Abordagem inadequada}:
+            de acordo com \citeonline{bragg-2019-slr-interdisciplinary}, muitas pesquisas em \acrshort{slr} ocorrem em silos disciplinares e, por conta disso, acabam por não abordar esse problema de forma abrangente.
+            Por exemplo, publicações que limitam-se a rotular imagens de mãos estáticas em determinadas configurações deixam de considerar o contexto em volta delas ou a forma com que aquilo se conecta à linguística.
+            Em outros casos, \citeonline{cooper-2011-slr} afirmam que o \acrshort{slr} é tratado como uma tarefa simples de reconhecimento de gestos, onde os sinais são considerados apenas um conjunto de possibilidades bem definidas a serem rotuladas.
+            %   Por exemplo, muitas publicações apresentam algoritmos de detecção ou reconhecimento de sinais, mas poucas realizam a tradução para uma outra língua; ou ainda, várias pesquisas limitam-se a rotular imagens de mãos paradas na configuração de uma letra ou número isolados, mas não observam o contexto real em volta delas ou o que aquilo significa perante a linguística.
 
-          %   Segundo \citeonline{cooper-2011-slr}, notam-se também trabalhos abordando o problema como sendo um reconhecimento de gestos, onde busca-se identificar parâmetros e métodos para rotular os sinais dentro de um conjunto de possibilidades. No entanto, as línguas de sinais vão muito mais além do que uma coleção de gestos bem especificados.
-
-
-
-          %   Além disso, por conta da complexidade maior que representa reconhecer sinais contínuos, percebe-se que há uma preferência nesses estudos por reconhecer sinais isolados, bem como uma oferta maior de \textit{dataset}s com sinais isolados. Essa complexidade se dá principalmente porque, na língua de sinais, a transição entre os sinais não é claramente demarcada, uma vez que as mãos estarão sempre se movendo para a posição inicial do próximo sinal. Isso é conhecido como epêntese de movimento ou co-articulação -- termos emprestados da terminologia da fala.
-          %   Contudo, \citeonline{cooper-2011-slr} ressaltam que quando consideramos sistemas de reconhecimento de línguas de sinais que sejam aplicáveis ao mundo real, há uma demanda por enfatizar os sinais contínuos ou ao menos desenvolver técnicas que possam ser evoluídas para utilização nesse contexto.
-
-          Além disso, \citeonline{bragg-2019-slr-interdisciplinary} observam que equipes desenvolvendo algoritmos de para as línguas sinais comumente carecem de maior propriedade acerca delas, seja pela envolvimento de membros Surdos, pelo aprofundamento das complexidades linguísticas que esses algoritmos deveriam considerar, ou pela empatia com os problemas reais que tais algoritmos poderiam resolver.
-
-          Muito frequentemente também, esses algoritmos são treinados em \textit{datasets} que não refletem contextos reais de uso, como no caso daqueles que envolvem indivíduos não-nativos na língua ou que são coletados da internet e cuja procedência não pode ser confirmada.
-
-          %   , por exemplo, no reconhecimento de mãos estáticas individuais fora do contexto do sinalizador. Todos esses fatores resultam em abordagens que têm um valor bastante limitado no mundo real.
-
-          %     Copper - The task of recognition is often simplified by forcing the possible word sequence to conform to a grammar which limits the potential choices and thereby improves recognition rates [91, 104, 12, 45].
+            %   Segundo \citeonline{cooper-2011-slr}, notam-se também trabalhos abordando o problema como sendo um reconhecimento de gestos, onde busca-se identificar parâmetros e métodos para rotular os sinais dentro de um conjunto de possibilidades. No entanto, as línguas de sinais vão muito mais além do que uma coleção de gestos bem especificados.
 
 
 
-    \item \textbf{Natureza visual}:
-          por serem visuais, as línguas de sinais apresentam o desafio de serem multicanais, ou sejam, elas transmitem significado através de vários canais simultâneos que precisam ser considerados -- como mãos, corpo, expressões da face, entre outros.
+            %   Além disso, por conta da complexidade maior que representa reconhecer sinais contínuos, percebe-se que há uma preferência nesses estudos por reconhecer sinais isolados, bem como uma oferta maior de \textit{dataset}s com sinais isolados. Essa complexidade se dá principalmente porque, na língua de sinais, a transição entre os sinais não é claramente demarcada, uma vez que as mãos estarão sempre se movendo para a posição inicial do próximo sinal. Isso é conhecido como epêntese de movimento ou co-articulação -- termos emprestados da terminologia da fala.
+            %   Contudo, \citeonline{cooper-2011-slr} ressaltam que quando consideramos sistemas de reconhecimento de línguas de sinais que sejam aplicáveis ao mundo real, há uma demanda por enfatizar os sinais contínuos ou ao menos desenvolver técnicas que possam ser evoluídas para utilização nesse contexto.
 
-          %   As línguas de sinais são visuais e apresentam o desafio de serem multicanais, ou seja, o significado é transmitido através de vários modos ao mesmo tempo \cite{cooper-2011-slr}. Por exemplo, a informação é articulada através de ambas as mãos, mas também seu significado depende da relação delas com o corpo do articulador e com o espaço à sua frente; além disso, também fazem parte as expressões não-manuais que ocorrem simultaneamente, as quais podem alterar o discurso; todos esses canais compõem a mensagem sendo transmitida e precisam ser levados em consideração.
+            Um outro fator apontado por \citeonline{bragg-2019-slr-interdisciplinary} é de que equipes desenvolvendo algoritmos de para as línguas sinais comumente carecem de maior propriedade acerca delas, seja pela envolvimento de membros Surdos, pela exposição a essa cultura, pelo aprofundamento das complexidades linguísticas que esses algoritmos deveriam considerar, ou pela empatia com os problemas reais que eles deveriam resolver.
 
-          Dessa forma, \citeonline{bragg-2019-slr-interdisciplinary} comentam que não é suficiente simplesmente replicar para o \acrshort{slr} as técnicas utilizadas com sucesso por outras áreas, como o reconhecimento de línguas faladas ou escritas, uma vez que elas assumem a existência de um único canal.
-          Além disso, essas técnicas comumente adotam algum tipo de anotação no formato de texto como entrada, porém, as línguas de sinais não possuem uma forma escrita ou anotação padrão.
-          Como consequência, surge a necessidade de que técnicas específicas sejam estabelecidas para acomodar de maneira adequada as particularidades dos sinais.
+            Muito frequentemente também, utilizam-se \textit{datasets} que não refletem contextos reais de uso para treinar tais algoritmos, como no caso daqueles que envolvem indivíduos não-nativos na língua ou que são coletados da internet e cuja procedência não pode ser confirmada.
 
-          %   \citeonline{bragg-2019-slr-interdisciplinary} comentam que um dos principais desafios enfrentados na modelagem e processamento das línguas de sinais é a impossibilidade de aplicar métodos de \acrshort{mt} e \acrshort{nlp} poderosos que já são utilizados por línguas faladas ou escritas devido às diferenças estruturais que elas apresentam. Segundo eles, a aplicação direta desses métodos deixaria de capturar aspectos importantes dos sinais ou simplesmente não funcionaria. Isso porque muitos desses métodos assumem a existência de uma única palavra executada por vez ou consideram que o contexto não altera a palavra sendo pronunciada, o que não é o caso das línguas de sinais: estas adotam diferentes canais simultâneos e sua interpretação depende da forma como o conteúdo é organizado no contexto espacial.
+            %   , por exemplo, no reconhecimento de mãos estáticas individuais fora do contexto do sinalizador. Todos esses fatores resultam em abordagens que têm um valor bastante limitado no mundo real.
 
-
-          %   Além disso, técnicas de \acrshort{mt} e \acrshort{nlp} geralmente utilizam algum tipo de anotação (geralmente no formato de texto) como informação de entrada. As línguas de sinais, em contrapartida, não possuem uma forma escrita ou anotação padrão e, devido a isso, há uma escassez de dados anotados confiáveis e em larga escala para alimentar essas técnicas.
-          %   Ainda que pesquisadores optassem por selecionar um sistema de anotação em particular para descrever os sinais, este seria um processo demorado e suscetível a erros. Isso também demandaria um treinamento extensivo para que esses indivíduos alcançassem proficiência na língua de sinais e no sistema de anotação escolhido, o que seria caro e restringiria o número de pessoas capazes de contribuir com essa tarefa. Esse problema conduz a uma dificuldade em combinar \textit{dataset}s distintos afim de aumentar o poder dos algoritmos desenvolvidos ou possibilitar que eles aprendam a partir de conteúdos gerados naturalmente \cite{bragg-2019-slr-interdisciplinary}.
-
-
-          Por fim, \citeonline{cooper-2011-slr} ressaltam a lacuna decorrente da falta de atenção recebida pelas expressões não-manuais nas pesquisas em \acrshort{slr}.
-          Conforme discutimos na \autoref{sec:linguistica}, muito da carga linguística dos sinais é transmitida através dessas expressões e isso as torna parâmetros essenciais da língua. No entanto, observa-se na \autoref{sec:slr-breve-panorama} que apenas uma proporção muito baixa desses estudos efetivamente abordam elas.
-
-          %   De acordo com os autores, grande parte da informação de um sinal é transmitida através desse canal e, particularmente, há sinais que distinguem-se exclusivamente por meio desses traços não-manuais -- conforme discutimos nas seções anteriores. Com isso, percebe-se uma lacuna importante em que parte da mensagem transmitida pelo interlocutor deixa de ser capturada ou interpretada corretamente nesse processo de reconhecimento.
-
-          %   Finalmente, \citeonline{cooper-2011-slr} ressaltam a pouca atenção que os parâmetros não-manuais têm recebido pelos estudos em \acrshort{slr}. De acordo com os autores, grande parte da informação de um sinal é transmitida através desse canal e, particularmente, há sinais que distinguem-se exclusivamente por meio desses traços não-manuais -- conforme discutimos nas seções anteriores. Com isso, percebe-se uma lacuna importante em que parte da mensagem transmitida pelo interlocutor deixa de ser capturada ou interpretada corretamente nesse processo de reconhecimento.
+            %     Copper - The task of recognition is often simplified by forcing the possible word sequence to conform to a grammar which limits the potential choices and thereby improves recognition rates [91, 104, 12, 45].
 
 
 
-    \item \textbf{Linguística particular}:
-          Conforme discutimos nas seções anteriores, as línguas de sinais possuem um sistema linguístico próprio desenvolvido em torno do espaço e dos diferentes canais disponíveis ao interlocutor para produzir significado -- o que as difere das línguas faladas, que por sua vez se desenvolvem primariamente em torno de um único canal representado pela voz.
+      \item \textbf{Natureza visual}:
+            as línguas de sinais apresentam o desafio de serem multicanais, ou sejam, elas transmitem significado através de vários canais visuais simultâneos que precisam ser considerados -- como os movimentos das mãos, do corpo, expressões da face, entre outros.
 
-          Essas particularidades tornam a \acrshort{slr} um universo ainda cheia de desafios e variáveis a serem exploradas para que possa alcançar a mesma maturidade que a área de reconhecimento de voz -- que já dispõe de soluções comerciais bastantes confiáveis. Segundo \citeonline{bragg-2019-slr-interdisciplinary}, compreender e abordar corretamente a representação dessa língua requer exposição à cultura Surda e à sua linguística, que é algo que as comunidades que impulsionam o progresso de subáreas da \acrshort{slr} (como a visão computacional, por exemplo) geralmente não possuem.
+            %   As línguas de sinais são visuais e apresentam o desafio de serem multicanais, ou seja, o significado é transmitido através de vários modos ao mesmo tempo \cite{cooper-2011-slr}. Por exemplo, a informação é articulada através de ambas as mãos, mas também seu significado depende da relação delas com o corpo do articulador e com o espaço à sua frente; além disso, também fazem parte as expressões não-manuais que ocorrem simultaneamente, as quais podem alterar o discurso; todos esses canais compõem a mensagem sendo transmitida e precisam ser levados em consideração.
 
-          Portanto, ao mesmo tempo em que há uma demanda para que se desenvolvam técnicas que abordem as particularidades das línguas de sinais -- ao invés de replicar aquelas desenvolvidas para línguas faladas -- afim produzir progressos mais efetivos, há primeiro  uma necessidade de que os pesquisadores envolvidos nessa área reconheçam e se apropriem dessas particularidades.
+            Dessa forma, \citeonline{bragg-2019-slr-interdisciplinary} comentam que não é suficiente simplesmente replicar para o \acrshort{slr} as técnicas utilizadas com sucesso por outras áreas, como o reconhecimento de línguas faladas ou escritas, uma vez que elas assumem a existência de um canal único.
+            Além disso, técnicas assim comumente adotam algum tipo de anotação no formato de texto como entrada, no entanto, as línguas de sinais não possuem uma forma escrita ou uma anotação padrão.
+
+            Sendo assim, existe uma necessidade de que técnicas específicas sejam estabelecidas com o intuito de acomodar adequadamente as particularidades dos sinais.
+
+            %   \citeonline{bragg-2019-slr-interdisciplinary} comentam que um dos principais desafios enfrentados na modelagem e processamento das línguas de sinais é a impossibilidade de aplicar métodos de \acrshort{mt} e \acrshort{nlp} poderosos que já são utilizados por línguas faladas ou escritas devido às diferenças estruturais que elas apresentam. Segundo eles, a aplicação direta desses métodos deixaria de capturar aspectos importantes dos sinais ou simplesmente não funcionaria. Isso porque muitos desses métodos assumem a existência de uma única palavra executada por vez ou consideram que o contexto não altera a palavra sendo pronunciada, o que não é o caso das línguas de sinais: estas adotam diferentes canais simultâneos e sua interpretação depende da forma como o conteúdo é organizado no contexto espacial.
+
+
+            %   Além disso, técnicas de \acrshort{mt} e \acrshort{nlp} geralmente utilizam algum tipo de anotação (geralmente no formato de texto) como informação de entrada. As línguas de sinais, em contrapartida, não possuem uma forma escrita ou anotação padrão e, devido a isso, há uma escassez de dados anotados confiáveis e em larga escala para alimentar essas técnicas.
+            %   Ainda que pesquisadores optassem por selecionar um sistema de anotação em particular para descrever os sinais, este seria um processo demorado e suscetível a erros. Isso também demandaria um treinamento extensivo para que esses indivíduos alcançassem proficiência na língua de sinais e no sistema de anotação escolhido, o que seria caro e restringiria o número de pessoas capazes de contribuir com essa tarefa. Esse problema conduz a uma dificuldade em combinar \textit{dataset}s distintos afim de aumentar o poder dos algoritmos desenvolvidos ou possibilitar que eles aprendam a partir de conteúdos gerados naturalmente \cite{bragg-2019-slr-interdisciplinary}.
+
+            %   De acordo com os autores, grande parte da informação de um sinal é transmitida através desse canal e, particularmente, há sinais que distinguem-se exclusivamente por meio desses traços não-manuais -- conforme discutimos nas seções anteriores. Com isso, percebe-se uma lacuna importante em que parte da mensagem transmitida pelo interlocutor deixa de ser capturada ou interpretada corretamente nesse processo de reconhecimento.
+
+            %   Finalmente, \citeonline{cooper-2011-slr} ressaltam a pouca atenção que os parâmetros não-manuais têm recebido pelos estudos em \acrshort{slr}. De acordo com os autores, grande parte da informação de um sinal é transmitida através desse canal e, particularmente, há sinais que distinguem-se exclusivamente por meio desses traços não-manuais -- conforme discutimos nas seções anteriores. Com isso, percebe-se uma lacuna importante em que parte da mensagem transmitida pelo interlocutor deixa de ser capturada ou interpretada corretamente nesse processo de reconhecimento.
 
 
 
-    \item \textbf{\textit{Datasets} limitados}:
-          De acordo com \citeonline{cooper-2011-slr} e \citeonline{bragg-2019-slr-interdisciplinary}, os conjuntos de dados disponíveis publicamente para línguas de sinais são limitados em quantidade e qualidade, e essas deficiências limitam o poder e a capacidade de generalização dos algoritmos de aprendizagem de máquina aplicados ao \acrshort{slr}, tornando muitos deles inadequados para abordar os desafios apresentados por essa área.
+      \item \textbf{Linguística particular}: conforme introduzimos na seção \autoref{sec:linguistica}, as línguas de sinais possuem um sistema linguístico próprio e complexo desenvolvido em torno do espaço visual, o qual as diferencia das línguas faladas.
+            Abordar essa linguística é um fator fundamental para tratá-las efetivamente como línguas e não apenas como sistemas de gestos, o que certamente conduzirá a avanços mais concretos no \acrshort{slr}. Contudo, quando analisamos os estudos nessa área percebemos que são poucos aqueles que realizam esse tipo de abordagem.
 
-          \textit{Datasets} maiores e mais diversos são essenciais para treinar modelos mais generalizáveis e independentes perante amostras nunca vistas antes. Além disso, as técnicas mais modernas atualmente disponíveis (como a aprendizagem profunda) funcionam melhor em cenários ricos em dados. Em áreas como o reconhecimento da fala, por exemplo, o sucesso foi possível graças ao treinamento utilizando corpus contendo milhões de amostras de palavras; no caso do reconhecimento de sinais, os \textit{dataset}s são várias ordens de magnitude menores e normalmente contêm abaixo de 10.000 ou 100.000 sinais.
+            \citeonline{cooper-2011-slr} também ressaltam a pouca atenção que é recebida pelos parâmetros não-manuais nessas pesquisas, que comumente se concentram apenas em recortes das mãos dos indivíduos -- conforme discutimos na \autoref{sec:slr-breve-panorama}.
+            Apesar disso, a \autoref{sec:linguistica} nos mostra que muito da carga linguística dos sinais é transmitida através desses parâmetros e isso os torna elementos essenciais da língua que precisam ser endereçados.
 
-          Outro problema destacado por \citeonline{bragg-2019-slr-interdisciplinary} corresponde à baixa diversidade de usuários representada nesses \textit{dataset}s, que ocorre por serem pequenos e também por dependerem excessivamente de conteúdo produzido por intérpretes ou consultores. Para refletir com precisão a população Surda e cenários mais realistas de uso, seria necessário abranger uma variedade maior de gênero, idade, roupas, geografia, cultura, tom de pele, proporções corporais, deficiências, fluência, planos de fundo, condições de iluminação, qualidade e ângulos de câmera, entre outros. Também é importante explorar uma diversidade maior de línguas de sinais, uma vez que a abrangência geralmente se concentra em torno de duas ou três línguas.
+            % Conforme discutimos nas seções anteriores, as línguas de sinais possuem um sistema linguístico próprio desenvolvido em torno do espaço e dos diferentes canais disponíveis ao interlocutor para produzir significado -- o que as difere das línguas faladas, que por sua vez se desenvolvem primariamente em torno de um único canal representado pela voz.
 
-          Além disso, muitos desses \textit{dataset}s permitem a contribuição de usuários não-nativos da língua de sinais, como pessoas inexperientes ou estudantes da língua. Permitem também que sejam incluídas amostras recortadas de fontes online, como o YouTube, cuja procedência e nível de habilidade dos usuários são desconhecidos.
-          Isso conduz a uma representação inadequada do contexto real de uso da língua pelo grupo de usuários central nessas pesquisas, que são os Surdos e nativos na língua.
+            % Essas particularidades tornam a \acrshort{slr} um universo ainda cheia de desafios e variáveis a serem exploradas para que possa alcançar a mesma maturidade que a área de reconhecimento de voz -- que já dispõe de soluções comerciais bastantes confiáveis. Segundo \citeonline{bragg-2019-slr-interdisciplinary}, compreender e abordar corretamente a representação dessa língua requer exposição à cultura Surda e à sua linguística, que é algo que as comunidades que impulsionam o progresso de subáreas da \acrshort{slr} (como a visão computacional, por exemplo) geralmente não possuem.
 
-          Por fim, uma vez que casos de uso reais das línguas de sinais envolvem conversação natural com frases completas e enunciados mais longos, impulsionar o surgimento de mais \textit{dataset}s abrangendo sinais contínuos é certamente um passo importante para superar alguns dos desafios que discutimos acima \cite{bragg-2019-slr-interdisciplinary}.
+            % Portanto, ao mesmo tempo em que há uma demanda para que se desenvolvam técnicas que abordem as particularidades das línguas de sinais -- ao invés de replicar aquelas desenvolvidas para línguas faladas -- afim produzir progressos mais efetivos, há primeiro  uma necessidade de que os pesquisadores envolvidos nessa área reconheçam e se apropriem dessas particularidades.
+
+
+
+      \item \textbf{\textit{Datasets} limitados}:
+            segundo \citeonline{cooper-2011-slr,bragg-2019-slr-interdisciplinary}, os \textit{datasets} disponíveis publicamente para as línguas de sinais costumam ser limitados em quantidade e qualidade.
+            Como consequência, isso acaba também limitando a variedade e o desempenho dos algoritmos que poderiam ser aplicados ao \acrshort{slr}, uma vez que técnicas recentes como a \acrlong{dl} demandam uma grande quantidade de dados para funcionar adequadamente.
+            Em áreas como o reconhecimento da fala, por exemplo, o estado da arte foi alcançado graças à utilização de corpus com milhões de amostras de palavras; no caso das línguas de sinais, no entanto, os \textit{datasets} não costumam ultrapassar 10.000 ou 100.000 amostras.
+
+            % De acordo com \citeonline{cooper-2011-slr} e \citeonline{bragg-2019-slr-interdisciplinary}, os conjuntos de dados disponíveis publicamente para línguas de sinais são limitados em quantidade e qualidade, e essas deficiências limitam o poder e a capacidade de generalização dos algoritmos de aprendizagem de máquina aplicados ao \acrshort{slr}, tornando muitos deles inadequados para abordar os desafios apresentados por essa área.
+
+            % \textit{Datasets} maiores e mais diversos são essenciais para treinar modelos mais generalizáveis e independentes perante amostras nunca vistas antes. Além disso, as técnicas mais modernas atualmente disponíveis (como a aprendizagem profunda) funcionam melhor em cenários ricos em dados. Em áreas como o reconhecimento da fala, por exemplo, o sucesso foi possível graças ao treinamento utilizando corpus contendo milhões de amostras de palavras; no caso do reconhecimento de sinais, os \textit{dataset}s são várias ordens de magnitude menores e normalmente contêm abaixo de 10.000 ou 100.000 sinais.
+
+
+            \citeonline{bragg-2019-slr-interdisciplinary} também destacam que há uma representatividade limitada de indivíduos e situações nesses \textit{datasets}, que ocorre porque eles geralmente são criados em ambientes controlados envolvendo consultores ou intérpretes da língua.
+            Representatividade nesse contexto refere-se à variedade de características como idade, geografia, tom de pele, deficiência, proficiência, condições do ambiente, qualidade da câmera, ângulos de captura, entre outras.
+
+
+            % Outro problema destacado por \citeonline{bragg-2019-slr-interdisciplinary} corresponde à baixa diversidade de usuários representada nesses \textit{dataset}s, que ocorre por serem pequenos e também por dependerem excessivamente de conteúdo produzido por intérpretes ou consultores. Para refletir com precisão a população Surda e cenários mais realistas de uso, seria necessário abranger uma variedade maior de gênero, idade, roupas, geografia, cultura, tom de pele, proporções corporais, deficiências, fluência, planos de fundo, condições de iluminação, qualidade e ângulos de câmera, entre outros. Também é importante explorar uma diversidade maior de línguas de sinais, uma vez que a abrangência geralmente se concentra em torno de duas ou três línguas.
+
+            % Além disso, muitos desses \textit{dataset}s permitem a contribuição de usuários não-nativos da língua de sinais, como pessoas inexperientes ou estudantes da língua. Permitem também que sejam incluídas amostras recortadas de fontes online, como o YouTube, cuja procedência e nível de habilidade dos usuários são desconhecidos.
+            % Isso conduz a uma representação inadequada do contexto real de uso da língua pelo grupo de usuários central nessas pesquisas, que são os Surdos e nativos na língua.
+
+
+            Além disso, os autores ressaltam a importância de se desenvolverem mais \textit{datasets} com sinais contínuos, envolvendo sequências completas de diálogos e enunciados mais longos, uma vez que isso reflete melhor contextos reais de utilização da língua.
+
+            % Por fim, uma vez que casos de uso reais das línguas de sinais envolvem conversação natural com frases completas e enunciados mais longos, impulsionar o surgimento de mais \textit{dataset}s abrangendo sinais contínuos é certamente um passo importante para superar alguns dos desafios que discutimos acima \cite{bragg-2019-slr-interdisciplinary}.
 
 \end{enumerate}
 

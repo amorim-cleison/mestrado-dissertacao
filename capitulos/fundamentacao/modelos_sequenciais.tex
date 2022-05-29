@@ -1,51 +1,79 @@
 \section{Modelos sequenciais}
 \label{sec:modelos-sequenciais}
 
-\citeonline{jurafsky-2022-speech-lang-processing} afirmam que a linguagem é um fenômeno inerentemente temporal e que pode ser compreendida como uma sequência de eventos que se desdobram ao longo do tempo como um fluxo contínuo de dados. 
+Introduziremos aqui uma breve discussão acerca dos modelos sequenciais de \acrlong{dl}, bem como sua importância dentro da área de \acrfull{nlp} para lidar com tarefas envolvendo linguagens.
 
-As arquiteturas sequenciais de aprendizagem profunda lidam diretamente com essa natureza sequencial e são capazes de capturar e explorar tal aspecto temporal da língua. 
-Entre as mais populares, estão a \acrfull{rnn} (e suas extensões, dentre as quais o \acrfull{lstm} e a \acrfull{gru} são as mais utilizadas) e o \textit{Transformer}. 
+\citeonline{jurafsky-2022-speech-lang-processing} afirmam que a linguagem é um fenômeno inerentemente temporal e que pode ser compreendida como uma sequência de eventos que se desdobram ao longo do tempo, como um fluxo contínuo de dados.
+Os modelos sequenciais lidam diretamente com essa natureza, e são capazes de capturar e explorar tal aspecto temporal.
+Os tipos de arquiteturas mais populares desses modelos são a \acrfull{rnn} (e suas extensões, dentre as quais o \acrfull{lstm} e a \acrfull{gru} são as mais utilizadas) e o \textit{Transformer}.
 
 % Devido a isso, neste trabalho selecionamos algumas dessas arquiteturas para avaliar a eficácia da abordagem proposta, as quais são: \acrfull{lstm}~\cite{hochreiter-1997-lstm} e \acrfull{gru}~\cite{cho-2014-gru} -- que são extensões da arquitetura \acrfull{rnn}~\cite{mikolov-2010-rnn} -- e o \textit{Transformer}~\cite{vaswani-2017-transformer}. 
 
-\acrshortpl{rnn}~\cite{mikolov-2010-rnn} são redes que contêm ciclos (ou recorrências) em suas conexões, que fazem com que o valor de suas unidades sejam direta ou indiretamente dependentes de suas próprias saídas anteriores. 
-Elas processam sequências de entrada uma palavra por vez, tentando prever a próxima palavra com base na atual e no contexto (ou estado oculto) anterior que, por sua vez, pode representar as informações de todas as palavras anteriores da sequência \cite{jurafsky-2022-speech-lang-processing}.
-No entanto, \citeonline{lecun-2015-deep-learning,goodfellow-2016-deep-learning} afirmam que essas redes apresentam limitações em armazenar informações por um período muito longo de tempo -- dentre as quais estão os problemas de desaparecimento e explosão de gradiente --, o que demandou o desenvolvimento de extensões dessa arquitetura capazes de abordar melhor tais limitações.
+As \acrshortpl{rnn} consistem de redes neurais criadas por \citeonline{mikolov-2010-rnn} que contêm ciclos (ou recorrências) em suas conexões, que fazem com que o valor de suas unidades sejam direta ou indiretamente dependentes de suas próprias saídas anteriores.
+De um modo geral, elas funcionam processando cada palavra da sequência e combinando ela com o contexto (ou estado oculto) anterior para tentar prever a próxima palavra da sequência. Esse contexto, por sua vez, é capaz de representar as informações de todas as palavras anteriores da sequência.
+
+% Elas processam sequências uma palavra por vez, tentando prever a próxima palavra com base na atual e no contexto (ou estado oculto) anterior que, por sua vez, pode representar as informações de todas as palavras anteriores da sequência \cite{jurafsky-2022-speech-lang-processing}.
+
+No entanto, \citeonline{lecun-2015-deep-learning,goodfellow-2016-deep-learning} ressaltam que essas redes apresentaram limitações em armazenar informações por um período muito longo de tempo, dentre as quais estão os problemas conhecidos de \textit{gradient vanishing} (ou desaparecimento do gradiente) e \textit{gradient exploding} (ou explosão do gradiente). Isso demandou com que extensões dessa arquitetura fossem desenvolvidas no decorrer dos anos com o intuito abordar melhor essas questões.
 
 % \citeonline{lecun-2015-deep-learning} afirmam que apesar do principal objetivo das \acrshortpl{rnn} ser aprender dependências de longo prazo, evidências teóricas e empíricas mostram que há desafios em aprender a armazenar informações por um tempo muito longo. Entre esses desafios estão os problemas de desaparecimento e explosão de gradientes, aos quais as \acrshortpl{rnn} estão passíveis. Devido a isso, várias extensões dessa arquitetura foram desenvolvidas no decorrer dos anos com o intuito de abordar melhor esses problemas.
 
-O \acrshort{lstm}~\cite{hochreiter-1997-lstm} é a mais popular dessas extensões. Ele é capaz de aprender a gerenciar o contexto por conta própria, adicionando informação necessária e removendo aquela que não é mais, sem necessitar que uma estratégia para isso seja codificada em sua arquitetura. Para isso, é utilizada uma camada específica para representar o contexto e um conjunto de portas, as quais controlam o fluxo de informações para dentro e para fora de suas células \cite{jurafsky-2022-speech-lang-processing}.
-Segundo \citeonline{goodfellow-2016-deep-learning,lecun-2015-deep-learning}, essas redes são extremamente bem-sucedidas em diferentes aplicações, como reconhecimento de caligrafia, reconhecimento de fala, geração de caligrafia, tradução automática, legendagem de imagens e análise sintática.
+Dentre as mais populares dessas extensões está a \acrshort{lstm}, que foi introduzida por \citeonline{hochreiter-1997-lstm}. De acordo com \citeonline{jurafsky-2022-speech-lang-processing}, a principal inovação dessa rede é a capacidade de aprender a gerenciar o contexto (ou estado oculto) de forma automática, decidindo quando informações são necessárias e quando podem ser removidas, sem necessitar que uma estratégia explícita seja codificada para isso. Ele utiliza uma camada específica para representar esse contexto e um conjunto de portas, as quais controlam o fluxo de informações para dentro e para fora de suas células.
+Segundo \citeonline{goodfellow-2016-deep-learning,lecun-2015-deep-learning}, essas redes são extremamente bem-sucedidas em diferentes tipos de aplicações, como reconhecimento e geração de caligrafia, reconhecimento de fala, \acrfull{mt}, legendagem de imagens e análise sintática.
 
 %O \acrshort{lstm} é a mais popular delas e divide o gerenciamento do contexto em duas partes: na primeira, está a adição de informação que provavelmente será necessária para tomada de decisão posterior ao contexto; na segunda, está a remoção de informação que não é mais necessária. Com isso, o \acrshort{lstm} é capaz de aprender como gerenciar esse contexto e lidar com ambas as partes, e não exige que uma estratégia para isso seja codificada na arquitetura.
 %Isso é feito utilizando-se uma camada explícita para representar o contexto e também unidades neurais especializadas que utilizam três portas (\textit{update gate}, \textit{forget gate} e \textit{output gate}) para controlar o fluxo de informações para dentro e para fora das unidades que compõem as camadas da rede neural. Essas portas, por sua vez, são implementadas como pesos adicionais que são ajustados durante o processo de treinamento e operam sequencialmente na entrada, na camada oculta e nas camadas de contexto anteriores \cite{jurafsky-2022-speech-lang-processing}.
 
 % \citeonline{goodfellow-2016-deep-learning,lecun-2015-deep-learning} ressaltam que as redes \acrshort{lstm} mostraram ser extremamente bem-sucedidas em diferentes tipos de aplicações, como reconhecimento de caligrafia, reconhecimento de fala, geração de caligrafia, tradução automática, legendagem de imagens e análise sintática.
 
-A \acrshort{gru}~\cite{cho-2014-gru}, por sua vez, é uma evolução do \acrshort{lstm}. De acordo com \citeonline{goodfellow-2016-deep-learning}, a principal diferença está na forma como elas controlam o fluxo de informações entre suas camadas: enquanto o \acrshort{lstm} adota três portas em suas células internas para isso (\textit{update gate}, \textit{forget gate} e \textit{output gate}), o \acrshort{gru} propõe uma simplificação das células e utiliza apenas duas portas (\textit{update gate} e \textit{reset gate}) \cite{ravanelli-2018-li-gru,goodfellow-2016-deep-learning}.
+
+A \acrshort{gru} é também uma extensão bastante popular das \acrshortpl{rnn}, e foi criada por \citeonline{cho-2014-gru} com o intuito de simplificar o desenho das unidades internas do \acrshort{lstm}. 
+De acordo com \citeonline{goodfellow-2016-deep-learning,ravanelli-2018-li-gru}, elas diferenciam-se apenas pela forma como controlam o fluxo de informações entre suas camadas: enquanto o \acrshort{lstm} utiliza três portas em suas células internas (\textit{update gate}, \textit{forget gate} e \textit{output gate}), o \acrshort{gru} propõe a adoção de apenas duas portas para isso (\textit{update gate} e \textit{reset gate}).
+
+% A \acrshort{gru}~\cite{cho-2014-gru}, por sua vez, é uma evolução do \acrshort{lstm}. De acordo com \citeonline{goodfellow-2016-deep-learning}, a principal diferença está na forma como elas controlam o fluxo de informações entre suas camadas: enquanto o \acrshort{lstm} adota três portas em suas células internas para isso (\textit{update gate}, \textit{forget gate} e \textit{output gate}), o \acrshort{gru} propõe uma simplificação das células e utiliza apenas duas portas (\textit{update gate} e \textit{reset gate}) \cite{ravanelli-2018-li-gru,goodfellow-2016-deep-learning}.
 
 % A arquitetura \acrshort{gru} surgiu com o objetivo de simplificar o desenho das unidades internas do \acrshort{lstm} e, devido a isso, é considerada uma evolução desta. Segundo \citeonline{goodfellow-2016-deep-learning}, a principal diferença entre elas está na forma como elas controlam o fluxo de informação entre suas camadas. Enquanto que nas unidades do \acrshort{lstm} são utilizadas três portas para controlar a atualização, esquecimento e a saída de informação, no \acrshort{gru} uma única porta realiza o controle simultâneo do fator de esquecimento e da atualização do estado da unidade -- o que faz com que ela apresentem um total duas portas (denominadas \textit{update gate} e \textit{reset gate}) \cite{ravanelli-2018-li-gru,goodfellow-2016-deep-learning}.
 
 
-Por outro lado, o \textit{Transformer}~\cite{vaswani-2017-transformer} é uma arquitetura que não é recorrente -- ao invés disso, baseia-se inteiramente num mecanismo de \textit{attention} (ou atenção) para estabelecer dependências globais entre os dados de entrada e saída. 
-Ele é composta por blocos empilhados de redes multicamadas, as quais combinam camadas lineares simples, redes \textit{feed-forward} e camadas de \textit{self-attention} (ou auto-atenção) -- que, por sua vez, é a principal inovação desse tipo de arquitetura.
-\citeonline{wolf-2020-transformers} afirmam que o \textit{Transformer} tornou-se rapidamente a arquitetura dominante para o \acrshort{nlp} e tem superado modelos alternativos como \acrshortpl{cnn} e \acrshortpl{rnn} sobretudo em tarefas de compreensão e geração de linguagem natural. Além disso, sua arquitetura escalável facilita o treinamento paralelo eficiente e a captura do contexto de sequências muito longas 
-\cite{vaswani-2017-transformer,jurafsky-2022-speech-lang-processing,wolf-2020-transformers}.
+O \textit{Transformer}, por sua vez, consiste num tipo de arquitetura que não é recorrente e, ao invés disso, baseia-se num mecanismo de \textit{attention} (ou atenção) para estabelecer dependências globais entre os dados de entrada e saída.
+Ele foi introduzido por \citeonline{vaswani-2017-transformer} e sua estrutura é composta por blocos empilhados de redes multicamadas que combinam camadas lineares simples, redes \textit{feed-forward} e camadas de \textit{self-attention} (ou auto-atenção) -- as quais são a principal inovação aqui --, conforme ilustra a \autoref{fig:transformer-arquitetura}.
+Devido à sua estrutura escalável e capaz de capturar o contexto de sequência muito longas, \citeonline{wolf-2020-transformers,jurafsky-2022-speech-lang-processing} afirmam que os \textit{Transformers} tornaram-se rapidamente a arquitetura dominante entre tarefas de \acrshort{nlp}, superando redes como a \acrfull{cnn} e as \acrshortpl{rnn}.
+
+\figura[p. 3]
+{fig:transformer-arquitetura}
+{capitulos/fundamentacao/imagens/transformer_arquitetura}
+{width=0.45\textwidth}
+{Arquitetura do \textit{Transformer}}
+{vaswani-2017-transformer}
+
+% Por outro lado, o \textit{Transformer}~\cite{vaswani-2017-transformer} é uma arquitetura que não é recorrente -- ao invés disso, baseia-se inteiramente num mecanismo de \textit{attention} (ou atenção) para estabelecer dependências globais entre os dados de entrada e saída.
+% Ele é composta por blocos empilhados de redes multicamadas, as quais combinam camadas lineares simples, redes \textit{feed-forward} e camadas de \textit{self-attention} (ou auto-atenção) -- que, por sua vez, é a principal inovação desse tipo de arquitetura.
+% \citeonline{wolf-2020-transformers} afirmam que o \textit{Transformer} tornou-se rapidamente a arquitetura dominante para o \acrshort{nlp} e tem superado modelos alternativos como \acrshortpl{cnn} e \acrshortpl{rnn} sobretudo em tarefas de compreensão e geração de linguagem natural. Além disso, sua arquitetura escalável facilita o treinamento paralelo eficiente e a captura do contexto de sequências muito longas
+% \cite{vaswani-2017-transformer,jurafsky-2022-speech-lang-processing,wolf-2020-transformers}.
 
 
 
-Dentro da área de \acrshort{nlp}, tarefas que lidam com a linguagem num contexto semelhante ao que estamos endereçando neste trabalho comumente adotam arquiteturas conhecidas como \textit{Encoder-Decoder} (Codificador-Decodificador) ou \textit{Sequence-to-Sequence} (Sequência-para-Sequência) \cite{cho-2014-encoder-decoder,sutskever-2014-seq-to-seq}.
-Essas arquiteturas são compatíveis com diferentes tipos de modelagens sequenciais onde a sequência de saída é uma função complexa da sequência completa de entrada e ambas podem possuir comprimentos e ordens distintas \cite{jurafsky-2022-speech-lang-processing,goodfellow-2016-deep-learning}.
-
-O \textit{Encoder-Decoder} é composto por uma rede codificadora que recebe uma sequência de entrada e gera uma representação contextualizada dela -- que seria o contexto. Essa representação é então passada para um decodificador que produz uma sequência de saída específica para a tarefa em questão, conforme ilustra a \autoref{fig:encoder-decoder-arquitetura}. Uma otimização proposta por \citeonline{bahdanau-2015-mt-align-translate} também adota uma camada de \textit{attention} antes do decodificador para eliminar um gargalo observado ali.
-Por fim, o \textit{Encoder-Decoder} pode ser implementado utilizando-se \acrshortpl{rnn} e os \textit{Transformers}, por sua vez, já possuem uma arquitetura baseada nele \cite{jurafsky-2022-speech-lang-processing}. 
+Um outro tipo de arquitetura utilizada no \acrshort{nlp} é a \textit{Sequence-to-Sequence} (ou Sequência para Sequência), também comumente conhecida como \textit{Encoder-Decoder} (ou Codificador Decodificador). Ela foi apresentada por \citeonline{cho-2014-encoder-decoder,sutskever-2014-seq-to-seq} e sua estrutura é composta por duas redes neurais: uma codificadora, que recebe uma sequência de entrada e gera uma representação contextualizada dela (que seria o contexto); e uma decodificadora, que produz uma sequência de saída específica para a tarefa em questão, conforme ilustrado na \autoref{fig:encoder-decoder-arquitetura}. 
 
 \figura[p. 220]
-    {fig:encoder-decoder-arquitetura}
-    {capitulos/fundamentacao/imagens/encoder_decoder_arquitetura}
-    {width=0.95\textwidth}
-    {Exemplo de arquitetura \textit{Encoder-Decoder}. O \textit{encoder} (ou codificador) (à esquerda) recebe a sequência de entrada \(x_1, x_2, x_3, ..., x_n\) e gera o contexto \(c\) (em verde, ao centro) que, por sua vez, é utilizado pelo \textit{decoder} (ou decodificador) (à direita) para produzir a sequência de saída \(y_1, y_2, y_3, ..., y_n\).}
-    {jurafsky-2022-speech-lang-processing}
+{fig:encoder-decoder-arquitetura}
+{capitulos/fundamentacao/imagens/encoder_decoder_arquitetura}
+{width=0.90\textwidth}
+{Arquitetura do \textit{Encoder-Decoder}. A sequência de entrada \(\{x_1, x_2, x_3, x_n\}\) é recebida pelo \textit{encoder} e utilizada para gerar o contexto \(c\) (em verde), o qual é utilizado pelo \textit{decoder} para produzir a sequência \(\{y_1, y_2, y_3, y_n\}\).}
+{jurafsky-2022-speech-lang-processing}
+
+
+Essas redes codificadoras e decodificadoras são implementadas utilizando-se redes \acrshortpl{rnn}, e algumas otimizações consideram também a adição de uma camada de \textit{attention} antes do decodificador para eliminar um gargalo observado ali por \citeonline{bahdanau-2015-mt-align-translate}.
+
+% Por fim, se compararmos a estrutura do \textit{Transformer} (\autoref{fig:transformer-arquitetura}) com a do \textit{Encoder-Decoder} (\autoref{fig:encoder-decoder-arquitetura}), perceberemos que elas compartilham algumas semelhanças.
+
+
+
+% Dentro da área de \acrshort{nlp}, tarefas que lidam com a linguagem num contexto semelhante ao que estamos endereçando neste trabalho comumente adotam arquiteturas conhecidas como \textit{Encoder-Decoder} (Codificador-Decodificador) ou \textit{Sequence-to-Sequence} (Sequência-para-Sequência) \cite{cho-2014-encoder-decoder,sutskever-2014-seq-to-seq}.
+% Essas arquiteturas são compatíveis com diferentes tipos de modelagens sequenciais onde a sequência de saída é uma função complexa da sequência completa de entrada e ambas podem possuir comprimentos e ordens distintas \cite{jurafsky-2022-speech-lang-processing,goodfellow-2016-deep-learning}.
+
+% O \textit{Encoder-Decoder} é composto por uma rede codificadora que recebe uma sequência de entrada e gera uma representação contextualizada dela -- que seria o contexto. Essa representação é então passada para um decodificador que produz uma sequência de saída específica para a tarefa em questão, conforme ilustra a \autoref{fig:encoder-decoder-arquitetura}. Uma otimização proposta por \citeonline{bahdanau-2015-mt-align-translate} também adota uma camada de \textit{attention} antes do decodificador para eliminar um gargalo observado ali.
+% Por fim, o \textit{Encoder-Decoder} pode ser implementado utilizando-se \acrshortpl{rnn} e os \textit{Transformers}, por sua vez, já possuem uma arquitetura baseada nele \cite{jurafsky-2022-speech-lang-processing}.
 
 
 
