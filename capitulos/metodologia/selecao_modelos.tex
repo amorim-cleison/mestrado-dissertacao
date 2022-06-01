@@ -32,30 +32,61 @@ Realizamos uma otimização de parâmetros do tipo \textit{Grid Search} para ide
 % TODO: detalhar arquitetura do seq2seq + lstm:
 Para o modelo \textit{Encoder-Decoder} com \acrshort{lstm} utilizamos ...
 
+
+% \figura[]
+%     {fig:otim_lr_encdec_lstm}
+%     {capitulos/metodologia/imagens/otim_encdec_lstm_lr}
+%     {height=4.0cm}
+%     {Otimização da taxa de aprendizagem com relação à perda calculada para o \textit{Encoder-Decoder (LSTM)}. LR refere-se à taxa de aprendizagem (ou \textit{learning rate}).}
+%     {}
+
+
+\begin{figure}[ht!]
+    \centering
+    \caption{\textmd{???.}}
+    \subcaptionbox{\label{subfig:otim-encdec-lstm-lr}}{
+        \includegraphics[width=0.30\textwidth]{capitulos/metodologia/imagens/otim_encdec_lstm_lr}
+    }%
+    % \hfill
+    \subcaptionbox{\label{subfig:otim-encdec-lstm-dropout}}{
+        \includegraphics[width=0.30\textwidth]{capitulos/metodologia/imagens/otim_encdec_lstm_dropout}
+    }%
+    % \hfill
+    \subcaptionbox{\label{subfig:otim-encdec-lstm-layers}}{
+        \includegraphics[width=0.30\textwidth]{capitulos/metodologia/imagens/otim_encdec_lstm_layers}
+    }%
+    \hfill
+    \subcaptionbox{\label{subfig:otim-encdec-lstm-hidden}}{
+        \includegraphics[width=0.30\textwidth]{capitulos/metodologia/imagens/otim_encdec_lstm_hidden_size}
+    }%
+    % \hfill
+    \subcaptionbox{\label{subfig:otim-encdec-lstm-emb}}{
+        \includegraphics[width=0.30\textwidth]{capitulos/metodologia/imagens/otim_encdec_lstm_emb_size}
+    }%
+    \nomefonte{}
+    \label{fig:otim-encdec-lstm}
+\end{figure}
+    
+
+
 % TODO: detalhar arquitetura do seq2seq + gru:
 Para o \textit{Encoder-Decoder} com \acrshort{gru}, por sua vez, utilizamos ...
 
-No caso do \textit{Transformer}, não aplicamos nenhuma customização e adotamos a arquitetura original introduzida por \cite{vaswani-2017-transformer} -- que consiste de \textit{embeddings} com dimensões de 512, camadas ocultas com dimensões de 2048, 6 camadas, 8 cabeças e \textit{dropout} de 0,1.
-Realizamos uma otimização da taxa de aprendizagem para esse modelo utilizando a estratégia de \textit{grid search} com validação cruzada de 5 \textit{folds} por 50 épocas. O resultado, ilustrado na \autoref{fig:otim_lr_transformer}, nos mostra que o valor que melhor minimiza a perda é 0,1.
 
 \figura[]
     {fig:otim_lr_transformer}
-    {capitulos/metodologia/imagens/otim_lr_transformer}
+    {capitulos/metodologia/imagens/otim_transformer_lr}
     {height=4.0cm}
     {Otimização da taxa de aprendizagem com relação à perda calculada para o \textit{Transformer}. LR refere-se à taxa de aprendizagem (ou \textit{learning rate}).}
     {}
 
-\figura[]
-    {fig:otim_lr_encdec_lstm}
-    {capitulos/metodologia/imagens/otim_lr_encdec_lstm}
-    {height=4.0cm}
-    {Otimização da taxa de aprendizagem com relação à perda calculada para o \textit{Encoder-Decoder (LSTM)}. LR refere-se à taxa de aprendizagem (ou \textit{learning rate}).}
-    {}
 
+No caso do \textit{Transformer}, não aplicamos nenhuma customização e adotamos a arquitetura original introduzida por \citeonline{vaswani-2017-transformer} -- que consiste de \textit{embeddings} com dimensões de 512, camadas ocultas com dimensões de 2048, 6 camadas, 8 cabeças e \textit{dropout} de 0,1.
+Realizamos uma otimização da taxa de aprendizagem para esse modelo utilizando a estratégia de \textit{grid search} com validação cruzada de 5 \textit{folds} por 50 épocas. O resultado, ilustrado na \autoref{fig:otim_lr_transformer}, nos mostra que o valor que melhor minimiza a perda é 0,1.
 
 \figura[]
     {fig:otim_lr_encdec_gru}
-    {capitulos/metodologia/imagens/otim_lr_encdec_gru}
+    {capitulos/metodologia/imagens/otim_encdec_gru_lr}
     {height=4.0cm}
     {Otimização da taxa de aprendizagem com relação à perda calculada para o \textit{Encoder-Decoder (GRU)}. LR refere-se à taxa de aprendizagem (ou \textit{learning rate}).}
     {}
