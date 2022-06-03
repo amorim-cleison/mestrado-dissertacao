@@ -1,0 +1,19 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+    \centering
+    \caption{}
+    \label{tab:resultados-modelos}
+    \resizebox{0.80\textwidth}{!}{%
+        \begin{tabular}{l|c|c|c|c|c}
+            \hline
+            \rowcolor[HTML]{EFEFEF}
+            Modelo                 & Acurácia & Precisão & Recall   & F1-score & Perda   \\ \hline
+            Encoder-Decoder (LSTM) & 45,99\%  & 50,19\%  & 45,99\%  & 45,82\%  & 4,88311 \\
+            Encoder-Decoder (GRU)  & 46,98\%  & 52,71\%  & 46,98\%  & 47,70\%  & 4,57513 \\
+            Transformer            & 100,00\% & 100,00\% & 100,00\% & 100,00\% & 0,00046 \\ \hline
+        \end{tabular}%
+    }
+\end{table}

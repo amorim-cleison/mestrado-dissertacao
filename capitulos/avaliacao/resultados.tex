@@ -1,0 +1,30 @@
+A \autoref{tab:resultados-modelos} nos mostra as métricas
+
+
+% precisao, recall, f1 calculados com média ponderada entre classes (weighted average)
+% precisao, recall, f1 consistentes com acurácia (justificar)
+
+
+% encoder-decoders com desempenho proximo, mas GRU com uma leve vantagem
+% transformer com desempenho muito superior
+% - provavelmente pela combinação: 
+%   - o transformer é muito robusto e projetado para lidar problemas muito complexos de linguagem. / ele está super-dimensionado para o problema em questão?
+%   - essa abordagem super-simplifica o problema da língua de sinais produzindo um conjunto de features predominantemente discretas, como se tivéssemos um vocabulário de texto --> em oposição ao que ocorre quando opta-se por abordagens de visão computacional com dados brutos
+
+
+
+\input{capitulos/avaliacao/tabelas/resultados-modelos}
+
+
+
+
+% -> Precision is the fraction of detections reported by the model that were correct, while recall is the fraction of true events that were detected.
+% In many cases, we wish to summarize the performance of the classifier with a single number rather than a curve. To do so, we can convert precision p and recall r into an F-score (or F-measure) given by:
+%     F = 2pr / p + r.
+% Another option is to report the total area lying beneath the PR curve.
+
+
+
+% averaging techniques applicable to multiclass classification -------------
+% (https://towardsdatascience.com/comprehensive-guide-on-multiclass-classification-metrics-af94cfb83fbd)
+% weighted: accounts for class imbalance by computing the average of binary metrics weighted by the number of samples of each class in the target. If 3 (precision scores) for 3 classes are: Class 1 (0.85), class 2 (0.80), and class 3 (0.89), the weighted average will be calculated by multiplying each score by the number of occurrences of each class and dividing by the total number of samples.

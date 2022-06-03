@@ -1,4 +1,36 @@
+% % Please add the following required packages to your document preamble:
+% % \usepackage{graphicx}
+% % \usepackage[table,xcdraw]{xcolor}
+% % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+% \begin{table}[]
+%     \centering
+%     \caption{}
+%     \label{tab:comparacao-resultados}
+%     \resizebox{0.8\textwidth}{!}{%
+%     \begin{tabular}{llcr}
+%     \hline
+%     \rowcolor[HTML]{EFEFEF} 
+%     \cellcolor[HTML]{EFEFEF}\textbf{Artigo}                       & \textbf{Técnica}                        & \textbf{Nº de Sinais} & \textbf{Acurácia}  \\ \hline
+%     \citeonline{metaxas-2018-linguistically}     & Múltiplas + HCORF                       & 350                & 93,30 \%           \\
+%     \citeonline{lim-2016-bhof}                   & BHOF                                    & 20                 & 85,00\%           \\
+%     \citeonline{lim-2016-bhof}                   & \acrshort{hof}         & 20                 & 70,00 \%           \\
+%     \citeonline{theodorakis-2014-dynamic-static} & 2-S-U + \acrshort{hmm} & 97                 & 63,15 \%           \\
+%     \citeonline{amorim-2019-stgcn-sl}            & ST-GCN-SL                               & 20                 & 61,04\%           \\
+%     \citeonline{lim-2016-bhof}                   & \acrshort{pca}         & 20                 & 45,00 \%           \\
+%     \citeonline{lim-2019-isolated-slr-cnn-hei}   & HEI                                     & 20                 & 31,50\%           \\
+%     \citeonline{lim-2016-bhof}                   & \acrshort{mei}         & 20                 & 25,00 \%           \\
+%     \citeonline{amorim-2019-stgcn-sl}            & ST-GCN-SL                               & Todos              & 16,48\%           \\
+%     \citeonline{lim-2016-bhof}                   & \acrshort{mhi}         & 20                 & 10,00 \%           \\ \hline
+%     \textbf{(Proposta atual)}                                     & \textbf{Transformer}                    & \textbf{Todos}     & \textbf{100,00\%} \\
+%     \textbf{(Proposta atual)}                                     & \textbf{Encoder-Decoder (GRU)}          & \textbf{Todos}     & \textbf{46,98\%}         \\
+%     \textbf{(Proposta atual)}                                     & \textbf{Encoder-Decoder (LSTM)}         & \textbf{Todos}     & \textbf{45,99\%}         \\ \hline
+%     \end{tabular}%
+%     }
+%     \end{table}
+
+
 % Please add the following required packages to your document preamble:
+% \usepackage{multirow}
 % \usepackage{graphicx}
 % \usepackage[table,xcdraw]{xcolor}
 % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
@@ -6,24 +38,24 @@
     \centering
     \caption{}
     \label{tab:comparacao-resultados}
-    \resizebox{0.8\textwidth}{!}{%
-    \begin{tabular}{llcc}
-    \hline
-    \rowcolor[HTML]{EFEFEF} 
-    \cellcolor[HTML]{EFEFEF}\textbf{Artigo}                       & \textbf{Técnica}                        & \textbf{Nº Sinais} & \textbf{Acurácia}  \\ \hline
-    \citeonline{metaxas-2018-linguistically}     & Múltiplas + HCORF                       & 350                & 93,30 \%           \\
-    \citeonline{lim-2016-bhof}                   & BHOF                                    & 20                 & 85,00 \%           \\
-    \citeonline{lim-2016-bhof}                   & \acrshort{hof}         & 20                 & 70,00 \%           \\
-    \citeonline{theodorakis-2014-dynamic-static} & 2-S-U + \acrshort{hmm} & 97                 & 63,15 \%           \\
-    \citeonline{amorim-2019-stgcn-sl}            & ST-GCN-SL                               & 20                 & 61,04 \%           \\
-    \citeonline{lim-2016-bhof}                   & \acrshort{pca}         & 20                 & 45,00 \%           \\
-    \citeonline{lim-2019-isolated-slr-cnn-hei}   & HEI                                     & 20                 & 31,50 \%           \\
-    \citeonline{lim-2016-bhof}                   & \acrshort{mei}         & 20                 & 25,00 \%           \\
-    \citeonline{amorim-2019-stgcn-sl}            & ST-GCN-SL                               & Todos              & 16,48 \%           \\
-    \citeonline{lim-2016-bhof}                   & \acrshort{mhi}         & 20                 & 10,00 \%           \\ \hline
-    \textbf{(Proposta atual)}                                     & \textbf{Transformer}                    & \textbf{Todos}     & \textbf{100,00 \%} \\
-    \textbf{(Proposta atual)}                                     & \textbf{Encoder-Decoder (GRU)}          & \textbf{Todos}     & \textbf{?}         \\
-    \textbf{(Proposta atual)}                                     & \textbf{Encoder-Decoder (LSTM)}         & \textbf{Todos}     & \textbf{?}         \\ \hline
-    \end{tabular}%
+    \resizebox{\textwidth}{!}{%
+        \begin{tabular}{l|l|c|c}
+            \hline
+            \rowcolor[HTML]{EFEFEF}
+            \cellcolor[HTML]{EFEFEF}Artigo                      & Técnica                         & Nº de Sinais   & Acurácia          \\ \hline
+            \citeonline{theodorakis-2014-dynamic-static}        & 2-S-U + \acrshort{hmm}          & 97             & 63,15\%           \\
+                                                                & BHOF                            & 20             & 85,00\%           \\
+                                                                & \acrshort{hof}                  & 20             & 70,00\%           \\
+                                                                & \acrshort{pca}                  & 20             & 45,00\%           \\
+                                                                & \acrshort{mei}                  & 20             & 25,00\%           \\
+            \multirow{-5}{*}{\citeonline{lim-2016-bhof}}        & \acrshort{mhi}                  & 20             & 10,00\%           \\
+            \citeonline{metaxas-2018-linguistically}            & HCORF                           & 350            & 93,30\%           \\
+            \citeonline{lim-2019-isolated-slr-cnn-hei}          & HEI                             & 20             & 31,50\%           \\
+                                                                & ST-GCN                          & 20             & 61,04\%           \\
+            \multirow{-2}{*}{\citeonline{amorim-2019-stgcn-sl}} & ST-GCN                          & Todos          & 16,48\%           \\ \hline
+                                                                & \textbf{Encoder-Decoder (LSTM)} & \textbf{Todos} & \textbf{45,99\%}  \\
+                                                                & \textbf{Encoder-Decoder (GRU)}  & \textbf{Todos} & \textbf{46,98\%}  \\
+            \multirow{-3}{*}{\textbf{Proposta atual}}           & \textbf{Transformer}            & \textbf{Todos} & \textbf{100,00\%} \\ \hline
+        \end{tabular}%
     }
-    \end{table}
+\end{table}

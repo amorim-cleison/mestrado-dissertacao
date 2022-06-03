@@ -1,59 +1,7 @@
 \chapter{Avaliação experimental}
 \label{cap:avaliacao}
 
-% %\input{capitulos/fundamentacao/fundamentacao}
-
-
-Para comparar os resultados obtidos neste trabalho, selecionamos algumas pesquisas que também adotaram o \acrshort{asllvd} para realizar o reconhecimento dos sinais. 
-A maioria deles, no entanto, limita-se aos segmentos das mãos para isso e também utiliza como dados de entrada coordenadas 3D ou imagens RGB dos frames das amostras, as quais são processadas por técnicas de visão computacional. 
-Além disso, eles comumente selecionam subconjuntos menores de sinais ao invés de considerar o \textit{dataset} completo, como fizemos aqui -- isso contribui para acurácias maiores mas limitá-os perante o contexto real de aplicação da língua.
-
-\citeonline{theodorakis-2014-dynamic-static} adotam técnicas não-supervisionadas combinadas com \acrfull{hmm} para gerar subunidades de movimento e pausa da articulação dos sinais a partir dos frames, que são aplicadas a um subconjunto de 97 sinais.
-
-\citeonline{lim-2016-bhof} introduzem o \textit{Block-based Histogram of Optical Flow} (Histograma Baseado em Blocos de Fluxo Óptico) (BHOF), que concentra-se nos segmentos das mãos extraídos a partir dos frames das amostras, para reconhecer os sinais. Eles selecionaram um subconjunto de 20 sinais do \acrshort{asllvd} e apresentaram uma comparação dos resultados com outras técnicas como \acrshort{mei}, \acrshort{mhi}, \acrshort{pca} e \acrshort{hof}.
-
-\citeonline{metaxas-2018-linguistically} agregam \textit{features} geradas por diferentes técnicas de aprendizagem de máquina para parâmetros dos sinais e aplicam-nas como entrada de um modelo baseado em \acrfull{crf} para reconhecer um subconjunto de 350 sinais.
-
-\citeonline{lim-2019-isolated-slr-cnn-hei} introduzem a representação \textit{Hand Energy Image} (Imagem de Energia da Mão) (HEI) que é utilizada como entrada para uma rede \acrshort{cnn} e aplicada aos 20 sinais definidos por \citeonline{lim-2016-bhof}.
-
-Por fim, \citeonline{amorim-2019-stgcn-sl} utilizam grafos para modelar as coordenadas 3D do corpo e a dimensão temporal dos movimentos dos indivíduos, os quais foram processados por uma rede \acrshort{cnn} para os 20 sinais definidos por \citeonline{lim-2016-bhof}, mas também para o \textit{dataset} inteiro.
-
-
-
-% Algumas comparações (HEI - Hand Energy Image x MEI, MHI) com ASLLVD
-% 2020 - Amorim, Macedo, Zanchettin - Spatial-Temporal Graph Convolutional Networks for Sign Language Recognition
-%                         accuracy
-%     (tudo)              16.48
-%     (20 sinais)         61.04
-
-% 2016 - Lim, Tan, Tan - Block-based histogram of optical flow for isolated sign language recognition
-%     (20 sinais)
-%         MHI             10.00
-%         MEI             25.00
-%         PCA             45.00
-%         HOF             70.00
-%         > BHOF          85.00
-
-    
-% 2019 - Lim et al - Isolated sign language recognition using Convolutional Neural Network hand modelling and Hand Energy Image
-%     (20 sinais - duas mãos)
-%         > Proposed HEI  31.50
-%         MEI             25.00
-%         MHI             10.00 
-%         MEI + MHI       20.00
-
-% 2014 - Dilsizian et al - A New Framework for Sign Language Recognition based on 3D Handshape Identification and Linguistic Modeling
-% https://aclanthology.org/L14-1096/
-%     >                  81.76
-
-% 2014 - Theodorakis, Pitsikalis, Maragos - Dynamic–static unsupervised sequentiality, statistical subunits and lexicon for sign language recognition
-%     (97 signs)
-%     > 2-S-U            63.15
-
-% 2018 - Metaxas, Dilsizian, Neidle - Linguistically-driven Framework for Computationally Efficient and Scalable Sign Recognition
-% https://par.nsf.gov/servlets/purl/10065369
-%     > (350 signs)      93.3
-
-
-
-\input{capitulos/avaliacao/tabelas/comparacao-resultados.tex}
+% TODO: escrever
+\input{capitulos/avaliacao/introducao}
+\input{capitulos/avaliacao/resultados}
+\input{capitulos/avaliacao/comparacao}
