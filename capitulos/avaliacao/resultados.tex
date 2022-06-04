@@ -1,9 +1,26 @@
-A \autoref{tab:resultados-modelos} nos mostra as métricas
 
+Observa-se na \autoref{tab:resultados-modelos} o valor das métricas computadas para os modelos \textit{Encoder-Decoder} implementado com \acrshort{lstm}, \textit{Encoder-Decoder} implementado com \acrshort{gru} e do \textit{Transformer} utilizados nos experimentos deste trabalho.
+São listadas as métricas de acurácia, precisão, \textit{recall} e \textit{F1-score}, bem como a perda resultante para cada um deles. Por se tratar de uma classificação multi-classes, o valor da precisão, \textit{recall} e \textit{F1-score} foram consolidados utilizando-se a média ponderada pelo número de amostras em cada classe.
 
 % precisao, recall, f1 calculados com média ponderada entre classes (weighted average)
 % precisao, recall, f1 consistentes com acurácia (justificar)
 
+De um modo geral, percebe-se entre os modelos baseados na arquitetura \textit{Encoder-Decoder} resultados muito semelhantes entre si, mas não muito expressivos. 
+No entanto, a versão implementada utilizando codificador e decodificador baseados em redes \acrshort{gru} obteve ainda uma pequena vantagem em comparação àquela que utilizou redes \acrshort{lstm} -- ao passo que a primeira alcançou uma acurácia de 46,98\%, a segunda obteve 45,99\%. 
+O valor das demais métricas e da perda computados para ambos os casos replicaram esse mesmo comportamento e reforçam tal observação.
+
+Por outro lado, o \textit{Transformer} apresentou um desempenho muito expressivo e alcançou uma acurácia de 100,00\%, o qual é reiterado consistentemente pelo valor das outras métricas e também pela perda computada.
+Esse desempenho nos remete ao argumento de \citeonline{wolf-2020-transformers,jurafsky-2022-speech-lang-processing} discutido na \autoref{sec:modelos-sequenciais}, que afirma que esse tipo de arquitetura tem se mostrado extremamente bem-sucedida entre tarefas de \acrfull{nlp} e, exatamente por isso, tornou-se dominante superando inclusive as arquiteturas \acrshort{rnn}  nessa área .
+
+\input{capitulos/avaliacao/tabelas/resultados-modelos}
+
+
+Dentro do contexto deste trabalho, podemos enumerar alguns motivos que contribuíram para isso.
+Primeiramente, entendemos que a escolha pelo uso da abordagem linguística dos sinais nos possibilitou trabalhar num nível semântico muito mais elevado do que seríamos capazes de fazer com dados brutos como os pixels de imagens RGB ou coordenadas aleatórias no espaço. Conforme discutimos no \autoref{cap:metodologia}, essa é uma abordagem para outras tarefas dentro do \acrshort{nlp} e que nos permite produzir features de melhor qualidade para ensinar os modelos acerca da estrutura linguística em questão. 
+
+Em segundo lugar, a representação introduzida aqui foi capaz de transformar um conjunto de canais geralmente complexos, referentes aos atributos fonológicos dos sinais do \acrfull{asllvd}, em features discretas (ou ``palavras'', como aqui as denominamos) mais simples e bem definidas. Essas features deram origem a um vocabulário que, por sua vez, é muito menos complexo do que aqueles com os quais arquiteturas como o \textit{Transformer} foram originalmente projetadas para lidar. Além disso, nesse processo selecionamos um número menor de atributos fonológicos dessa língua e isso também contribuiu para tornar nosso vocabulário ainda mais compacto.
+
+Entendemos, portanto, que a combinação de features semanticamente mais coerentes e simplificadas com a aplicação de um modelo robusto para o processamento de linguagens, como o \textit{Transformer}, conduziu ao desempenho favorável apontado aqui.
 
 % encoder-decoders com desempenho proximo, mas GRU com uma leve vantagem
 % transformer com desempenho muito superior
@@ -13,7 +30,10 @@ A \autoref{tab:resultados-modelos} nos mostra as métricas
 
 
 
-\input{capitulos/avaliacao/tabelas/resultados-modelos}
+
+
+
+
 
 
 

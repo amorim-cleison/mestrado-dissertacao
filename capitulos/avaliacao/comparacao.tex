@@ -1,3 +1,38 @@
+
+Com o intuito de estabelecer um referencial dos resultados apresentados acima com outras pesquisas dentro da área de \acrfull{slr}, selecionamos alguns estudos que também utilizaram o \acrshort{asllvd}. Esses estudos são enumerados a seguir:
+
+% Para comparar os resultados obtidos neste trabalho, selecionamos algumas pesquisas que também adotaram o \acrshort{asllvd} para realizar o reconhecimento dos sinais.
+% A maioria deles, no entanto, limita-se aos segmentos das mãos para isso e também utiliza como dados de entrada coordenadas 3D ou imagens RGB dos frames das amostras, as quais são processadas por técnicas de visão computacional.
+% Além disso, eles comumente selecionam subconjuntos menores de sinais ao invés de considerar o \textit{dataset} completo, como fizemos aqui -- isso contribui para acurácias maiores mas limitá-os perante o contexto real de aplicação da língua.
+
+
+\begin{itemize}    
+    % tipo de dado bruto?
+    % recorte de mãos x corpo inteiro?
+
+    \item \citeonline{theodorakis-2014-dynamic-static}: aplica técnicas não-supervisionadas e \acrfull{hmm} para gerar subunidades (denominadas 2-S-U) de movimento e pausa a partir dos frames das amostras, as quais são utilizadas para reconhecer os sinais.
+    Nesse processo, os autores concentram-se nas mãos dos indivíduos e selecionam um subconjunto de 97 sinais do \acrshort{asllvd}.
+    % processa frames de vídeo / foco nas mãos
+
+    \item \citeonline{lim-2016-bhof}: introduz a técnica de \textit{Block-based Histogram of Optical Flow} (ou Histograma Baseado em Blocos de Fluxo Óptico) (BHOF), que gera histogramas do fluxo óptico das mãos dos indivíduos a partir dos frames das amostras.
+    Os autores selecionaram um subconjunto pequeno contendo apenas 20 sinais do \acrshort{asllvd}. 
+    Além disso, eles compararam seus resultados com aqueles obtidos pelas técnicas \acrfull{mei}, \acrfull{mhi}, \acrfull{pca} e \acrfull{hof} nesse mesmo subconjunto.
+    % processa frames de vídeo / recorta as mãos (remove outras partes)
+
+    \item \citeonline{metaxas-2018-linguistically}: utiliza diferentes técnicas para gerar features de tipos distintos referentes à configuração de mão inicial e final; número de mãos; distância entre mãos; coordenadas 3D do corpo, face, mãos e braços; e contato das mãos com o corpo. Elas são utilizadas como entrada para um modelo baseado em \textit{Hidden Conditional Ordinal Random Fields} (HCORF) para reconhecer um subconjunto selecionado de 350 sinais do \acrshort{asllvd}.
+    % extrai features: a) handshapes (start and end); b) number of hands; c) 3D upper body locations, movements of the hands and arms, and distance between the hands; d) facial features (include 66 points from 3D estimates for the forehead, ear, eye, nose, and mouth regions, and their velocities across frames) and head movements; e) contact (extracted from our 3D face and upper body movement estimation, and relate to the possibilities of the hand touching specific parts of the head or body).
+    % processa frames de video para extrair features de nivel maior / considera mix de features e coordenadas 3D
+
+    \item \citeonline{lim-2019-isolated-slr-cnn-hei}: introduz a representação \textit{Hand Energy Image} (ou Imagem de Energia da Mão) (HEI) que é utilizada como entrada para uma rede \acrfull{cnn}.
+    Aqui também os autores concentram-se nas mãos dos indivíduos e utilizam o mesmo subconjunto de 20 sinais definidos por \citeonline{lim-2016-bhof}.
+    % processa frames de vídeo / recorta as mãos
+
+    \item \citeonline{amorim-2019-stgcn-sl}: utiliza grafos para modelar a dimensão espacial das coordenadas 2D do corpo e sua relação temporal com os movimentos dos indivíduos, os quais são fornecidos como entrada para uma rede \textit{Spatial-Temporal Graph Convolutional Network} (ou Rede Convolucional de Grafo Espaço-Temporal) (ST-GCN).
+    Os autores avaliam os resultados para o mesmo subconjunto de 20 sinais definidos por \citeonline{lim-2016-bhof}, mas também para o \acrshort{asllvd} inteiro.
+    % coordenadas 2D para grafos / corpo inteiro
+\end{itemize}
+
+
 % considerações importantes
 % - são pesquisas que adotam abordagens que utilizam dados brutos (RGB, coordenadas)
 % - muitas delas adotam recortes das mãos apenas
@@ -14,34 +49,6 @@
 % - no entanto, se considerarmos apenas aqueles trabalhos que consideraram todos os sinais do ASLLVD (que seria um vocabulário de complexidade equivalente à nossa), percebemos que mesmo os encoder-decores apresentaram um salto importante, ficando em torno dos 46% de acurácia (quando até então observava-se por volta de 16%)
 %   - se olharmos o transformer, esse salto é ainda mais expressivo
 
-
-
-
-Para comparar os resultados obtidos neste trabalho, selecionamos algumas pesquisas que também adotaram o \acrshort{asllvd} para realizar o reconhecimento dos sinais.
-A maioria deles, no entanto, limita-se aos segmentos das mãos para isso e também utiliza como dados de entrada coordenadas 3D ou imagens RGB dos frames das amostras, as quais são processadas por técnicas de visão computacional.
-Além disso, eles comumente selecionam subconjuntos menores de sinais ao invés de considerar o \textit{dataset} completo, como fizemos aqui -- isso contribui para acurácias maiores mas limitá-os perante o contexto real de aplicação da língua.
-
-
-\begin{itemize}    
-    % tipo de dado bruto?
-    % recorte de mãos x corpo inteiro?
-
-    \item \citeonline{theodorakis-2014-dynamic-static} adotam técnicas não-supervisionadas combinadas com \acrfull{hmm} para gerar subunidades (denominadas 2-S-U) de movimento e pausa da articulação dos sinais a partir dos frames, que são aplicadas a um subconjunto de 97 sinais. 
-    % processa frames de vídeo / foco nas mãos
-
-    \item \citeonline{lim-2016-bhof} introduzem o \textit{Block-based Histogram of Optical Flow} (ou Histograma Baseado em Blocos de Fluxo Óptico) (BHOF), que concentra-se nos segmentos das mãos extraídos a partir dos frames das amostras, para reconhecer os sinais. Eles selecionaram um subconjunto de 20 sinais do \acrshort{asllvd} e apresentaram uma comparação dos resultados com outras técnicas como \acrfull{mei}, \acrfull{mhi}, \acrfull{pca} e \acrfull{hof}.
-    % processa frames de vídeo / recorta as mãos (remove outras partes)
-
-    \item \citeonline{metaxas-2018-linguistically} agregam \textit{features} geradas por diferentes técnicas de aprendizagem de máquina para parâmetros dos sinais e aplicam-nas como entrada de um modelo baseado em \textit{Hidden Conditional Ordinal Random Fields} (HCORF) para reconhecer um subconjunto de 350 sinais.
-    % extrai features: a) handshapes (start and end); b) number of hands; c) 3D upper body locations, movements of the hands and arms, and distance between the hands; d) facial features (include 66 points from 3D estimates for the forehead, ear, eye, nose, and mouth regions, and their velocities across frames) and head movements; e) contact (extracted from our 3D face and upper body movement estimation, and relate to the possibilities of the hand touching specific parts of the head or body).
-    % processa frames de video para extrair features de nivel maior / considera mix de features e coordenadas 3D
-
-    \item \citeonline{lim-2019-isolated-slr-cnn-hei} introduzem a representação \textit{Hand Energy Image} (ou Imagem de Energia da Mão) (HEI) que é utilizada como entrada para uma rede \acrshort{cnn} e aplicada aos 20 sinais definidos por \citeonline{lim-2016-bhof}.
-    % processa frames de vídeo / recorta as mãos
-
-    \item Por fim, \citeonline{amorim-2019-stgcn-sl} utilizam grafos para modelar as coordenadas 3D do corpo e a dimensão temporal dos movimentos dos indivíduos, os quais foram processados por uma rede \textit{Spatial-Temporal Graph Convolutional Network} (ou Rede Convolucional de Grafo Espaço-Temporal) (ST-GCN) para os 20 sinais definidos por \citeonline{lim-2016-bhof}, mas também para o \textit{dataset} inteiro.
-    % coordenadas 2D para grafos / corpo inteiro
-\end{itemize}
 
 
 \input{capitulos/avaliacao/tabelas/comparacao-resultados}
