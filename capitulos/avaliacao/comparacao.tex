@@ -1,38 +1,50 @@
 
-Com o intuito de estabelecer um referencial dos resultados apresentados acima com outras pesquisas dentro da área de \acrfull{slr}, selecionamos alguns estudos que também utilizaram o \acrshort{asllvd}. Esses estudos são enumerados a seguir:
+Com o objetivo de estabelecer um comparativo entre os resultados deste trabalho e aqueles apresentados por outras pesquisas na área de \acrfull{slr}, selecionamos alguns estudos que também utilizaram o \acrshort{asllvd} como referência em seus experimentos, os quais introduziremos brevemente a seguir:
 
 % Para comparar os resultados obtidos neste trabalho, selecionamos algumas pesquisas que também adotaram o \acrshort{asllvd} para realizar o reconhecimento dos sinais.
 % A maioria deles, no entanto, limita-se aos segmentos das mãos para isso e também utiliza como dados de entrada coordenadas 3D ou imagens RGB dos frames das amostras, as quais são processadas por técnicas de visão computacional.
 % Além disso, eles comumente selecionam subconjuntos menores de sinais ao invés de considerar o \textit{dataset} completo, como fizemos aqui -- isso contribui para acurácias maiores mas limitá-os perante o contexto real de aplicação da língua.
 
 
-\begin{itemize}    
+\begin{itemize}
     % tipo de dado bruto?
     % recorte de mãos x corpo inteiro?
 
-    \item \citeonline{theodorakis-2014-dynamic-static}: aplica técnicas não-supervisionadas e \acrfull{hmm} para gerar subunidades (denominadas 2-S-U) de movimento e pausa a partir dos frames das amostras, as quais são utilizadas para reconhecer os sinais.
-    Nesse processo, os autores concentram-se nas mãos dos indivíduos e selecionam um subconjunto de 97 sinais do \acrshort{asllvd}.
-    % processa frames de vídeo / foco nas mãos
+    \item \textbf{\citeonline{theodorakis-2014-dynamic-static}}: utiliza técnicas não-supervisionadas e também \acrfull{hmm} para gerar subunidades de movimento e pausa (chamadas 2-S-U) que são utilizadas para reconhecer os sinais.
+          Para isso, os autores processaram os frames das amostras concentrando-se apenas nas mãos dos indivíduos e selecionaram um subconjunto de 97 sinais do \acrshort{asllvd}.
+          % processa frames de vídeo / foco nas mãos
 
-    \item \citeonline{lim-2016-bhof}: introduz a técnica de \textit{Block-based Histogram of Optical Flow} (ou Histograma Baseado em Blocos de Fluxo Óptico) (BHOF), que gera histogramas do fluxo óptico das mãos dos indivíduos a partir dos frames das amostras.
-    Os autores selecionaram um subconjunto pequeno contendo apenas 20 sinais do \acrshort{asllvd}. 
-    Além disso, eles compararam seus resultados com aqueles obtidos pelas técnicas \acrfull{mei}, \acrfull{mhi}, \acrfull{pca} e \acrfull{hof} nesse mesmo subconjunto.
-    % processa frames de vídeo / recorta as mãos (remove outras partes)
+    \item \textbf{\citeonline{lim-2016-bhof}}: introduz a técnica de \acrfull{bhof}, que gera histogramas do fluxo óptico das mãos dos indivíduos a partir dos frames das amostras.
+          Em seus experimentos, os autores selecionaram um subconjunto pequeno contendo apenas 20 sinais do \acrshort{asllvd}.
 
-    \item \citeonline{metaxas-2018-linguistically}: utiliza diferentes técnicas para gerar features de tipos distintos referentes à configuração de mão inicial e final; número de mãos; distância entre mãos; coordenadas 3D do corpo, face, mãos e braços; e contato das mãos com o corpo. Elas são utilizadas como entrada para um modelo baseado em \textit{Hidden Conditional Ordinal Random Fields} (HCORF) para reconhecer um subconjunto selecionado de 350 sinais do \acrshort{asllvd}.
-    % extrai features: a) handshapes (start and end); b) number of hands; c) 3D upper body locations, movements of the hands and arms, and distance between the hands; d) facial features (include 66 points from 3D estimates for the forehead, ear, eye, nose, and mouth regions, and their velocities across frames) and head movements; e) contact (extracted from our 3D face and upper body movement estimation, and relate to the possibilities of the hand touching specific parts of the head or body).
-    % processa frames de video para extrair features de nivel maior / considera mix de features e coordenadas 3D
+          Além disso, esse trabalho apresenta um comparativo dos resultados do \acrshort{bhof} com aqueles obtidos pelas técnicas \acrfull{mei}, \acrfull{mhi}, \acrfull{pca} e \acrfull{hof} para esse mesmo subconjunto de sinais.
+          % processa frames de vídeo / recorta as mãos (remove outras partes)
 
-    \item \citeonline{lim-2019-isolated-slr-cnn-hei}: introduz a representação \textit{Hand Energy Image} (ou Imagem de Energia da Mão) (HEI) que é utilizada como entrada para uma rede \acrfull{cnn}.
-    Aqui também os autores concentram-se nas mãos dos indivíduos e utilizam o mesmo subconjunto de 20 sinais definidos por \citeonline{lim-2016-bhof}.
-    % processa frames de vídeo / recorta as mãos
+    \item \textbf{\citeonline{metaxas-2018-linguistically}}: combina diferentes técnicas para produzir uma variedade de features que se referem a configuração de mão inicial e final; número de mãos envolvidas; distância entre mãos; coordenadas 3D do corpo, face, mãos e braços; e contato das mãos com o corpo. Elas são utilizadas como entrada para um modelo baseado em \acrfull{hcorf} para reconhecer um subconjunto selecionado de 350 sinais do \acrshort{asllvd}.
+          % extrai features: a) handshapes (start and end); b) number of hands; c) 3D upper body locations, movements of the hands and arms, and distance between the hands; d) facial features (include 66 points from 3D estimates for the forehead, ear, eye, nose, and mouth regions, and their velocities across frames) and head movements; e) contact (extracted from our 3D face and upper body movement estimation, and relate to the possibilities of the hand touching specific parts of the head or body).
+          % processa frames de video para extrair features de nivel maior / considera mix de features e coordenadas 3D
 
-    \item \citeonline{amorim-2019-stgcn-sl}: utiliza grafos para modelar a dimensão espacial das coordenadas 2D do corpo e sua relação temporal com os movimentos dos indivíduos, os quais são fornecidos como entrada para uma rede \textit{Spatial-Temporal Graph Convolutional Network} (ou Rede Convolucional de Grafo Espaço-Temporal) (ST-GCN).
-    Os autores avaliam os resultados para o mesmo subconjunto de 20 sinais definidos por \citeonline{lim-2016-bhof}, mas também para o \acrshort{asllvd} inteiro.
-    % coordenadas 2D para grafos / corpo inteiro
+    \item \textbf{\citeonline{lim-2019-isolated-slr-cnn-hei}}: introduz uma representação chamada \acrfull{hei} que, por sua vez, também concentra-se nas mãos dos indivíduos e é utilizada como entrada para uma rede \acrfull{cnn}.
+          Aqui os autores adotam o mesmo subconjunto de 20 sinais definidos por \citeonline{lim-2016-bhof} acima.
+          % processa frames de vídeo / recorta as mãos
+
+    \item \textbf{\citeonline{amorim-2019-stgcn-sl}}: utiliza grafos para modelar a dimensão espacial das coordenadas 2D do corpo dos indivíduos bem como a relação temporal dos seus movimentos, os quais são fornecidos como entrada para uma rede \acrfull{stgcn}.
+          Os autores avaliam os resultados para o mesmo subconjunto de 20 sinais definidos por \citeonline{lim-2016-bhof}, mas também para o \acrshort{asllvd} inteiro.
+          % coordenadas 2D para grafos / corpo inteiro
 \end{itemize}
 
 
+De um modo geral, observa-se que a maioria dos estudos acima aborda a tarefa de \acrlong{slr} através do processamento de dados brutos, geralmente frames RGB ou coordenadas 2D ou 3D, conforme discutimos ao longo da \autoref{sec:slr}.
+Apesar de em alguns casos esses dados serem utilizados para gerar features intermediárias -- como subunidades de movimento e pausa, imagens de fluxo óptico ou de energia de movimento, histogramas, grafos, entre outras -- estas, por sua vez, apresentam um nível semântico muito menos informativo quanto à língua de sinais e sua linguística propriamente ditas do que aquelas que introduzimos neste trabalho.
+
+Uma outra observação importante é a de que parte desses trabalhos concentra-se apenas nas mãos dos indivíduos e isso nos remete a um dos problemas de abordagem do \acrshort{slr} discutidos na \autoref{sec:slr-desafios}. Como resultado disso, canais referentes a traços linguísticos relevantes como, por exemplo, expressões não-manuais, locação das mãos e movimentos do corpo, acabam sendo desconsiderados.
+
+Além disso, percebe-se que todos esses trabalhos modelam vocabulários que correspondem a subconjuntos muito pequenos do \acrshort{asllvd}, conforme discutimos na \autoref{sec:slr-breve-panorama}.
+Esses subconjuntos, por sua vez, representam menos de 13\% do vocabulário total disponibilizado por esse \textit{dataset}, que consiste de 2.745 sinais.
+
+Apesar de compreendermos que todos esses fatores têm por objetivo simplificar o tamanho e a complexidade do escopo abordado por essas pesquisas, é inevitável ressaltar após a discussão realizada ao longo deste trabalho, que esses recortes distanciam a língua de sinais de seu contexto real de uso e, consequentemente, limitam a produção de contribuições significativas para a área de \acrshort{slr}.
+
+% insights [ASLLVD tem 2.745 sinais]
 % considerações importantes
 % - são pesquisas que adotam abordagens que utilizam dados brutos (RGB, coordenadas)
 % - muitas delas adotam recortes das mãos apenas
@@ -41,9 +53,24 @@ Com o intuito de estabelecer um referencial dos resultados apresentados acima co
 %     - isso contribui para que eles obtenham acurácias maiores
 %     - contudo, limita o problema perante o contexto real -- uma vez que a afasta da realidade da língua
 
-% insights [ASLLVD tem 2.745 sinais]
+
+\input{capitulos/avaliacao/tabelas/comparacao-resultados}
+
+
+Uma vez introduzido esse debate, vamos analisar os resultados listados na \autoref{tab:comparacao-resultados}.
+Ao comparar as pesquisas acima com os modelos utilizados em nossos experimentos, como um todo, vemos que os \textit{Encoder-Decoders} apresentaram um desempenho bastante mediano com relação aos demais. Ao mesmo tempo em que sua acurácia por volta de 46,00\% foi capaz de superar técnicas como \acrshort{pca}, \acrshort{hei}, \acrshort{mei} e \acrshort{mhi}, outras técnicas como \acrshort{hcorf}, \acrshort{bhof}, \acrshort{hof} e \acrshort{stgcn} conseguiram superar essa marca alcançando valores de até 93,30\%.
+A acurácia de 100,00\% do \textit{Transformer}, por sua vez, superou de forma consistente o desempenho apresentado pelas demais técnicas na tabela.
+
+Se compararmos apenas os estudos que modelaram features referentes ao corpo inteiro do indivíduo ao invés de apenas suas mãos -- ainda que indiretamente, através de dados brutos -- temos uma perspectiva diferente. \citeonline{metaxas-2018-linguistically} e \citeonline{amorim-2019-stgcn-sl} se enquadram nesses critérios e, pela tabela, vemos que ambas as técnicas de \acrshort{hcorf} e \acrshort{stgcn} superaram os resultados das implementações de \textit{Encoder-Decoders} utilizadas em nossos experimentos.
+
+
 % - ao comparar nossos experimentos com todos os trabalhos acima, de uma forma generalizada, vemos que o desempenho dos encoder-decoders (por volta dos 46%) foi mediano com relação aos demais (que em vários deles alcançaram marcas de 70%, 85% e até 93,30%)
 % - no caso do transformer, seu desempenho posicionou-se superior aos demais trabalhos
+
+Em contrapartida, essa análise é ainda diferente se considerarmos apenas estudos que modelaram um vocabulário com todos os sinais do \acrshort{asllvd}, que seria uma complexidade equivalente à que abordamos em nossos experimentos.
+Pela tabela, apenas \citeonline{amorim-2019-stgcn-sl} registraram resultados sob essas condições, o qual foi de 16,48\% para sua técnica \acrshort{stgcn}. 
+Esse número é bem inferior às acurácias de 45,99\% e 46,98\% alcançadas pelas implementações de \textit{Encoder-Decoders} utilizadas em nossos experimentos. Quando comparado ao \textit{Transformer}, por sua vez, é constatada uma margem de diferença ainda mais expressiva para esse número.
+
 % ------------
 % - contudo, considerando que maioria deles modela apenas vocabulários pequenos [que correspondem em média a 2% do vocabulário disponível no ASLLVD (que é o que utilizamos aqui) e não ultrapassam 13% dele], nota-se que 
 % - no entanto, se considerarmos apenas aqueles trabalhos que consideraram todos os sinais do ASLLVD (que seria um vocabulário de complexidade equivalente à nossa), percebemos que mesmo os encoder-decores apresentaram um salto importante, ficando em torno dos 46% de acurácia (quando até então observava-se por volta de 16%)
@@ -51,7 +78,6 @@ Com o intuito de estabelecer um referencial dos resultados apresentados acima co
 
 
 
-\input{capitulos/avaliacao/tabelas/comparacao-resultados}
 
 
 % Algumas comparações (HEI - Hand Energy Image x MEI, MHI) com ASLLVD

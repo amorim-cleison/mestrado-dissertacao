@@ -36,23 +36,23 @@
 % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 \begin{table}[ht!]
     \centering
-    \caption{}
+    \caption{Comparação dos resultados de nossos experimentos com outras pesquisas em \acrshort{slr} que também basearam-se no \acrshort{asllvd}}
     \label{tab:comparacao-resultados}
     \resizebox{\textwidth}{!}{%
         \begin{tabular}{l|l|c|c}
             \hline
             \rowcolor[HTML]{EFEFEF}
-            \cellcolor[HTML]{EFEFEF}Artigo                      & Técnica                         & Nº de Sinais   & Acurácia          \\ \hline
-            \citeonline{theodorakis-2014-dynamic-static}        & 2-S-U + \acrshort{hmm}          & 97             & 63,15\%           \\
-                                                                & BHOF                            & 20             & 85,00\%           \\
+            \cellcolor[HTML]{EFEFEF}Autor                       & Técnica                         & Nº de Sinais   & Acurácia          \\ \hline
+            \citeonline{theodorakis-2014-dynamic-static}        & 2-S-U + \acrshort{hmm}          & 97             & 63,15\%           \\ \hline
+                                                                & \acrshort{bhof}                 & 20             & 85,00\%           \\
                                                                 & \acrshort{hof}                  & 20             & 70,00\%           \\
                                                                 & \acrshort{pca}                  & 20             & 45,00\%           \\
                                                                 & \acrshort{mei}                  & 20             & 25,00\%           \\
-            \multirow{-5}{*}{\citeonline{lim-2016-bhof}}        & \acrshort{mhi}                  & 20             & 10,00\%           \\
-            \citeonline{metaxas-2018-linguistically}            & HCORF                           & 350            & 93,30\%           \\
-            \citeonline{lim-2019-isolated-slr-cnn-hei}          & HEI                             & 20             & 31,50\%           \\
-                                                                & ST-GCN                          & 20             & 61,04\%           \\
-            \multirow{-2}{*}{\citeonline{amorim-2019-stgcn-sl}} & ST-GCN                          & Todos          & 16,48\%           \\ \hline
+            \multirow{-5}{*}{\citeonline{lim-2016-bhof}}        & \acrshort{mhi}                  & 20             & 10,00\%           \\ \hline
+            \citeonline{metaxas-2018-linguistically}            & \acrshort{hcorf}                & 350            & 93,30\%           \\ \hline
+            \citeonline{lim-2019-isolated-slr-cnn-hei}          & \acrshort{hei}                  & 20             & 31,50\%           \\ \hline
+                                                                & \acrshort{stgcn}                & 20             & 61,04\%           \\
+            \multirow{-2}{*}{\citeonline{amorim-2019-stgcn-sl}} & \acrshort{stgcn}                & Todos          & 16,48\%           \\ \hline
                                                                 & \textbf{Encoder-Decoder (LSTM)} & \textbf{Todos} & \textbf{45,99\%}  \\
                                                                 & \textbf{Encoder-Decoder (GRU)}  & \textbf{Todos} & \textbf{46,98\%}  \\
             \multirow{-3}{*}{\textbf{Proposta atual}}           & \textbf{Transformer}            & \textbf{Todos} & \textbf{100,00\%} \\ \hline
