@@ -119,7 +119,8 @@ Para o \textit{Encoder-Decoder} com \acrshort{gru}, por sua vez, utilizaram-se o
 \end{figure}
 
 
-% TODO: atualizar gráficos e detalhar grid search do Transformer
+% TODO: atualizar gráficos do Transformer com os resultados obtidos após Grid Search (executando no cluster)
+
 Por fim, no caso do \textit{Transformer} não aplicamos nenhuma customização e adotamos a arquitetura original introduzida por \citeonline{vaswani-2017-transformer} -- que consiste de \textit{embeddings} com dimensões de 512, camadas ocultas com dimensões de 2048, 6 camadas, 8 cabeças e \textit{dropout} de 0,1.
 Realizamos apenas uma otimização da taxa de aprendizagem para esse modelo e o melhor resultado obtido é de 0,1, conforme \autoref{fig:otim-transformer}.
 
