@@ -6,21 +6,22 @@ O ASL-Skeleton3D é um \textit{dataset} intermediário que introduz a representa
 Para que fosse possível projetar as amostras do \acrshort{asllvd} dentro do espaço tridimensional, adotamos uma estratégia que consiste essencialmente em combinar duas de suas perspectivas 2D perpendiculares entre si -- a vista frontal e a vista lateral -- para reconstruir uma perspectiva 3D, conforme ilustra a \autoref{fig:our-strategy-3d}. Com isso, assumimos que enquanto a vista frontal nos fornece os eixos \(x\) e \(y\), a vista lateral nos fornecerá a dimensão de profundidade, correspondente ao eixo \( z\).
 
 
-% TODO: ? criar componente para sub-figuras (lembrar de formatar bordas e espaçamento horizontal, conforme padrão ABNT)
 \begin{figure}[ht!]
     \centering
     \caption{\textmd{Estratégia adotada para representar as amostras no espaço 3D: as perspectivas frontal (\subref{subfig:our-strategy-3d-front}) e lateral (\subref{subfig:our-strategy-3d-side}) são posicionadas perpendicularmente para reconstruir uma perspectiva 3D (\subref{subfig:our-strategy-3d-persp})}}
-    \subcaptionbox{\label{subfig:our-strategy-3d-front}}{
-        \includegraphics[height=4cm]{capitulos/metodologia/imagens/chair_front}
-    }%
-    % \hfill
-    \subcaptionbox{\label{subfig:our-strategy-3d-side}}{
-        \includegraphics[height=4cm]{capitulos/metodologia/imagens/chair_side}
-    }%
-    % \hfill
-    \subcaptionbox{\label{subfig:our-strategy-3d-persp}}{
-        \includegraphics[height=4cm]{capitulos/metodologia/imagens/chair_perspective}
-    }%
+    \borda[0.80\textwidth]{
+        \subcaptionbox{\label{subfig:our-strategy-3d-front}}{
+            \includegraphics[height=3.5cm]{capitulos/metodologia/imagens/chair_front}
+        }%
+        \hfill
+        \subcaptionbox{\label{subfig:our-strategy-3d-side}}{
+            \includegraphics[height=3.5cm]{capitulos/metodologia/imagens/chair_side}
+        }%
+        \hfill
+        \subcaptionbox{\label{subfig:our-strategy-3d-persp}}{
+            \includegraphics[height=3.5cm]{capitulos/metodologia/imagens/chair_perspective}
+        }%
+    }
     \nomefonte{}
     \label{fig:our-strategy-3d}
 \end{figure}
@@ -58,17 +59,19 @@ Uma vez definida essa estratégia, nos baseamos no processo descrito por \citeon
           \begin{figure}[ht!]
               \centering
               \caption{\textmd{Os esqueletos 2D frontal (\subref{subfig:front-side-persp-skeletons-front}) e lateral (\subref{subfig:front-side-persp-skeletons-side}) são posicionados perpendicularmente (\subref{subfig:front-side-persp-skeletons-persp}) e combinados para compor o esqueleto 3D final utilizado aqui}}
-              \subcaptionbox{\label{subfig:front-side-persp-skeletons-front}}{
-                  \includegraphics[height=3cm]{capitulos/metodologia/imagens/asllvd_example_front_skeleton}
-              }%
-              %   \hfill
-              \subcaptionbox{\label{subfig:front-side-persp-skeletons-side}}{
-                  \includegraphics[height=3cm]{capitulos/metodologia/imagens/asllvd_example_side_skeleton}
-              }%
-              %   \hfill
-              \subcaptionbox{\label{subfig:front-side-persp-skeletons-persp}}{
-                  \includegraphics[height=4.5cm]{capitulos/metodologia/imagens/asllvd_front_side_perspective_skeleton}
-              }%
+              \borda[0.85\textwidth]{
+                  \subcaptionbox{\label{subfig:front-side-persp-skeletons-front}}{
+                      \includegraphics[height=2.5cm]{capitulos/metodologia/imagens/asllvd_example_front_skeleton}
+                  }%
+                  \hfill
+                  \subcaptionbox{\label{subfig:front-side-persp-skeletons-side}}{
+                      \includegraphics[height=2.5cm]{capitulos/metodologia/imagens/asllvd_example_side_skeleton}
+                  }%
+                  \hfill
+                  \subcaptionbox{\label{subfig:front-side-persp-skeletons-persp}}{
+                      \includegraphics[height=4.0cm]{capitulos/metodologia/imagens/asllvd_front_side_perspective_skeleton}
+                  }%
+              }
               \nomefonte{}
               \label{fig:front-side-persp-skeletons}
           \end{figure}
@@ -81,7 +84,7 @@ Uma vez definida essa estratégia, nos baseamos no processo descrito por \citeon
           \figura
           {fig:shoulders-width} % Label
           {capitulos/metodologia/imagens/shoulders_width} % Path
-          {height=3cm} % Size
+          {height=3.5cm} % Size
           {A largura entre ombros foi utilizada para normalizar as coordenadas nos esqueletos 3D} % Caption
           {} % Citation
 

@@ -31,13 +31,15 @@ Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia ut
                       %   A direção da palma \(O_{palm}\) é então calculada a partir de \(\protect \overrightarrow{n}\) e descrita dentre um conjunto de direções possíveis~(\subref{ subfig:palm-directions}).
                   }
               }
-              \subcaptionbox{\label{subfig:palm-orientation}}{
-                  \includegraphics[height=4cm]{capitulos/metodologia/imagens/palm_orientation_algebra}
-              }%
-              \hspace{1cm}
-              \subcaptionbox{\label{subfig:palm-directions}}{
-                  \includegraphics[height=4cm]{capitulos/metodologia/imagens/hand_orientations}
-              }%
+              \borda[0.60\textwidth]{
+                  \subcaptionbox{\label{subfig:palm-orientation}}{
+                      \includegraphics[height=3.8cm]{capitulos/metodologia/imagens/palm_orientation_algebra}
+                  }%
+                  \hfill
+                  \subcaptionbox{\label{subfig:palm-directions}}{
+                      \includegraphics[height=4cm]{capitulos/metodologia/imagens/hand_orientations}
+                  }%
+              }
               \nomefonte{}
               \label{fig:palm-orientation-directions}
           \end{figure}
@@ -96,13 +98,15 @@ Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia ut
                       %   O movimento da mão \(V_{hand}\) é então obtido a partir de \(\protect \overrightarrow{m}\) e descrito dentre um conjunto de direções possíveis~(\subref{subfig:hand-directions}).
                   }
               }
-              \subcaptionbox{\label{subfig:hand-movement}}{
-                  \includegraphics[height=3.5cm]{capitulos/metodologia/imagens/hand_movement}
-              }%
-              \hspace{1cm}
-              \subcaptionbox{\label{subfig:hand-directions}}{
-                  \includegraphics[height=4cm]{capitulos/metodologia/imagens/hand_movement_2}
-              }%
+              \borda[0.7\textwidth]{
+                  \subcaptionbox{\label{subfig:hand-movement}}{
+                      \includegraphics[height=3.5cm]{capitulos/metodologia/imagens/hand_movement}
+                  }%
+                  \hfill
+                  \subcaptionbox{\label{subfig:hand-directions}}{
+                      \includegraphics[height=4cm]{capitulos/metodologia/imagens/hand_movement_2}
+                  }%
+              }
               \nomefonte{}
               \label{fig:hand-movement-directions}
           \end{figure}
@@ -187,14 +191,14 @@ Existem três agrupamentos contidos nela:
           Por exemplo, há um total de 9.747 amostras e 26 movimentos possíveis para a mão dominante.
 
     \item Por amostra: fornece estatísticas de mínimo, máximo, média e desvio padrão calculadas agrupando-se o \textit{dataset} por amostra.
-        Por exemplo, há em média 3,02 frames por amostra e esse número varia de 1 a 12 frames; de maneira semelhante, as amostras têm em média 1,94 movimentos distintos para a mão dominante, o que varia entre 0 e 10 movimentos.
-    
-    % contém estatísticas de números mínimos, máximos, médios e desvio padrão para os parâmetros computados acima. Por exemplo, lê-se que, em média, as amostras possuem 3,02 frames, sendo que a mais curta contém apenas 1 frame e a mais longa possui 12 frames. De maneira semelhante, as amostras têm em média de 1,94 movimentos e 2,20 orientações de mão distintas para a mão dominante.
+          Por exemplo, há em média 3,02 frames por amostra e esse número varia de 1 a 12 frames; de maneira semelhante, as amostras têm em média 1,94 movimentos distintos para a mão dominante, o que varia entre 0 e 10 movimentos.
+
+          % contém estatísticas de números mínimos, máximos, médios e desvio padrão para os parâmetros computados acima. Por exemplo, lê-se que, em média, as amostras possuem 3,02 frames, sendo que a mais curta contém apenas 1 frame e a mais longa possui 12 frames. De maneira semelhante, as amostras têm em média de 1,94 movimentos e 2,20 orientações de mão distintas para a mão dominante.
 
     \item Por sinal: fornece estatísticas de mínimo, máximo, média e desvio padrão calculadas agrupado-se o \textit{dataset} por sinal.
-        Por exemplo, cada sinal tem em média 3,68 amostras e isso pode variar de 1 até 59 -- no entanto, o desvio padrão nos revela que tal variação concentra-se muito mais em torno da média; nota-se também que a mão dominante realiza em média 6,04 movimentos distintos em um único sinal, o que pode variar de 1 a 24 para outros.
+          Por exemplo, cada sinal tem em média 3,68 amostras e isso pode variar de 1 até 59 -- no entanto, o desvio padrão nos revela que tal variação concentra-se muito mais em torno da média; nota-se também que a mão dominante realiza em média 6,04 movimentos distintos em um único sinal, o que pode variar de 1 a 24 para outros.
 
-    % contém estatísticas de números mínimos, máximos, médios e desvio padrão para os sinais contidos no \textit{dataset}. Por exemplo, lê-se que cada sinal possui em média de 3,68 amostras, sendo que alguns deles possuem apenas 1 e outros possuem valores atípicos de 59 amostras (a considerar pelo desvio padrão apresentado). Além disso, cada sinal apresenta em média 6,04 movimentos e 5,37 orientações de mão distintas para a mão dominante.
+          % contém estatísticas de números mínimos, máximos, médios e desvio padrão para os sinais contidos no \textit{dataset}. Por exemplo, lê-se que cada sinal possui em média de 3,68 amostras, sendo que alguns deles possuem apenas 1 e outros possuem valores atípicos de 59 amostras (a considerar pelo desvio padrão apresentado). Além disso, cada sinal apresenta em média 6,04 movimentos e 5,37 orientações de mão distintas para a mão dominante.
 \end{itemize}
 
 
