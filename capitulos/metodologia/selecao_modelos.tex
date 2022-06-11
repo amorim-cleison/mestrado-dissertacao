@@ -59,10 +59,10 @@ Realizamos uma busca de parâmetros do tipo \textit{Grid Search} com validação
     \label{fig:otim-encdec-lstm}
 \end{figure}
 
-Para o \textit{Encoder-Decoder} com \acrshort{lstm} foi utilizado o conjunto de parâmetros apresentados na \autoref{fig:otim-encdec-lstm} para essa busca e a configuração que melhor minimizou a perda do modelo foi a taxa de aprendizagem de 0,1; \textit{dropout} de 0,1; utilização de 2 camadas de \acrshort{lstm} no \textit{encoder} e no \textit{decoder}; camadas ocultas com dimensão de 128; e \textit{embeddings} com dimensão de 1024.
+Para o \textit{Encoder-Decoder} com \acrshort{lstm} utilizamos o conjunto de parâmetros apresentados na \autoref{fig:otim-encdec-lstm} para essa busca e a configuração que melhor reduziu a perda do modelo foi a taxa de aprendizagem de 0,1; \textit{dropout} de 0,1; utilização de 2 camadas de \acrshort{lstm} no \textit{encoder} e no \textit{decoder}; camadas ocultas com dimensão de 128; e \textit{embeddings} com dimensão de 1024.
 
 
-Para o \textit{Encoder-Decoder} com \acrshort{gru}, por sua vez, utilizaram-se os parâmetros mostrados na \autoref{fig:otim-encdec-gru} e a melhor combinação obtida foi a taxa de aprendizagem de 0,01; \textit{dropout} de 0,1; utilização de 2 camadas de \acrshort{gru} no \textit{encoder} e no \textit{decoder}; camadas ocultas com dimensão de 256; e \textit{embeddings} com dimensão de 512.
+Para o \textit{Encoder-Decoder} com \acrshort{gru} utilizamos os parâmetros mostrados na \autoref{fig:otim-encdec-gru} e a melhor combinação obtida foi a taxa de aprendizagem de 0,01; \textit{dropout} de 0,1; utilização de 2 camadas de \acrshort{gru} no \textit{encoder} e no \textit{decoder}; camadas ocultas com dimensão de 256; e \textit{embeddings} com dimensão de 512.
 
 % Parâmetros otimizados para Encoder-Decoder (GRU):
 \begin{figure}[ht!]
@@ -98,37 +98,38 @@ Para o \textit{Encoder-Decoder} com \acrshort{gru}, por sua vez, utilizaram-se o
 % Parâmetros otimizados para Transformer:
 \begin{figure}[ht!]
     \centering
-    \caption{\textmd{Parâmetro otimizado para o \textit{Transformer}}}
+    \caption{\textmd{Parâmetros otimizados para o \textit{Transformer}}}
     \borda[\textwidth]{
         \subcaptionbox{Taxa de aprendizagem \label{subfig:otim-transformer-lr}}{
             \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_transformer_lr}
         }%
         % \hfill
-        % \subcaptionbox{Dropout \label{subfig:otim-encdec-gru-dropout}}{
-        %     \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_transformer_dropout}
-        % }%
+        \subcaptionbox{Dropout \label{subfig:otim-transformer-dropout}}{
+            \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_transformer_dropout}
+        }%
         % \hfill
-        % \subcaptionbox{Nº de camadas \label{subfig:otim-encdec-gru-layers}}{
-        %     \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_transformer_layers}
-        % }%
+        \subcaptionbox{Nº de camadas \label{subfig:otim-transformer-layers}}{
+            \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_transformer_layers}
+        }%
+        \hfill
+        \subcaptionbox{Tamanho camadas ocultas\label{subfig:otim-transformer-hidden}}{
+            \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_transformer_hidden_size}
+        }%
         % \hfill
-        % \subcaptionbox{Tamanho camadas ocultas\label{subfig:otim-encdec-gru-hidden}}{
-        %     \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_transformer_hidden_size}
-        % }%
-        % % \hfill
-        % \subcaptionbox{Tamanho embeddings\label{subfig:otim-encdec-gru-emb}}{
-        %     \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_transformer_emb_size}
-        % }%
+        \subcaptionbox{Tamanho embeddings\label{subfig:otim-transformer-emb}}{
+            \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_transformer_emb_size}
+        }%
+        % \hfill
+        \subcaptionbox{Nº de cabeças\label{subfig:otim-transformer-heads}}{
+            \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_transformer_heads}
+        }%
     }
     \nomefonte{}
     \label{fig:otim-transformer}
 \end{figure}
 
 
-% TODO: atualizar gráficos do Transformer com os resultados obtidos após Grid Search (executando no cluster)
-
-Por fim, no caso do \textit{Transformer} não aplicamos nenhuma customização e adotamos a arquitetura original introduzida por \citeonline{vaswani-2017-transformer} -- que consiste de \textit{embeddings} com dimensões de 512, camadas ocultas com dimensões de 2048, 6 camadas, 8 cabeças e \textit{dropout} de 0,1.
-Realizamos apenas uma otimização da taxa de aprendizagem para esse modelo e o melhor resultado obtido é de 0,1, conforme \autoref{fig:otim-transformer}.
+Por fim, para o \textit{Transformer} utilizamos os parâmetros mostrados na \autoref{fig:otim-transformer}. A melhor combinação obtida foi a taxa de aprendizagem de 0,1; \textit{dropout} de 0,5; utilização de 2 camadas; camadas ocultas com dimensão de 256; \textit{embeddings} com dimensão de 128; e utilização de 2 cabeças de \textit{attention}.
 
 
 O código-fonte utilizado nos experimentos deste trabalho foi disponibilizado através do endereço indicado abaixo\footnote{
