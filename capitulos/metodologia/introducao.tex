@@ -114,7 +114,8 @@ Cada trecho é rotulado na linha inferior com suas respectivas partículas míni
 
 
 No caso da abordagem proposta aqui, substituiremos essas partículas por alguns dos parâmetros fonológicos introduzidos na \autoref{sec:linguistica}. Uma vez que não há \textit{datasets} disponíveis com esse tipo de representação para as línguas de sinais, nosso primeiro passo consistirá em gerá-lo. Para isso, utilizaremos o \acrshort{asllvd} como base e processaremos suas amostras utilizando o OpenPose, o qual nos fornece coordenadas que possibilitam a extração de nossas \textit{features} fonológicas, de nível semântico mais elevado.
-Esse processo será discutido em mais detalhes na seção seguinte.
+Em seguida, adotaremos alguns dos modelos de aprendizagem de máquina comumente utilizados em tarefas de \acrshort{nlp} e os aplicaremos aqui com o intuito de avaliar seu desempenho neste contexto e a eficácia da abordagem proposta. 
+% Esse processo será discutido em mais detalhes na seção seguinte.
 
 % Discutiremos em detalhes os processos de seleção dos modelos e criação do \textit{dataset} nas seções a seguir.
 
@@ -122,13 +123,29 @@ Esse processo será discutido em mais detalhes na seção seguinte.
 % Como dados de entrada, utilizaremos os sinais representados a partir seus parâmetros fonológicos. Contudo, como não há \textit{datasets} disponíveis com esse tipo de representação, nosso primeiro passo para viabilizar a pesquisa consistirá em gerar um novo \textit{dataset} da fonologia da língua de sinais. Para isso, utilizaremos o \acrshort{asllvd} como base e processaremos suas amostras utilizando o OpenPose, o qual fornecerá coordenadas que serão utilizadas para a extração de nossas \textit{features}, que possuem um nível mais elevado. 
 
 
-Por fim, selecionaremos alguns dos modelos de aprendizagem de máquina comumente utilizados em tarefas de \acrshort{nlp} e os aplicaremos aqui com o intuito de avaliar seu desempenho no contexto em questão e a eficácia da abordagem proposta. Isso também será melhor detalhado nas seções adiante.
+% Em seguida, selecionaremos alguns dos modelos de aprendizagem de máquina comumente utilizados em tarefas de \acrshort{nlp} e os aplicaremos aqui com o intuito de avaliar seu desempenho no contexto em questão e a eficácia da abordagem proposta. 
+% Isso também será melhor detalhado nas seções adiante.
 
 % Para aplicar a abordagem proposta, selecionaremos alguns modelos de aprendizagem  profunda comumente utilizados em tarefas de \acrshort{nlp} e os aplicaremos ao contexto introduzido aqui afim de avaliar o seu desempenho.
 
 
 % Discutiremos em detalhes os processos de seleção dos modelos e criação do \textit{dataset} nas seções a seguir.
 
+
+
+
+
+A \autoref{fig:etapas-metodologia} ilustra essa abordagem divida em duas etapas.
+No bloco à esquerda, temos o processo envolvido na geração do \textit{dataset}, que inicia-se pelas amostras do \acrshort{asllvd}, contempla a obtenção de coordenadas 3D por meio de ferramentas de \acrshort{cv} e finaliza com a geração do ASL-Phono, que contém os respectivos atributos fonológicos.
+No bloco à direita, está a etapa de \acrlong{slr}, que engloba a preparação das \textit{features}, o processamento dessas \textit{features} pelos modelos de aprendizagem de máquina e a classificação dos sinais.
+Todas essas etapas serão discutidas em detalhes na seções a seguir.
+
+\figura
+{fig:etapas-metodologia}
+{capitulos/metodologia/imagens/etapas_metodologia}
+{width=0.95\textwidth}
+{Etapas envolvidas na metodologia proposta}
+{}
 
 
 
@@ -187,12 +204,6 @@ Por fim, selecionaremos alguns dos modelos de aprendizagem de máquina comumente
 
 
 % uma vez que os parâmetros de entrada foram estabelecidos, podemos então prosseguir realizando o reconhecimento dos sinais. para isso, aplicaremos algumas arquiteturas clássicas de modelos sequenciais de aprendizagem profunda, além de um \textit{transformer} -- que é comumente adotado em tarefas de \acrshort{nlp} --. para que assim possamos quantificar a eficácia e estabelecer uma linha de base para a abordagem proposta. este processo será discutido em mais detalhes nas seções seguintes.
-
-% TODO: ? criar imagem detalhando o processo/abordagem proposto
-% observamos na imagem XXX um diagrama que ilustra a abordagem proposta.
-
-
-
 
 
 
