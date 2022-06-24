@@ -37,7 +37,7 @@ De acordo com \citeonline{goodfellow-2016-deep-learning,ravanelli-2018-li-gru}, 
 
 O \textit{Transformer}, por sua vez, consiste num tipo de arquitetura que não é recorrente e, ao invés disso, baseia-se num mecanismo de \textit{attention} (ou atenção) para estabelecer dependências globais entre os dados de entrada e saída.
 Ele foi introduzido por \citeonline{vaswani-2017-transformer} e sua estrutura é composta por blocos empilhados de redes multicamadas que combinam camadas lineares simples, redes \textit{feed-forward} e camadas de \textit{self-attention} (ou auto-atenção) -- as quais são a principal inovação aqui --, conforme ilustra a \autoref{fig:transformer-arquitetura}.
-Devido à sua estrutura escalável e capaz de capturar o contexto de sequência muito longas, \citeonline{wolf-2020-transformers,jurafsky-2022-speech-lang-processing} afirmam que os \textit{Transformers} tornaram-se rapidamente a arquitetura dominante entre tarefas de \acrshort{nlp}, superando redes como a \acrfull{cnn} e as \acrshortpl{rnn}.
+Devido à sua estrutura escalável e capaz de capturar o contexto de sequências muito longas, \citeonline{wolf-2020-transformers,jurafsky-2022-speech-lang-processing} afirmam que os \textit{Transformers} tornaram-se rapidamente a arquitetura dominante entre tarefas de \acrshort{nlp}, superando redes como a \acrfull{cnn} e as \acrshortpl{rnn}.
 
 \figura[p. 3]
 {fig:transformer-arquitetura}
@@ -45,6 +45,7 @@ Devido à sua estrutura escalável e capaz de capturar o contexto de sequência 
 {width=0.45\textwidth}
 {Arquitetura do \textit{Transformer}}
 {vaswani-2017-transformer}
+%FIXME: acho que a legenda poderia guiar um pouco o leitor sobre a imagem, ela é bem complexa para alguem que nao conhece entender. eu sei que vc falou no texto, mas trazer do texto pra legenda talvez fosse uma boa estratégia
 
 % Por outro lado, o \textit{Transformer}~\cite{vaswani-2017-transformer} é uma arquitetura que não é recorrente -- ao invés disso, baseia-se inteiramente num mecanismo de \textit{attention} (ou atenção) para estabelecer dependências globais entre os dados de entrada e saída.
 % Ele é composta por blocos empilhados de redes multicamadas, as quais combinam camadas lineares simples, redes \textit{feed-forward} e camadas de \textit{self-attention} (ou auto-atenção) -- que, por sua vez, é a principal inovação desse tipo de arquitetura.

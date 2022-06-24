@@ -41,7 +41,7 @@ Esses estudos são enumerados a seguir:
 Como pode-se perceber pela introdução acima, a maioria desses estudos aborda o \acrshort{slr} através do processamento de dados brutos -- como frames RGB ou coordenadas 2D ou 3D --, conforme discutimos ao longo da \autoref{sec:slr}.
 Apesar de em alguns casos eles serem utilizados para gerar \textit{features} intermediárias -- como subunidades de movimento e pausa, imagens de fluxo óptico ou de energia de movimento, histogramas, grafos, entre outras -- estas, por sua vez, apresentam ainda um nível semântico muito menos informativo quanto à língua de sinais e à sua linguística do que aquelas que introduzimos neste trabalho.
 
-Além disso, parte desses trabalhos concentra-se apenas nas mãos dos indivíduos e isso nos remete a um dos problemas que discutimos na \autoref{sec:slr-desafios}, que se refere à abordagem inadequada da língua de sinais. Como resultado, traços linguísticos importantes -- como expressões não-manuais, locação de mãos, movimentos do corpo e interações entre mãos e corpo -- acabam sendo desconsiderados.
+Além disso, parte desses trabalhos concentra-se apenas nas mãos dos indivíduos e isso nos remete a um dos problemas que discutimos na \autoref{sec:slr-desafios}, que se refere à abordagem inadequada no reconhecimento da língua de sinais. Como resultado, traços linguísticos importantes -- como expressões não-manuais, locação de mãos, movimentos do corpo e interações entre mãos e corpo -- acabam sendo desconsiderados.
 
 Observa-se também que todos esses trabalhos modelam vocabulários que correspondem a subconjuntos muito pequenos do \acrshort{asllvd}, conforme discutimos na \autoref{sec:slr-breve-panorama}.
 Esses subconjuntos, por sua vez, representam menos de 13\% do vocabulário total de 2.745 sinais disponibilizado por esse \textit{dataset} e isso faz com que eles acabem não abrangendo uma amplitude significativa da língua de sinais.
@@ -60,10 +60,13 @@ Compreendemos que todos esses fatores têm por objetivo simplificar o tamanho e 
 
 
 \input{capitulos/avaliacao/tabelas/comparacao-resultados}
+%FIXME: na tabela, em vez de usar Todos, coloca o numero de sinais
 
-A \autoref{tab:comparacao-resultados} relaciona os resultados apresentados pelas pesquisas acima e aqueles apresentados pelos modelos utilizados nos experimentos deste trabalho.
+A \autoref{tab:comparacao-resultados} relaciona os resultados apresentados pelas pesquisas acima e os obtidos pelos modelos utilizados nos experimentos deste trabalho.
 De uma maneira geral, vemos que os modelos \textit{Encoder-Decoders} utilizados aqui posicionaram-se com um desempenho mediano em relação às demais pesquisas: ao mesmo tempo em que sua acurácia de aproximadamente 46\% ultrapassou técnicas como \acrshort{pca}, \acrshort{hei}, \acrshort{mei} e \acrshort{mhi}, outras como \acrshort{hcorf}, \acrshort{bhof}, \acrshort{hof} e \acrshort{stgcn} mostraram-se superiores alcançando valores de até 93,30\%.
 A acurácia de 100,00\% registrada pelo \textit{Transformer}, contudo, posicionou-se consistentemente superior aos demais resultados da tabela.
+
+%FIXME: uma dúvida, nessa comparacao vc esta comparando diretamente os resultados de um grupo menor de simbolos com os seus que foram na base toda? ou vc esta fazendo a comparacao com os subconjuntos usados em cada trabalho? pq precisa explicar isso. caso vc esteja usando tudo e os outros so uma parte, nao tem como saber se eles nao estao com os dados mais faceis, precisa argumentar. Se bem que eu acho que vc foi nessa direção nos comentarios abaixo, mas acho que precisa ser mais enfatico, dizendo qual o percentual da base o cara testou e qual vc testou, para ficar bem claro
 
 Quando consideramos apenas os estudos que modelaram \textit{features} referentes ao corpo inteiro do indivíduo (mesmo que indiretamente através de dados brutos como coordenadas) em vez de apenas suas mãos, temos uma perspectiva diferente. \citeonline{metaxas-2018-linguistically} e \citeonline{amorim-2019-stgcn-sl} se enquadram nesses critérios e, pela tabela, vemos que ambas as técnicas de \acrshort{hcorf} e \acrshort{stgcn} superaram os resultados das implementações de \textit{Encoder-Decoders} utilizadas em nossos experimentos. Enquanto aquelas primeiras registraram acurácia de 93,30\% e 61,04\%, respectivamente, os \textit{Encoder-Decoders} alcançaram valores em torno de 46\%.
 

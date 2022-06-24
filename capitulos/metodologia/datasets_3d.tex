@@ -1,9 +1,12 @@
 \subsection{ASL-Skeleton3D}
 \label{sec:metodologia-datasets-3d}
 
-O ASL-Skeleton3D é um \textit{dataset} intermediário que introduz a representação em coordenadas 3D das amostras do \acrshort{asllvd}. Esse tipo de representação fornece detalhes mais precisos acerca do corpo dos indivíduos enquanto eles articulam os sinais, o que possibilita a pesquisadores em \acrshort{slr} extrair diferentes tipos de \textit{features}, explorar novas técnicas, ou ainda derivar outros novos \textit{datasets}.
+%FIME: como é uma contribuição relevante do seu trabalho eu acho que isso deveria ser uma seção nova
 
-Para que fosse possível projetar as amostras do \acrshort{asllvd} dentro do espaço tridimensional, adotamos uma estratégia que consiste essencialmente em combinar duas de suas perspectivas 2D perpendiculares entre si -- a vista frontal e a vista lateral -- para reconstruir uma perspectiva 3D, conforme ilustra a \autoref{fig:our-strategy-3d}. Com isso, assumimos que enquanto a vista frontal nos fornece os eixos \(x\) e \(y\), a vista lateral nos fornecerá a dimensão de profundidade, correspondente ao eixo \( z\).
+O ASL-Skeleton3D é um \textit{dataset} intermediário que introduz a representação em coordenadas 3D das amostras do \acrshort{asllvd}. Esse tipo de representação fornece detalhes mais precisos acerca do corpo dos indivíduos enquanto eles articulam os sinais, o que possibilita a pesquisadores em \acrshort{slr} extrair diferentes tipos de \textit{features}, explorar novas técnicas, ou ainda derivar outros novos \textit{datasets}.
+%FIXME Importante enfatizar que as representações propostas são genéricas e podem servir como base para qualquer linguagem de sinais.
+
+Para que fosse possível projetar as amostras do \acrshort{asllvd} dentro do espaço tridimensional, adotamos uma estratégia que consiste em combinar duas perspectivas 2D perpendiculares entre si -- a vista frontal e a vista lateral -- para reconstruir uma perspectiva 3D, conforme ilustra a \autoref{fig:our-strategy-3d}. Com isso, assumimos que enquanto a vista frontal nos fornece os eixos \(x\) e \(y\), a vista lateral nos fornecerá a dimensão de profundidade, correspondente ao eixo \( z\).
 
 
 \begin{figure}[ht!]
@@ -27,12 +30,12 @@ Para que fosse possível projetar as amostras do \acrshort{asllvd} dentro do esp
 \end{figure}
 
 
-Uma vez definida essa estratégia, nos baseamos no processo descrito por \citeonline{amorim-2019-stgcn-sl} para realizar a estimativa dos esqueletos para os indivíduos nas amostras. Esse processo é composto pelas etapas de obtenção de amostras, segmentação dos sinais, estimativa e normalização dos esqueletos, as quais sofreram adaptações no contexto do presente trabalho para acomodar a composição de esqueletos 3D e os desafios que encontramos para isso. Discutiremos a seguir as adaptações aplicadas:
+Uma vez definida essa estratégia, nos baseamos no processo descrito por \citeonline{amorim-2019-stgcn-sl} para realizar a estimativa dos esqueletos para os indivíduos nas amostras. Esse processo é composto pelas etapas de obtenção de amostras, segmentação dos sinais, estimativa e normalização dos esqueletos, as quais sofreram adaptações no contexto do presente trabalho para acomodar a composição de esqueletos 3D e os desafios que encontramos para isso. Discutiremos a seguir as adaptações realizadas para superar as limitações dos datasets existentes:
 
 % Os passos utilizados para gerar o ASL-Skeleton3D basearam-se no processamento realizado por \citeonline{amorim-2019-stgcn-sl} na construção de um \textit{dataset} de esqueletos 2D da \acrshort{asl}. De um modo geral, eles envolvem a obtenção das amostras, a segmentação dos sinais, a estimativa e a normalização dos esqueletos. Apesar disso, várias adaptações foram necessárias a cada passo para acomodar a estratégia descrita acima e lidar com os desafios encontrados aqui, conforme discutiremos a seguir:
 
 \begin{enumerate}
-    \item \textbf{Obtenção das amostras}: nessa etapa as amostras de vídeos são recuperadas a partir dos servidores do \acrshort{asllvd}, mas no contexto atual fazemos isso para ambas as câmeras frontal e lateral.
+    \item \textbf{Obtenção das amostras}: nessa etapa as amostras de vídeos são recuperadas a partir dos servidores do \acrshort{asllvd}, mas no contexto atual, fazemos isso para ambas as câmeras frontal e lateral.
 
           A saber, existem dois formatos nos quais os vídeos dessas câmeras podem ser disponibilizados: o \textit{mov}, que é compacto e mais fácil de processar; e o \textit{.vid}, que consiste no vídeo bruto, que é maior e mais pesado para baixar e processar.
           Ao analisar as amostras, identificamos que parte delas possuía ambas câmeras disponíveis nos dois formatos; para outras, cada câmera estava em um formato distinto; contudo, nos piores casos uma das câmeras estava ausente ou corrompida, fazendo com que essas amostras fossem perdidas. Lidar com essa falta de homogeneidade acrescentou uma complexidade inesperada, mas que foi contornada resultando numa perda de apenas 0,16\% das amostras originais -- ou seja, 16 amostras de um total inicial de 9.763.

@@ -14,7 +14,7 @@ Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia ut
           O \acrshort{asllvd} fornece originalmente as configurações de mão inicial e final para cada sinal, descrita de acordo com as 88 opções apresentadas por \citeonline{neidle-2020-asllrp} no \acrfull{asllrp}\footnote{
               Disponível em \url{http://www.bu.edu/asllrp}
           }.
-          Utilizamos essa mesma informação para o ASL-Phono, porém adicionamos um passo extra para distribuir essas configurações entre todos os frame, e não apenas o inicial e final.
+          Utilizamos essa mesma informação para o ASL-Phono, porém adicionamos um passo extra para distribuir essas configurações entre todos os frames, e não apenas o inicial e final.
           Dessa forma, dividimos a sequência de frames em duas metades e associamos à primeira delas a configuração inicial provida pelo \acrshort{asllvd} e, à segunda, a configuração final.
 
     \item \textbf{Orientação}: é a direção apontada pelas palmas das mãos na articulação dos sinais.
@@ -22,6 +22,7 @@ Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia ut
           Para calculá-la, utilizamos um pouco de álgebra linear e exploramos a relação das mãos com o espaço tridimensional em que suas coordenadas estão inseridas.
           Iniciamos assumindo que cada palma é um plano cartesiano que atravessa as coordenadas estimadas para as mãos (vide \autoref{subfig:palm-orientation}). Selecionamos então três dessas coordenadas para descrever o plano: \(W\), que corresponde à coordenada do pulso; \(L\), localizada na base do dedo mínimo; e \(I\), localizada na base do dedo indicador.
 
+%FIXME: acho que na legenda da figura poderia explicar o que é a) e b). a descricao esta no texto, mas para a figura ficar autocontida
           \begin{figure}[ht!]
               \centering
               \caption{
@@ -185,6 +186,7 @@ A \autoref{tab:dataset-phono-stats}, por sua vez, apresenta estatísticas calcul
 \input{capitulos/metodologia/tabelas/dataset_phono_stats}
 
 Existem três agrupamentos contidos nela:
+%FIXME: quem é essa nela acima? contextualizar melhor a frase
 
 \begin{itemize}
     \item \textit{Dataset}: sumariza o total de amostras, de sinais e de cada um dos atributos computados para o \textit{dataset}.
@@ -202,8 +204,8 @@ Existem três agrupamentos contidos nela:
 \end{itemize}
 
 
-Por fim, a \autoref{fig:dataset-resampling-antes} detalha a relação entre o número de sinais e o número de amostras existentes no ASL-Phono. Por meio dela, percebe-se mais claramente que a maior parte dos sinais concentra-se na faixa dos que possuem entre 1 e 6 amostras, que é exatamente o intervalo descrito pela média e desvio padrão da tabela acima.
-No entanto, há sinais que apresentam 7 ou mais amostras e ainda outros casos atípicos em que 1, 2 ou 3 sinais concentram sozinhos um número muito grande de amostras -- de 13 até 59.
+Por fim, a \autoref{fig:dataset-resampling-antes} detalha a relação entre o número de sinais e o número de amostras existentes no ASL-Phono. Por meio desta análise, percebe-se mais claramente que a maior parte dos sinais concentra-se na faixa de 1 e 6 amostras, que é exatamente o intervalo descrito pela média e desvio padrão da tabela acima.
+No entanto, há sinais que apresentam 7 ou mais amostras e ainda outros casos atípicos em que 1, 2 ou 3 sinais que concentram sozinhos um número muito grande de amostras -- de 13 até 59.
 Discutiremos na seção seguinte nossa abordagem para lidar com esse desbalanceamento e homogeneizar as amostras antes de prosseguirmos com os experimentos.
 
 \figura

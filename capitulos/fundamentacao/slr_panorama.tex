@@ -12,7 +12,7 @@ Iniciaremos essa discussão através de uma perspectiva geral do número de estu
 Por meio dela, percebemos que esse número praticamente dobrou a cada intervalo de 5 anos e, com o advento de novos dispositivos e algoritmos de \acrshort{ia} por volta dos anos 2010, cresceu de forma ainda mais expressiva. Isso evidencia a ênfase maior recebida pela área recentemente.
 
 Apesar disso, a tabela também nos revela que a maioria desses estudos aborda o \acrshort{slr} utilizando vocabulários muito pequenos, com menos de 200 sinais. Isso corresponde a conjuntos limitados que são geralmente selecionados para simplificar as pesquisas mas que, na prática, acabam limitando também a representatividade da língua de sinais perante seu contexto real de aplicação.
-Apenas a partir de 2015 percebe-se um crescimento mais significativo na adoção de vocabulários com mais de 1000 sinais.
+Apenas a partir de 2015 percebe-se um crescimento mais significativo na adoção de vocabulários com mais de 1.000 sinais.
 
 \input{capitulos/fundamentacao/tabelas/slr-visao-geral}
 
@@ -24,8 +24,8 @@ Apenas a partir de 2015 percebe-se um crescimento mais significativo na adoção
 % Sinais isolados x contínuos -------------
 
 A \autoref{tab:slr-isolados-continuos} divide os estudos acima entre aqueles que abordam a língua utilizando sinais isolados, os quais são reconhecidos separadamente do contexto do discurso, e os que utilizam sinais contínuos, onde sequências completas são utilizadas nesse processo.
-Percebe-se que a maior parte desses estudos segue pela linha dos sinais isolados, uma vez que a abordagem de sinais contínuos é certamente mais complexa e apenas teve seus primeiros \textit{datasets} disponibilizados por volta dos anos 2015.
-Os dados também nos mostram que, ao passo em que estudos com sinais isolados comumente modelam vocabulários pequenos, aqueles que optam por sinais contínuos passaram a preferir vocabulários acima de 1000 sinais desde o surgimento desses \textit{datasets}.
+Percebe-se que a maior parte desses estudos seguem pela linha dos sinais isolados, uma vez que a abordagem de sinais contínuos é certamente mais complexa e apenas teve seus primeiros \textit{datasets} disponibilizados por volta dos anos 2015.
+Os dados também nos mostram que, ao passo em que estudos com sinais isolados comumente modelam vocabulários pequenos, aqueles que optam por sinais contínuos passaram a preferir vocabulários acima de 1.000 sinais.% desde o surgimento desses \textit{datasets}.
 
 \input{capitulos/fundamentacao/tabelas/slr-isolados-continuos}
 
@@ -58,7 +58,7 @@ As línguas \acrfull{csl} e \acrfull{dgs} aparecem em seguida na tabela com uma 
 
 % Tipos de dados de entrada -------------
 
-Na \autoref{tab:slr-dados-entrada} podemos observar os tipos de dados de entrada utilizados por tais estudos. Imagens ou frame de vídeos em RGB aparecem em destaque e vêm sendo adotados desde os anos iniciais até a atualidade. Ao longo da história da \acrshort{slr} eles dividiram espaço com outros tipos de dados mas, a partir de 2005, tornaram-se predominantes provavelmente pela maior adoção de técnicas baseadas em \acrfull{cv} desde então.
+Na \autoref{tab:slr-dados-entrada} podemos observar os tipos de dados de entrada utilizados por tais estudos. Imagens ou \textit{frames} de vídeos em RGB aparecem em destaque e vêm sendo adotados desde os anos iniciais até a atualidade. Ao longo da história da \acrshort{slr} eles dividiram espaço com outros tipos de dados mas, a partir de 2005, tornaram-se predominantes provavelmente pela maior adoção de técnicas baseadas em \acrfull{cv} desde então.
 Luvas eletrônicas estiveram presentes principalmente nos anos iniciais da \acrshort{slr}, quando técnicas envolvendo dispositivos conectados ao corpo dos indivíduos foram muito utilizadas.
 Apesar disso, elas foram gradativamente cedendo espaço a outros tipos como as luvas coloridas e ao \textit{mocap}\footnote{
       \textit{Mocap} (\textit{motion capture} ou captura de movimento): é uma técnica de captura de movimentos que utiliza equipamentos específicos como marcadores ou trajes especiais afixados ao corpo dos indivíduos ou objetos~\cite{kitagawa-2017-mocap}.
@@ -128,7 +128,7 @@ Percebe-se uma predominância da adoção de \textit{features} manuais desde os 
 % \input{capitulos/fundamentacao/tabelas/parametros-tipos}
 
 
-Com o advento do Kinect e das técnicas de \acrlong{dl} a partir de 2010, as \textit{features} globais passaram a assumir uma posição bastante expressiva nesses estudos. Isso porque, ao mesmo tempo em que aquele dispositivo passou a fornecer novos tipos de informações, como coordenadas corporais e dados de profundidade combinados com RGB, essas técnicas introduziram um poder de processamento que possibilitou com que essas informações fossem utilizadas diretamente como \textit{features} de entrada para eles.
+Com o uso do Kinect e das técnicas de \acrlong{dl} a partir de 2010, as \textit{features} globais passaram a assumir uma posição bastante expressiva nesses estudos. Isso porque, ao mesmo tempo em que este dispositivo passou a fornecer novos tipos de informações, como coordenadas corporais e dados de profundidade combinados com RGB, essas técnicas introduziram um poder de processamento que possibilitou com que essas informações fossem utilizadas diretamente como \textit{features} de entrada para eles.
 Por outro lado, as \textit{features} não-manuais não chegaram a apresentar uma adoção significativa perante os demais tipos, ao analisá-los de um modo geral.
 
 \input{capitulos/fundamentacao/tabelas/slr-tipos-features}

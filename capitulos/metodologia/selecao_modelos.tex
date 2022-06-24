@@ -13,7 +13,7 @@
 %       lr scheduler, optimizer, loss function
 %       Busca de parâmetros (dimensionar os modelos/parâmetros)
 
-
+%FIXME: essa parte ficaria na metodologia se vc tirar a os datasets para uma nova secao
 
 % SELEÇÃO DOS MODELOS -------------------------------------------
 
@@ -27,7 +27,7 @@ Dessa forma, o algoritmo de otimização será definido como o \acrfull{sgd} com
 % Dessa forma, utilizamos como algoritmo de otimização o \acrfull{sgd} com \textit{momentum} de 0,9. Ele foi combinado com uma estratégia de redução da taxa de aprendizagem por um fator de 0,2 sempre que o valor da perda calculada sobre os dados de validação atinge um platô por 5 épocas seguidas. A função de perda utilizada, por sua vez, foi a \textit{Cross-Entropy Loss} (ou Perda de Entropia Cruzada). Além disso, adotamos \textit{batches} com tamanho de 50 amostras e particionamos o \textit{dataset} numa proporção de 15\% para validação, 15\% para testes e o restante para treinamento dos modelos.
 
 
-Realizamos uma busca de parâmetros do tipo \textit{Grid Search} com validação cruzada de 5 \textit{folds} para identificar a configuração mais otimizada com relação à perda para cada um dos modelos em nosso contexto. Essa configuração, por suz vez, será adotada em nossos experimentos.
+Realizamos uma busca de parâmetros do tipo \textit{Grid Search} com validação cruzada de 5 \textit{folds} para identificar a configuração mais otimizada com relação à perda para cada um dos modelos em nosso contexto. Essa configuração, por sua vez, será adotada em nossos experimentos.
 
 
 % Parâmetros otimizados para Encoder-Decoder (LSTM):

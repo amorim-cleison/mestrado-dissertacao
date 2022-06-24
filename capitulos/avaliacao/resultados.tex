@@ -1,7 +1,7 @@
 \section{Análise dos resultados}
 \label{sec:avaliacao-resultados}
 
-A \autoref{tab:resultados-modelos} mostra o desempenho apresentado pelos modelos utilizados nos experimentos deste trabalho, respectivamente o \textit{Encoder-Decoder} implementado com \acrshort{lstm}, o \textit{Encoder-Decoder} implementado com \acrshort{gru} e o \textit{Transformer}.
+A \autoref{tab:resultados-modelos} apresenta o desempenho apresentado pelos modelos utilizados nos experimentos deste trabalho, respectivamente o \textit{Encoder-Decoder} implementado com \acrshort{lstm}, o \textit{Encoder-Decoder} implementado com \acrshort{gru} e o \textit{Transformer}.
 Para cada modelo, são listadas as métricas\footnote{
     Uma vez que o reconhecimento de sinais consiste numa classificação multi-classes, os valores das métricas binárias de precisão, \textit{recall} e \textit{F1-score} foram consolidados utilizando-se a média ponderada pelo número de amostras em cada classe.
 } de acurácia, precisão, \textit{recall} e \textit{F1-score}, bem como a perda resultante.
@@ -11,6 +11,7 @@ Para cada modelo, são listadas as métricas\footnote{
 
 \input{capitulos/avaliacao/tabelas/resultados-modelos}
 
+%FIXME: eu sei que na proxima secao vc vai apresentar a comparação com os trabalhos relacionados, mas aqui senti falta de um baseline que pudesse comparar com a abordagem original qual foi a melhora usando a estratégia linguistica em relacao a usar somente as imagens
 
 Primeiramente, observamos que os modelos baseados na arquitetura \textit{Encoder-Decoder} apresentaram resultados muito semelhantes entre si, apesar de ainda não muito expressivos de um modo geral.
 % De um modo geral, percebe-se entre os modelos baseados na arquitetura \textit{Encoder-Decoder} resultados muito semelhantes entre si, mas não muito expressivos.
