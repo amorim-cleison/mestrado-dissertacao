@@ -64,9 +64,7 @@ Compreendemos que todos esses fatores têm por objetivo simplificar o tamanho e 
 
 A \autoref{tab:comparacao-resultados} relaciona os resultados apresentados pelas pesquisas acima e os obtidos pelos modelos utilizados nos experimentos deste trabalho.
 De uma maneira geral, vemos que os modelos \textit{Encoder-Decoders} utilizados aqui posicionaram-se com um desempenho mediano em relação às demais pesquisas: ao mesmo tempo em que sua acurácia de aproximadamente 46\% ultrapassou técnicas como \acrshort{pca}, \acrshort{hei}, \acrshort{mei} e \acrshort{mhi}, outras como \acrshort{hcorf}, \acrshort{bhof}, \acrshort{hof} e \acrshort{stgcn} mostraram-se superiores alcançando valores de até 93,30\%.
-A acurácia de 100,00\% registrada pelo \textit{Transformer}, contudo, posicionou-se consistentemente superior aos demais resultados da tabela.
-
-%FIXME: uma dúvida, nessa comparacao vc esta comparando diretamente os resultados de um grupo menor de simbolos com os seus que foram na base toda? ou vc esta fazendo a comparacao com os subconjuntos usados em cada trabalho? pq precisa explicar isso. caso vc esteja usando tudo e os outros so uma parte, nao tem como saber se eles nao estao com os dados mais faceis, precisa argumentar. Se bem que eu acho que vc foi nessa direção nos comentarios abaixo, mas acho que precisa ser mais enfatico, dizendo qual o percentual da base o cara testou e qual vc testou, para ficar bem claro
+A acurácia de 100,00\% registrada pelo \textit{Transformer}, por sua vez, posicionou-se consistentemente superior aos demais resultados da tabela.
 
 Quando consideramos apenas os estudos que modelaram \textit{features} referentes ao corpo inteiro do indivíduo (mesmo que indiretamente através de dados brutos como coordenadas) em vez de apenas suas mãos, temos uma perspectiva diferente. \citeonline{metaxas-2018-linguistically} e \citeonline{amorim-2019-stgcn-sl} se enquadram nesses critérios e, pela tabela, vemos que ambas as técnicas de \acrshort{hcorf} e \acrshort{stgcn} superaram os resultados das implementações de \textit{Encoder-Decoders} utilizadas em nossos experimentos. Enquanto aquelas primeiras registraram acurácia de 93,30\% e 61,04\%, respectivamente, os \textit{Encoder-Decoders} alcançaram valores em torno de 46\%.
 
@@ -74,9 +72,9 @@ Quando consideramos apenas os estudos que modelaram \textit{features} referentes
 % - ao comparar nossos experimentos com todos os trabalhos acima, de uma forma generalizada, vemos que o desempenho dos encoder-decoders (por volta dos 46%) foi mediano com relação aos demais (que em vários deles alcançaram marcas de 70%, 85% e até 93,30%)
 % - no caso do transformer, seu desempenho posicionou-se superior aos demais trabalhos
 
-Em contrapartida, se considerarmos apenas estudos que modelaram vocabulários contendo todos os sinais do \acrshort{asllvd}, que seria uma complexidade equivalente à que abordamos em nossos experimentos, essa análise é ainda diferente.
-Pela tabela, apenas \citeonline{amorim-2019-stgcn-sl} se enquadram nesse cenário e registram uma acurácia de 16,48\% utilizando a técnica \acrshort{stgcn}.
-Esse número é bem inferior às acurácias de 45,99\% e 46,98\% alcançadas pelas implementações de \textit{Encoder-Decoders} em nossos experimentos. Ao comparar com \textit{Transformer}, por sua vez, constatamos uma diferença ainda mais expressiva.
+% Se considerarmos apenas estudos que modelaram vocabulários com tamanho equivalente ao do \acrshort{asllvd}, como fizemos aqui, essa análise é ainda diferente.
+% Pela tabela, apenas \citeonline{amorim-2019-stgcn-sl} se enquadram nesse cenário e registram uma acurácia de 16,48\% utilizando a técnica \acrshort{stgcn}.
+% Esse número é bem inferior às acurácias de 45,99\% e 46,98\% alcançadas pelas implementações de \textit{Encoder-Decoders} em nossos experimentos. Ao comparar com \textit{Transformer}, por sua vez, constatamos uma diferença ainda mais expressiva.
 
 % ------------
 % - contudo, considerando que maioria deles modela apenas vocabulários pequenos [que correspondem em média a 2% do vocabulário disponível no ASLLVD (que é o que utilizamos aqui) e não ultrapassam 13% dele], nota-se que 
@@ -84,6 +82,12 @@ Esse número é bem inferior às acurácias de 45,99\% e 46,98\% alcançadas pel
 %   - se olharmos o transformer, esse salto é ainda mais expressivo
 
 
+
+%FIXME: uma dúvida, nessa comparacao vc esta comparando diretamente os resultados de um grupo menor de simbolos com os seus que foram na base toda? ou vc esta fazendo a comparacao com os subconjuntos usados em cada trabalho? pq precisa explicar isso. caso vc esteja usando tudo e os outros so uma parte, nao tem como saber se eles nao estao com os dados mais faceis, precisa argumentar. Se bem que eu acho que vc foi nessa direção nos comentarios abaixo, mas acho que precisa ser mais enfatico, dizendo qual o percentual da base o cara testou e qual vc testou, para ficar bem claro
+
+Apesar disso, é importante salientar que a maioria dos estudos na tabela modela vocabulários muito pequenos do \acrshort{asllvd}, o que difere-se do que realizamos neste trabalho. Como discutimos acima, esse tipo de abordagem fornece um recorte simplificado do problema e favorece para que esses estudos obtenham acurácias mais elevadas.
+Os números apresentados por \citeonline{amorim-2019-stgcn-sl} ajudam a ilustrar a diferença decorrente disso: ao modelar os 20 sinais utilizados pela maioria dos estudos na tabela, o \acrshort{stgcn} obteve uma acurácia de 61,04\%; no entanto, quando utilizados os 2.745 sinais esse número caiu para 16,48\%.
+Dessa forma, entendemos que mesmo as acurácias de 45,99\% e 46,98\% obtidas pelos \textit{Encoder-Decoders} em nossos experimentos representam resultados bastante expressivos em comparação com os demais estudos na tabela, uma vez que aqui abordamos um vocabulário complexo contendo 2.650 sinais e os demais consideraram apenas recortes de 20, 97 ou 350 sinais.
 
 
 

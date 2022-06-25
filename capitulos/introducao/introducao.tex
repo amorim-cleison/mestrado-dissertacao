@@ -129,12 +129,12 @@ Por meio deles, seria possível reduzir a barreira linguística entre Surdos e o
 
 No entanto, apesar do potencial que o \acrshort{slr} possui, \citeonline{cooper-2011-slr} acreditam que o progresso apresentado por essa área ao longo das últimas décadas foi insuficiente para conduzir a avanços expressivos:
 
+%FIXME: talvez precise atualizar essa referencia, pq é uma afirmação forte, feita a mais de 10 anos. eu realmente acho que ainda está assim, mas era bom uma referencia mais recente
 \begin{citacao}
-    Enquanto sistemas de reconhecimento da fala avançaram ao ponto de estarem comercialmente disponíveis, o reconhecimento de sinais ainda está em sua infância. 
+    Enquanto sistemas de reconhecimento da fala avançaram ao ponto de estarem comercialmente disponíveis, o reconhecimento de sinais ainda está em sua infância.
 
     Atualmente, todos os serviços comerciais de tradução de sinais são baseados em humanos e requerem que pessoal especializado esteja disponível, o que os tornam caros e pouco acessíveis. \cite[tradução nossa]{cooper-2011-slr}
 \end{citacao}
-%FIXME: talvez precise atualizar essa referencia, pq é uma afirmação forte, feita a mais de 10 anos. eu realmente acho que ainda está assim, mas era bom uma referencia mais recente
 
 
 % Um passo importante para redução dessas barreiras na comunicação entre usuários e não-usuários da língua sinalizada compreende a pesquisa e desenvolvimento de tecnologias capazes de realizar o reconhecimento, tradução e transcrição dessa língua para outros idiomas e vice-versa. Essa é uma tarefa desafiadora que vem sendo abordada de forma multidisciplinar no decorrer das últimas décadas por subáreas da Ciência da Computação -- a exemplo do \acrfull{slr}, que aplica reconhecimento de padrões, visão computacional, processamento de linguagem natural e linguística para construir métodos e algoritmos objetivam identificar sinais produzidos e compreender seu significado~\cite{wadhawan-2019-slr-literature-review}.
@@ -164,7 +164,27 @@ No entanto, apesar do potencial que o \acrshort{slr} possui, \citeonline{cooper-
 Isso deve-se, de um modo geral, a um conjunto de particularidades que as línguas de sinais apresentam quando comparadas às línguas faladas, bem como à forma com que as pesquisas em \acrshort{slr} têm abordado elas, afirmam \citeonline{bragg-2019-slr-interdisciplinary,cooper-2011-slr}.
 Diferentemente das faladas, as línguas sinalizadas possuem uma natureza visual e transmitem significado através de múltiplos canais ao mesmo tempo, como mãos, corpo, face, entre outros de granularidade ainda menor.
 Essa natureza faz com que sua linguística seja estruturada de uma forma muito específica, demandando que novas técnicas sejam desenvolvidas para abordar tais particularidades.
-Contudo, um grande número de pesquisas nessa área não aborda essa linguística ou suas complexidades e, como consequência, acabam não produzindo avanços realmente efetivos.
+
+% Contudo, um grande número de pesquisas nessa área não aborda essa linguística ou suas complexidades e, como consequência, acabam não produzindo avanços realmente efetivos.
+
+%FIXME: acho que vc precisa de mais um paragrafo aqui enfatizando pq é um problema nao considerar a parte linguistica. vc falou bastante do contexto do surdo, mas pouco do problema que vc vai abordar
+Contudo, um grande número de pesquisas nessa área trata o \acrshort{slr} como uma tarefa de reconhecimento de gestos não-estruturados ou poses de mãos estáticas, que são mapeados a partir de imagens RGB, dados de luvas eletrônicas ou coordenadas dos corpos dos indivíduos.
+Isso faz com que elas deixem de abordar aspectos essenciais da língua de sinais -- como sua linguística e suas particularidades -- e desviem seu foco para um conjunto de desafios pertinentes à área de \acrfull{cv}, como a detecção, segmentação e rastreamento de partes do corpo; a interação entre mãos e oclusões decorrentes disso; variações de tom de pele; entre outros que comumente já são abordados ou solucionados por outras subáreas da \acrshort{cv}.
+Como consequência, essas pesquisas acabam não produzindo avanços realmente efetivos para a \acrshort{slr}.
+
+
+% Many approaches to SLR incorrectly treat the problem as Gesture Recognition (GR). So research has thus far focused on identifying optimal features and classification methods to correctly label a given sign from a set of possible signs. However, sign language is far more than just a collection of well specified gestures.
+
+
+% Isso assemelha-se à forma como hoje outras línguas são abordadas com sucesso pelo Processamento de Linguagem Natural (PLN) e diferencia-se daquela predominante no Reconhecimento de Língua de Sinais (RLS) que, por sua vez, trata os sinais como gestos não-estruturados, mapeados a partir de dados brutos capturados dos indivíduos – como pixels de imagens ou frames de vídeos, pontos lidos de luvas eletrônicas, coordenadas 2D ou 3D, entre outros – e colocam em segundo plano a importância linguística do sinal
+
+% Nossa hipótese assume que, além de deixar de abordar uma parte muito importante dessa língua, lidar com esse tipo de dados brutos traz complexidades adicionais que extrapolam o escopo que deveria ser efetivamente abordado pelo RLS. Em outras palavras, esse foco inadequado faz com que pesquisas em RLS deixem de solucionar um problema intrinsecamente de PLN e passem a investir esforços consideráveis tentando lidar com um conjunto de desafios pertinentes à área de Visão Computacional (VC) – os quais comumente já estão abordados ou solucionados por uma de suas subáreas, como a detecção, segmentação e rastreamento de partes do corpo em imagens e vídeos; a interação entre mãos e oclusões decorrentes disso; as variações de tom de pele, cores de roupa e luminosidade do ambiente; entre outros listados nas revisões literárias elaboradas no decorrer da última década para a RLS
+
+
+
+
+
+
 
 
 % \citeonline{bragg-2019-slr-interdisciplinary} e \citeonline{cooper-2011-slr} acreditam que, de uma forma geral, isso está relacionado a fatores como os desafios particulares a essas línguas e a forma com que as pesquisas desenvolvidas na área têm abordando o problema no decorrer das últimas décadas.
@@ -186,8 +206,6 @@ Contudo, um grande número de pesquisas nessa área não aborda essa linguístic
 %     \item \textit{Datasets} limitados: os \textit{datasets} de língua de sinais disponíveis publicamente são limitados em quantidade e qualidade, e isso impõe um desafio relevante para as pesquisas na área. Técnicas modernas de aprendizagem de máquina demandam uma quantidade crescente de dados que representem o contexto de aplicação no mundo real. A escassez desses dados faz que os algoritmos desenvolvidos não sejam capazes de aprender corretamente sobre o domínio do problema e, consequentemente, não sejam capazes de generalizar soluções úteis para o mundo real.
 
 % \end{enumerate}
-
-%FIXME: acho que vc precisa de mais um paragrafo aqui enfatizando pq é um problema nao considerar a parte linguistica. vc falou bastante do contexto do surdo, mas pouco do problema que vc vai abordar
 
 Tendo em vista isso, este trabalho busca contribuir com a área de \acrfull{slr} por meio de uma proposta que aborda a língua de sinais através de sua linguística e aplica técnicas de \acrfull{nlp} para estabelecer uma direção que possa conduzir a avanços efetivos na área e, consequentemente, ajude a superar alguns dos desafios cotidianos atualmente encarados pelos Surdos.
 
