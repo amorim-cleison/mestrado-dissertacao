@@ -29,6 +29,8 @@
         "transicionamos",
         "Zanchettin"
     ],
+    "editor.wordWrap": "on",
+    "todo-tree.tree.showBadges": true,
     "todo-tree.general.tags": [
         "BUG",
         "HACK",
@@ -37,8 +39,7 @@
         "XXX",
         "[ ]",
         "[x]",
-        "% TODO"
-    ],
-    "editor.wordWrap": "on",
-    "todo-tree.tree.showBadges": true
+        "% TODO",
+        "%FIXME"
+    ]
 }

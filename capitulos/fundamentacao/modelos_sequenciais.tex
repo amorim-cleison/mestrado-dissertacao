@@ -35,24 +35,6 @@ De acordo com \citeonline{goodfellow-2016-deep-learning,ravanelli-2018-li-gru}, 
 % A arquitetura \acrshort{gru} surgiu com o objetivo de simplificar o desenho das unidades internas do \acrshort{lstm} e, devido a isso, é considerada uma evolução desta. Segundo \citeonline{goodfellow-2016-deep-learning}, a principal diferença entre elas está na forma como elas controlam o fluxo de informação entre suas camadas. Enquanto que nas unidades do \acrshort{lstm} são utilizadas três portas para controlar a atualização, esquecimento e a saída de informação, no \acrshort{gru} uma única porta realiza o controle simultâneo do fator de esquecimento e da atualização do estado da unidade -- o que faz com que ela apresentem um total duas portas (denominadas \textit{update gate} e \textit{reset gate}) \cite{ravanelli-2018-li-gru,goodfellow-2016-deep-learning}.
 
 
-O \textit{Transformer}, por sua vez, consiste num tipo de arquitetura que não é recorrente e, ao invés disso, baseia-se num mecanismo de \textit{attention} (ou atenção) para estabelecer dependências globais entre os dados de entrada e saída.
-Ele foi introduzido por \citeonline{vaswani-2017-transformer} e sua estrutura é composta por blocos empilhados de redes multicamadas que combinam camadas lineares simples, redes \textit{feed-forward} e camadas de \textit{self-attention} (ou auto-atenção) -- as quais são a principal inovação aqui --, conforme ilustra a \autoref{fig:transformer-arquitetura}.
-Devido à sua estrutura escalável e capaz de capturar o contexto de sequências muito longas, \citeonline{wolf-2020-transformers,jurafsky-2022-speech-lang-processing} afirmam que os \textit{Transformers} tornaram-se rapidamente a arquitetura dominante entre tarefas de \acrshort{nlp}, superando redes como a \acrfull{cnn} e as \acrshortpl{rnn}.
-
-\figura[p. 3]
-{fig:transformer-arquitetura}
-{capitulos/fundamentacao/imagens/transformer_arquitetura}
-{width=0.45\textwidth}
-{Arquitetura do \textit{Transformer}}
-{vaswani-2017-transformer}
-%FIXME: acho que a legenda poderia guiar um pouco o leitor sobre a imagem, ela é bem complexa para alguem que nao conhece entender. eu sei que vc falou no texto, mas trazer do texto pra legenda talvez fosse uma boa estratégia
-
-% Por outro lado, o \textit{Transformer}~\cite{vaswani-2017-transformer} é uma arquitetura que não é recorrente -- ao invés disso, baseia-se inteiramente num mecanismo de \textit{attention} (ou atenção) para estabelecer dependências globais entre os dados de entrada e saída.
-% Ele é composta por blocos empilhados de redes multicamadas, as quais combinam camadas lineares simples, redes \textit{feed-forward} e camadas de \textit{self-attention} (ou auto-atenção) -- que, por sua vez, é a principal inovação desse tipo de arquitetura.
-% \citeonline{wolf-2020-transformers} afirmam que o \textit{Transformer} tornou-se rapidamente a arquitetura dominante para o \acrshort{nlp} e tem superado modelos alternativos como \acrshortpl{cnn} e \acrshortpl{rnn} sobretudo em tarefas de compreensão e geração de linguagem natural. Além disso, sua arquitetura escalável facilita o treinamento paralelo eficiente e a captura do contexto de sequências muito longas
-% \cite{vaswani-2017-transformer,jurafsky-2022-speech-lang-processing,wolf-2020-transformers}.
-
-
 
 Um outro tipo de arquitetura utilizada no \acrshort{nlp} é a \textit{Sequence-to-Sequence} (ou Sequência para Sequência), também comumente conhecida como \textit{Encoder-Decoder} (ou Codificador Decodificador). Ela foi apresentada por \citeonline{cho-2014-encoder-decoder,sutskever-2014-seq-to-seq} e sua estrutura é composta por duas redes neurais: uma codificadora, que recebe uma sequência de entrada e gera uma representação contextualizada dela (que seria o contexto); e uma decodificadora, que produz uma sequência de saída específica para a tarefa em questão, conforme ilustrado na \autoref{fig:encoder-decoder-arquitetura}. 
 
@@ -60,13 +42,35 @@ Um outro tipo de arquitetura utilizada no \acrshort{nlp} é a \textit{Sequence-t
 {fig:encoder-decoder-arquitetura}
 {capitulos/fundamentacao/imagens/encoder_decoder_arquitetura}
 {width=0.90\textwidth}
-{Arquitetura do \textit{Encoder-Decoder}. A sequência de entrada \(\{x_1, x_2, x_3, x_n\}\) é recebida pelo \textit{encoder} e utilizada para gerar o contexto \(c\) (em verde), o qual é utilizado pelo \textit{decoder} para produzir a sequência \(\{y_1, y_2, y_3, y_n\}\).}
+{Arquitetura do \textit{Encoder-Decoder}: a sequência de entrada \(\{x_1, x_2, x_3, x_n\}\) é recebida pelo \textit{encoder} (à esquerda) e utilizada para gerar o contexto \(c\) (em verde), o qual é utilizado pelo \textit{decoder} (à direita) para produzir a sequência \(\{y_1, y_2, y_3, y_n\}\)}
 {jurafsky-2022-speech-lang-processing}
 
 
 Essas redes codificadoras e decodificadoras são implementadas utilizando-se redes \acrshortpl{rnn}, e algumas otimizações consideram também a adição de uma camada de \textit{attention} antes do decodificador para eliminar um gargalo observado ali por \citeonline{bahdanau-2015-mt-align-translate}.
 
 % Por fim, se compararmos a estrutura do \textit{Transformer} (\autoref{fig:transformer-arquitetura}) com a do \textit{Encoder-Decoder} (\autoref{fig:encoder-decoder-arquitetura}), perceberemos que elas compartilham algumas semelhanças.
+
+
+
+
+O \textit{Transformer}, por sua vez, consiste num tipo de arquitetura que não é recorrente e, ao invés disso, baseia-se num mecanismo de \textit{attention} (ou atenção) para estabelecer dependências globais entre os dados de entrada e saída.
+Ele foi introduzido por \citeonline{vaswani-2017-transformer} e baseia-se na estrutura do \textit{Encoder-Decoder}, porém seus codificadores e decodificadores são compostos por blocos empilhados de redes multicamadas que combinam camadas lineares simples, redes \textit{feed-forward} e camadas de \textit{self-attention} (ou auto-atenção) -- as quais são a principal inovação aqui --, conforme ilustra a \autoref{fig:transformer-arquitetura}.
+Devido à sua estrutura escalável e capaz de capturar o contexto de sequências muito longas, \citeonline{wolf-2020-transformers,jurafsky-2022-speech-lang-processing} afirmam que os \textit{Transformers} tornaram-se rapidamente a arquitetura dominante entre tarefas de \acrshort{nlp}, superando redes como a \acrfull{cnn} e as \acrshortpl{rnn}.
+
+\figura[p. 3]
+{fig:transformer-arquitetura}
+{capitulos/fundamentacao/imagens/transformer_arquitetura}
+{width=0.45\textwidth}
+{Arquitetura do \textit{Transformer}: são utilizados blocos empilhados que combinam redes \textit{feed-forward} e camadas de \textit{self-attention} para o \textit{encoder} (à esquerda) e o \textit{decoder} (à direita); os \textit{embeddings} (abaixo) recebem uma codificação posicional para que seja considerada a ordem de suas sequências}
+{vaswani-2017-transformer}
+
+
+
+% Por outro lado, o \textit{Transformer}~\cite{vaswani-2017-transformer} é uma arquitetura que não é recorrente -- ao invés disso, baseia-se inteiramente num mecanismo de \textit{attention} (ou atenção) para estabelecer dependências globais entre os dados de entrada e saída.
+% Ele é composta por blocos empilhados de redes multicamadas, as quais combinam camadas lineares simples, redes \textit{feed-forward} e camadas de \textit{self-attention} (ou auto-atenção) -- que, por sua vez, é a principal inovação desse tipo de arquitetura.
+% \citeonline{wolf-2020-transformers} afirmam que o \textit{Transformer} tornou-se rapidamente a arquitetura dominante para o \acrshort{nlp} e tem superado modelos alternativos como \acrshortpl{cnn} e \acrshortpl{rnn} sobretudo em tarefas de compreensão e geração de linguagem natural. Além disso, sua arquitetura escalável facilita o treinamento paralelo eficiente e a captura do contexto de sequências muito longas
+% \cite{vaswani-2017-transformer,jurafsky-2022-speech-lang-processing,wolf-2020-transformers}.
+
 
 
 

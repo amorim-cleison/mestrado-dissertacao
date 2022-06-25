@@ -1,7 +1,7 @@
 \subsection{ASL-Skeleton3D}
 \label{sec:metodologia-datasets-3d}
 
-%FIME: como é uma contribuição relevante do seu trabalho eu acho que isso deveria ser uma seção nova
+%FIXME: como é uma contribuição relevante do seu trabalho eu acho que isso deveria ser uma seção nova
 
 O ASL-Skeleton3D é um \textit{dataset} intermediário que introduz a representação em coordenadas 3D das amostras do \acrshort{asllvd}. Esse tipo de representação fornece detalhes mais precisos acerca do corpo dos indivíduos enquanto eles articulam os sinais, o que possibilita a pesquisadores em \acrshort{slr} extrair diferentes tipos de \textit{features}, explorar novas técnicas, ou ainda derivar outros novos \textit{datasets}.
 %FIXME Importante enfatizar que as representações propostas são genéricas e podem servir como base para qualquer linguagem de sinais.
@@ -30,7 +30,7 @@ Para que fosse possível projetar as amostras do \acrshort{asllvd} dentro do esp
 \end{figure}
 
 
-Uma vez definida essa estratégia, nos baseamos no processo descrito por \citeonline{amorim-2019-stgcn-sl} para realizar a estimativa dos esqueletos para os indivíduos nas amostras. Esse processo é composto pelas etapas de obtenção de amostras, segmentação dos sinais, estimativa e normalização dos esqueletos, as quais sofreram adaptações no contexto do presente trabalho para acomodar a composição de esqueletos 3D e os desafios que encontramos para isso. Discutiremos a seguir as adaptações realizadas para superar as limitações dos datasets existentes:
+Uma vez definida essa estratégia, nos baseamos no processo descrito por \citeonline{amorim-2019-stgcn-sl} para realizar a estimativa dos esqueletos para os indivíduos nas amostras. Esse processo é composto pelas etapas de obtenção de amostras, segmentação dos sinais, estimativa e normalização dos esqueletos, as quais sofreram adaptações no contexto do presente trabalho para acomodar a composição de esqueletos 3D e os desafios que encontramos para isso. Discutiremos a seguir as adaptações realizadas para superar as limitações dos \textit{datasets} existentes:
 
 % Os passos utilizados para gerar o ASL-Skeleton3D basearam-se no processamento realizado por \citeonline{amorim-2019-stgcn-sl} na construção de um \textit{dataset} de esqueletos 2D da \acrshort{asl}. De um modo geral, eles envolvem a obtenção das amostras, a segmentação dos sinais, a estimativa e a normalização dos esqueletos. Apesar disso, várias adaptações foram necessárias a cada passo para acomodar a estratégia descrita acima e lidar com os desafios encontrados aqui, conforme discutiremos a seguir:
 
@@ -43,7 +43,7 @@ Uma vez definida essa estratégia, nos baseamos no processo descrito por \citeon
 
     \item \textbf{Segmentação dos sinais}: compreende a segmentação das sequências de vídeos do \acrshort{asllvd} em pedaços menores, contendo um único sinal.
           Nessa etapa também reduzimos a taxa de quadros de 60 para 3 FPS, uma vez que consideramos que é pouco provável a articulação de mais de três movimentos relevantes em um único segundo.
-          Isso contribuiu para reduzir em cerca de 20 vezes o número de frames a serem processados nas etapas seguintes.
+          Isso contribuiu para reduzir em cerca de 20 vezes o número de \textit{frames} a serem processados nas etapas seguintes.
 
 
     \item \textbf{Estimativa dos esqueletos 3D}: nesse momento os esqueletos dos sinalizadores são estimados utilizando-se o OpenPose para ambas as câmeras frontal e lateral. Dois esqueletos 2D são obtidos a partir disso:
@@ -107,7 +107,7 @@ Uma vez definida essa estratégia, nos baseamos no processo descrito por \citeon
 \end{enumerate}
 
 
-A \autoref{fig:sample-json-datasetTD} exemplifica uma amostra do ASL-Skeleton3D resultante do processamento acima, bem como suas propriedades. Observa-se no início do arquivo informações básicas extraídas do \acrshort{asllvd}, como rótulo, nome do indivíduo, sessão, cena, frames de início e fim, entre outras. Na propriedade ``frames'' estão listados os frames para aquela sequência e o esqueleto 3D estimado para cada um deles. Cada esqueleto contém grupos referentes ao ``\textit{body}'' (corpo), ``\textit{face}'' (face), ``\textit{hand left}'' (mão direita) e ``\textit{hand right}'' (mão esquerda) que, por sua vez, contêm propriedades que listam o nome da coordenada, o ``\textit{score}'' (ou acurácia) de sua estimativa e os respectivos eixos \(x\), \(y\) e \(z\).
+A \autoref{fig:sample-json-datasetTD} exemplifica uma amostra do ASL-Skeleton3D resultante do processamento acima, bem como suas propriedades. Observa-se no início do arquivo informações básicas extraídas do \acrshort{asllvd}, como rótulo, nome do indivíduo, sessão, cena, \textit{frames} de início e fim, entre outras. Na propriedade ``\textit{frames}'' estão listados os \textit{frames} para aquela sequência e o esqueleto 3D estimado para cada um deles. Cada esqueleto contém grupos referentes ao ``\textit{body}'' (corpo), ``\textit{face}'' (face), ``\textit{hand left}'' (mão direita) e ``\textit{hand right}'' (mão esquerda) que, por sua vez, contêm propriedades que listam o nome da coordenada, o ``\textit{score}'' (ou acurácia) de sua estimativa e os respectivos eixos \(x\), \(y\) e \(z\).
 Por exemplo, se observarmos o primeiro índice das propriedades do grupo ``\textit{body}'' veremos que ele corresponde à coordenada ``\textit{nose}'' (nariz), apresenta um \textit{score} de aproximadamente 90\% e coordenadas \(x\), \(y\) e \(z\) localizadas em 4,488, 1,696 e 2,872.
 
 \figura

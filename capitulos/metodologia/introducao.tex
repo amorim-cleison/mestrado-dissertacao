@@ -2,7 +2,7 @@ Neste capítulo discutiremos em mais detalhes a abordagem proposta, as justifica
 
 Esta pesquisa propõe-se a realizar o reconhecimento da linguagem de sinais a partir de uma perspectiva estritamente linguística, baseada nos constituintes fonológicos mínimos que descrevem os sinais, e centrada no aprendizado das complexidades e regras que convém contexto e dá significado a eles.
 
-Isso assemelha-se à forma como hoje outras línguas são abordadas com sucesso pelo \acrfull{nlp} e diferencia-se daquela predominante no \acrfull{slr} que, por sua vez, trata os sinais como gestos não-estruturados, mapeados a partir de dados brutos capturados dos indivíduos -- como pixels de imagens ou frames de vídeos, pontos lidos de luvas eletrônicas, coordenadas 2D ou 3D, entre outros -- e colocam em segundo plano a importância linguística do sinal.
+Isso assemelha-se à forma como hoje outras línguas são abordadas com sucesso pelo \acrfull{nlp} e diferencia-se daquela predominante no \acrfull{slr} que, por sua vez, trata os sinais como gestos não-estruturados, mapeados a partir de dados brutos capturados dos indivíduos -- como pixels de imagens ou \textit{frames} de vídeos, pontos lidos de luvas eletrônicas, coordenadas 2D ou 3D, entre outros -- e colocam em segundo plano a importância linguística do sinal.
 
 % Esta pesquisa apresenta uma proposta de reconhecimento da linguagem de sinais que segue uma abordagem linguística, baseada em seus constituintes mínimos fonológicos, que se diferencia da abordagem predominantemente observada na \acrshort{slr} que, por sua vez, analisa os sinais a partir das informações brutas capturadas do corpo dos indivíduos -- como frames de imagens e vídeos, dados de luvas eletrônicas, coordenadas 3D, entre outras.
 
@@ -113,7 +113,7 @@ Cada trecho é rotulado na linha inferior com suas respectivas partículas míni
 
 
 
-No caso da abordagem proposta aqui, substituiremos essas partículas por alguns dos parâmetros fonológicos introduzidos na \autoref{sec:linguistica}. Uma vez que não há \textit{datasets} disponíveis com esse tipo de representação para as línguas de sinais, nosso primeiro passo consistirá em gerar este dataset. Para isso, utilizaremos o \acrshort{asllvd} como dataset base e processaremos suas amostras utilizando o OpenPose, o qual nos fornece coordenadas que possibilitam a extração de nossas \textit{features} fonológicas, de nível semântico mais elevado.
+No caso da abordagem proposta aqui, substituiremos essas partículas por alguns dos parâmetros fonológicos introduzidos na \autoref{sec:linguistica}. Uma vez que não há \textit{datasets} disponíveis com esse tipo de representação para as línguas de sinais, nosso primeiro passo consistirá em gerar este \textit{dataset}. Para isso, utilizaremos o \acrshort{asllvd} como \textit{dataset} base e processaremos suas amostras utilizando o OpenPose, o qual nos fornece coordenadas que possibilitam a extração de nossas \textit{features} fonológicas, de nível semântico mais elevado.
 Em seguida, adotaremos alguns dos modelos de aprendizagem de máquina comumente utilizados em tarefas de \acrshort{nlp} e os aplicaremos aqui com o intuito de avaliar seu desempenho neste contexto e a eficácia da abordagem proposta. 
 % Esse processo será discutido em mais detalhes na seção seguinte.
 

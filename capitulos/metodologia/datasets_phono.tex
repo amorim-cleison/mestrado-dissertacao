@@ -14,8 +14,8 @@ Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia ut
           O \acrshort{asllvd} fornece originalmente as configurações de mão inicial e final para cada sinal, descrita de acordo com as 88 opções apresentadas por \citeonline{neidle-2020-asllrp} no \acrfull{asllrp}\footnote{
               Disponível em \url{http://www.bu.edu/asllrp}
           }.
-          Utilizamos essa mesma informação para o ASL-Phono, porém adicionamos um passo extra para distribuir essas configurações entre todos os frames, e não apenas o inicial e final.
-          Dessa forma, dividimos a sequência de frames em duas metades e associamos à primeira delas a configuração inicial provida pelo \acrshort{asllvd} e, à segunda, a configuração final.
+          Utilizamos essa mesma informação para o ASL-Phono, porém adicionamos um passo extra para distribuir essas configurações entre todos os \textit{frames}, e não apenas o inicial e final.
+          Dessa forma, dividimos a sequência de \textit{frames} em duas metades e associamos à primeira delas a configuração inicial provida pelo \acrshort{asllvd} e, à segunda, a configuração final.
 
     \item \textbf{Orientação}: é a direção apontada pelas palmas das mãos na articulação dos sinais.
 
@@ -88,13 +88,13 @@ Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia ut
     \item \textbf{Movimento}: é o deslocamento realizado pelas mãos na articulação do sinal.
 
           Para calculá-lo, primeiro selecionaremos a coordenada \(M\) localizada na base do dedo médio como referência (vide \autoref{subfig:hand-movement}).
-          Em seguida, obteremos seu deslocamento entre os frames anterior (tempo \(t-1\)) e atual (tempo \(t\)) utilizando a \autoref{eqn:hand-movement} que, por sua vez, nos fornecerá o vetor de movimento \(\overrightarrow{m}\) (indicado pela seta tracejada vermelha na \autoref{subfig:hand-movement}).
+          Em seguida, obteremos seu deslocamento entre os \textit{frames} anterior (tempo \(t-1\)) e atual (tempo \(t\)) utilizando a \autoref{eqn:hand-movement} que, por sua vez, nos fornecerá o vetor de movimento \(\overrightarrow{m}\) (indicado pela seta tracejada vermelha na \autoref{subfig:hand-movement}).
 
           \begin{figure}[ht!]
               \centering
               \caption{
                   \textmd{
-                      O movimento da mão \(V_{hand}\) é calculado a partir da trajetória da coordenada \(M\) entre os frames anterior (\(t-1\)) e atual (\(t\))
+                      O movimento da mão \(V_{hand}\) é calculado a partir da trajetória da coordenada \(M\) entre os \textit{frames} anterior (\(t-1\)) e atual (\(t\))
                       %   O vetor de movimento \(\protect \overrightarrow{m}\) é calculado pela trajetória da coordenada \(M\) entre os frames anterior (\(t-1\)) e atual (\(t\))~(\subref{subfig:hand-movement}).
                       %   O movimento da mão \(V_{hand}\) é então obtido a partir de \(\protect \overrightarrow{m}\) e descrito dentre um conjunto de direções possíveis~(\subref{subfig:hand-directions}).
                   }
@@ -142,7 +142,7 @@ Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia ut
           Na \autoref{eqn:hand-movement-directions} o limiar \(k\) foi também estabelecido empiricamente como 0,30, para filtrar movimentos com baixa relevância.
 
 
-    \item \textbf{Expressão não-manual (abertura da boca)}: captura o grau de abertura da boca para cada frame na articulação do sinal que, por sua vez, denota a existência de expressão não-manual envolvendo ela.
+    \item \textbf{Expressão não-manual (abertura da boca)}: captura o grau de abertura da boca para cada \textit{frame} na articulação do sinal que, por sua vez, denota a existência de expressão não-manual envolvendo ela.
 
           Para computar essa \textit{feature}, utilizamos como referência o trabalho de \citeonline{ferrario-2000-study-lips}, que analisa e propõe medidas antropométricas para os lábios.
           Dentre elas, selecionamos a \textit{vermilion height to mouth width} (ou altura dos lábios com relação à largura da boca) para estabelecer a abertura da boca \(P_{mouth}\), uma vez que essa medida é capaz de capturar a proporção de abertura dos lábios em termos de um único número.
@@ -168,7 +168,7 @@ Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia ut
 
 Essas são as \textit{features} extraídas para o ASL-Phono.
 A \autoref{fig:sample-json-phono} exemplifica uma amostra resultante desse processo, bem como a disposição dos atributos fonológicos em suas propriedades.
-Sua estrutura é muito semelhante àquela apresentada para o ASL-Skeleton3D, exceto pela propriedade ``frames'' que, ao invés de coordenadas 3D, aqui contém os atributos computados acima. Além do seu respectivo valor computado, cada atributo pode apresentar também um \textit{score}, que é obtido a partir da precisão estimada para as coordenadas envolvidas no seu cálculo.
+Sua estrutura é muito semelhante àquela apresentada para o ASL-Skeleton3D, exceto pela propriedade ``\textit{frames}'' que, ao invés de coordenadas 3D, aqui contém os atributos computados acima. Além do seu respectivo valor computado, cada atributo pode apresentar também um \textit{score}, que é obtido a partir da precisão estimada para as coordenadas envolvidas no seu cálculo.
 
 \figura
 {fig:sample-json-phono} % Label
@@ -185,15 +185,14 @@ A \autoref{tab:dataset-phono-stats}, por sua vez, apresenta estatísticas calcul
 
 \input{capitulos/metodologia/tabelas/dataset_phono_stats}
 
-Existem três agrupamentos contidos nela:
-%FIXME: quem é essa nela acima? contextualizar melhor a frase
+Existem três agrupamentos contidos nessa tabela:
 
 \begin{itemize}
     \item \textit{Dataset}: sumariza o total de amostras, de sinais e de cada um dos atributos computados para o \textit{dataset}.
           Por exemplo, há um total de 9.747 amostras e 26 movimentos possíveis para a mão dominante.
 
     \item Por amostra: fornece estatísticas de mínimo, máximo, média e desvio padrão calculadas agrupando-se o \textit{dataset} por amostra.
-          Por exemplo, há em média 3,02 frames por amostra e esse número varia de 1 a 12 frames; de maneira semelhante, as amostras têm em média 1,94 movimentos distintos para a mão dominante, o que varia entre 0 e 10 movimentos.
+          Por exemplo, há em média 3,02 \textit{frames} por amostra e esse número varia de 1 a 12 \textit{frames}; de maneira semelhante, as amostras têm em média 1,94 movimentos distintos para a mão dominante, o que varia entre 0 e 10 movimentos.
 
           % contém estatísticas de números mínimos, máximos, médios e desvio padrão para os parâmetros computados acima. Por exemplo, lê-se que, em média, as amostras possuem 3,02 frames, sendo que a mais curta contém apenas 1 frame e a mais longa possui 12 frames. De maneira semelhante, as amostras têm em média de 1,94 movimentos e 2,20 orientações de mão distintas para a mão dominante.
 

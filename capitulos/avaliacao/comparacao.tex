@@ -14,10 +14,10 @@ Esses estudos são enumerados a seguir:
       % recorte de mãos x corpo inteiro?
 
       \item \textbf{\citeonline{theodorakis-2014-dynamic-static}}: utiliza técnicas não-supervisionadas e também \acrfull{hmm} para gerar subunidades de movimento e pausa (chamadas 2-S-U) que são utilizadas para reconhecer os sinais.
-            Para isso, os autores processam os frames das amostras concentrando-se apenas nas mãos dos indivíduos e selecionam um subconjunto de 97 sinais do \acrshort{asllvd}.
+            Para isso, os autores processam os \textit{frames} das amostras concentrando-se apenas nas mãos dos indivíduos e selecionam um subconjunto de 97 sinais do \acrshort{asllvd}.
             % processa frames de vídeo / foco nas mãos
 
-      \item \textbf{\citeonline{lim-2016-bhof}}: introduz a técnica de \acrfull{bhof}, que gera histogramas do fluxo óptico das mãos dos indivíduos a partir dos frames das amostras.
+      \item \textbf{\citeonline{lim-2016-bhof}}: introduz a técnica de \acrfull{bhof}, que gera histogramas do fluxo óptico das mãos dos indivíduos a partir dos \textit{frames} das amostras.
             Em seus experimentos, os autores selecionam um subconjunto de apenas 20 sinais do \acrshort{asllvd}.
 
             Além disso, eles também comparam os resultados do \acrshort{bhof} com aqueles obtidos pelas técnicas \acrfull{mei}, \acrfull{mhi}, \acrfull{pca} e \acrfull{hof} para o mesmo subconjunto de sinais.
@@ -38,7 +38,7 @@ Esses estudos são enumerados a seguir:
 \end{itemize}
 
 
-Como pode-se perceber pela introdução acima, a maioria desses estudos aborda o \acrshort{slr} através do processamento de dados brutos -- como frames RGB ou coordenadas 2D ou 3D --, conforme discutimos ao longo da \autoref{sec:slr}.
+Como pode-se perceber pela introdução acima, a maioria desses estudos aborda o \acrshort{slr} através do processamento de dados brutos -- como \textit{frames} RGB ou coordenadas 2D ou 3D --, conforme discutimos ao longo da \autoref{sec:slr}.
 Apesar de em alguns casos eles serem utilizados para gerar \textit{features} intermediárias -- como subunidades de movimento e pausa, imagens de fluxo óptico ou de energia de movimento, histogramas, grafos, entre outras -- estas, por sua vez, apresentam ainda um nível semântico muito menos informativo quanto à língua de sinais e à sua linguística do que aquelas que introduzimos neste trabalho.
 
 Além disso, parte desses trabalhos concentra-se apenas nas mãos dos indivíduos e isso nos remete a um dos problemas que discutimos na \autoref{sec:slr-desafios}, que se refere à abordagem inadequada no reconhecimento da língua de sinais. Como resultado, traços linguísticos importantes -- como expressões não-manuais, locação de mãos, movimentos do corpo e interações entre mãos e corpo -- acabam sendo desconsiderados.
@@ -60,7 +60,7 @@ Compreendemos que todos esses fatores têm por objetivo simplificar o tamanho e 
 
 
 \input{capitulos/avaliacao/tabelas/comparacao-resultados}
-%FIXME: na tabela, em vez de usar Todos, coloca o numero de sinais
+
 
 A \autoref{tab:comparacao-resultados} relaciona os resultados apresentados pelas pesquisas acima e os obtidos pelos modelos utilizados nos experimentos deste trabalho.
 De uma maneira geral, vemos que os modelos \textit{Encoder-Decoders} utilizados aqui posicionaram-se com um desempenho mediano em relação às demais pesquisas: ao mesmo tempo em que sua acurácia de aproximadamente 46\% ultrapassou técnicas como \acrshort{pca}, \acrshort{hei}, \acrshort{mei} e \acrshort{mhi}, outras como \acrshort{hcorf}, \acrshort{bhof}, \acrshort{hof} e \acrshort{stgcn} mostraram-se superiores alcançando valores de até 93,30\%.
