@@ -11,7 +11,7 @@ Para cada modelo, são listadas as métricas\footnote{
 
 \input{capitulos/avaliacao/tabelas/resultados-modelos}
 
-%FIXME: eu sei que na proxima secao vc vai apresentar a comparação com os trabalhos relacionados, mas aqui senti falta de um baseline que pudesse comparar com a abordagem original qual foi a melhora usando a estratégia linguistica em relacao a usar somente as imagens
+% %FIXME: [cz] eu sei que na proxima secao vc vai apresentar a comparação com os trabalhos relacionados, mas aqui senti falta de um baseline que pudesse comparar com a abordagem original qual foi a melhora usando a estratégia linguistica em relacao a usar somente as imagens --> [cca5] um pouco mais a frente eu acabo discutindo essas diferenças (que basicamente giram em torno do nível semântico que aqui é maior e faz mais sentido perante a língua)
 
 Primeiramente, observamos que os modelos baseados na arquitetura \textit{Encoder-Decoder} apresentaram resultados muito semelhantes entre si, apesar de ainda não muito expressivos de um modo geral.
 % De um modo geral, percebe-se entre os modelos baseados na arquitetura \textit{Encoder-Decoder} resultados muito semelhantes entre si, mas não muito expressivos.
@@ -23,7 +23,7 @@ Por outro lado, quando analisamos os resultados do \textit{Transformer} vemos um
 Isso nos remete à argumentação de \citeonline{wolf-2020-transformers,jurafsky-2022-speech-lang-processing} citada na \autoref{sec:modelos-sequenciais}, que afirma que essa arquitetura tem se mostrado extremamente bem-sucedida entre tarefas de \acrfull{nlp}, superando arquiteturas como as \acrshortpl{rnn}. Exatamente por isso, elas são atualmente dominantes nessa área.
 
 No contexto deste trabalho, acreditamos que alguns motivos particulares contribuíram para os resultados acima.
-Primeiramente, entendemos que a escolha pelo uso da abordagem linguística dos sinais nos possibilitou trabalhar num nível semântico muito mais elevado do que seríamos capazes de fazer com dados brutos como os pixels de imagens RGB ou coordenadas aleatórias no espaço. Conforme discutimos no \autoref{cap:metodologia}, essa é uma abordagem comum em tarefas envolvendo linguagem no \acrshort{nlp} e que nos permite produzir \textit{features} de melhor qualidade para ensinar os modelos acerca da estrutura dessas línguas.
+Em primeiro lugar, entendemos que a escolha pelo uso da abordagem linguística dos sinais nos possibilitou trabalhar num nível semântico muito mais elevado do que seríamos capazes de fazer com dados brutos como os pixels de imagens RGB ou coordenadas aleatórias no espaço. Conforme discutimos no \autoref{cap:metodologia}, essa é uma abordagem comum em tarefas envolvendo linguagem no \acrshort{nlp} e que nos permite produzir \textit{features} de melhor qualidade para ensinar os modelos acerca da estrutura dessas línguas.
 
 Em segundo lugar, a representação introduzida aqui foi capaz de transformar um conjunto de canais linguísticos complexos dos sinais do \acrshort{asllvd}, em \textit{features} discretas (ou ``palavras'', como aqui as denominamos) mais simples e bem definidas a serem consumidas pelos modelos.
 Isso deu origem a um vocabulário que, por sua vez, é muito menos complexo do que aqueles com os quais arquiteturas como o \textit{Transformer} foram originalmente projetadas para lidar. Além disso, nesse processo selecionamos um número menor de atributos fonológicos da língua de sinais e isso também contribuiu para tornar nosso vocabulário ainda mais compacto.

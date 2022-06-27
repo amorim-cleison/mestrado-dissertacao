@@ -1,7 +1,9 @@
 \subsection{ASL-Phono}
 \label{sec:metodologia-datasets-phono}
 
-O ASL-Phono é um \textit{dataset} que introduz uma representação baseada na linguística da língua de sinais e a descreve em termos de seus atributos fonológicos. Ele é produzido a partir dos esqueletos fornecidos pelo \textit{dataset} ASL-Skeleton3D e, assim como este, também apresenta 9.747 amostras correspondentes a 2.650 sinais distintos.
+O ASL-Phono é um \textit{dataset} que introduz uma representação baseada na linguística da língua de sinais e a descreve em termos de seus atributos fonológicos. 
+Ele é produzido a partir dos esqueletos fornecidos pelo \textit{dataset} ASL-Skeleton3D e, assim como este, também apresenta 9.747 amostras correspondentes a 2.650 sinais distintos. 
+Além disso, a abordagem utilizada para computar esses atributos pode ser replicada para outras línguas de sinais.
 
 Por se tratar de uma versão inicial da representação proposta, neste trabalho selecionaremos apenas um subconjunto dos parâmetros fonológicos introduzidos na \autoref{sec:linguistica} para que, dessa forma, possamos validar sua efetividade e traçar uma direção para iterações futuras.
 Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia utilizada para calculá-los e representá-los computacionalmente:
@@ -22,14 +24,15 @@ Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia ut
           Para calculá-la, utilizamos um pouco de álgebra linear e exploramos a relação das mãos com o espaço tridimensional em que suas coordenadas estão inseridas.
           Iniciamos assumindo que cada palma é um plano cartesiano que atravessa as coordenadas estimadas para as mãos (vide \autoref{subfig:palm-orientation}). Selecionamos então três dessas coordenadas para descrever o plano: \(W\), que corresponde à coordenada do pulso; \(L\), localizada na base do dedo mínimo; e \(I\), localizada na base do dedo indicador.
 
-%FIXME: acho que na legenda da figura poderia explicar o que é a) e b). a descricao esta no texto, mas para a figura ficar autocontida
+          % %FIXME: acho que na legenda da figura poderia explicar o que é a) e b). a descricao esta no texto, mas para a figura ficar autocontida
           \begin{figure}[ht!]
               \centering
               \caption{
                   \textmd{
-                      A orientação da palma \(O_{palm}\) é calculada a partir da normal \(\protect \overrightarrow{n}\) do plano cartesiano que representa a palma da mão
-                      %   As coordenadas \(W\), \(L\) e \(I\) e os vetores auxiliares são utilizados para obter a normal \(\protect \overrightarrow{n}\) da palma da mão~(\subref{subfig:palm-orientation}).
-                      %   A direção da palma \(O_{palm}\) é então calculada a partir de \(\protect \overrightarrow{n}\) e descrita dentre um conjunto de direções possíveis~(\subref{ subfig:palm-directions}).
+                      As coordenadas \(W\), \(L\) e \(I\) são utilizados para obter a normal \(\protect \overrightarrow{n}\) da palma da mão~(\subref{subfig:palm-orientation}), a qual é utilizada para calcular a orientação da palma \(O_{palm}\)~(\subref{subfig:palm-directions})
+                      %   A orientação da palma \(O_{palm}\) é calculada a partir da normal \(\protect \overrightarrow{n}\) do plano cartesiano que representa a palma da mão
+                      % As coordenadas \(W\), \(L\) e \(I\) e os vetores auxiliares são utilizados para obter a normal \(\protect \overrightarrow{n}\) da palma da mão~(\subref{subfig:palm-orientation}).
+                      % A direção da palma \(O_{palm}\) é então calculada a partir de \(\protect \overrightarrow{n}\) e descrita dentre um conjunto de direções possíveis~(\subref{ subfig:palm-directions}).
                   }
               }
               \borda[0.60\textwidth]{
@@ -94,7 +97,8 @@ Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia ut
               \centering
               \caption{
                   \textmd{
-                      O movimento da mão \(V_{hand}\) é calculado a partir da trajetória da coordenada \(M\) entre os \textit{frames} anterior (\(t-1\)) e atual (\(t\))
+                      O vetor de movimento \(\protect \overrightarrow{m}\) é obtido através da trajetória da coordenada \(M\) entre os frames anterior (\(t-1\)) e atual (\(t\))~(\subref{subfig:hand-movement}); \(\protect \overrightarrow{m}\) é então utilizado para calcular o movimento da mão \(V_{hand}\)~(\subref{subfig:hand-directions})
+                      %   O movimento da mão \(V_{hand}\) é calculado a partir da trajetória da coordenada \(M\) entre os \textit{frames} anterior (\(t-1\)) e atual (\(t\))
                       %   O vetor de movimento \(\protect \overrightarrow{m}\) é calculado pela trajetória da coordenada \(M\) entre os frames anterior (\(t-1\)) e atual (\(t\))~(\subref{subfig:hand-movement}).
                       %   O movimento da mão \(V_{hand}\) é então obtido a partir de \(\protect \overrightarrow{m}\) e descrito dentre um conjunto de direções possíveis~(\subref{subfig:hand-directions}).
                   }
@@ -124,7 +128,6 @@ Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia ut
 
           %   uma operação semelhante àquela utilizada para a orientação da mão, para definir o movimento da mão \(V_{hand}\) como a combinação de até três direções, cujas opções são: \textit{right} (direita), \textit{left} (esquerda), \textit{up} (para cima), \textit{down} (para baixo), \textit{body} (para o corpo) ou \textit{front} (para frente). Essa operação é detalhada na \autoref{eqn:hand-movement-directions} e a \autoref{subfig:hand-directions} ilustra ela segundo a perspectiva do sinalizador:
 
-          % TODO: ? substituir V por M e atualizar a imagem
           % Directions
           \begin{equation}
               \label{eqn:hand-movement-directions}

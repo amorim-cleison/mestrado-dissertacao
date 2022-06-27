@@ -127,12 +127,15 @@ Por meio deles, seria possível reduzir a barreira linguística entre Surdos e o
 % O \acrfull{slr} é uma das áreas de pesquisa empenhadas em contribuir para que tecnologias como essas sejam desenvolvidas. Trata-se de uma área colaborativa que envolve reconhecimento de padrões, visão computacional, processamento de linguagem natural e linguística para construir métodos e algoritmos capazes de identificar sinais produzidos e compreender seu significado~\cite{wadhawan-2019-slr-literature-review}.
 
 
-No entanto, apesar do potencial que o \acrshort{slr} possui, \citeonline{cooper-2011-slr} acreditam que o progresso apresentado por essa área ao longo das últimas décadas foi insuficiente para conduzir a avanços expressivos:
+No entanto, apesar do potencial que o \acrshort{slr} possui, \citeonline{selvaraj-2022-openhands,yin-2021-sl-in-nlp,cooper-2011-slr} acreditam que o progresso apresentado por essa área ao longo das últimas décadas foi insuficiente para conduzir a avanços expressivos:
 
-%FIXME: talvez precise atualizar essa referencia, pq é uma afirmação forte, feita a mais de 10 anos. eu realmente acho que ainda está assim, mas era bom uma referencia mais recente
+\begin{citacao}
+    Quando comparado com a pesquisa de \acrlong{nlp} baseada em texto e fala, o progresso das pesquisas para línguas de sinais está significativamente atrasado. \cite[tradução nossa]{selvaraj-2022-openhands,yin-2021-sl-in-nlp}
+\end{citacao}
+
+% %FIXME: [cz] talvez precise atualizar essa referencia, pq é uma afirmação forte, feita a mais de 10 anos. eu realmente acho que ainda está assim, mas era bom uma referencia mais recente --> [cca5] feito adicionei uma mais recente acima
 \begin{citacao}
     Enquanto sistemas de reconhecimento da fala avançaram ao ponto de estarem comercialmente disponíveis, o reconhecimento de sinais ainda está em sua infância.
-
     Atualmente, todos os serviços comerciais de tradução de sinais são baseados em humanos e requerem que pessoal especializado esteja disponível, o que os tornam caros e pouco acessíveis. \cite[tradução nossa]{cooper-2011-slr}
 \end{citacao}
 
@@ -167,8 +170,8 @@ Essa natureza faz com que sua linguística seja estruturada de uma forma muito e
 
 % Contudo, um grande número de pesquisas nessa área não aborda essa linguística ou suas complexidades e, como consequência, acabam não produzindo avanços realmente efetivos.
 
-%FIXME: acho que vc precisa de mais um paragrafo aqui enfatizando pq é um problema nao considerar a parte linguistica. vc falou bastante do contexto do surdo, mas pouco do problema que vc vai abordar
-Contudo, um grande número de pesquisas nessa área trata o \acrshort{slr} como uma tarefa de reconhecimento de gestos não-estruturados ou poses de mãos estáticas, que são mapeados a partir de imagens RGB, dados de luvas eletrônicas ou coordenadas dos corpos dos indivíduos.
+% %FIXME: [cz] acho que vc precisa de mais um paragrafo aqui enfatizando pq é um problema nao considerar a parte linguistica. vc falou bastante do contexto do surdo, mas pouco do problema que vc vai abordar --> [cca5] feito
+Contudo, segundo \citeonline{cooper-2011-slr,yin-2021-sl-in-nlp}, um grande número de pesquisas nessa área trata o \acrshort{slr} como uma tarefa de reconhecimento de gestos não-estruturados ou poses de mãos estáticas, que são mapeados a partir de imagens RGB, dados de luvas eletrônicas ou coordenadas dos corpos dos indivíduos.
 Isso faz com que elas deixem de abordar aspectos essenciais da língua de sinais -- como sua linguística e suas particularidades -- e desviem seu foco para um conjunto de desafios pertinentes à área de \acrfull{cv}, como a detecção, segmentação e rastreamento de partes do corpo; a interação entre mãos e oclusões decorrentes disso; variações de tom de pele; entre outros que comumente já são abordados ou solucionados por outras subáreas da \acrshort{cv}.
 Como consequência, essas pesquisas acabam não produzindo avanços realmente efetivos para a \acrshort{slr}.
 
