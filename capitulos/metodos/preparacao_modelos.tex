@@ -1,5 +1,5 @@
 \section{Preparação dos modelos}
-\label{sec:metodologia-preparacao-modelos}
+\label{sec:metodos-preparacao-modelos}
 
 % Uma vez que temos um \textit{dataset} com atributos fonológicos processados, agora podemos prosseguir com a preparação das features e dos modelos para reconhecimentos dos sinais utilizando a abordagem proposta.
 
@@ -36,23 +36,23 @@ Realizamos uma busca de parâmetros do tipo \textit{Grid Search} com validação
     \caption{\textmd{Parâmetros otimizados para o \textit{Encoder-Decoder} com \acrshort{lstm}}}
     \borda[\textwidth]{
         \subcaptionbox{Taxa de aprendizagem \label{subfig:otim-encdec-lstm-lr}}{
-            \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_encdec_lstm_lr}
+            \includegraphics[width=5.0cm]{capitulos/metodos/imagens/otim_encdec_lstm_lr}
         }%
         % \hfill
         \subcaptionbox{Dropout \label{subfig:otim-encdec-lstm-dropout}}{
-            \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_encdec_lstm_dropout}
+            \includegraphics[width=5.0cm]{capitulos/metodos/imagens/otim_encdec_lstm_dropout}
         }%
         % \hfill
         \subcaptionbox{Nº de camadas \label{subfig:otim-encdec-lstm-layers}}{
-            \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_encdec_lstm_layers}
+            \includegraphics[width=5.0cm]{capitulos/metodos/imagens/otim_encdec_lstm_layers}
         }%
         \hfill
         \subcaptionbox{Tamanho camadas ocultas \label{subfig:otim-encdec-lstm-hidden}}{
-            \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_encdec_lstm_hidden_size}
+            \includegraphics[width=5.0cm]{capitulos/metodos/imagens/otim_encdec_lstm_hidden_size}
         }%
         % \hfill
         \subcaptionbox{Tamanho embeddings \label{subfig:otim-encdec-lstm-emb}}{
-            \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_encdec_lstm_emb_size}
+            \includegraphics[width=5.0cm]{capitulos/metodos/imagens/otim_encdec_lstm_emb_size}
         }%
     }
     \nomefonte{}
@@ -70,23 +70,23 @@ Para o \textit{Encoder-Decoder} com \acrshort{gru} utilizamos os parâmetros mos
     \caption{\textmd{Parâmetros otimizados para o \textit{Encoder-Decoder} com \acrshort{gru}}}
     \borda[\textwidth]{
         \subcaptionbox{Taxa de aprendizagem \label{subfig:otim-encdec-gru-lr}}{
-            \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_encdec_gru_lr}
+            \includegraphics[width=5.0cm]{capitulos/metodos/imagens/otim_encdec_gru_lr}
         }%
         % \hfill
         \subcaptionbox{Dropout \label{subfig:otim-encdec-gru-dropout}}{
-            \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_encdec_gru_dropout}
+            \includegraphics[width=5.0cm]{capitulos/metodos/imagens/otim_encdec_gru_dropout}
         }%
         % \hfill
         \subcaptionbox{Nº de camadas \label{subfig:otim-encdec-gru-layers}}{
-            \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_encdec_gru_layers}
+            \includegraphics[width=5.0cm]{capitulos/metodos/imagens/otim_encdec_gru_layers}
         }%
         \hfill
         \subcaptionbox{Tamanho camadas ocultas\label{subfig:otim-encdec-gru-hidden}}{
-            \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_encdec_gru_hidden_size}
+            \includegraphics[width=5.0cm]{capitulos/metodos/imagens/otim_encdec_gru_hidden_size}
         }%
         % \hfill
         \subcaptionbox{Tamanho embeddings\label{subfig:otim-encdec-gru-emb}}{
-            \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_encdec_gru_emb_size}
+            \includegraphics[width=5.0cm]{capitulos/metodos/imagens/otim_encdec_gru_emb_size}
         }%
     }
     \nomefonte{}
@@ -101,27 +101,27 @@ Para o \textit{Encoder-Decoder} com \acrshort{gru} utilizamos os parâmetros mos
     \caption{\textmd{Parâmetros otimizados para o \textit{Transformer}}}
     \borda[\textwidth]{
         \subcaptionbox{Taxa de aprendizagem \label{subfig:otim-transformer-lr}}{
-            \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_transformer_lr}
+            \includegraphics[width=5.0cm]{capitulos/metodos/imagens/otim_transformer_lr}
         }%
         % \hfill
         \subcaptionbox{Dropout \label{subfig:otim-transformer-dropout}}{
-            \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_transformer_dropout}
+            \includegraphics[width=5.0cm]{capitulos/metodos/imagens/otim_transformer_dropout}
         }%
         % \hfill
         \subcaptionbox{Nº de camadas \label{subfig:otim-transformer-layers}}{
-            \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_transformer_layers}
+            \includegraphics[width=5.0cm]{capitulos/metodos/imagens/otim_transformer_layers}
         }%
         \hfill
         \subcaptionbox{Tamanho camadas ocultas\label{subfig:otim-transformer-hidden}}{
-            \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_transformer_hidden_size}
+            \includegraphics[width=5.0cm]{capitulos/metodos/imagens/otim_transformer_hidden_size}
         }%
         % \hfill
         \subcaptionbox{Tamanho embeddings\label{subfig:otim-transformer-emb}}{
-            \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_transformer_emb_size}
+            \includegraphics[width=5.0cm]{capitulos/metodos/imagens/otim_transformer_emb_size}
         }%
         % \hfill
         \subcaptionbox{Nº de cabeças\label{subfig:otim-transformer-heads}}{
-            \includegraphics[width=5.0cm]{capitulos/metodologia/imagens/otim_transformer_heads}
+            \includegraphics[width=5.0cm]{capitulos/metodos/imagens/otim_transformer_heads}
         }%
     }
     \nomefonte{}

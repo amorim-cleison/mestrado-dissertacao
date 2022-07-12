@@ -1,5 +1,5 @@
 \subsection{ASL-Phono}
-\label{sec:metodologia-datasets-phono}
+\label{sec:metodos-datasets-phono}
 
 O ASL-Phono é um \textit{dataset} que introduz uma representação baseada na linguística da língua de sinais e a descreve em termos de seus atributos fonológicos. 
 Ele é produzido a partir dos esqueletos fornecidos pelo \textit{dataset} ASL-Skeleton3D e, assim como este, também apresenta 9.747 amostras correspondentes a 2.650 sinais distintos. 
@@ -37,11 +37,11 @@ Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia ut
               }
               \borda[0.60\textwidth]{
                   \subcaptionbox{\label{subfig:palm-orientation}}{
-                      \includegraphics[height=3.8cm]{capitulos/metodologia/imagens/palm_orientation_algebra}
+                      \includegraphics[height=3.8cm]{capitulos/metodos/imagens/palm_orientation_algebra}
                   }%
                   \hfill
                   \subcaptionbox{\label{subfig:palm-directions}}{
-                      \includegraphics[height=4cm]{capitulos/metodologia/imagens/hand_orientations}
+                      \includegraphics[height=4cm]{capitulos/metodos/imagens/hand_orientations}
                   }%
               }
               \nomefonte{}
@@ -105,11 +105,11 @@ Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia ut
               }
               \borda[0.7\textwidth]{
                   \subcaptionbox{\label{subfig:hand-movement}}{
-                      \includegraphics[height=3.5cm]{capitulos/metodologia/imagens/hand_movement}
+                      \includegraphics[height=3.5cm]{capitulos/metodos/imagens/hand_movement}
                   }%
                   \hfill
                   \subcaptionbox{\label{subfig:hand-directions}}{
-                      \includegraphics[height=4cm]{capitulos/metodologia/imagens/hand_movement_2}
+                      \includegraphics[height=4cm]{capitulos/metodos/imagens/hand_movement_2}
                   }%
               }
               \nomefonte{}
@@ -161,7 +161,7 @@ Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia ut
 
           \figura
           {fig:mouth-openness} % Label
-          {capitulos/metodologia/imagens/mouth_openness} % Path
+          {capitulos/metodos/imagens/mouth_openness} % Path
           {height=3.5cm} % Size
           {A abertura da boca \(P_{mouth}\) é obtida a partir da medida antropométrica \textit{vermilion height to mouth width} que utiliza quatro coordenadas dos lábios para calcular uma única proporção} % Caption
           {ferrario-2000-study-lips} % Citation
@@ -175,7 +175,7 @@ Sua estrutura é muito semelhante àquela apresentada para o ASL-Skeleton3D, exc
 
 \figura
 {fig:sample-json-phono} % Label
-{capitulos/metodologia/imagens/code_phono} % Path
+{capitulos/metodos/imagens/code_phono} % Path
 {width=0.65\linewidth} % Size
 {Exemplo de amostra do ASL-Phono} % Caption
 {} % Citation
@@ -186,7 +186,7 @@ A \autoref{tab:dataset-phono-stats}, por sua vez, apresenta estatísticas calcul
 
 % Na \autoref{tab:dataset-phono-stats}, podemos observar algumas estatísticas calculadas a partir do ASL-Phono, que nos permitem compreender como as amostras ficaram organizadas no \textit{dataset} após o processamento acima.
 
-\input{capitulos/metodologia/tabelas/dataset_phono_stats}
+\input{capitulos/metodos/tabelas/dataset_phono_stats}
 
 Existem três agrupamentos contidos nessa tabela:
 
@@ -212,7 +212,7 @@ Discutiremos na seção seguinte nossa abordagem para lidar com esse desbalancea
 
 \figura
 {fig:dataset-resampling-antes} % Label
-{capitulos/metodologia/imagens/dataset_resampling_antes} % Path
+{capitulos/metodos/imagens/dataset_resampling_antes} % Path
 {height=5.5cm} % Size
 {Relação entre número de sinais e número de amostras disponíveis no ASL-Phono} % Caption
 {} % Citation
