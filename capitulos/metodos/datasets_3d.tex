@@ -109,14 +109,21 @@ Uma vez definida essa estratégia, nos baseamos no processo descrito por \citeon
 \end{enumerate}
 
 
-A \autoref{fig:sample-json-datasetTD} exemplifica uma amostra do ASL-Skeleton3D resultante do processamento acima, bem como suas propriedades. Observa-se no início do arquivo informações básicas extraídas do \acrshort{asllvd}, como rótulo, nome do indivíduo, sessão, cena, \textit{frames} de início e fim, entre outras. Na propriedade ``\textit{frames}'' estão listados os \textit{frames} para aquela sequência e o esqueleto 3D estimado para cada um deles. Cada esqueleto contém grupos referentes ao ``\textit{body}'' (corpo), ``\textit{face}'' (face), ``\textit{hand left}'' (mão esquerda) e ``\textit{hand right}'' (mão direita) que, por sua vez, contêm propriedades que listam o nome da coordenada, o ``\textit{score}'' (ou acurácia) de sua estimativa e os respectivos eixos \(x\), \(y\) e \(z\).
+O \autoref{cod:sample-json-datasetTD} exemplifica uma amostra do ASL-Skeleton3D resultante do processamento acima, bem como suas propriedades. Observa-se no início do arquivo informações básicas extraídas do \acrshort{asllvd}, como rótulo, nome do indivíduo, sessão, cena, \textit{frames} de início e fim, entre outras. Na propriedade ``\textit{frames}'' estão listados os \textit{frames} para aquela sequência e o esqueleto 3D estimado para cada um deles. Cada esqueleto contém grupos referentes ao ``\textit{body}'' (corpo), ``\textit{face}'' (face), ``\textit{hand left}'' (mão esquerda) e ``\textit{hand right}'' (mão direita) que, por sua vez, contêm propriedades que listam o nome da coordenada, o ``\textit{score}'' (ou acurácia) de sua estimativa e os respectivos eixos \(x\), \(y\) e \(z\).
 Por exemplo, se observarmos o primeiro índice das propriedades do grupo ``\textit{body}'' veremos que ele corresponde à coordenada ``\textit{nose}'' (nariz), apresenta um \textit{score} de aproximadamente 90\% e coordenadas \(x\), \(y\) e \(z\) localizadas em 4,488, 1,696 e 2,872.
 
-\figura
-{fig:sample-json-datasetTD} % Label
-{capitulos/metodos/imagens/code_3d} % Path
-{width=0.7\linewidth} % Size
-{Exemplo de amostra do ASL-Skeleton3D} % Caption
-{} % Citation
+% \figura
+% {fig:sample-json-datasetTD} % Label
+% {capitulos/metodos/imagens/code_3d} % Path
+% {width=0.7\linewidth} % Size
+% {Exemplo de amostra do ASL-Skeleton3D} % Caption
+% {} % Citation
+
+\codigo
+    {cod:sample-json-datasetTD}
+    {capitulos/metodos/codigos/exemplo_3d.m}
+    {ASLDataset}
+    {Exemplo de amostra do ASL-Skeleton3D: atributos com sufixo ``dh'' referem-se à \textit{dominant hand} (mão dominante) e aqueles com ``ndh'' referem-se à \textit{non-dominant hand} (mão não-dominante)}
+    {}
 
 O \textit{dataset} final e o código-fonte utilizado para o processamento apresentado nesta seção estão disponíveis publicamente na URL listada abaixo\footnote{Disponível em \url{http://www.cin.ufpe.br/~cca5/asl-skeleton3d}}.

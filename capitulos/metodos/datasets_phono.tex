@@ -170,15 +170,23 @@ Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia ut
 
 
 Essas são as \textit{features} extraídas para o ASL-Phono.
-A \autoref{fig:sample-json-phono} exemplifica uma amostra resultante desse processo, bem como a disposição dos atributos fonológicos em suas propriedades.
+O \autoref{cod:sample-json-phono} exemplifica uma amostra resultante desse processo, bem como a disposição dos atributos fonológicos em suas propriedades.
 Sua estrutura é muito semelhante àquela apresentada para o ASL-Skeleton3D, exceto pela propriedade ``\textit{frames}'' que, ao invés de coordenadas 3D, aqui contém os atributos computados acima. Além do seu respectivo valor computado, cada atributo pode apresentar também um \textit{score}, que é obtido a partir da precisão estimada para as coordenadas envolvidas no seu cálculo.
 
-\figura
-{fig:sample-json-phono} % Label
-{capitulos/metodos/imagens/code_phono} % Path
-{width=0.65\linewidth} % Size
-{Exemplo de amostra do ASL-Phono} % Caption
-{} % Citation
+% \figura
+% {fig:sample-json-phono} % Label
+% {capitulos/metodos/imagens/code_phono} % Path
+% {width=0.65\linewidth} % Size
+% {Exemplo de amostra do ASL-Phono. Atributos com sufixo ``dh'' referem-se à \textit{dominant hand} (mão dominante) e aqueles com ``ndh'' referem-se à \textit{non-dominant hand} (mão não-dominante)} % Caption
+% {} % Citation
+
+\codigo
+    {cod:sample-json-phono}
+    {capitulos/metodos/codigos/exemplo_phono.m}
+    {ASLDataset}
+    {Exemplo de amostra do ASL-Phono: atributos com sufixo ``dh'' referem-se à \textit{dominant hand} (mão dominante) e aqueles com ``ndh'' referem-se à \textit{non-dominant hand} (mão não-dominante)}
+    {}
+
 
 
 % Estatísticas:

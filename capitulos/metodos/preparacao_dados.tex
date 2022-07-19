@@ -53,7 +53,7 @@ Observe na \autoref{fig:dataset-resampling-depois} a nova distribuição das amo
 
 % COMPACTAÇÃO DAS FEATURES -------------------------------------------
 
-Por fim, aplicaremos uma transformação às amostras do ASL-Phono para tornar a estrutura apresentada na \autoref{fig:sample-json-phono} compatível com a entrada dos modelos que serão aplicados mais adiante.
+Por fim, aplicaremos uma transformação às amostras do ASL-Phono para tornar a estrutura apresentada no \autoref{cod:sample-json-phono} compatível com a entrada dos modelos que serão aplicados mais adiante.
 Para isso, compactaremos os valores informados para os atributos fonológicos de cada \textit{frame} em uma ``palavra'' única, fazendo com que a sequência de \textit{frames} seja então representada como uma sequência dessas palavras.
 
 Por exemplo, se considerássemos um \textit{frame} contendo dois atributos com valores ``\textit{valor\_atributo\_1}'' e ``\textit{valor\_atributo\_2}'', ao compactá-los, nós primeiro os abreviaríamos para ``\textit{va1}'' e ``\textit{va2}'' e, em seguida, os concatenaríamos formando uma palavra ``\textit{va1-va2}''.  A sequência de \textit{frames} da amostra tornaria-se, portanto, algo semelhante a uma sequência de palavras \textit{\{``va1-va2'', ``va3-va4'', \dots, ``vaN-vaN''\}}.

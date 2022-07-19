@@ -35,7 +35,7 @@
 \usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
 \usepackage{lastpage}			% Usado pela Ficha catalográfica
 \usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
-%\usepackage{color}				% Controle das cores
+\usepackage{xcolor}				% Controle das cores
 \usepackage{graphicx}			% Inclusão de gráficos
 \usepackage{lipsum}				% para geração de dummy text
 \usepackage[versalete,alf,abnt-and-type=e,abnt-etal-list=0,abnt-etal-cite=3]{abntex2/abntex2cite} 
@@ -51,6 +51,7 @@
 \usepackage{adjustbox}          % ajustar tabela ao tamanho da pagina
 \usepackage{subcaption}
 \usepackage{tcolorbox}
+\usepackage{courier}
 \usepackage{comandos}
 
 
@@ -99,19 +100,9 @@
 % ----------------------------------------------------------
 \definecolor{blue}{RGB}{41,5,195}
 \definecolor{gray}{rgb}{.4,.4,.4}
-\definecolor{gray}{rgb}{.4,.4,.4}
-\definecolor{pblue}{rgb}{0.13,0.13,1}
-\definecolor{pgreen}{rgb}{0,0.5,0}
-\definecolor{pred}{rgb}{0.9,0,0}
-\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
-\definecolor{lightgray}{rgb}{0.95, 0.95, 0.96}
-\definecolor{whitesmoke}{rgb}{0.96, 0.96, 0.96}
-\definecolor{javared}{rgb}{0.6,0,0} % for strings
-\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
-\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
-\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
 \definecolor{gray}{rgb}{0.5, 0.5, 0.5}
-%\definecolor{lightgray}{gray}{0.9}
+\definecolor{graybackground}{rgb}{242,242,242}
+\definecolor{greencomment}{RGB}{0, 128, 0}
 
 
 % ----------------------------------------------------------
@@ -176,58 +167,83 @@
 % ----------------------------------------------------------
 % LISTA DE CÓDIGOS
 % ----------------------------------------------------------
-% define formato e estilo dos elementos do tipo Código Fonte
-% \lstset{
-%     language=Java,
-%     basicstyle=\ttfamily\scriptsize,
-%     %basicstyle=\ttfamily,
-%     keywordstyle=\color{javapurple}\bfseries,
-%     stringstyle=\color{pblue},
-%     commentstyle=\color{javagreen},
-%     morecomment=[s][\color{javadocblue}]{/**}{*/},
-%     morecomment=[s][\color{gray}]{@}{\ },
-%     numbers=left,
-%     numberstyle=\tiny\color{black},
-%     backgroundcolor=\color{gray},
-%     stepnumber=2,
-%     numbersep=8pt,
-%     xleftmargin=14pt,
-%     tabsize=4,
-%     showspaces=false,
-%     showstringspaces=false,
-%     breaklines=true,
-% }
+\lstdefinelanguage{ASLDataset}{
+  sensitive=true,
+  commentstyle=\color{greencomment},
+  breaklines=true,
+  keywords={ x, y, z },
+  otherkeywords={ label, gloss, consultant, session, scene, frame_start, frame_end, passive_arm, fps, mode, name, value, score, frames, frame_index, handshape_dh, handshape_dh_start, handshape_dh_end, handshape_ndh, handshape_ndh_start, handshape_ndh_end, phono_attributes, skeleton, movement_dh, movement_ndh, orientation_dh, orientation_ndh, non_manual, mouth_opening, body, face, hand_left, hand_right },
+  keywordstyle=\color{blue},
+  upquote=true,
+  stringstyle=\color{purple},
+  showstringspaces=false,
+  morestring=[b]',
+  morestring=[b]",
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  literate=
+    *{0}{{{\color{teal}0}}}{1}
+    {1}{{{\color{teal}1}}}{1}
+    {2}{{{\color{teal}2}}}{1}
+    {3}{{{\color{teal}3}}}{1}
+    {4}{{{\color{teal}4}}}{1}
+    {5}{{{\color{teal}5}}}{1}
+    {6}{{{\color{teal}6}}}{1}
+    {7}{{{\color{teal}7}}}{1}
+    {8}{{{\color{teal}8}}}{1}
+    {9}{{{\color{teal}9}}}{1}
+    {.}{{{\color{teal}.}}}{1}
+}
 
-% \pdfbookmark[0]{\lstlistingname}{lol} % caso não tenha código fonte, comente esta linha 
-% \counterwithout{lstlisting}{chapter}
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{graybackground},
+  basicstyle=\fontsize{9}{9}\ttfamily,
+  captionpos=t,
+  keepspaces=true,
+  numbers=left,
+  numbersep=10pt,
+  numberstyle=\tiny\color{gray},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=4,
+  frame=single,
+  rulecolor=\color{gray},
+}
 
-% % Altera o nome padrão do rótulo usado no comando \autoref{}
-% \renewcommand{\lstlistingname}{Código Fonte}
+\lstset{style=mystyle}
 
-% % Altera o rótulo a ser usando no elemento pré-textual "Lista de código"
-% \renewcommand{\lstlistlistingname}{Lista de códigos}
 
-% % Configura a 'Lista de Códigos' conforme as regras da ABNT (para abnTeX2)
-% \begingroup\makeatletter
-% \let\newcounter\@gobble\let\setcounter\@gobbletwo
-%   \globaldefs\@ne \let\c@loldepth\@ne
-%   \newlistof{listings}{lol}{\lstlistlistingname}
-%   \newlistentry{lstlisting}{lol}{0}
-% \endgroup
+% Altera o nome padrão do rótulo usado no comando \autoref{}
+\renewcommand{\lstlistingname}{Código-fonte}
 
-% \renewcommand{\cftlstlistingaftersnum}{\hfill--\hfil}
+% Altera o rótulo a ser usando no elemento pré-textual "Lista de código"
+\renewcommand{\lstlistlistingname}{Lista de códigos-fontes}
 
-% \let\oldlstlistoflistings\lstlistoflistings
-% {
-%     \let\oldnumberline\numberline
-%     \newcommand{\algnumberline}[1]{Código Fonte~#1~\enspace--~\enspace}
-%     \renewcommand{\numberline}{\algnumberline}
-    
-%     \begin{KeepFromToc}
-%     \lstlistoflistings
-%     \end{KeepFromToc}
-% }
-% \cleardoublepage
+\pdfbookmark[0]{\lstlistlistingname}{lol} % caso não tenha código fonte, comente esta linha 
+\counterwithout{lstlisting}{chapter}
+
+% Configura a 'Lista de Códigos' conforme as regras da ABNT (para abnTeX2)
+\begingroup\makeatletter
+\let\newcounter\@gobble\let\setcounter\@gobbletwo
+\globaldefs\@ne \let\c@loldepth\@ne
+\newlistof{listings}{lol}{\lstlistlistingname}
+\newlistentry{lstlisting}{lol}{0}
+\endgroup
+
+\renewcommand{\cftlstlistingaftersnum}{\hfill--\hfil}
+
+\let\oldlstlistoflistings\lstlistoflistings
+{
+  \let\oldnumberline\numberline
+  \newcommand{\algnumberline}[1]{Código-fonte~#1~\enspace--~\enspace}
+  \renewcommand{\numberline}{\algnumberline}
+
+  \begin{KeepFromToc}
+    \lstlistoflistings
+  \end{KeepFromToc}
+}
+\cleardoublepage
 
 
 
@@ -248,8 +264,8 @@
 \cleardoublepage
 
 
-        
-  
+
+
 % ----------------------------------------------------------
 % LISTA E ABREVIATURAS E SIGLAS
 % ----------------------------------------------------------
@@ -317,20 +333,20 @@
 % ----------------------------------------------------------
 % força para que não exiba subtítulos em apêndices no sumário
 \begin{apendicesenv}
-\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
-\makeatletter
-\addtocontents{toc}{%
-  \begingroup
-  \let\protect\l@chapter\protect\l@section
-  \let\protect\l@section\protect\l@subsection
-}
-\makeatother
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+  \makeatletter
+  \addtocontents{toc}{%
+    \begingroup
+    \let\protect\l@chapter\protect\l@section
+    \let\protect\l@section\protect\l@subsection
+  }
+  \makeatother
 
-% Imprime uma página indicando o início dos apêndices
-% \partapendices
-\include{outros/apendices}
+  % Imprime uma página indicando o início dos apêndices
+  % \partapendices
+  \include{outros/apendices}
 
-\addtocontents{toc}{\endgroup}
+  \addtocontents{toc}{\endgroup}
 \end{apendicesenv}
 
 
@@ -340,19 +356,19 @@
 % ----------------------------------------------------------
 % força para que não exiba subtítulos em apêndices no sumário
 \begin{anexosenv}
-\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
-\makeatletter
-\addtocontents{toc}{%
-  \begingroup
-  \let\protect\l@chapter\protect\l@section
-  \let\protect\l@section\protect\l@subsection
-}
-\makeatother
-% Imprime uma página indicando o início dos apêndices
-% \partapendices
-\include{outros/anexos}
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+  \makeatletter
+  \addtocontents{toc}{%
+    \begingroup
+    \let\protect\l@chapter\protect\l@section
+    \let\protect\l@section\protect\l@subsection
+  }
+  \makeatother
+  % Imprime uma página indicando o início dos apêndices
+  % \partapendices
+  \include{outros/anexos}
 
-\addtocontents{toc}{\endgroup}
+  \addtocontents{toc}{\endgroup}
 \end{anexosenv}
 
 

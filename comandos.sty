@@ -110,3 +110,32 @@
         \par\medskip\ABNTEXfontereduzida\selectfont\textbf{Fonte:} \citeonline[#1]{#2} \par\medskip
     }
 }
+
+
+
+% =================================================
+% CÓDIGO
+% -------------------------------------------------
+% Argumentos: 
+% 1) Label
+% 2) Path
+% 3) Language
+% 4) Caption
+% 5) Citation
+%
+% Exemplo:
+%
+% \codigo[p. 1]
+%    {cod:label} % Label
+%    {imagens/caminho/imagem_sem_extensao} % Path
+%    {Java} % Language
+%    {Exemplo de uso do comando 'codigo'} % Caption
+%    {autor-1999-titulo-livro} % Citation
+%
+% =================================================
+\newcommand{\codigo}[7][] {
+    \begin{center}
+        \lstinputlisting[language=#4,caption=#5,label=#2,firstnumber=1]{#3}
+        \nomefonte[#1]{#6}
+    \end{center}
+}
