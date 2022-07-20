@@ -1,0 +1,33 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage{graphicx}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+    \centering
+    \caption{Parâmetros otimizados para o \textit{Encoder-Decoder} (\acrshort{lstm}) e o \textit{Encoder-Decoder} (\acrshort{gru}) com os respectivos valores calculados de perda}
+    \label{tab:otim-params-encdec}
+    \resizebox{0.8\textwidth}{!}{%
+        \begin{tabular}{lr|rr}
+            \hline
+            \multicolumn{2}{l|}{\cellcolor[HTML]{EFEFEF}}                                                             & \multicolumn{2}{c}{\cellcolor[HTML]{EFEFEF}Perda}                                                                                                                                            \\ \cline{3-4}
+            \multicolumn{2}{l|}{\multirow{-2}{*}{\cellcolor[HTML]{EFEFEF}Parâmetro}}                                  & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{Encoder-Decoder (LSTM)}} & \multicolumn{1}{c}{\cellcolor[HTML]{EFEFEF}\textbf{Encoder-Decoder (GRU)}}                                    \\ \hline
+            \multicolumn{1}{l|}{}                                                                                     & 0,0001                                                                       & \multicolumn{1}{r|}{7,734553}                                              & 7,734372                         \\
+            \multicolumn{1}{l|}{}                                                                                     & 0,001                                                                        & \multicolumn{1}{r|}{7,734348}                                              & 7,725883                         \\
+            \multicolumn{1}{l|}{}                                                                                     & 0,01                                                                         & \multicolumn{1}{r|}{7,732680}                                              & \cellcolor[HTML]{FFF5E1}4,528818 \\
+            \multicolumn{1}{l|}{\multirow{-4}{*}{Taxa de aprendizagem}}                                               & 0,1                                                                          & \multicolumn{1}{r|}{\cellcolor[HTML]{FFF5E1}4,945398}                      & 4,588312                         \\ \hline
+            \multicolumn{1}{l|}{}                                                                                     & 0,1                                                                          & \multicolumn{1}{r|}{\cellcolor[HTML]{FFF5E1}4,945398}                      & \cellcolor[HTML]{FFF5E1}4,528818 \\
+            \multicolumn{1}{l|}{\multirow{-2}{*}{Dropout}}                                                            & 0,5                                                                          & \multicolumn{1}{r|}{5,165860}                                              & 4,726675                         \\ \hline
+            \multicolumn{1}{l|}{}                                                                                     & 128                                                                          & \multicolumn{1}{r|}{7,733999}                                              & 5,375009                         \\
+            \multicolumn{1}{l|}{}                                                                                     & 512                                                                          & \multicolumn{1}{r|}{4,999395}                                              & \cellcolor[HTML]{FFF5E1}4,528818 \\
+            \multicolumn{1}{l|}{\multirow{-3}{*}{Tamanho embeddings}}                                                 & 1024                                                                         & \multicolumn{1}{r|}{\cellcolor[HTML]{FFF5E1}4,945398}                      & 4,544811                         \\ \hline
+            \multicolumn{1}{l|}{}                                                                                     & 64                                                                           & \multicolumn{1}{r|}{5,416092}                                              & 5,017869                         \\
+            \multicolumn{1}{l|}{}                                                                                     & 128                                                                          & \multicolumn{1}{r|}{\cellcolor[HTML]{FFF5E1}4,945398}                      & 4,544811                         \\
+            \multicolumn{1}{l|}{}                                                                                     & 256                                                                          & \multicolumn{1}{r|}{4,999395}                                              & \cellcolor[HTML]{FFF5E1}4,528818 \\
+            \multicolumn{1}{l|}{\multirow{-4}{*}{\begin{tabular}[c]{@{}l@{}}Tamanho camadas \\ ocultas\end{tabular}}} & 1024                                                                         & \multicolumn{1}{r|}{7,662058}                                              & 4,920857                         \\ \hline
+            \multicolumn{1}{l|}{}                                                                                     & 2                                                                            & \multicolumn{1}{r|}{\cellcolor[HTML]{FFF5E1}4,945398}                      & \cellcolor[HTML]{FFF5E1}4,528818 \\
+            \multicolumn{1}{l|}{\multirow{-2}{*}{Nº de camadas}}                                                      & 4                                                                            & \multicolumn{1}{r|}{7,734541}                                              & 5,915603                         \\ \hline
+        \end{tabular}%
+    }
+    \nomefonte{}
+\end{table}
