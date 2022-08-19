@@ -1,7 +1,93 @@
 \section{Modelos sequenciais de aprendizagem de máquina}
 \label{sec:modelos-sequenciais}
 
+% TODO: revisar isso
 Introduziremos aqui uma breve discussão acerca dos modelos sequenciais de \acrlong{ml}, bem como sua importância dentro da área de \acrfull{nlp} para lidar com tarefas envolvendo linguagens.
+
+
+% TODO: introduzir IA (livro de Quiza --> pg 39)
+% \citeonline{quiza-2012-finite-element}
+
+\citeonline{murphy-2012-ml-probabilistic} afirma que entramos na era dos grandes volumes de dados.
+Por exemplo, há mais de 1 trilhão de páginas na web mapeadas pelo Google; o YouTube recebe cerca de 1 hora de conteúdo de vídeo a cada segundo; o Walmart processa mais de 1 milhão de transações por hora, totalizando mais de 2,5 petabytes de informações em suas bases de dados; e assim por diante.
+Todo esse volume de dados demanda técnicas automatizadas de análise e extração de informações relevantes e esse é um exemplo de contexto onde a \acrfull{ia} e, mais especificamente a área de \acrfull{ml}, tem desempenhado um papel fundamental atualmente.
+
+\citeonline{murphy-2012-ml-probabilistic,goodfellow-2016-deep-learning} definem a \acrlong{ml} como um conjunto de algoritmos de \acrshort{ia} capazes de detectar automaticamente padrões a partir dos dados e, em seguida, utilizar esses padrões para prever dados futuros ou realizar outros tipos de tomadas de decisão.
+Esses algoritmos comumente adotam modelos estatísticos para analisar e realizar inferências a partir dos dados, e não necessitam que instruções explícitas sejam programadas para que eles aprendam ou adaptem-se aos padrões identificados.
+
+
+% \cite{murphy-2012-ml-probabilistic}
+% We are entering the era of big data. For example, there are about 1 trillion web pages1; one hour of video is uploaded to YouTube every second, amounting to 10 years of content every day2; the genomes of 1000s of people, each of which has a length of 3.8 × 109 base pairs, have been sequenced by various labs; Walmart handles more than 1M transactions per hour and has databases containing more than 2.5 petabytes (2.5 × 1015) of information (Cukier 2010); and so on. 
+% This deluge of data calls for automated methods of data analysis, which is what machine learning provides. In particular, we define machine learning as a set of methods that can automatically detect patterns in data, and then use the uncovered patterns to predict future data, or to perform other kinds of decision making under uncertainty (such as planning how to collect more data!)
+
+% \cite{goodfellow-2016-deep-learning}
+% A machine learning algorithm is an algorithm that is able to learn from data.
+
+% google / oxford
+% the use and development of computer systems that are able to learn and adapt without following explicit instructions, by using algorithms and statistical models to analyze and draw inferences from patterns in data.
+
+
+\figura[p. 40]
+    {fig:exemplo-neuronios} % Label
+    {capitulos/fundamentacao/imagens/exemplo_neuronios} % Path
+    {height=5cm} % Size
+    {Exemplo de neurônios interconectados, os quais são as células que caracterizam o sistema nervoso} % Caption
+    {quiza-2012-finite-element} % Citation
+
+
+Algoritmos de \acrlong{ml} constituem-se de estruturas denominadas Redes Neurais Artificiais que, segundo \citeonline{mitchell-1997-ml,bishop-2006-pattern-recognition}, são inspiradas pela observação dos sistemas de aprendizado biológico, os quais consistem de redes muito complexas de neurônios interconectados entre si, conforme \autoref{fig:exemplo-neuronios}.
+De maneira análoga, as Redes Neurais Artificiais são construídas a partir de um conjunto de unidades simples densamente interconectadas (de maneira análoga a esses neurônios) e organizadas em camadas, conforme observa-se na \autoref{fig:rede-neural}. Cada unidade recebe um número de entrada (produzido pelas unidades presentes na camada anterior) e produz um número de saída (que será utilizado pelas unidades na camada posterior). Por fim, cada conexão existente entre essas unidades possui um peso associado, o qual consiste de um número que é calibrado à medida em que a rede se adapta (ou aprende) os padrões existentes nos dados.
+
+\figura[p. 43]
+    {fig:rede-neural} % Label
+    {capitulos/fundamentacao/imagens/rede_neural_2} % Path
+    {height=7cm} % Size
+    {Exemplo de Rede Neural Artificial com 4 camadas interconectadas: os dados \(\{X_1, X_2, \dots, X_k\}\) são recebidos pelas unidades da camada de entrada (ou \textit{input layer}), processados pelas camadas ocultas (ou \textit{hidden layers}) e, por fim, pela camada de saída (ou \textit{output layer}) que produz as saídas \(\{Y_1, Y_2, \dots, Y_k\}\)} % Caption
+    {quiza-2012-finite-element} % Citation
+
+% Network diagram for the two layer neural network corresponding to (5.7). The input, hidden, and output variables are represented by nodes, and the weight parameters are represented by links between the nodes, in which the bias parameters are denoted by links coming from additional input and hidden variables x0 and z0. Arrows denote the direction of information flow through the network during forward propagation.
+
+% \cite{mitchell-1997-ml}
+% The study of artificial neural networks (ANNs) has been inspired in part by the observation that biological learning systems are built of very complex webs of interconnected neurons. In rough analogy, artificial neural networks are built out of a densely interconnected set of simple units, where each unit takes a number of real-valued inputs (possibly the outputs of other units) and produces a single real-valued output (which may become the input to many other units).
+
+
+
+% TODO: função de ativação, treinamento, função de perda, backpropagation ?
+
+
+
+As Redes Neurais Profundas, por sua vez, são redes neurais abordadas pela área de \acrfull{dl} e compostas por um número grande de camadas e unidades dentro delas.
+Segundo \citeonline{goodfellow-2016-deep-learning,lecun-2015-deep-learning}, devido a sua estrutura robusta e ``profunda'' essas redes são capazes de lidar com problemas muito complexos, descobrindo automaticamente a partir dos dados brutos níveis de representação gradativamente mais elevados e abstratos, camada após camada.
+Para isso, elas demandam que um grande volume de dados acerca do problema abordado esteja disponível e seja utilizado como entrada para esse processo.
+
+\citeonline{lecun-2015-deep-learning} ressaltam que essas redes têm produzido ao longo das últimas décadas progressos extremamente promissores para problemas que resistiram por muito tempo às melhores tentativas de avanço pela comunidade de \acrshort{ia}, incluindo tarefas de \acrfull{nlp} como a classificação de tópicos, análise de sentimentos, resposta a perguntas, tradução de idiomas, e processamento de imagens, vídeos e fala.
+
+
+% O aprendizado profundo moderno fornece uma estrutura poderosa para aprendizado supervisionado. Ao adicionar mais camadas e mais unidades dentro de uma camada, uma rede profunda pode representar funções de complexidade crescente. A maioria das tarefas que consistem em mapear um vetor de entrada para um vetor de saída, e que são fáceis para uma pessoa fazer rapidamente, podem ser realizadas por meio de aprendizado profundo, com modelos suficientemente grandes e conjuntos de dados suficientemente grandes de exemplos de treinamento rotulados. Outras tarefas, que não podem ser descritas como associar um vetor a outro, ou que são difíceis o suficiente para que uma pessoa precise de tempo para pensar e refletir para realizar a tarefa, permanecem além do escopo do aprendizado profundo por enquanto.
+
+% \citeonline{goodfellow-2016-deep-learning}
+% Modern deep learning provides a powerful framework for supervised learning. By adding more layers and more units within a layer, a deep network can represent functions of increasing complexity. Most tasks that consist of mapping an input vector to an output vector, and that are easy for a person to do rapidly, can be accomplished via deep learning, given sufficiently large models and sufficiently large datasets of labeled training examples. Other tasks, that cannot be described as associating one vector to another, or that are difficult enough that a person would require time to think and reflect in order to accomplish the task, remain beyond the scope of deep learning for now.
+
+
+% \cite{lecun-2015-deep-learning}
+% Deep learning allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction. These methods have dramatically improved the state-of-the-art in speech recognition, visual object recognition, object detection and many other domains such as drug discovery and genomics. Deep learning discovers intricate structure in large data sets by using the backpropagation algorithm to indicate how a machine should change its internal parameters that are used to compute the representation in each layer from the representation in the previous layer. Deep convolutional nets have brought about breakthroughs in processing images, video, speech and audio, whereas recurrent nets have shone light on sequential data such as text and speech.
+
+% Representation learning is a set of methods that allows a machine to be fed with raw data and to automatically discover the representations needed for detection or classification. Deep-learning methods are representation-learning methods with multiple levels of representation, obtained by composing simple but non-linear modules that each transform the representation at one level (starting with the raw input) into a representation at a higher, slightly more abstract level. With the composition of enough such transformations, very complex functions can be learned.
+
+% Deep learning is making major advances in solving problems that have resisted the best attempts of the artificial intelligence community for many years. It has turned out to be very good at discovering intricate structures in high-dimensional data and is therefore applicable to many domains of science, business and government. [...]
+% Perhaps more surprisingly, deep learning has produced extremely promising results for various tasks in natural language understanding, particularly topic classification, sentiment analysis, question answering and language translation.
+
+
+
+
+
+
+
+
+
+% PLN ???
+
+
 
 \citeonline{jurafsky-2022-speech-lang-processing} afirmam que a linguagem é um fenômeno inerentemente temporal e que pode ser compreendida como uma sequência de eventos que se desdobram ao longo do tempo, como um fluxo contínuo de dados.
 Os modelos sequenciais lidam diretamente com essa natureza, e são capazes de capturar e explorar tal aspecto temporal.
