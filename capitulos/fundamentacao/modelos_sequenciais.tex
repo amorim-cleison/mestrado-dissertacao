@@ -8,7 +8,7 @@ Introduziremos aqui uma breve discussão acerca dos modelos sequenciais de \acrl
 % TODO: introduzir IA (livro de Quiza --> pg 39)
 % \citeonline{quiza-2012-finite-element}
 
-\citeonline{murphy-2012-ml-probabilistic} afirma que entramos na era dos grandes volumes de dados.
+\citeonline{murphy-2012-ml-probabilistic} afirma que vive-se hoje a era do \textit{big data} (ou grande volumes de dados).
 Por exemplo, há mais de 1 trilhão de páginas na web mapeadas pelo Google; o YouTube recebe cerca de 1 hora de conteúdo de vídeo a cada segundo; o Walmart processa mais de 1 milhão de transações por hora, totalizando mais de 2,5 petabytes de informações em suas bases de dados; e assim por diante.
 Todo esse volume de dados demanda técnicas automatizadas de análise e extração de informações relevantes e esse é um exemplo de contexto onde a \acrfull{ia} e, mais especificamente a área de \acrfull{ml}, tem desempenhado um papel fundamental atualmente.
 
@@ -51,16 +51,16 @@ De maneira análoga, as Redes Neurais Artificiais são construídas a partir de 
 % The study of artificial neural networks (ANNs) has been inspired in part by the observation that biological learning systems are built of very complex webs of interconnected neurons. In rough analogy, artificial neural networks are built out of a densely interconnected set of simple units, where each unit takes a number of real-valued inputs (possibly the outputs of other units) and produces a single real-valued output (which may become the input to many other units).
 
 
-
-% TODO: função de ativação, treinamento, função de perda, backpropagation ?
-
-
-
 As Redes Neurais Profundas, por sua vez, são redes neurais abordadas pela área de \acrfull{dl} e compostas por um número grande de camadas e unidades dentro delas.
 Segundo \citeonline{goodfellow-2016-deep-learning,lecun-2015-deep-learning}, devido a sua estrutura robusta e ``profunda'' essas redes são capazes de lidar com problemas muito complexos, descobrindo automaticamente a partir dos dados brutos níveis de representação gradativamente mais elevados e abstratos, camada após camada.
 Para isso, elas demandam que um grande volume de dados acerca do problema abordado esteja disponível e seja utilizado como entrada para esse processo.
 
 \citeonline{lecun-2015-deep-learning} ressaltam que essas redes têm produzido ao longo das últimas décadas progressos extremamente promissores para problemas que resistiram por muito tempo às melhores tentativas de avanço pela comunidade de \acrshort{ia}, incluindo tarefas de \acrfull{nlp} como a classificação de tópicos, análise de sentimentos, resposta a perguntas, tradução de idiomas, e processamento de imagens, vídeos e fala.
+
+% \cite{lecun-2015-deep-learning}
+% A deep-learning architecture is a multilayer stack of simple modules, all (or most) of which are subject to learning, and many of which compute non-linear input–output mappings. Each module in the stack transforms its input to increase both the selectivity and the invariance of the representation. With multiple non-linear layers, say a depth of 5 to 20, a system can implement extremely intricate functions of its inputs that are simultaneously sensitive to minute details — distinguishing Samoyeds from white wolves — and insensitive to large irrelevant variations such as the background, pose, lighting and surrounding objects.
+
+
 
 
 % O aprendizado profundo moderno fornece uma estrutura poderosa para aprendizado supervisionado. Ao adicionar mais camadas e mais unidades dentro de uma camada, uma rede profunda pode representar funções de complexidade crescente. A maioria das tarefas que consistem em mapear um vetor de entrada para um vetor de saída, e que são fáceis para uma pessoa fazer rapidamente, podem ser realizadas por meio de aprendizado profundo, com modelos suficientemente grandes e conjuntos de dados suficientemente grandes de exemplos de treinamento rotulados. Outras tarefas, que não podem ser descritas como associar um vetor a outro, ou que são difíceis o suficiente para que uma pessoa precise de tempo para pensar e refletir para realizar a tarefa, permanecem além do escopo do aprendizado profundo por enquanto.
@@ -78,6 +78,103 @@ Para isso, elas demandam que um grande volume de dados acerca do problema aborda
 % Perhaps more surprisingly, deep learning has produced extremely promising results for various tasks in natural language understanding, particularly topic classification, sentiment analysis, question answering and language translation.
 
 
+Segundo os autores, a forma mais comumente utilizada por essas redes, profundas ou não, para aprender (ou se adaptar aos padrões existentes nos dados) é o aprendizado supervisionado.
+Nessa forma de aprendizado, afirmam \citeonline{russell-2010-modern-approach}, a rede observa uma série de amostras de pares de entrada-saída e aprende uma função capaz de mapear aquele tipo de entrada para aquela saída respectiva.
+
+Por exemplo, imagine que deseje-se construir uma rede neural para classificar se uma imagens contém casas, carros, pessoas ou animais de estimação. O primeiro passo consistirá em coletar um grande conjunto de dados de imagens de casas, carros, pessoas e animais de estimação, cada um rotulado com sua respectiva classe -- que nesse contexto seriam ``casa'', ``carro'', ``pessoa'' ou ``animal de estimação'', respectivamente.
+Esse conjunto de dados será inicialmente dividido em dois subconjuntos distintos: um para o processo de treinamento e outro para os testes da rede neural -- o qual discutiremos mais adiante.
+
+Em seguida, será iniciado o treinamento da rede, processo no qual ela receberá uma imagem e produzirá uma saída na forma de uma lista de pontuações, uma para cada uma das classes acima. Objetiva-se que a classe correta receba a pontuação mais alta entre todas as classes possíveis, mas isso é pouco provável de ocorrer antes do treinamento. Dessa forma, será computada uma ``função objetivo'' que medirá o erro (ou distância) entre as pontuações informadas pela rede e aquelas que refletem o padrão correto desejado.
+A rede então modificará seus parâmetros ajustáveis internos para reduzir este erro. Esses parâmetros ajustáveis são geralmente chamados de ``pesos'', e consistem de números reais que definem o comportamento da função de entrada-saída da rede neural. 
+Em uma rede neural profunda típica, pode haver centenas de milhões desses pesos ajustáveis e centenas de milhões de amostras de dados rotuladas são comumente necessárias nesse processo de treinamento.
+
+% Otimização
+
+Esse processo de ajuste de pesos descrito acima é conhecido como ``otimização'' da rede neural. De acordo com \citeonline{lecun-2015-deep-learning,goodfellow-2016-deep-learning}, o algoritmo mais utilizado para isso, sobretudo para redes profundas, é o \acrfull{sgd}.
+De uma maneira simplificada, ele consiste em apresentar amostras de dados à rede, calcular as saídas e os erros respectivos (fornecidos pela função objetivo), calcular o gradiente médio para essas amostras (obtido a partir dos gradientes individuais calculados para cada peso e que, por sua vez, indicam em que quantidade o erro aumentaria ou diminuiria se aquele peso fosse aumentado em uma pequena quantidade) e ajustar os pesos de acordo com esses gradientes (na direção oposta aos gradientes calculados). 
+O processo é repetido para muitos pequenos \textit{batches} (ou lotes) de amostras do conjunto de treinamento até que o erro médio obtido pela função objetivo pare de diminuir. 
+Ao final do treinamento, o desempenho da rede será então avaliado utilizando-se o subconjunto de amostras de testes, que foi separado inicialmente. Isso permitirá testar a capacidade de ``generalização'' da rede que, em outras palavras, significa sua capacidade de produzir respostas sensatas para novas amostras não observadas durante o processo de treinamento.
+
+% Cross-validation
+
+\citeonline{goodfellow-2016-deep-learning,bishop-2006-pattern-recognition} argumentam que dividir o conjunto de dados em um subconjunto fixo de treinamento e outro de testes, conforme realizado acima, pode ser problemático se resultar em um subconjunto de testes pequeno -- principalmente no contexto de redes neurais profundas.
+Um subconjunto pequeno de testes implica incerteza estatística em torno do erro médio estimado de teste, tornando difícil afirmar que um algoritmo funciona melhor que outro na tarefa em questão.
+Se o conjunto de dados possui centenas de milhares de amostras ou mais, isso não é um problema sério; porém, quando esse conjunto é muito pequeno, são necessários procedimentos alternativos que possibilitem utilizar todas as amostras na estimativa do erro médio de teste, ao preço de um aumento do custo computacional.
+Esses procedimentos são geralmente conhecidos como ``validação cruzada'' e baseiam-se na ideia de repetir as etapas de treinamento e testes utilizando diferentes subconjuntos escolhidos aleatoriamente a partir do conjunto de dados original, computando então o erro médio final a partir dos erros obtidos em cada repetição. 
+O mais comum deles é o \textit{\(k\)-fold}, no qual uma partição do conjunto de dados é formada dividindo-o em \(k\) subconjuntos não sobrepostos. O erro de teste pode então ser estimado tomando o erro de teste médio dessas \(k\) tentativas. A cada tentativa \(i\), o \(i\)-ésimo subconjunto dos dados é usado como subconjunto de testes e o restante dos dados é utilizado como subconjunto de treinamento, e assim por diante.
+
+% Busca de parâmetros
+
+\citeonline{goodfellow-2016-deep-learning} prosseguem afirmando que a maioria das redes neurais possuem ``hiperparâmetros'', que são configurações que controlam o comportamento ou a capacidade dessas redes. Exemplos dessas configurações podem incluir a taxa de aprendizagem utilizada no treinamento da rede, a quantidade ou a dimensão das camadas adotadas, o número de camadas ocultas, o tipo de regularização aplicada, entre outros. 
+Diferentemente dos pesos da rede neural, essas configurações não são aprendidas automaticamente durante o treinamento da rede e comumente são difíceis de serem otimizadas.
+Para realizar essa otimização, não é possível que sejam utilizadas as mesmas amostras do subconjunto de treinamento, uma vez que isso tornaria a rede enviesada a esse subconjunto e comprometeria sua capacidade de generalização para novas amostras.
+Para solucionar isso, é estabelecido um novo subconjunto de amostras denominado ``subconjunto de validação'', o qual é criado a partir de uma nova divisão do subconjunto inicial de treinamento -- nesse contexto, tipicamente 20\% das amostras são destinadas para otimização dos hiperparâmetros e 80\% permanecem sendo utilizadas no treinamento da rede.
+Uma vez que a otimização dos hiperparâmetros está completa, é possível avaliar o desempenho da rede utilizando-se o mesmo subconjunto inicial de testes, conforme discutimos anteriormente
+
+
+
+
+% TODO: função de ativação, treinamento, função de perda, backpropagation ?
+
+% treinamento (geral) x
+% algoritmo de otimização (SGD) x
+% treinamento, validação, testes x
+% validação cruzada (k-fold) x
+% busca automática de parâmetros (Grid Search)
+% função de perda (Cross-Entropy Loss)
+% Batches
+
+
+% \cite{lecun-2015-deep-learning}
+% Supervised learning
+% The most common form of machine learning, deep or not, is supervised learning. Imagine that we want to build a system that can classify images as containing, say, a house, a car, a person or a pet. We first collect a large data set of images of houses, cars, people and pets, each labelled with its category. During training, the machine is shown an image and produces an output in the form of a vector of scores, one for each category. We want the desired category to have the highest score of all categories, but this is unlikely to happen before training. We compute an objective function that measures the error (or distance) between the output scores and the desired pattern of scores. The machine then modifies its internal adjustable parameters to reduce this error. These adjustable parameters, often called weights, are real numbers that can be seen as ‘knobs’ that define the input–output function of the machine. In a typical deep-learning system, there may be hundreds of millions of these adjustable weights, and hundreds of millions of labelled examples with which to train the machine.
+% To properly adjust the weight vector, the learning algorithm computes a gradient vector that, for each weight, indicates by what amount the error would increase or decrease if the weight were increased by a tiny amount. The weight vector is then adjusted in the opposite direction to the gradient vector.
+% The objective function, averaged over all the training examples, can be seen as a  kind of hilly landscape in the high-dimensional space of weight values. The negative gradient vector indicates the direction of steepest descent in this landscape, taking it closer to a minimum, where the output error is low on average.
+% In practice, most practitioners use a procedure called stochastic gradient descent (SGD). This consists of showing the input vector for a few examples, computing the outputs and the errors, computing the average gradient for those examples, and adjusting the weights accordingly. The process is repeated for many small sets of examples from the training set until the average of the objective function stops decreasing. It is called stochastic because each small set of examples gives a noisy estimate of the average gradient over all examples. This simple procedure usually finds a good set of weights surprisingly quickly when compared with far more elaborate optimization techniques18. After training, the performance of the system is measured on a different set of examples called a test set. This serves to test the generalization ability of the machine — its ability to produce sensible answers on new inputs that it has never seen during training.
+
+
+% \cite{russell-2010-modern-approach}
+% In supervised learning the agent observes some example input–output pairs and learns a function that maps from input to output. In component 1 above, the inputs are percepts and the output are provided by a teacher who says “Brake!” or “Turn left.” In component 2, the
+% inputs are camera images and the outputs again come from a teacher who says “that’s a bus.”
+% In 3, the theory of braking is a function from states and braking actions to stopping distance in feet. In this case the output value is available directly from the agent’s percepts (after the fact); the environment is the teacher.
+
+
+% \cite{goodfellow-2016-deep-learning}
+
+% 8.3.1 Stochastic Gradient Descent
+% Stochastic gradient descent (SGD) and its variants are probably the most usedoptimization algorithms for machine learning in general and for deep learningin particular. As discussed in section 8.1.3, it is possible to obtain an unbiasedestimate of the gradient by taking the average gradient on a minibatch ofmexamples drawn i.i.d from the data-generating distribution.
+% -> momentum
+% -> nesterov momentum
+
+    % 5.9 Stochastic Gradient Descent
+    % Nearly all of deep learning is powered by one very important algorithm:stochasticgradient descent(SGD). Stochastic gradient descent is an extension of thegradient descent algorithm introduced in section 4.3.A recurring problem in machine learning is that large training sets are necessaryfor good generalization, but large training sets are also more computationallyexpensive.
+
+
+% 5.3 Hyperparameters and Validation Sets
+% Most machine learning algorithms have hyperparameters, settings that we can use to control the algorithm’s behavior. The values of hyperparameters are not adapted by the learning algorithm itself (though we can design a nested learning procedure in which one learning algorithm learns the best hyperparameters for another learning algorithm)
+% ...
+% Sometimes a setting is chosen to be a hyperparameter that the learning algorithm does not learn because the setting is difficult to optimize. More frequently,the setting must be a hyperparameter because it is not appropriate to learn that hyperparameter on the training set. This applies to all hyperparameters that control model capacity. If learned on the training set, such hyperparameters would always choose the maximum possible model capacity, resulting in overfitting (referto figure 5.3). For example, we can always ﬁt the training set better with a higher-degree polynomial and a weight decay setting of λ= 0 than we could with a lower-degree polynomial and a positive weight decay setting.
+% To solve this problem, we need a validation set of examples that the training algorithm does not observe.
+% Earlier we discussed how a held-out test set, composed of examples coming from the same distribution as the training set, can be used to estimate the generalization error of a learner, after the learning process has completed. It is important that the test examples are not used in any way to make choices about the model, including its hyperparameters. For this reason, no example from the test set can be used in the validation set. Therefore, we always construct the validation set from the training data. Speciﬁcally, we split the training data into two disjoint subsets.One of these subsets is used to learn the parameters. The other subset is our validation set, used to estimate the generalization error during or after training,allowing for the hyperparameters to be updated accordingly. The subset of data used to learn the parameters is still typically called the training set, even though this may be confused with the larger pool of data used for the entire training process. The subset of data used to guide the selection of hyperparameters is called the validation set. Typically, one uses about 80 percent of the training data for training and 20 percent for validation. Since the validation set is used to “train” the hyperparameters, the validation set error will underestimate the generalization error, though typically by a smaller amount than the training error does. After all hyperparameter optimization is complete, the generalization error may be estimated using the test set.
+% In practice, when the same test set has been used repeatedly to evaluate performance of diﬀerent algorithms over many years, and especially if we consider all the attempts from the scientiﬁc community at beating the reported state-of-the-art performance on that test set, we end up having optimistic evaluations with the test set as well. Benchmarks can thus become stale and then do not reﬂect the true ﬁeld performance of a trained system. Thankfully, the community tends to move on to new (and usually more ambitious and larger) benchmark datasets.
+
+% 5.3.1 Cross-Validation
+% Dividing the dataset into a ﬁxed training set and a ﬁxed test set can be problematic if it results in the test set being small. A small test set implies statistical uncertainty around the estimated average test error, making it diﬃcult to claim that algorithmA works better than algorithm B on the given task.When the dataset has hundreds of thousands of examples or more, this is nota serious issue. When the dataset is too small, alternative procedures enable one to use all the examples in the estimation of the mean test error, at the price of increased computational cost. These procedures are based on the idea of repeating the training and testing computation on diﬀerent randomly chosen subsets or splits of the original dataset. The most common of these is the k-fold cross-validation procedure, shown in algorithm 5.1, in which a partition of the dataset is formed by splitting it into k non overlapping subsets. The test error may then be estimated by taking the average test error across k trials. On trial i, the i-th subset of the data is used as the test set, and the rest of the data is used as the training set.One problem is that no unbiased estimators of the variance of such average error estimators exist (Bengio and Grandvalet, 2004), but approximations are typically used.
+
+
+
+% 11.4 Selecting Hyperparameters
+% Most deep learning algorithms come with several hyperparameters that controlmany aspects of the algorithm’s behavior. Some of these hyperparameters aﬀect thetime and memory cost of running the algorithm. Some of these hyperparametersaﬀect the quality of the model recovered by the training process and its ability toinfer correct results when deployed on new inputs.There are two basic approaches to choosing these hyperparameters: choosingthem manually and choosing them automatically. Choosing the hyperparameters manually requires understanding what the hyperparameters do and how machinelearning models achieve good generalization. Automatic hyperparameter selectionalgorithms greatly reduce the need to understand these ideas, but they are oftenmuch more computationally costly.
+
+% 11.4.2 Automatic Hyperparameter Optimization Algorithms
+% The ideal learning algorithm just takes a dataset and outputs a function, withoutrequiring hand tuning of hyperparameters. The popularity of several learningalgorithms such as logistic regression and SVMs stems in part from their ability toperform well with only one or two tuned hyperparameters. Neural networks cansometimes perform well with only a small number of tuned hyperparameters, butoften beneﬁt signiﬁcantly from tuning of forty or more. Manual hyperparametertuning can work very well when the user has a good starting point, such asone determined by others having worked on the same type of application andarchitecture, or when the user has months or years of experience in exploringhyperparameter values for neural networks applied to similar tasks. For manyapplications, however, these starting points are not available. In these cases,automated algorithms can ﬁnd useful values of the hyperparameters.
+% ...
+
+% 11.4.3 Grid Search
+% When there are three or fewer hyperparameters, the common practice is to performgrid search. For each hyperparameter, the user selects a small ﬁnite set ofvalues to explore. The grid search algorithm then trains a model for every jointspeciﬁcation of hyperparameter values in the Cartesian product of the set of valuesfor each individual hyperparameter. The experiment that yields the best validationset error is then chosen as having found the best hyperparameters. See the left ofﬁgure 11.2 for an illustration of a grid of hyperparameter values.
+% ...
+% The obvious problem with grid search is that its computational cost growsexponentially with the number of hyperparameters. If there aremhyperparameters,each taking at mostnvalues, then the number of training and evaluation trialsrequired grows asO(nm). The trials may be run in parallel and exploit looseparallelism (with almost no need for communication between diﬀerent machinescarrying out the search). Unfortunately, because of the exponential cost of gridsearch, even parallelization may not provide a satisfactory size of search.
+
 
 
 
@@ -86,8 +183,8 @@ Para isso, elas demandam que um grande volume de dados acerca do problema aborda
 
 
 % PLN ???
-
-
+% TODO: revisar
+\subsection{Processamento de Linguagem Natural}
 
 \citeonline{jurafsky-2022-speech-lang-processing} afirmam que a linguagem é um fenômeno inerentemente temporal e que pode ser compreendida como uma sequência de eventos que se desdobram ao longo do tempo, como um fluxo contínuo de dados.
 Os modelos sequenciais lidam diretamente com essa natureza, e são capazes de capturar e explorar tal aspecto temporal.
