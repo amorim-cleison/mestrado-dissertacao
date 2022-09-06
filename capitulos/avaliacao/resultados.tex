@@ -20,7 +20,7 @@ O valor das demais métricas e da perda computada para ambos os casos replicaram
 
 Por outro lado, quando analisamos os resultados do \textit{Transformer} vemos um desempenho bastante expressivo com uma acurácia de 100,00\%, a qual excede aquelas apresentadas pelos \textit{Encoder-Decoders} e é reiterada consistentemente pelo valor das demais métricas e também da perda computada.
 
-Isso nos remete à argumentação de \citeonline{wolf-2020-transformers,jurafsky-2022-speech-lang-processing} citada na \autoref{sec:modelos-sequenciais}, que afirma que essa arquitetura tem se mostrado extremamente bem-sucedida entre tarefas de \acrfull{nlp}, superando arquiteturas como as \acrshortpl{rnn}. Exatamente por isso, elas são atualmente dominantes nessa área.
+Isso nos remete à argumentação de \citeonline{wolf-2020-transformers,jurafsky-2022-speech-lang-processing} citada na \autoref{sec:am-ap}, que afirma que essa arquitetura tem se mostrado extremamente bem-sucedida entre tarefas de \acrfull{nlp}, superando arquiteturas como as \acrshortpl{rnn}. Exatamente por isso, elas são atualmente dominantes nessa área.
 
 No contexto deste trabalho, acreditamos que alguns motivos particulares contribuíram para os resultados acima.
 Em primeiro lugar, entendemos que a escolha pelo uso da abordagem linguística dos sinais nos possibilitou trabalhar num nível semântico muito mais elevado do que seríamos capazes de fazer com dados brutos como os pixels de imagens RGB ou coordenadas aleatórias no espaço. Conforme discutimos no \autoref{cap:metodos}, essa é uma abordagem comum em tarefas envolvendo linguagem no \acrshort{nlp} e que nos permite produzir \textit{features} de melhor qualidade para ensinar os modelos acerca da estrutura dessas línguas.

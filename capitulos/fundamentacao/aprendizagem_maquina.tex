@@ -1,19 +1,21 @@
-\section{Modelos sequenciais de aprendizagem de máquina}
-\label{sec:modelos-sequenciais}
+\section{Aprendizagem de máquina}
+\label{sec:am}
 
-% TODO: revisar isso
-Introduziremos aqui uma breve discussão acerca dos modelos sequenciais de \acrlong{ml}, bem como sua importância dentro da área de \acrfull{nlp} para lidar com tarefas envolvendo linguagens.
+Esta seção introduzirá conceitos básicos de \acrfull{ml} e desenvolverá uma discussão sobre as principais arquiteturas utilizadas na área de \acrfull{nlp} para lidar com tarefas envolvendo linguagens, como na abordagem proposta por este trabalho.
+% Introduziremos aqui uma breve discussão acerca dos modelos sequenciais de \acrlong{ml}, bem como sua importância dentro da área de \acrfull{nlp} para lidar com tarefas envolvendo linguagens.
 
 
-% TODO: introduzir IA (livro de Quiza --> pg 39)
-% \citeonline{quiza-2012-finite-element}
+\subsection{Breve introdução}
+\label{sec:am-introducao}
 
-\citeonline{murphy-2012-ml-probabilistic} afirma que vive-se hoje a era do \textit{big data} (ou grande volumes de dados).
-Por exemplo, há mais de 1 trilhão de páginas na web mapeadas pelo Google; o YouTube recebe cerca de 1 hora de conteúdo de vídeo a cada segundo; o Walmart processa mais de 1 milhão de transações por hora, totalizando mais de 2,5 petabytes de informações em suas bases de dados; e assim por diante.
-Todo esse volume de dados demanda técnicas automatizadas de análise e extração de informações relevantes e esse é um exemplo de contexto onde a \acrfull{ia} e, mais especificamente a área de \acrfull{ml}, tem desempenhado um papel fundamental atualmente.
+\citeonline{quiza-2012-finite-element,russell-2010-modern-approach} definem a \acrfull{ia} como um ramo da ciência da computação que visa estudar e projetar agentes inteligentes, ou seja, sistemas capazes de perceber seu ambiente e realizar ações que maximizam suas chances de sucesso.
+A \acrfull{ml}, por sua vez, é definida por \citeonline{murphy-2012-ml-probabilistic,goodfellow-2016-deep-learning} como um conjunto de algoritmos de \acrshort{ia} capazes de detectar automaticamente padrões a partir dos dados e, em seguida, utilizar tais padrões para prever dados futuros ou realizar outros tipos de tomadas de decisões.
+Esses algoritmos comumente adotam modelos estatísticos para realizar análises e inferências sobre os dados, e não requerem que instruções explícitas sejam programadas para que consigam aprender ou adaptarem-se aos padrões identificados.
 
-\citeonline{murphy-2012-ml-probabilistic,goodfellow-2016-deep-learning} definem a \acrlong{ml} como um conjunto de algoritmos de \acrshort{ia} capazes de detectar automaticamente padrões a partir dos dados e, em seguida, utilizar esses padrões para prever dados futuros ou realizar outros tipos de tomadas de decisão.
-Esses algoritmos comumente adotam modelos estatísticos para analisar e realizar inferências a partir dos dados, e não necessitam que instruções explícitas sejam programadas para que eles aprendam ou adaptem-se aos padrões identificados.
+
+% \citeonline{murphy-2012-ml-probabilistic} ressalta que vivemos na era do \textit{big data} (ou do grande volume de dados). 
+% Por exemplo, há mais de 1 trilhão de páginas na web mapeadas pelo Google; o YouTube recebe cerca de 1 hora de conteúdo de vídeo a cada segundo; o Walmart processa mais de 1 milhão de transações por hora, totalizando mais de 2,5 petabytes de informações em suas bases de dados; e assim por diante.
+% Todo esse volume de dados demanda técnicas automatizadas de análise e extração de informações relevantes e esse é um exemplo de contexto onde a \acrfull{ia} e, mais especificamente a área de \acrfull{ml}, tem desempenhado um papel fundamental atualmente.
 
 
 % \cite{murphy-2012-ml-probabilistic}
@@ -27,22 +29,24 @@ Esses algoritmos comumente adotam modelos estatísticos para analisar e realizar
 % the use and development of computer systems that are able to learn and adapt without following explicit instructions, by using algorithms and statistical models to analyze and draw inferences from patterns in data.
 
 
+Os algoritmos de \acrshort{ml} são formados por um tipo de estrutura denominado \acrfull{ann}. 
+Segundo \citeonline{mitchell-1997-ml,bishop-2006-pattern-recognition}, essas estruturas são inspiradas em parte pela observação de que sistemas de aprendizado biológico são constituídos de redes muito complexas de neurônios interconectados entre si, conforme ilustra a \autoref{fig:exemplo-neuronios}.
+De maneira análoga, as \acrshortpl{ann} são formadas por um conjunto de unidades simples densamente interconectadas organizadas em camadas, que exercem o papel dos neurônios, conforme ilustra a \autoref{fig:rede-neural}. 
+Cada unidade recebe um número de entradas de valor real (produzidas por unidades da camada anterior) e produz um número de saídas de valor real (que poderão ser utilizados como entradas por unidades da camada seguinte).
+Além disso, para cada conexão existente entre essas unidades é atribuído um valor real que representa o seu peso. Esses pesos são ajustados à medida em que a \acrshort{ann} é treinada no domínio do problema em questão, possibilitando com que ela adapte-se aos padrões existentes nos dados.
+
 \figura[p. 40]
     {fig:exemplo-neuronios} % Label
     {capitulos/fundamentacao/imagens/exemplo_neuronios} % Path
     {height=5cm} % Size
-    {Exemplo de neurônios interconectados, os quais são as células que caracterizam o sistema nervoso} % Caption
+    {Exemplo de neurônios interconectados, que compõem os sistemas biológicos de aprendizado} % Caption
     {quiza-2012-finite-element} % Citation
-
-
-Algoritmos de \acrlong{ml} constituem-se de estruturas denominadas Redes Neurais Artificiais que, segundo \citeonline{mitchell-1997-ml,bishop-2006-pattern-recognition}, são inspiradas pela observação dos sistemas de aprendizado biológico, os quais consistem de redes muito complexas de neurônios interconectados entre si, conforme \autoref{fig:exemplo-neuronios}.
-De maneira análoga, as Redes Neurais Artificiais são construídas a partir de um conjunto de unidades simples densamente interconectadas (de maneira análoga a esses neurônios) e organizadas em camadas, conforme observa-se na \autoref{fig:rede-neural}. Cada unidade recebe um número de entrada (produzido pelas unidades presentes na camada anterior) e produz um número de saída (que será utilizado pelas unidades na camada posterior). Por fim, cada conexão existente entre essas unidades possui um peso associado, o qual consiste de um número que é calibrado à medida em que a rede se adapta (ou aprende) os padrões existentes nos dados.
 
 \figura[p. 43]
     {fig:rede-neural} % Label
     {capitulos/fundamentacao/imagens/rede_neural_2} % Path
     {height=7cm} % Size
-    {Exemplo de Rede Neural Artificial com 4 camadas interconectadas: os dados \(\{X_1, X_2, \dots, X_k\}\) são recebidos pelas unidades da camada de entrada (ou \textit{input layer}), processados pelas camadas ocultas (ou \textit{hidden layers}) e, por fim, pela camada de saída (ou \textit{output layer}) que produz as saídas \(\{Y_1, Y_2, \dots, Y_k\}\)} % Caption
+    {Exemplo de \acrfull{ann} com 4 camadas interconectadas: os dados \(\{X_1, X_2, \dots, X_k\}\) são recebidos pelas unidades da camada de entrada (ou \textit{input layer}), processados pelas camadas ocultas (ou \textit{hidden layers}) e pela camada de saída (ou \textit{output layer}) que, por sua vez, produz as saídas \(\{Y_1, Y_2, \dots, Y_k\}\)} % Caption
     {quiza-2012-finite-element} % Citation
 
 % Network diagram for the two layer neural network corresponding to (5.7). The input, hidden, and output variables are represented by nodes, and the weight parameters are represented by links between the nodes, in which the bias parameters are denoted by links coming from additional input and hidden variables x0 and z0. Arrows denote the direction of information flow through the network during forward propagation.
@@ -51,11 +55,102 @@ De maneira análoga, as Redes Neurais Artificiais são construídas a partir de 
 % The study of artificial neural networks (ANNs) has been inspired in part by the observation that biological learning systems are built of very complex webs of interconnected neurons. In rough analogy, artificial neural networks are built out of a densely interconnected set of simple units, where each unit takes a number of real-valued inputs (possibly the outputs of other units) and produces a single real-valued output (which may become the input to many other units).
 
 
-As Redes Neurais Profundas, por sua vez, são redes neurais abordadas pela área de \acrfull{dl} e compostas por um número grande de camadas e unidades dentro delas.
-Segundo \citeonline{goodfellow-2016-deep-learning,lecun-2015-deep-learning}, devido a sua estrutura robusta e ``profunda'' essas redes são capazes de lidar com problemas muito complexos, descobrindo automaticamente a partir dos dados brutos níveis de representação gradativamente mais elevados e abstratos, camada após camada.
-Para isso, elas demandam que um grande volume de dados acerca do problema abordado esteja disponível e seja utilizado como entrada para esse processo.
+De acordo com \citeonline{lecun-2015-deep-learning}, a forma mais comum utilizada pelas \acrshortpl{ann} para aprender -- ou adaptar-se aos padrões existentes nos dados -- é o aprendizado supervisionado.
+Nela, segundo \citeonline{russell-2010-modern-approach}, a \acrshort{ann} observa um conjunto de exemplos de pares de entrada-saída e aprende uma função que mapeia daquele tipo de entrada para aquela saída respectiva, ajustando seus pesos nesse processo.
 
-\citeonline{lecun-2015-deep-learning} ressaltam que essas redes têm produzido ao longo das últimas décadas progressos extremamente promissores para problemas que resistiram por muito tempo às melhores tentativas de avanço pela comunidade de \acrshort{ia}, incluindo tarefas de \acrfull{nlp} como a classificação de tópicos, análise de sentimentos, resposta a perguntas, tradução de idiomas, e processamento de imagens, vídeos e fala.
+Por exemplo, imagine a construção de uma \acrshort{ann} para identificar a existência de casas, carros, pessoas ou animais de estimação em imagens. O primeiro passo consistiria em coletar um grande conjunto de imagens de casas, carros, pessoas e animais de estimação, cada uma identificada quanto à existência de um desses elementos, formando assim os pares de entrada-saída mencionados acima -- que nesse caso, seriam pares de ``imagem-elemento''.
+Esse conjunto de imagens seria então dividido em dois subconjuntos distintos: um de treinamento, a ser utilizado para que a \acrshort{ann} aprenda a identificar esses elementos; e outro de testes, utilizado para avaliar o sucesso da rede nesse processo de aprendizado.
+
+O passo seguinte compreenderia o treinamento da \acrshort{ann}, processo no qual ela seria exposta às imagens do subconjunto de treinamento para aprender a identificar a existência dos elementos acima. 
+Para cada imagem visitada, a rede produziria uma pontuação com a probabilidade de existência de cada um dos elementos acima. Objetiva-se que aquele elemento efetivamente presente na imagem receba a pontuação mais alta entre todos os outros elementos possíveis, mas isso apenas ocorrerá à medida que os pesos da rede forem sendo ajustados para tal.
+Para isso, adota-se uma ``função objetivo'' (às vezes também chamada de ``função de perda'' ou ``função de custo''), que é responsável por computar o erro ou distância entre as pontuações informadas pela rede e aquelas que refletem o padrão correto desejado -- que no contexto atual significa atribuir a pontuação máxima ao elemento correto e pontuações mínimas para os demais.
+Esse erro será então propagado através das camadas e conexões da rede, a qual modificará os pesos respectivos para reduzir esse erro e aproximar seu comportamento do objetivo acima.
+Isso é repetido para muitos pequenos \textit{batches} (ou lotes) de amostras do subconjunto de treinamento até que o erro pare de diminuir. 
+
+
+% Em seguida, será iniciado o treinamento da rede, processo no qual ela receberá uma imagem e produzirá uma saída na forma de uma lista de pontuações, uma para cada uma das classes acima. Objetiva-se que a classe correta receba a pontuação mais alta entre todas as classes possíveis, mas isso é pouco provável de ocorrer antes do treinamento. Dessa forma, será computada uma ``função objetivo'' que medirá o erro (ou distância) entre as pontuações informadas pela rede e aquelas que refletem o padrão correto desejado.
+% A rede então modificará seus parâmetros ajustáveis internos para reduzir este erro. Esses parâmetros ajustáveis são geralmente chamados de ``pesos'', e consistem de números reais que definem o comportamento da função de entrada-saída da rede neural. 
+% Em uma rede neural profunda típica, pode haver centenas de milhões desses pesos ajustáveis e centenas de milhões de amostras de dados rotuladas são comumente necessárias nesse processo de treinamento.
+
+
+% Otimização
+
+Segundo \citeonline{lecun-2015-deep-learning,goodfellow-2016-deep-learning}, esse processo de ajuste de pesos é denominado ``otimização'' da \acrshort{ann} e um dos algoritmos mais utilizados atualmente é o \acrfull{sgd}.
+De uma maneira simplificada dentro do processo acima, o \acrshort{sgd} funciona calculando os gradientes para cada peso da rede no momento em que o erro é propagado através de suas conexões, e utiliza esses gradientes para realizar os ajustes nos pesos, aumentando ou reduzindo seus valores na direção oposta à do gradiente.
+
+
+% De uma maneira simplificada, ele consiste em apresentar amostras de dados à rede, calcular as saídas e os erros respectivos (fornecidos pela função objetivo), calcular o gradiente médio para essas amostras (obtido a partir dos gradientes individuais calculados para cada peso e que, por sua vez, indicam em que quantidade o erro aumentaria ou diminuiria se aquele peso fosse aumentado em uma pequena quantidade) e ajustar os pesos de acordo com esses gradientes (na direção oposta aos gradientes calculados). 
+
+Quando o treinamento da \acrshort{ann} é finalizado, o seu desempenho é então avaliado calculando-se o erro médio para as amostras do subconjunto de testes, o que é feito utilizando-se a mesma função objetivo acima.
+Isso permite conhecer a sua capacidade de generalização, ou seja, o quanto ela é bem-sucedida ao tentar produzir respostas sensatas para amostras nunca antes observadas.
+
+% Ao final do treinamento, o desempenho da rede será então avaliado utilizando-se o subconjunto de amostras de testes, que foi separado inicialmente. Isso permitirá testar a capacidade de ``generalização'' da rede que, em outras palavras, significa sua capacidade de produzir respostas sensatas para novas amostras não observadas durante o processo de treinamento.
+
+
+% Cross-validation
+
+No entanto, \citeonline{goodfellow-2016-deep-learning,bishop-2006-pattern-recognition} argumentam que dividir o conjunto de dados em apenas dois subconjuntos fixos, de treinamento e de testes, pode ser problemático principalmente se isso resultar em um subconjunto pequeno de testes.
+Subconjuntos pequenos de testes implicam incerteza estatística em torno do erro médio de testes estimado acima, tornando difícil afirmar que um algoritmo funciona melhor que outro na tarefa em questão.
+Para lidar com isso, é possível que seja aplicado um procedimento conhecido como ``validação cruzada'', o qual permite com que sejam utilizadas todas as amostras de dados na estimativa desse erro médio.
+
+A validação cruzada baseia-se na ideia de repetir as etapas de treinamento e testes utilizando subconjuntos diferentes de dados, escolhidos aleatoriamente a partir do conjunto original, e computando o erro de teste como sendo a média dos erros obtidos em cada repetição. 
+O método de validação cruzada mais comum é o \textit{\(k\)-fold}, e funciona dividindo o conjunto de dados original em \(k\) subconjuntos não sobrepostos e realizando \(k\) repetições de treinamento e testes. 
+A cada repetição \(i\), o \(i\)-ésimo subconjunto é utilizado como subconjunto de testes e o restante dos dados é utilizado como subconjunto de treinamento, e assim por diante.
+O erro de teste é então estimado tomando-se a média dos erros obtidos nessas \(k\) repetições.
+
+
+% Apesar disso, \citeonline{goodfellow-2016-deep-learning,bishop-2006-pattern-recognition} argumentam que dividir o conjunto de dados em um subconjunto fixo de treinamento e outro de testes, conforme realizado acima, pode ser problemático se resultar em um subconjunto de testes pequeno -- principalmente no contexto de redes neurais profundas.
+% Um subconjunto pequeno de testes implica incerteza estatística em torno do erro médio estimado de teste, tornando difícil afirmar que um algoritmo funciona melhor que outro na tarefa em questão.
+% Se o conjunto de dados possui centenas de milhares de amostras ou mais, isso não é um problema sério; porém, quando esse conjunto é muito pequeno, são necessários procedimentos alternativos que possibilitem utilizar todas as amostras na estimativa do erro médio de teste, ao preço de um aumento do custo computacional.
+% Esses procedimentos são geralmente conhecidos como ``validação cruzada'' e baseiam-se na ideia de repetir as etapas de treinamento e testes utilizando diferentes subconjuntos escolhidos aleatoriamente a partir do conjunto de dados original, computando então o erro médio final a partir dos erros obtidos em cada repetição. 
+% O mais comum deles é o \textit{\(k\)-fold}, no qual uma partição do conjunto de dados é formada dividindo-o em \(k\) subconjuntos não sobrepostos. O erro de teste pode então ser estimado tomando o erro de teste médio dessas \(k\) tentativas. A cada tentativa \(i\), o \(i\)-ésimo subconjunto dos dados é usado como subconjunto de testes e o restante dos dados é utilizado como subconjunto de treinamento, e assim por diante.
+
+
+% Busca de parâmetros
+
+\citeonline{goodfellow-2016-deep-learning} afirmam que a maioria das \acrshortpl{ann} possuem diversos ``hiperparâmetros'', que são configurações utilizadas para controlar diferentes aspectos do comportamento dessas redes como, por exemplo, seu custo de tempo e memória, a qualidade do modelo obtido a partir do treinamento ou ainda a sua capacidade de generalização. 
+Diferentemente do que ocorre com os pesos dessas redes, esses hiperparâmetros não são aprendidos de maneira automática durante o processo de treinamento e comumente a seleção dos valores que melhor otimizam a capacidade da rede para o problema em questão não é uma tarefa simples.
+
+Há duas abordagens básicas para a escolha desses hiperparâmetros: selecionando-os manualmente, o que demanda uma compreensão mais aprofundada do papel desempenhado por cada um deles e de como influenciam a capacidade de generalização da rede; ou utilizando algoritmos de seleção automática, que reduzem a demanda por essa compreensão, mas que geralmente introduzem um custo computacional mais elevado.
+
+Mais adiante nos experimentos deste trabalho, será adotado o algoritmo de seleção de hiperparâmetros conhecido como \textit{grid search} (ou busca de grade).
+De uma maneira simplificada, ele funciona com base num conjunto pequeno e finito de valores a serem explorados para cada um dos hiperparâmetros da rede, os quais são informados pelo usuário.
+O algoritmo gera o produto cartesiano de todas as combinações possíveis desses valores de hiperparâmetros e, em seguida, treina uma rede neural para cada uma dessas combinações.
+Ao final deste processo, a rede neural que apresentar o menor erro médio de testes será então aquela que encontrou a melhor combinação de valores de hiperparâmetros.
+
+Nessa seleção automática de hiperparâmetros é utilizado um subconjunto de dados denominado ``subconjunto de validação'', o qual é criado a partir de uma nova divisão do subconjunto de treinamento. Dessa forma, tipicamente 20\% das amostras do subconjunto de treinamento passam a compor o subconjunto de validação e são utilizadas na seleção dos hiperparâmetros e 80\% permanecem sendo utilizadas no treinamento.
+O subconjunto de testes, por sua vez, permanece isolado sendo utilizado exclusivamente para o cálculo do erro médio de testes das redes.
+
+% Nessa otimização, também não é possível que sejam utilizadas as mesmas amostras do subconjunto de treinamento, uma vez que isso tornaria a rede enviesada a esse subconjunto e comprometeria sua capacidade de generalização para novas amostras.
+% Para solucionar isso, é estabelecido um novo subconjunto de amostras denominado ``subconjunto de validação'', o qual é criado a partir de uma nova divisão do subconjunto inicial de treinamento -- nesse contexto, tipicamente 20\% das amostras são destinadas para otimização dos hiperparâmetros e 80\% permanecem sendo utilizadas no treinamento da rede.
+% Uma vez que a otimização dos hiperparâmetros está completa, o desempenho da rede é avaliado utilizando-se o mesmo subconjunto inicial de testes, conforme discutido anteriormente.
+
+% Um dos algoritmos mais simples para seleção automática de hiperparâmetros é o \textit{grid search} (ou busca de grade), o qual será utilizado mais adiante nos experimentos deste trabalho. Nele, o usuário indica um conjunto pequeno e finito de valores a serem explorados para cada um dos hiperparâmetros em questão. A partir disso, o algoritmo gera o produto cartesiano de todas as combinações possíveis de valores de hiperparâmetros e, em seguida, treina uma rede neural para cada uma dessas combinações. Aquela rede neural que apresentar o menor erro para as amostras do subconjunto de validação é então assumida como sendo a que encontrou a melhor combinação de valores de hiperparâmetros.
+% No entanto, um problema relevante desse algoritmo é o seu custo computacional, que cresce exponencialmente em função do número de hiperparâmetros e de valores a serem explorados.
+
+% \citeonline{goodfellow-2016-deep-learning} prosseguem afirmando que a maioria das redes neurais possuem configurações denominadas ``hiperparâmetros'', que controlam muitos aspectos do comportamento dessas redes, como custo o computacional e de memória, a qualidade do modelo recuperado pelo processo de treinamento ou ainda a habilidade de realizar inferências corretas quando expostas a novas entradas. 
+% Exemplos dessas configurações incluem a taxa de aprendizagem, a número ou o tamanho das camadas da rede, o tipo de regularização aplicada, entre outros. 
+% Diferentemente de parâmetros como os pesos, essas configurações não são aprendidas automaticamente durante o treinamento da rede e comumente são difíceis de serem otimizadas.
+% Nessa otimização, também não é possível que sejam utilizadas as mesmas amostras do subconjunto de treinamento, uma vez que isso tornaria a rede enviesada a esse subconjunto e comprometeria sua capacidade de generalização para novas amostras.
+% Para solucionar isso, é estabelecido um novo subconjunto de amostras denominado ``subconjunto de validação'', o qual é criado a partir de uma nova divisão do subconjunto inicial de treinamento -- nesse contexto, tipicamente 20\% das amostras são destinadas para otimização dos hiperparâmetros e 80\% permanecem sendo utilizadas no treinamento da rede.
+% Uma vez que a otimização dos hiperparâmetros está completa, o desempenho da rede é avaliado utilizando-se o mesmo subconjunto inicial de testes, conforme discutido anteriormente.
+
+% Existem duas abordagens básicas para otimização desses hiperparâmetros: selecionando-os manualmente, o que requer uma compreensão do papel desempenhado por cada um deles e de como as redes neurais alcançam uma boa capacidade de generalização; ou utilizando algoritmos selecioná-los automaticamente, o que reduz a demanda por compreender conceitos avançados, mas que geralmente introduz um custo computacional maior.
+% Um dos algoritmos mais simples para seleção automática de hiperparâmetros é o \textit{grid search} (ou busca de grade), o qual será utilizado mais adiante nos experimentos deste trabalho. Nele, o usuário indica um conjunto pequeno e finito de valores a serem explorados para cada um dos hiperparâmetros em questão. A partir disso, o algoritmo gera o produto cartesiano de todas as combinações possíveis de valores de hiperparâmetros e, em seguida, treina uma rede neural para cada uma dessas combinações. Aquela rede neural que apresentar o menor erro para as amostras do subconjunto de validação é então assumida como sendo a que encontrou a melhor combinação de valores de hiperparâmetros.
+% No entanto, um problema relevante desse algoritmo é o seu custo computacional, que cresce exponencialmente em função do número de hiperparâmetros e de valores a serem explorados.
+
+
+
+
+% APRENDIZAGEM PROFUNDA
+
+\subsection{Aprendizagem profunda e modelos sequenciais}
+\label{sec:am-ap}
+
+A \acrfull{dl} é um ramo da \acrlong{ml} que se concentra no estudo de um tipo de \acrshort{ann} denominado \acrfull{dnn}. 
+Essas \acrshortpl{dnn} diferenciam-se das redes discutidas até aqui porque apresentam um número muito grande de camadas e, consequentemente, de unidades interconectadas dentro delas -- e justamente por isso são chamadas de ``profundas''.
+Segundo \citeonline{goodfellow-2016-deep-learning,lecun-2015-deep-learning}, essa estrutura robusta possibilita a elas lidar com problemas muito complexos, descobrindo e aprendendo automaticamente representações de dados com múltiplos níveis de abstração.
+Essas redes têm produzido ao longo das últimas décadas progressos extremamente promissores para problemas que resistiram por muito tempo às melhores tentativas de avanço pela comunidade de \acrshort{ia}, principalmente em tarefas de \acrfull{nlp} como a classificação de tópicos, análise de sentimentos, tradução de idiomas,  processamento de imagens, vídeos e fala, entre outras.
 
 % \cite{lecun-2015-deep-learning}
 % A deep-learning architecture is a multilayer stack of simple modules, all (or most) of which are subject to learning, and many of which compute non-linear input–output mappings. Each module in the stack transforms its input to increase both the selectivity and the invariance of the representation. With multiple non-linear layers, say a depth of 5 to 20, a system can implement extremely intricate functions of its inputs that are simultaneously sensitive to minute details — distinguishing Samoyeds from white wolves — and insensitive to large irrelevant variations such as the background, pose, lighting and surrounding objects.
@@ -78,51 +173,16 @@ Para isso, elas demandam que um grande volume de dados acerca do problema aborda
 % Perhaps more surprisingly, deep learning has produced extremely promising results for various tasks in natural language understanding, particularly topic classification, sentiment analysis, question answering and language translation.
 
 
-Segundo os autores, a forma mais comumente utilizada por essas redes, profundas ou não, para aprender (ou se adaptar aos padrões existentes nos dados) é o aprendizado supervisionado.
-Nessa forma de aprendizado, afirmam \citeonline{russell-2010-modern-approach}, a rede observa uma série de amostras de pares de entrada-saída e aprende uma função capaz de mapear aquele tipo de entrada para aquela saída respectiva.
 
-Por exemplo, imagine que deseje-se construir uma rede neural para classificar se uma imagens contém casas, carros, pessoas ou animais de estimação. O primeiro passo consistirá em coletar um grande conjunto de dados de imagens de casas, carros, pessoas e animais de estimação, cada um rotulado com sua respectiva classe -- que nesse contexto seriam ``casa'', ``carro'', ``pessoa'' ou ``animal de estimação'', respectivamente.
-Esse conjunto de dados será inicialmente dividido em dois subconjuntos distintos: um para o processo de treinamento e outro para os testes da rede neural -- o qual discutiremos mais adiante.
-
-Em seguida, será iniciado o treinamento da rede, processo no qual ela receberá uma imagem e produzirá uma saída na forma de uma lista de pontuações, uma para cada uma das classes acima. Objetiva-se que a classe correta receba a pontuação mais alta entre todas as classes possíveis, mas isso é pouco provável de ocorrer antes do treinamento. Dessa forma, será computada uma ``função objetivo'' que medirá o erro (ou distância) entre as pontuações informadas pela rede e aquelas que refletem o padrão correto desejado.
-A rede então modificará seus parâmetros ajustáveis internos para reduzir este erro. Esses parâmetros ajustáveis são geralmente chamados de ``pesos'', e consistem de números reais que definem o comportamento da função de entrada-saída da rede neural. 
-Em uma rede neural profunda típica, pode haver centenas de milhões desses pesos ajustáveis e centenas de milhões de amostras de dados rotuladas são comumente necessárias nesse processo de treinamento.
-
-% Otimização
-
-Esse processo de ajuste de pesos descrito acima é conhecido como ``otimização'' da rede neural. De acordo com \citeonline{lecun-2015-deep-learning,goodfellow-2016-deep-learning}, o algoritmo mais utilizado para isso, sobretudo para redes profundas, é o \acrfull{sgd}.
-De uma maneira simplificada, ele consiste em apresentar amostras de dados à rede, calcular as saídas e os erros respectivos (fornecidos pela função objetivo), calcular o gradiente médio para essas amostras (obtido a partir dos gradientes individuais calculados para cada peso e que, por sua vez, indicam em que quantidade o erro aumentaria ou diminuiria se aquele peso fosse aumentado em uma pequena quantidade) e ajustar os pesos de acordo com esses gradientes (na direção oposta aos gradientes calculados). 
-O processo é repetido para muitos pequenos \textit{batches} (ou lotes) de amostras do conjunto de treinamento até que o erro médio obtido pela função objetivo pare de diminuir. 
-Ao final do treinamento, o desempenho da rede será então avaliado utilizando-se o subconjunto de amostras de testes, que foi separado inicialmente. Isso permitirá testar a capacidade de ``generalização'' da rede que, em outras palavras, significa sua capacidade de produzir respostas sensatas para novas amostras não observadas durante o processo de treinamento.
-
-% Cross-validation
-
-\citeonline{goodfellow-2016-deep-learning,bishop-2006-pattern-recognition} argumentam que dividir o conjunto de dados em um subconjunto fixo de treinamento e outro de testes, conforme realizado acima, pode ser problemático se resultar em um subconjunto de testes pequeno -- principalmente no contexto de redes neurais profundas.
-Um subconjunto pequeno de testes implica incerteza estatística em torno do erro médio estimado de teste, tornando difícil afirmar que um algoritmo funciona melhor que outro na tarefa em questão.
-Se o conjunto de dados possui centenas de milhares de amostras ou mais, isso não é um problema sério; porém, quando esse conjunto é muito pequeno, são necessários procedimentos alternativos que possibilitem utilizar todas as amostras na estimativa do erro médio de teste, ao preço de um aumento do custo computacional.
-Esses procedimentos são geralmente conhecidos como ``validação cruzada'' e baseiam-se na ideia de repetir as etapas de treinamento e testes utilizando diferentes subconjuntos escolhidos aleatoriamente a partir do conjunto de dados original, computando então o erro médio final a partir dos erros obtidos em cada repetição. 
-O mais comum deles é o \textit{\(k\)-fold}, no qual uma partição do conjunto de dados é formada dividindo-o em \(k\) subconjuntos não sobrepostos. O erro de teste pode então ser estimado tomando o erro de teste médio dessas \(k\) tentativas. A cada tentativa \(i\), o \(i\)-ésimo subconjunto dos dados é usado como subconjunto de testes e o restante dos dados é utilizado como subconjunto de treinamento, e assim por diante.
-
-% Busca de parâmetros
-
-\citeonline{goodfellow-2016-deep-learning} prosseguem afirmando que a maioria das redes neurais possuem ``hiperparâmetros'', que são configurações que controlam o comportamento ou a capacidade dessas redes. Exemplos dessas configurações podem incluir a taxa de aprendizagem utilizada no treinamento da rede, a quantidade ou a dimensão das camadas adotadas, o número de camadas ocultas, o tipo de regularização aplicada, entre outros. 
-Diferentemente dos pesos da rede neural, essas configurações não são aprendidas automaticamente durante o treinamento da rede e comumente são difíceis de serem otimizadas.
-Para realizar essa otimização, não é possível que sejam utilizadas as mesmas amostras do subconjunto de treinamento, uma vez que isso tornaria a rede enviesada a esse subconjunto e comprometeria sua capacidade de generalização para novas amostras.
-Para solucionar isso, é estabelecido um novo subconjunto de amostras denominado ``subconjunto de validação'', o qual é criado a partir de uma nova divisão do subconjunto inicial de treinamento -- nesse contexto, tipicamente 20\% das amostras são destinadas para otimização dos hiperparâmetros e 80\% permanecem sendo utilizadas no treinamento da rede.
-Uma vez que a otimização dos hiperparâmetros está completa, é possível avaliar o desempenho da rede utilizando-se o mesmo subconjunto inicial de testes, conforme discutimos anteriormente
-
-
-
-
-% TODO: função de ativação, treinamento, função de perda, backpropagation ?
+%% TODO: função de ativação, treinamento, função de perda, backpropagation ?
 
 % treinamento (geral) x
 % algoritmo de otimização (SGD) x
 % treinamento, validação, testes x
 % validação cruzada (k-fold) x
-% busca automática de parâmetros (Grid Search)
-% função de perda (Cross-Entropy Loss)
-% Batches
+% busca automática de parâmetros (Grid Search) x
+% função de perda (Cross-Entropy Loss) x
+% Batches x
 
 
 % \cite{lecun-2015-deep-learning}
@@ -164,16 +224,16 @@ Uma vez que a otimização dos hiperparâmetros está completa, é possível ava
 
 
 % 11.4 Selecting Hyperparameters
-% Most deep learning algorithms come with several hyperparameters that controlmany aspects of the algorithm’s behavior. Some of these hyperparameters aﬀect thetime and memory cost of running the algorithm. Some of these hyperparametersaﬀect the quality of the model recovered by the training process and its ability toinfer correct results when deployed on new inputs.There are two basic approaches to choosing these hyperparameters: choosingthem manually and choosing them automatically. Choosing the hyperparameters manually requires understanding what the hyperparameters do and how machinelearning models achieve good generalization. Automatic hyperparameter selectionalgorithms greatly reduce the need to understand these ideas, but they are oftenmuch more computationally costly.
+% Most deep learning algorithms come with several hyperparameters that controlmany aspects of the algorithm’s behavior. Some of these hyperparameters aﬀect thetime and memory cost of running the algorithm. Some of these hyperparametersaﬀect the quality of the model recovered by the training process and its ability to infer correct results when deployed on new inputs.There are two basic approaches to choosing these hyperparameters: choosing them manually and choosing them automatically. Choosing the hyperparameters manually requires understanding what the hyperparameters do and how machinelearning models achieve good generalization. Automatic hyperparameter selection algorithms greatly reduce the need to understand these ideas, but they are often much more computationally costly.
 
 % 11.4.2 Automatic Hyperparameter Optimization Algorithms
-% The ideal learning algorithm just takes a dataset and outputs a function, withoutrequiring hand tuning of hyperparameters. The popularity of several learningalgorithms such as logistic regression and SVMs stems in part from their ability toperform well with only one or two tuned hyperparameters. Neural networks cansometimes perform well with only a small number of tuned hyperparameters, butoften beneﬁt signiﬁcantly from tuning of forty or more. Manual hyperparametertuning can work very well when the user has a good starting point, such asone determined by others having worked on the same type of application andarchitecture, or when the user has months or years of experience in exploringhyperparameter values for neural networks applied to similar tasks. For manyapplications, however, these starting points are not available. In these cases,automated algorithms can ﬁnd useful values of the hyperparameters.
+% The ideal learning algorithm just takes a dataset and outputs a function, without requiring hand tuning of hyperparameters. The popularity of several learning algorithms such as logistic regression and SVMs stems in part from their ability to perform well with only one or two tuned hyperparameters. Neural networks can sometimes perform well with only a small number of tuned hyperparameters, but often beneﬁt signiﬁcantly from tuning of forty or more. Manual hyperparameter tuning can work very well when the user has a good starting point, such as one determined by others having worked on the same type of application and architecture, or when the user has months or years of experience in exploring hyperparameter values for neural networks applied to similar tasks. For many applications, however, these starting points are not available. In these cases,automated algorithms can ﬁnd useful values of the hyperparameters.
 % ...
 
 % 11.4.3 Grid Search
-% When there are three or fewer hyperparameters, the common practice is to performgrid search. For each hyperparameter, the user selects a small ﬁnite set ofvalues to explore. The grid search algorithm then trains a model for every jointspeciﬁcation of hyperparameter values in the Cartesian product of the set of valuesfor each individual hyperparameter. The experiment that yields the best validationset error is then chosen as having found the best hyperparameters. See the left ofﬁgure 11.2 for an illustration of a grid of hyperparameter values.
+% When there are three or fewer hyperparameters, the common practice is to perform grid search. For each hyperparameter, the user selects a small ﬁnite set of values to explore. The grid search algorithm then trains a model for every joint speciﬁcation of hyperparameter values in the Cartesian product of the set of values for each individual hyperparameter. The experiment that yields the best validation set error is then chosen as having found the best hyperparameters. See the left ofﬁgure 11.2 for an illustration of a grid of hyperparameter values.
 % ...
-% The obvious problem with grid search is that its computational cost growsexponentially with the number of hyperparameters. If there aremhyperparameters,each taking at mostnvalues, then the number of training and evaluation trialsrequired grows asO(nm). The trials may be run in parallel and exploit looseparallelism (with almost no need for communication between diﬀerent machinescarrying out the search). Unfortunately, because of the exponential cost of gridsearch, even parallelization may not provide a satisfactory size of search.
+% The obvious problem with grid search is that its computational cost grows exponentially with the number of hyperparameters. If there are m hyperparameters, each taking at most n values, then the number of training and evaluation trials required grows as O(nm). The trials may be run in parallel and exploit loose parallelism (with almost no need for communication between diﬀerent machines carrying out the search). Unfortunately, because of the exponential cost of grid search, even parallelization may not provide a satisfactory size of search.
 
 
 
@@ -182,18 +242,19 @@ Uma vez que a otimização dos hiperparâmetros está completa, é possível ava
 
 
 
-% PLN ???
-% TODO: revisar
-\subsection{Processamento de Linguagem Natural}
+% \subsection{Processamento de Linguagem Natural}
+% \label{sec:nlp}
 
-\citeonline{jurafsky-2022-speech-lang-processing} afirmam que a linguagem é um fenômeno inerentemente temporal e que pode ser compreendida como uma sequência de eventos que se desdobram ao longo do tempo, como um fluxo contínuo de dados.
-Os modelos sequenciais lidam diretamente com essa natureza, e são capazes de capturar e explorar tal aspecto temporal.
-Os tipos de arquiteturas mais populares desses modelos são a \acrfull{rnn} (e suas extensões, dentre as quais o \acrfull{lstm} e a \acrfull{gru} são as mais utilizadas) e o \textit{Transformer}.
+De acordo com \citeonline{jurafsky-2022-speech-lang-processing}, a linguagem é um fenômeno inerentemente temporal que pode ser compreendido como uma sequência de eventos que se desdobram ao longo do tempo, como um fluxo contínuo de dados.
+Na \acrlong{dl}, existem arquiteturas ou estruturas de \acrshortpl{dnn} projetadas especialmente para capturar e explorar essa natureza temporal, as quais são conhecidas como ``redes neurais sequenciais'' ou ``modelos sequenciais''.
+% Os modelos sequenciais lidam diretamente com essa natureza, e são capazes de capturar e explorar tal aspecto temporal.
+% Os tipos de arquiteturas mais populares desses modelos são a \acrfull{rnn} (e suas extensões, dentre as quais o \acrfull{lstm} e a \acrfull{gru} são as mais utilizadas) e o \textit{Transformer}.
+Dentre as mais populares dessas arquiteturas podem-se enumerar a \acrfull{rnn} (e suas extensões, como o \acrfull{lstm} e a \acrfull{gru}) e o \textit{Transformer}.
 
 % Devido a isso, neste trabalho selecionamos algumas dessas arquiteturas para avaliar a eficácia da abordagem proposta, as quais são: \acrfull{lstm}~\cite{hochreiter-1997-lstm} e \acrfull{gru}~\cite{cho-2014-gru} -- que são extensões da arquitetura \acrfull{rnn}~\cite{mikolov-2010-rnn} -- e o \textit{Transformer}~\cite{vaswani-2017-transformer}. 
 
 As \acrshortpl{rnn} baseiam-se no trabalho de \citeonline{rumelhart-1986-rnns} e consistem de redes neurais que contêm ciclos (ou recorrências) em suas conexões, os quais fazem com que o valor de suas unidades sejam direta ou indiretamente dependentes de suas próprias saídas anteriores.
-De um modo geral, elas funcionam processando cada palavra da sequência e combinando ela com o contexto (ou estado oculto) anterior para tentar prever a próxima palavra da sequência. Esse contexto, por sua vez, é capaz de representar as informações de todas as palavras anteriores da sequência.
+De um modo geral, elas funcionam processando cada palavra da sequência e combinando ela com o contexto ou estado oculto anterior para tentar prever a próxima palavra da sequência. Esse contexto, por sua vez, é capaz de representar as informações de todas as palavras anteriores da sequência.
 
 % Elas processam sequências uma palavra por vez, tentando prever a próxima palavra com base na atual e no contexto (ou estado oculto) anterior que, por sua vez, pode representar as informações de todas as palavras anteriores da sequência \cite{jurafsky-2022-speech-lang-processing}.
 
@@ -201,7 +262,7 @@ No entanto, \citeonline{lecun-2015-deep-learning,goodfellow-2016-deep-learning,g
 
 % \citeonline{lecun-2015-deep-learning} afirmam que apesar do principal objetivo das \acrshortpl{rnn} ser aprender dependências de longo prazo, evidências teóricas e empíricas mostram que há desafios em aprender a armazenar informações por um tempo muito longo. Entre esses desafios estão os problemas de desaparecimento e explosão de gradientes, aos quais as \acrshortpl{rnn} estão passíveis. Devido a isso, várias extensões dessa arquitetura foram desenvolvidas no decorrer dos anos com o intuito de abordar melhor esses problemas.
 
-Dentre as mais populares dessas extensões está a \acrshort{lstm}, que foi introduzida por \citeonline{hochreiter-1997-lstm}. De acordo com \citeonline{graves-2012-rnns,jurafsky-2022-speech-lang-processing}, a principal inovação dessa rede é a capacidade de aprender a gerenciar o contexto (ou estado oculto) de forma automática, decidindo quando informações são necessárias e quando podem ser removidas, sem necessitar que uma estratégia explícita seja codificada para isso. Ele utiliza uma camada específica para representar esse contexto e um conjunto de portas, as quais controlam o fluxo de informações para dentro e para fora de suas células.
+Uma dessas principais extensões é a \acrshort{lstm}, que foi introduzida por \citeonline{hochreiter-1997-lstm}. De acordo com \citeonline{graves-2012-rnns,jurafsky-2022-speech-lang-processing}, a principal inovação dessa rede é a capacidade de aprender a gerenciar o contexto de forma automática, decidindo quando informações são necessárias e quando podem ser removidas, sem necessitar que uma estratégia explícita seja codificada para isso. Ele utiliza uma camada específica para representar esse contexto e um conjunto de portas, as quais controlam o fluxo de informações para dentro e para fora de suas células.
 Segundo \citeonline{goodfellow-2016-deep-learning,lecun-2015-deep-learning}, essas redes são extremamente bem-sucedidas em diferentes tipos de aplicações, como reconhecimento e geração de caligrafia, reconhecimento de fala, \acrfull{mt}, legendagem de imagens e análise sintática.
 
 %O \acrshort{lstm} é a mais popular delas e divide o gerenciamento do contexto em duas partes: na primeira, está a adição de informação que provavelmente será necessária para tomada de decisão posterior ao contexto; na segunda, está a remoção de informação que não é mais necessária. Com isso, o \acrshort{lstm} é capaz de aprender como gerenciar esse contexto e lidar com ambas as partes, e não exige que uma estratégia para isso seja codificada na arquitetura.
@@ -220,6 +281,7 @@ De acordo com \citeonline{goodfellow-2016-deep-learning,ravanelli-2018-li-gru}, 
 
 
 Um outro tipo de arquitetura utilizada no \acrshort{nlp} é a \textit{Sequence-to-Sequence} (ou Sequência para Sequência), também comumente conhecida como \textit{Encoder-Decoder} (ou Codificador Decodificador). Ela foi apresentada por \citeonline{cho-2014-encoder-decoder,sutskever-2014-seq-to-seq} e sua estrutura é composta por duas redes neurais: uma codificadora, que recebe uma sequência de entrada e gera uma representação contextualizada dela (que seria o contexto); e uma decodificadora, que produz uma sequência de saída específica para a tarefa em questão, conforme ilustrado na \autoref{fig:encoder-decoder-arquitetura}. 
+Esses redes codificadoras e decodificadoras são comumente implementados utilizando-se \acrshortpl{rnn}, como o \acrshort{lstm} e o \acrshort{gru} introduzidos acima. Além disso, existem otimizações dessa arquitetura que consideram a adição de uma camada de \textit{attention} antes do decodificador com o objetivo de eliminar um gargalo observado ali por \citeonline{bahdanau-2015-mt-align-translate}.
 
 \figura[p. 220]
 {fig:encoder-decoder-arquitetura}
@@ -228,17 +290,14 @@ Um outro tipo de arquitetura utilizada no \acrshort{nlp} é a \textit{Sequence-t
 {Arquitetura do \textit{Encoder-Decoder}: a sequência de entrada \(\{x_1, x_2, x_3, x_n\}\) é recebida pelo \textit{encoder} (à esquerda) e utilizada para gerar o contexto \(c\) (em verde), o qual é utilizado pelo \textit{decoder} (à direita) para produzir a sequência \(\{y_1, y_2, y_3, y_n\}\)}
 {jurafsky-2022-speech-lang-processing}
 
-
-Essas redes codificadoras e decodificadoras são implementadas utilizando-se redes \acrshortpl{rnn}, e algumas otimizações consideram também a adição de uma camada de \textit{attention} antes do decodificador para eliminar um gargalo observado ali por \citeonline{bahdanau-2015-mt-align-translate}.
-
-% Por fim, se compararmos a estrutura do \textit{Transformer} (\autoref{fig:transformer-arquitetura}) com a do \textit{Encoder-Decoder} (\autoref{fig:encoder-decoder-arquitetura}), perceberemos que elas compartilham algumas semelhanças.
+% Essas redes codificadoras e decodificadoras são implementadas utilizando-se redes \acrshortpl{rnn}, e algumas otimizações consideram também a adição de uma camada de \textit{attention} antes do decodificador para eliminar um gargalo observado ali por \citeonline{bahdanau-2015-mt-align-translate}.
 
 
 
 
 O \textit{Transformer}, por sua vez, consiste num tipo de arquitetura que não é recorrente e, ao invés disso, baseia-se num mecanismo de \textit{attention} (ou atenção) para estabelecer dependências globais entre os dados de entrada e saída.
 Ele foi introduzido por \citeonline{vaswani-2017-transformer} e baseia-se na estrutura do \textit{Encoder-Decoder}, porém seus codificadores e decodificadores são compostos por blocos empilhados de redes multicamadas que combinam camadas lineares simples, redes \textit{feed-forward} e camadas de \textit{self-attention} (ou auto-atenção) -- as quais são a principal inovação aqui --, conforme ilustra a \autoref{fig:transformer-arquitetura}.
-Devido à sua estrutura escalável e capaz de capturar o contexto de sequências muito longas, \citeonline{wolf-2020-transformers,jurafsky-2022-speech-lang-processing} afirmam que os \textit{Transformers} tornaram-se rapidamente a arquitetura dominante entre tarefas de \acrshort{nlp}, superando redes como a \acrfull{cnn} e as \acrshortpl{rnn}.
+% Devido à sua estrutura escalável e capaz de capturar o contexto de sequências muito longas, \citeonline{wolf-2020-transformers,jurafsky-2022-speech-lang-processing} afirmam que os \textit{Transformers} tornaram-se rapidamente a arquitetura dominante entre tarefas de \acrshort{nlp}, superando redes como a \acrfull{cnn} e as \acrshortpl{rnn}.
 
 \figura[p. 3]
 {fig:transformer-arquitetura}
@@ -248,12 +307,35 @@ Devido à sua estrutura escalável e capaz de capturar o contexto de sequências
 {vaswani-2017-transformer}
 
 
-
 % Por outro lado, o \textit{Transformer}~\cite{vaswani-2017-transformer} é uma arquitetura que não é recorrente -- ao invés disso, baseia-se inteiramente num mecanismo de \textit{attention} (ou atenção) para estabelecer dependências globais entre os dados de entrada e saída.
 % Ele é composta por blocos empilhados de redes multicamadas, as quais combinam camadas lineares simples, redes \textit{feed-forward} e camadas de \textit{self-attention} (ou auto-atenção) -- que, por sua vez, é a principal inovação desse tipo de arquitetura.
 % \citeonline{wolf-2020-transformers} afirmam que o \textit{Transformer} tornou-se rapidamente a arquitetura dominante para o \acrshort{nlp} e tem superado modelos alternativos como \acrshortpl{cnn} e \acrshortpl{rnn} sobretudo em tarefas de compreensão e geração de linguagem natural. Além disso, sua arquitetura escalável facilita o treinamento paralelo eficiente e a captura do contexto de sequências muito longas
 % \cite{vaswani-2017-transformer,jurafsky-2022-speech-lang-processing,wolf-2020-transformers}.
 
+
+Segundo \citeonline{wolf-2020-transformers}, o \textit{Transformer} é escalável e capaz de capturar o contexto de sequências muito longas, e isso possibilitou a construção e aplicação de modelos de maior capacidade para uma grande variedade de tarefas. 
+Devido a disso, ele tornou-se rapidamente a arquitetura dominante no \acrshort{nlp}, superando o desempenho de redes alternativas como as \acrshortpl{rnn} e a \acrfull{cnn} para tarefas  de compreensão e geração de linguagem natural.
+
+
+% Por fim, se compararmos a estrutura do \textit{Transformer} (\autoref{fig:transformer-arquitetura}) com a do \textit{Encoder-Decoder} (\autoref{fig:encoder-decoder-arquitetura}), perceberemos que elas compartilham algumas semelhanças.
+
+
+%% TODO: concluir
+% Como pode-se observar, apesar de algumas apresentarem maior afinidade com problemas de PLN todas essas redes podem ser aplicadas para abordar esse tipo de tarefas  (apresenta particularidades ao abordar a natureza sequencial)
+
+% Mais adiante neste trabalho, serão selecionadas algumas variações do encoder-decoder e do transformer para modelar o problema do RLS.
+
+% semelhanças
+% - blocos de codificador, decodificador
+% - receber e produzir sequencias de caracteres
+
+Apesar disso, mesmo com as inovações introduzidas pelo \textit{Transformer}, é possível observar pela \autoref{fig:transformer-arquitetura} e \autoref{fig:encoder-decoder-arquitetura} que sua estrutura ainda preserva muitas semelhanças com o \textit{Encoder-Decoder}, no qual se baseia.
+Em ambas estruturas, percebem-se dois grandes blocos ou componentes principais interconectados, interagindo para produzir um contexto codificado a partir de uma sequência qualquer de entrada e decodificá-lo gerando uma nova sequência de saída. 
+Essas sequências, por sua vez, podem possuir tamanhos distintos e permitem com que sejam modelados diferentes tipos de representações de linguagem como, por exemplo, uma sequência de texto que é traduzida de um idioma para outro, uma representação da fala que é transformada em texto (ou vice-versa), ou ainda uma resposta que é gerada para uma pergunta fornecida como entrada.
+Devido a essas afinidades e capacidade para lidar com tarefas semelhantes envolvendo linguagem, ambas arquiteturas \textit{Transformer} e \textit{Encoder-Decoder} serão consideradas para avaliação perante a abordagem introduzida mais adiante neste trabalho.
+
+
+% , se compararmos a estrutura do \textit{Transformer} (\autoref{fig:transformer-arquitetura}) com a do \textit{Encoder-Decoder} (\autoref{fig:encoder-decoder-arquitetura}), perceberemos que elas compartilham algumas semelhanças.
 
 
 
