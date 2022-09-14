@@ -1,15 +1,19 @@
 \subsection{Breve panorama}
 \label{sec:slr-breve-panorama}
 
-Nesta seção discutiremos brevemente o panorama observado para a \acrshort{slr} ao longo das últimas décadas, tomando como base as revisões literárias apresentadas por \citeonline{koller-2020-quantitative-survey-slr,rastgoo-2021-slr-deep-survey,papastratis-2021-ai-technologies-sl,wadhawan-2019-slr-literature-review}.
+% \citeonline{koller-2020-quantitative-survey-slr} realizou uma análise baseada nos estudos mais relevantes publicados desde 1983, a qual possibilita delinear melhor essa evolução recente, bem como o estado da arte atual.
+% Além disso, as revisões literárias apresentadas por \citeonline{rastgoo-2021-slr-deep-survey,papastratis-2021-ai-technologies-sl,wadhawan-2019-slr-literature-review} também contribuem para estender essa análise e esboçar um panorama mais completo da área. Discutiremos esse panorama na seção a seguir.
+
+Nesta seção será discutido brevemente o panorama observado para a \acrshort{slr} ao longo das últimas décadas, tomando como base as revisões literárias apresentadas por \citeonline{koller-2020-quantitative-survey-slr,rastgoo-2021-slr-deep-survey,papastratis-2021-ai-technologies-sl,wadhawan-2019-slr-literature-review}.
 
 % \citeonline{koller-2020-quantitative-survey-slr} elaborou uma análise quantitativa baseada nos 300 estudos mais relevantes publicados desde 1983, a qual se faz fundamental para compreendermos a evolução da área de \acrshort{slr} bem como o estado da arte atual. Além disso, autores como \citeonline{rastgoo-2021-slr-deep-survey,papastratis-2021-ai-technologies-sl,wadhawan-2019-slr-literature-review} contribuíram nos anos posteriores com pesquisas e revisões literárias que nos permitem esboçar um panorama mais concreto acerca dessa área e aprofundar-nos na breve análise que realizaremos nesta seção.
 
 
 % Visão geral -------------
 
-Iniciaremos essa discussão através de uma perspectiva geral do número de estudos que foram publicados nessa área até 2020, conforme identificado por \citeonline{koller-2020-quantitative-survey-slr} e detalhado na \autoref{tab:slr-visao-geral}.
-Por meio dela, percebemos que esse número praticamente dobrou a cada intervalo de 5 anos e, com o advento de novos dispositivos e algoritmos de \acrshort{ia} por volta dos anos 2010, cresceu de forma ainda mais expressiva. Isso evidencia a ênfase maior recebida pela área recentemente.
+% Iniciaremos essa discussão através de uma perspectiva geral do número de estudos que foram publicados nessa área até 2020, conforme identificado por \citeonline{koller-2020-quantitative-survey-slr} e detalhado na \autoref{tab:slr-visao-geral}.
+Primeiramente, observa-se na \autoref{tab:slr-visao-geral} uma perspectiva geral do número de estudos publicados nessa área até 2020, conforme identificado por \citeonline{koller-2020-quantitative-survey-slr}.
+Percebe-se que esse número praticamente dobrou a cada intervalo de 5 anos e, com o advento de novos dispositivos e algoritmos de \acrshort{ia} por volta dos anos 2010, cresceu de forma ainda mais expressiva. Isso evidencia a ênfase maior recebida pela área recentemente.
 
 Apesar disso, a tabela também nos revela que a maioria desses estudos aborda o \acrshort{slr} utilizando vocabulários muito pequenos, com menos de 200 sinais. Isso corresponde a conjuntos limitados que são geralmente selecionados para simplificar as pesquisas mas que, na prática, acabam limitando também a representatividade da língua de sinais perante seu contexto real de aplicação.
 Apenas a partir de 2015 percebe-se um crescimento mais significativo na adoção de vocabulários com mais de 1.000 sinais.
@@ -23,7 +27,7 @@ Apenas a partir de 2015 percebe-se um crescimento mais significativo na adoção
 
 % Sinais isolados x contínuos -------------
 
-A \autoref{tab:slr-isolados-continuos} divide os estudos acima entre aqueles que abordam a língua utilizando sinais isolados, os quais são reconhecidos separadamente do contexto do discurso, e os que utilizam sinais contínuos, onde sequências completas são utilizadas nesse processo.
+A \autoref{tab:slr-isolados-continuos}, por sua vez, divide os estudos acima entre aqueles que abordam a língua utilizando sinais isolados -- os quais são reconhecidos separadamente do contexto do discurso --, e os que utilizam sinais contínuos -- onde sequências completas são utilizadas nesse processo.
 Percebe-se que a maior parte desses estudos seguem pela linha dos sinais isolados, uma vez que a abordagem de sinais contínuos é certamente mais complexa e apenas teve seus primeiros \textit{datasets} disponibilizados por volta dos anos 2015.
 Os dados também nos mostram que, ao passo em que estudos com sinais isolados comumente modelam vocabulários pequenos, aqueles que optam por sinais contínuos passaram a preferir vocabulários acima de 1.000 sinais.% desde o surgimento desses \textit{datasets}.
 
@@ -41,7 +45,7 @@ Os dados também nos mostram que, ao passo em que estudos com sinais isolados co
 
 % Línguas de sinais  -------------
 
-Ao analisarmos as línguas de sinais que foram abordadas pelas pesquisas em \acrshort{slr}, conforme \autoref{tab:slr-linguas-sinais}, percebemos que a \acrshort{asl} foi predominante dentre as demais. Isso provavelmente deve-se ao pioneirismo recebido por ela nos estudos de \citeonline{stokoe-1960-sl-structure} que, além de produzir maior clareza acerca de sua estrutura, viabilizou o desenvolvimento de recursos importantes como \textit{datasets}, que suportaram tais pesquisas.
+Ao analisar as línguas de sinais que foram abordadas pelas pesquisas em \acrshort{slr}, conforme \autoref{tab:slr-linguas-sinais}, percebemos que a \acrshort{asl} foi predominante dentre as demais. Isso provavelmente deve-se ao pioneirismo recebido por ela nos estudos de \citeonline{stokoe-1960-sl-structure} que, além de produzir maior clareza acerca de sua estrutura, viabilizou o desenvolvimento de recursos importantes como \textit{datasets}, que suportaram tais pesquisas.
 As línguas \acrfull{csl} e \acrfull{dgs} aparecem em seguida na tabela com uma participação também relevante, a qual desde 2010 apresenta números muito próximos àqueles da \acrshort{asl}. A \acrfull{libras}, por sua vez, aparece de forma mais modesta nesse levantamento realizado por \citeonline{koller-2020-quantitative-survey-slr}.
 
 \input{capitulos/fundamentacao/tabelas/slr-linguas-sinais}
@@ -58,14 +62,14 @@ As línguas \acrfull{csl} e \acrfull{dgs} aparecem em seguida na tabela com uma 
 
 % Tipos de dados de entrada -------------
 
-Na \autoref{tab:slr-dados-entrada} podemos observar os tipos de dados de entrada utilizados por tais estudos. Imagens ou \textit{frames} de vídeos em RGB aparecem em destaque e vêm sendo adotados desde os anos iniciais até a atualidade. Ao longo da história da \acrshort{slr} eles dividiram espaço com outros tipos de dados mas, a partir de 2005, tornaram-se predominantes provavelmente pela maior adoção de técnicas baseadas em \acrfull{cv} desde então.
+Na \autoref{tab:slr-dados-entrada} observam-se os tipos de dados de entrada utilizados por tais estudos. Imagens ou \textit{frames} de vídeos em RGB aparecem em destaque e vêm sendo adotados desde os anos iniciais até a atualidade. Ao longo da história da \acrshort{slr} eles dividiram espaço com outros tipos de dados mas, a partir de 2005, tornaram-se predominantes provavelmente pela maior adoção de técnicas baseadas em \acrlong{cv} desde então.
 Luvas eletrônicas estiveram presentes principalmente nos anos iniciais da \acrshort{slr}, quando técnicas envolvendo dispositivos conectados ao corpo dos indivíduos foram muito utilizadas.
 Apesar disso, elas foram gradativamente cedendo espaço a outros tipos como as luvas coloridas e ao \textit{mocap}\footnote{
       \textit{Mocap} (\textit{motion capture} ou captura de movimento): é uma técnica de captura de movimentos que utiliza equipamentos específicos como marcadores ou trajes especiais afixados ao corpo dos indivíduos ou objetos~\cite{kitagawa-2017-mocap}.
 } até por volta de 2005.
 % Esse último, no entanto, acabou sendo abandonado mais recentemente por conta da dificuldade de acesso a esse tipo de equipamento, a qual também restringiria sua aplicação no mundo real.
 
-O surgimento do Kinect em 2010 representou uma revolução para a área de \acrfull{slr}, devido à capacidade que ele introduziu de rastrear os corpos dos indivíduos e de fornecer dados como coordenadas e imagens profundidade além daquelas RGB, o qual não  existia na época. Nos anos posteriores ao seu lançamento, vários outros dispositivos também foram introduzidos com o mesmo propósito.
+O surgimento do Kinect em 2010 representou uma revolução para a área de \acrshort{slr}, devido à capacidade que ele introduziu de rastrear os corpos dos indivíduos e de fornecer dados como coordenadas e imagens profundidade além daquelas RGB, o qual não  existia na época. Nos anos posteriores ao seu lançamento, vários outros dispositivos também foram introduzidos com o mesmo propósito.
 Na \autoref{tab:slr-dados-entrada}, é possível perceber claramente uma mudança para a adoção de dados RGB combinados aos dados de profundidade, decorrente disso.
 
 \input{capitulos/fundamentacao/tabelas/slr-dados-entrada}

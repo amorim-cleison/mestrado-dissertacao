@@ -1,7 +1,7 @@
 \section{Comparação dos resultados}
 \label{sec:comparacao-resultados}
 
-Para estabelecer um comparativo entre os resultados deste trabalho e outras pesquisas dentro da área de \acrfull{slr}, selecionaremos alguns estudos que também utilizaram o \acrshort{asllvd} como referência em seus experimentos.
+Para estabelecer um comparativo entre os resultados deste trabalho e outras pesquisas dentro da área de \acrfull{slr}, foram selecionados estudos que também utilizaram o \acrshort{asllvd} como referência em seus experimentos.
 Esses estudos são enumerados a seguir:
 
 % Para comparar os resultados obtidos neste trabalho, selecionamos algumas pesquisas que também adotaram o \acrshort{asllvd} para realizar o reconhecimento dos sinais.
@@ -38,15 +38,15 @@ Esses estudos são enumerados a seguir:
 \end{itemize}
 
 
-Como pode-se perceber pela introdução acima, a maioria desses estudos aborda o \acrshort{slr} através do processamento de dados brutos -- como \textit{frames} RGB ou coordenadas 2D ou 3D --, conforme discutimos ao longo da \autoref{sec:slr}.
+Como pode-se perceber pela introdução acima, a maioria desses estudos aborda o \acrshort{slr} através do processamento de dados brutos -- como \textit{frames} RGB ou coordenadas 2D ou 3D --, conforme discutido ao longo da \autoref{sec:slr}.
 Apesar de em alguns casos eles serem utilizados para gerar \textit{features} intermediárias -- como subunidades de movimento e pausa, imagens de fluxo óptico ou de energia de movimento, histogramas, grafos, entre outras -- estas, por sua vez, apresentam ainda um nível semântico muito menos informativo quanto à língua de sinais e à sua linguística do que aquelas que introduzimos neste trabalho.
 
-Além disso, parte desses trabalhos concentra-se apenas nas mãos dos indivíduos e isso nos remete a um dos problemas que discutimos na \autoref{sec:slr-desafios}, que se refere à abordagem inadequada no reconhecimento da língua de sinais. Como resultado, traços linguísticos importantes -- como expressões não-manuais, locação de mãos, movimentos do corpo e interações entre mãos e corpo -- acabam sendo desconsiderados.
+Além disso, parte desses trabalhos concentra-se apenas nas mãos dos indivíduos e isso nos remete a um dos problemas discutidos na \autoref{sec:slr-desafios}, que se refere à abordagem inadequada no reconhecimento da língua de sinais. Como resultado, traços linguísticos importantes -- como expressões não-manuais, locação de mãos, movimentos do corpo e interações entre mãos e corpo -- acabam sendo desconsiderados.
 
-Observa-se também que todos esses trabalhos modelam vocabulários que correspondem a subconjuntos muito pequenos do \acrshort{asllvd}, conforme discutimos na \autoref{sec:slr-breve-panorama}.
+Observa-se também que todos esses trabalhos modelam vocabulários que correspondem a subconjuntos muito pequenos do \acrshort{asllvd}, conforme discutido na \autoref{sec:slr-breve-panorama}.
 Esses subconjuntos, por sua vez, representam menos de 13\% do vocabulário total de 2.745 sinais disponibilizado por esse \textit{dataset} e isso faz com que eles acabem não abrangendo uma amplitude significativa da língua de sinais.
 
-Compreendemos que todos esses fatores têm por objetivo simplificar o tamanho e a complexidade do escopo abordado pelas pesquisas acima. No entanto, é inevitável ressaltar após a discussão realizada ao longo deste trabalho que recortes assim distanciam tais pesquisas do contexto real de uso da língua de sinais e, consequentemente, limitam o nível das contribuições que efetivamente agregam avanços à área de \acrshort{slr}.
+Compreende-se que todos esses fatores têm por objetivo simplificar o tamanho e a complexidade do escopo abordado pelas pesquisas acima. No entanto, é inevitável ressaltar após a discussão realizada ao longo deste trabalho que recortes assim distanciam tais pesquisas do contexto real de uso da língua de sinais e, consequentemente, limitam o nível das contribuições que efetivamente agregam avanços à área de \acrshort{slr}.
 
 % insights [ASLLVD tem 2.745 sinais]
 % considerações importantes
@@ -63,10 +63,10 @@ Compreendemos que todos esses fatores têm por objetivo simplificar o tamanho e 
 
 
 A \autoref{tab:comparacao-resultados} relaciona os resultados apresentados pelos estudos introduzidos acima e os obtidos pelos modelos utilizados nos experimentos deste trabalho.
-De uma maneira geral, vemos que os modelos \textit{Encoder-Decoders} utilizados aqui posicionaram-se com um desempenho mediano em relação às demais pesquisas: ao mesmo tempo em que sua acurácia de aproximadamente 46\% ultrapassou técnicas como \acrshort{pca}, \acrshort{hei}, \acrshort{mei} e \acrshort{mhi}, outras como \acrshort{hcorf}, \acrshort{bhof}, \acrshort{hof} e \acrshort{stgcn} mostraram-se superiores alcançando valores de até 93,30\%.
+De uma maneira geral, observa-se que os modelos \textit{Encoder-Decoders} utilizados aqui posicionaram-se com um desempenho mediano em relação às demais pesquisas: ao mesmo tempo em que sua acurácia de aproximadamente 46\% ultrapassou técnicas como \acrshort{pca}, \acrshort{hei}, \acrshort{mei} e \acrshort{mhi}, outras como \acrshort{hcorf}, \acrshort{bhof}, \acrshort{hof} e \acrshort{stgcn} mostraram-se superiores alcançando valores de até 93,30\%.
 A acurácia de 100,00\% registrada pelo \textit{Transformer}, por sua vez, posicionou-se consistentemente superior aos demais resultados da tabela.
 
-Quando consideramos apenas os estudos que modelaram \textit{features} referentes ao corpo inteiro do indivíduo (mesmo que indiretamente através de dados brutos como coordenadas) em vez de apenas suas mãos, temos uma perspectiva diferente. \citeonline{metaxas-2018-linguistically} e \citeonline{amorim-2019-stgcn-sl} se enquadram nesses critérios e, pela tabela, vemos que ambas as técnicas de \acrshort{hcorf} e \acrshort{stgcn} superaram os resultados das implementações de \textit{Encoder-Decoders} utilizadas em nossos experimentos. Enquanto aquelas primeiras registraram acurácia de 93,30\% e 61,04\%, respectivamente, os \textit{Encoder-Decoders} alcançaram valores em torno de 46\%.
+Quando considerados apenas os estudos que modelaram \textit{features} referentes ao corpo inteiro do indivíduo (mesmo que indiretamente através de dados brutos como coordenadas) em vez de apenas suas mãos, temos uma perspectiva diferente. \citeonline{metaxas-2018-linguistically} e \citeonline{amorim-2019-stgcn-sl} se enquadram nesses critérios e, pela tabela, observa-se que ambas as técnicas de \acrshort{hcorf} e \acrshort{stgcn} superaram os resultados das implementações de \textit{Encoder-Decoders} utilizadas em nossos experimentos. Enquanto aquelas primeiras registraram acurácia de 93,30\% e 61,04\%, respectivamente, os \textit{Encoder-Decoders} alcançaram valores em torno de 46\%.
 
 
 % - ao comparar nossos experimentos com todos os trabalhos acima, de uma forma generalizada, vemos que o desempenho dos encoder-decoders (por volta dos 46%) foi mediano com relação aos demais (que em vários deles alcançaram marcas de 70%, 85% e até 93,30%)
@@ -85,9 +85,9 @@ Quando consideramos apenas os estudos que modelaram \textit{features} referentes
 
 % %FIXME: [cz] uma dúvida, nessa comparacao vc esta comparando diretamente os resultados de um grupo menor de simbolos com os seus que foram na base toda? ou vc esta fazendo a comparacao com os subconjuntos usados em cada trabalho? pq precisa explicar isso. caso vc esteja usando tudo e os outros so uma parte, nao tem como saber se eles nao estao com os dados mais faceis, precisa argumentar. Se bem que eu acho que vc foi nessa direção nos comentarios abaixo, mas acho que precisa ser mais enfatico, dizendo qual o percentual da base o cara testou e qual vc testou, para ficar bem claro --> [cca5] comparando um grupo menor (nos outros estudos com a base toda (no meu). eu adicionei um parágrafo adiante para deixar isso mais claro
 
-Apesar disso, é importante salientar que a maioria dos estudos na tabela modelam vocabulários muito pequenos do \acrshort{asllvd}, o que difere-se do que realizamos neste trabalho. Como discutimos acima, esse tipo de abordagem fornece um recorte simplificado do problema e favorece para que tais estudos alcancem acurácias mais elevadas.
+Apesar disso, é importante salientar que a maioria dos estudos na tabela modelam vocabulários muito pequenos do \acrshort{asllvd}, o que difere-se do que foi realizado neste trabalho. Conforme discutido acima, esse tipo de abordagem fornece um recorte simplificado do problema e favorece para que tais estudos alcancem acurácias mais elevadas.
 Os números apresentados por \citeonline{amorim-2019-stgcn-sl} ajudam a ilustrar a diferença decorrente disso: ao modelar os 20 sinais utilizados pela maioria dos estudos na tabela, o \acrshort{stgcn} obteve uma acurácia de 61,04\%; no entanto, quando utilizados os 2.745 sinais, esse número caiu para 16,48\%.
-Dessa forma, entendemos que mesmo as acurácias de 45,99\% e 46,98\% obtidas pelos \textit{Encoder-Decoders} em nossos experimentos representam resultados bastante expressivos em comparação com os demais estudos na tabela, uma vez que aqui abordamos um vocabulário complexo de 2.650 sinais e os demais consideraram apenas recortes de 20, 97 ou 350 sinais.
+Dessa forma, entende-se que mesmo as acurácias de 45,99\% e 46,98\% obtidas pelos \textit{Encoder-Decoders} nos experimentos deste trabalho representam resultados bastante expressivos em comparação com os demais estudos na tabela, uma vez que aqui abordou-se um vocabulário complexo de 2.650 sinais e os demais consideraram apenas recortes de 20, 97 ou 350 sinais.
 
 
 

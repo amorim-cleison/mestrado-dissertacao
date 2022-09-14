@@ -5,8 +5,8 @@ O ASL-Phono é um \textit{dataset} que introduz uma representação baseada na l
 Ele é produzido a partir dos esqueletos fornecidos pelo \textit{dataset} ASL-Skeleton3D e, assim como este, também apresenta 9.747 amostras correspondentes a 2.650 sinais distintos. 
 Além disso, a abordagem utilizada para computar esses atributos pode ser replicada para outras línguas de sinais.
 
-Por se tratar de uma versão inicial da representação proposta, neste trabalho selecionaremos apenas um subconjunto dos parâmetros fonológicos introduzidos na \autoref{sec:linguistica} para que, dessa forma, possamos validar sua efetividade e traçar uma direção para iterações futuras.
-Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia utilizada para calculá-los e representá-los computacionalmente:
+Por se tratar de uma versão inicial da representação proposta, neste trabalho será selecionado apenas um subconjunto dos parâmetros fonológicos introduzidos na \autoref{sec:linguistica} para que, dessa forma, seja possível validar sua efetividade e traçar uma direção para iterações futuras.
+Sendo assim, descrevem-se a seguir esses parâmetros, bem como a estratégia utilizada para calculá-los e representá-los computacionalmente:
 
 % Como trata-se de uma versão inicial da representação proposta, optamos por selecionar um subconjunto de quatro parâmetros fonológicos dentre aqueles discutidos na \autoref{sec:linguistica-fonologia}, os quais podem ser expandidos em incrementos futuros desta pesquisa. Esses parâmetros incluem a configuração de mão, o movimento da mão, a orientação da palma e uma expressão não-manual refente à abertura da boca, conforme discutiremos a seguir:
 
@@ -16,13 +16,13 @@ Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia ut
           O \acrshort{asllvd} fornece originalmente as configurações de mão inicial e final para cada sinal, descrita de acordo com as 88 opções apresentadas por \citeonline{neidle-2020-asllrp} no \acrfull{asllrp}\footnote{
               Disponível em \url{http://www.bu.edu/asllrp}
           }.
-          Utilizamos essa mesma informação para o ASL-Phono, porém adicionamos um passo extra para distribuir essas configurações entre todos os \textit{frames}, e não apenas o inicial e final.
-          Dessa forma, dividimos a sequência de \textit{frames} em duas metades e associamos à primeira delas a configuração inicial provida pelo \acrshort{asllvd} e, à segunda, a configuração final.
+          Foi utilizada essa mesma informação para o ASL-Phono, porém adicionou-se um passo extra para distribuir essas configurações entre todos os \textit{frames}, e não apenas o inicial e final.
+          Dessa forma, dividiu-se a sequência de \textit{frames} em duas metades e associou-se à primeira delas a configuração inicial provida pelo \acrshort{asllvd} e, à segunda, a configuração final.
 
     \item \textbf{Orientação}: é a direção apontada pelas palmas das mãos na articulação dos sinais.
 
-          Para calculá-la, utilizamos um pouco de álgebra linear e exploramos a relação das mãos com o espaço tridimensional em que suas coordenadas estão inseridas.
-          Iniciamos assumindo que cada palma é um plano cartesiano que atravessa as coordenadas estimadas para as mãos (vide \autoref{subfig:palm-orientation}). Selecionamos então três dessas coordenadas para descrever o plano: \(W\), que corresponde à coordenada do pulso; \(L\), localizada na base do dedo mínimo; e \(I\), localizada na base do dedo indicador.
+          Para calculá-la, foi utilizada álgebra linear para explorar a relação das mãos com o espaço tridimensional em que suas coordenadas estão inseridas.
+          Primeiramente, assumiu-se que cada palma é um plano cartesiano que atravessa as coordenadas estimadas para as mãos (vide \autoref{subfig:palm-orientation}). Selecionaram-se então três dessas coordenadas para descrever o plano: \(W\), que corresponde à coordenada do pulso; \(L\), localizada na base do dedo mínimo; e \(I\), localizada na base do dedo indicador.
 
           % %FIXME: acho que na legenda da figura poderia explicar o que é a) e b). a descricao esta no texto, mas para a figura ficar autocontida
           \begin{figure}[ht!]
@@ -49,7 +49,7 @@ Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia ut
           \end{figure}
 
           A partir dessas coordenadas, \citeonline{anton-2013-algebra} afirmam que pode-se estabelecer dois vetores auxiliares em termos dos quais esse mesmo plano cartesiano também é descrito (vide \autoref{subfig:palm-orientation}): \(\overrightarrow{WL}\), indicado pela seta azul e \(\overrightarrow{WI}\), indicado pela seta verde.
-          Por meio deles, calculamos o vetor normal \(\overrightarrow{n}\) utilizando a \autoref{eqn:normal-palm-left} (para a mão esquerda) e \autoref{eqn:normal-palm-right} (para a mão direita). \(\overrightarrow{n}\), que é perpendicular à palma da mão, é ilustrado na \autoref{subfig:palm-orientation} como uma seta tracejada vermelha.
+          Por meio deles, calculou-se o vetor normal \(\overrightarrow{n}\) utilizando a \autoref{eqn:normal-palm-left} (para a mão esquerda) e \autoref{eqn:normal-palm-right} (para a mão direita). \(\overrightarrow{n}\), que é perpendicular à palma da mão, é ilustrado na \autoref{subfig:palm-orientation} como uma seta tracejada vermelha.
 
           %   Por meio desses vetores deles, é possível estabelecer o vetor normal \(\overrightarrow{n}\) perpendicular ao plano da palma, que é indicado pela seta vermelha tracejada, e calculado conforme \autoref{eqn:normal-palm-left} (para a mão esquerda) e \autoref{eqn:normal-palm-right} (para a mão direita):
 
@@ -64,7 +64,7 @@ Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia ut
               \overrightarrow{n}_{right} = \overrightarrow{WL} \times \overrightarrow{WI}
           \end{equation}
 
-          Por fim, utilizaremos os valores das coordenadas de \(\overrightarrow{n}\) para definir a orientação da palma \(O_{palm}\), conforme \autoref{eqn:palm-orientation-directions}.
+          Por fim, utilizou-se os valores das coordenadas de \(\overrightarrow{n}\) para definir a orientação da palma \(O_{palm}\), conforme \autoref{eqn:palm-orientation-directions}.
           Essa orientação consiste na combinação de até três das seguintes direções: \textit{right} (direita), \textit{left} (esquerda), \textit{up} (para cima), \textit{down} (para baixo), \textit{body} (voltada para o corpo) ou \textit{front} (para frente).
           Por exemplo, ``\textit{right\_front\_down}'' seria uma orientação válida indicando que a palma da mão está inclinada, conforme ilustrado na \autoref{subfig:palm-directions}.
 
@@ -90,8 +90,8 @@ Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia ut
 
     \item \textbf{Movimento}: é o deslocamento realizado pelas mãos na articulação do sinal.
 
-          Para calculá-lo, primeiro selecionaremos a coordenada \(M\) localizada na base do dedo médio como referência (vide \autoref{subfig:hand-movement}).
-          Em seguida, obteremos seu deslocamento entre os \textit{frames} anterior (tempo \(t-1\)) e atual (tempo \(t\)) utilizando a \autoref{eqn:hand-movement} que, por sua vez, nos fornecerá o vetor de movimento \(\overrightarrow{m}\) (indicado pela seta tracejada vermelha na \autoref{subfig:hand-movement}).
+          Para calculá-lo, primeiro será selecionada como referência a coordenada \(M\) localizada na base do dedo médio (vide \autoref{subfig:hand-movement}).
+          Em seguida, será obtido seu deslocamento entre os \textit{frames} anterior (tempo \(t-1\)) e atual (tempo \(t\)) utilizando a \autoref{eqn:hand-movement} que, por sua vez, fornecerá o vetor de movimento \(\overrightarrow{m}\) (indicado pela seta tracejada vermelha na \autoref{subfig:hand-movement}).
 
           \begin{figure}[ht!]
               \centering
@@ -122,7 +122,7 @@ Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia ut
               \overrightarrow{m} = M_{t} - M_{t-1}
           \end{equation}
 
-          A partir de \(\overrightarrow{m}\), podemos então calcular o movimento da mão \(V_{hand}\) através da \autoref{eqn:hand-movement-directions}, que consiste numa operação semelhante àquela utilizada para a orientação da mão.
+          A partir de \(\overrightarrow{m}\), pode-se então calcular o movimento da mão \(V_{hand}\) através da \autoref{eqn:hand-movement-directions}, que consiste numa operação semelhante àquela utilizada para a orientação da mão.
           Com isso, \(V_{hand}\) também consistirá na combinação de até três direções: \textit{right} (direita), \textit{left} (esquerda), \textit{up} (para cima), \textit{down} (para baixo), \textit{body} (para o corpo) ou \textit{front} (para frente).
           A \autoref{subfig:hand-directions} ilustra um movimento categorizado com a direção ``\textit{front}''.
 
@@ -147,9 +147,9 @@ Sendo assim, descreveremos a seguir esses parâmetros, bem como a estratégia ut
 
     \item \textbf{Expressão não-manual (abertura da boca)}: captura o grau de abertura da boca para cada \textit{frame} na articulação do sinal que, por sua vez, denota a existência de expressão não-manual envolvendo ela.
 
-          Para computar essa \textit{feature}, utilizamos como referência o trabalho de \citeonline{ferrario-2000-study-lips}, que analisa e propõe medidas antropométricas para os lábios.
-          Dentre elas, selecionamos a \textit{vermilion height to mouth width} (ou altura dos lábios com relação à largura da boca) para estabelecer a abertura da boca \(P_{mouth}\), uma vez que essa medida é capaz de capturar a proporção de abertura dos lábios em termos de um único número.
-          A \autoref{eqn:mouth-openness} define formalmente o cálculo de \(P_{mouth}\), que consiste basicamente na proporção entre a altura e a largura dos lábios:
+          Para computar essa \textit{feature}, utilizou-se como referência o trabalho de \citeonline{ferrario-2000-study-lips}, que analisa e propõe medidas antropométricas para os lábios.
+          Dentre elas, foi selecionada a \textit{vermilion height to mouth width} (ou altura dos lábios com relação à largura da boca) para estabelecer a abertura da boca \(P_{mouth}\), uma vez que essa medida é capaz de capturar a proporção de abertura dos lábios em termos de um único número.
+          A \autoref{eqn:mouth-openness} define formalmente o cálculo de \(P_{mouth}\), que consiste na proporção entre a altura e a largura dos lábios:
 
           % Abertura da boca:
           \begin{equation}
@@ -216,7 +216,7 @@ Existem três agrupamentos contidos nessa tabela:
 
 Por fim, a \autoref{fig:dataset-resampling-antes} detalha a relação entre o número de sinais e o número de amostras existentes no ASL-Phono. Por meio desta análise, percebe-se mais claramente que a maior parte dos sinais concentra-se na faixa de 1 e 6 amostras, que é exatamente o intervalo descrito pela média e desvio padrão da tabela acima.
 No entanto, há sinais que apresentam 7 ou mais amostras e ainda outros casos atípicos em que 1, 2 ou 3 sinais que concentram sozinhos um número muito grande de amostras -- de 13 até 59.
-Discutiremos na seção seguinte nossa abordagem para lidar com esse desbalanceamento e homogeneizar as amostras antes de prosseguirmos com os experimentos.
+Será discutida na seção seguinte a abordagem utilizada neste trabalho para lidar com esse desbalanceamento e homogeneizar as amostras antes de prosseguir com os experimentos.
 
 \figura
 {fig:dataset-resampling-antes} % Label

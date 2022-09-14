@@ -5,13 +5,13 @@
 % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 \begin{table}[]
     \centering
-    \caption{Parâmetros otimizados para o \textit{Encoder-Decoder} (\acrshort{lstm}) e o \textit{Encoder-Decoder} (\acrshort{gru}) com os respectivos valores calculados de perda}
+    \caption{Hiperparâmetros otimizados para o \textit{Encoder-Decoder} (\acrshort{lstm}) e o \textit{Encoder-Decoder} (\acrshort{gru}) com os respectivos erros médios calculados}
     \label{tab:otim-params-encdec}
     \resizebox{0.8\textwidth}{!}{%
         \begin{tabular}{lr|rr}
             \hline
-            \multicolumn{2}{l|}{\cellcolor[HTML]{EFEFEF}}                                                             & \multicolumn{2}{c}{\cellcolor[HTML]{EFEFEF}Perda}                                                                                                                                            \\ \cline{3-4}
-            \multicolumn{2}{l|}{\multirow{-2}{*}{\cellcolor[HTML]{EFEFEF}Parâmetro}}                                  & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{Encoder-Decoder (LSTM)}} & \multicolumn{1}{c}{\cellcolor[HTML]{EFEFEF}\textbf{Encoder-Decoder (GRU)}}                                    \\ \hline
+            \multicolumn{2}{l|}{\cellcolor[HTML]{EFEFEF}}                                                             & \multicolumn{2}{c}{\cellcolor[HTML]{EFEFEF}Erro médio/perda}                                                                                                                                            \\ \cline{3-4}
+            \multicolumn{2}{l|}{\multirow{-2}{*}{\cellcolor[HTML]{EFEFEF}Hiperparâmetro}}                                  & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{Encoder-Decoder (LSTM)}} & \multicolumn{1}{c}{\cellcolor[HTML]{EFEFEF}\textbf{Encoder-Decoder (GRU)}}                                    \\ \hline
             \multicolumn{1}{l|}{}                                                                                     & 0,0001                                                                       & \multicolumn{1}{r|}{7,734553}                                              & 7,734372                         \\
             \multicolumn{1}{l|}{}                                                                                     & 0,001                                                                        & \multicolumn{1}{r|}{7,734348}                                              & 7,725883                         \\
             \multicolumn{1}{l|}{}                                                                                     & 0,01                                                                         & \multicolumn{1}{r|}{7,732680}                                              & \cellcolor[HTML]{FFF5E1}4,528818 \\

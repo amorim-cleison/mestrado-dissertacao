@@ -1,10 +1,10 @@
 \section{Análise dos resultados}
 \label{sec:avaliacao-resultados}
 
-A \autoref{tab:resultados-modelos} apresenta o desempenho apresentado pelos modelos utilizados nos experimentos deste trabalho, respectivamente o \textit{Encoder-Decoder} implementado com \acrshort{lstm}, o \textit{Encoder-Decoder} implementado com \acrshort{gru} e o \textit{Transformer}.
+A \autoref{tab:resultados-modelos} apresenta o desempenho dos modelos utilizados nos experimentos deste trabalho, respectivamente o \textit{Encoder-Decoder} implementado com \acrshort{lstm}, o \textit{Encoder-Decoder} implementado com \acrshort{gru} e o \textit{Transformer}.
 Para cada modelo, são listadas as métricas\footnote{
     Uma vez que o reconhecimento de sinais consiste numa classificação multi-classes, os valores das métricas binárias de precisão, \textit{recall} e \textit{F1-score} foram consolidados utilizando-se a média ponderada pelo número de amostras em cada classe.
-} de acurácia, precisão, \textit{recall} e \textit{F1-score}, bem como a perda resultante.
+} de acurácia, precisão, \textit{recall} e \textit{F1-score}, bem como o erro médio calculado.
 
 % precisao, recall, f1 calculados com média ponderada entre classes (weighted average)
 % precisao, recall, f1 consistentes com acurácia (justificar)
@@ -13,22 +13,22 @@ Para cada modelo, são listadas as métricas\footnote{
 
 % %FIXME: [cz] eu sei que na proxima secao vc vai apresentar a comparação com os trabalhos relacionados, mas aqui senti falta de um baseline que pudesse comparar com a abordagem original qual foi a melhora usando a estratégia linguistica em relacao a usar somente as imagens --> [cca5] um pouco mais a frente eu acabo discutindo essas diferenças (que basicamente giram em torno do nível semântico que aqui é maior e faz mais sentido perante a língua)
 
-Primeiramente, observamos que os modelos baseados na arquitetura \textit{Encoder-Decoder} apresentaram resultados muito semelhantes entre si, apesar de ainda não muito expressivos de um modo geral.
+Primeiramente, observa-se que os modelos baseados na arquitetura \textit{Encoder-Decoder} apresentaram resultados muito semelhantes entre si, apesar de ainda não muito expressivos de um modo geral.
 % De um modo geral, percebe-se entre os modelos baseados na arquitetura \textit{Encoder-Decoder} resultados muito semelhantes entre si, mas não muito expressivos.
-Dentre eles, percebemos também que a versão implementada utilizando codificador e decodificador baseados em redes \acrshort{gru} obteve uma pequena vantagem em comparação àquela que utilizou redes \acrshort{lstm} -- ao passo que a primeira alcançou uma acurácia de 46,98\%, a segunda obteve 45,99\%.
-O valor das demais métricas e da perda computada para ambos os casos replicaram esse mesmo comportamento da acurácia e reforçam tal análise.
+Dentre eles, percebe-se também que a versão implementada utilizando codificador e decodificador baseados em redes \acrshort{gru} obteve uma pequena vantagem em comparação àquela que utilizou redes \acrshort{lstm} -- ao passo que a primeira alcançou uma acurácia de 46,98\%, a segunda obteve 45,99\%.
+O valor das demais métricas e do erro médio computado para ambos os casos replicaram esse mesmo comportamento da acurácia e reforçam tal análise.
 
-Por outro lado, quando analisamos os resultados do \textit{Transformer} vemos um desempenho bastante expressivo com uma acurácia de 100,00\%, a qual excede aquelas apresentadas pelos \textit{Encoder-Decoders} e é reiterada consistentemente pelo valor das demais métricas e também da perda computada.
+Por outro lado, quando analisados os resultados do \textit{Transformer} observa-se um desempenho bastante expressivo com uma acurácia de 100,00\%, a qual excede aquelas apresentadas pelos \textit{Encoder-Decoders} e é reiterada consistentemente pelo valor das demais métricas e também da perda computada.
 
 Isso nos remete à argumentação de \citeonline{wolf-2020-transformers,jurafsky-2022-speech-lang-processing} citada na \autoref{sec:am-ap}, que afirma que essa arquitetura tem se mostrado extremamente bem-sucedida entre tarefas de \acrfull{nlp}, superando arquiteturas como as \acrshortpl{rnn}. Exatamente por isso, elas são atualmente dominantes nessa área.
 
-No contexto deste trabalho, acreditamos que alguns motivos particulares contribuíram para os resultados acima.
-Em primeiro lugar, entendemos que a escolha pelo uso da abordagem linguística dos sinais nos possibilitou trabalhar num nível semântico muito mais elevado do que seríamos capazes de fazer com dados brutos como os pixels de imagens RGB ou coordenadas aleatórias no espaço. Conforme discutimos no \autoref{cap:metodos}, essa é uma abordagem comum em tarefas envolvendo linguagem no \acrshort{nlp} e que nos permite produzir \textit{features} de melhor qualidade para ensinar os modelos acerca da estrutura dessas línguas.
+No contexto deste trabalho, acredita-se que alguns motivos particulares contribuíram para os resultados acima.
+Em primeiro lugar, entende-se que a escolha pelo uso da abordagem linguística dos sinais nos possibilitou trabalhar num nível semântico muito mais elevado do que seríamos capazes de fazer com dados brutos como os pixels de imagens RGB ou coordenadas aleatórias no espaço. Conforme discutido no \autoref{cap:metodos}, essa é uma abordagem comum em tarefas envolvendo linguagem no \acrshort{nlp} e que permite produzir \textit{features} de melhor qualidade para ensinar os modelos acerca da estrutura dessas línguas.
 
 Em segundo lugar, a representação introduzida aqui foi capaz de transformar um conjunto de canais linguísticos complexos dos sinais do \acrshort{asllvd}, em \textit{features} discretas (ou ``palavras'', como aqui as denominamos) mais simples e bem definidas a serem consumidas pelos modelos.
-Isso deu origem a um vocabulário que, por sua vez, é muito menos complexo do que aqueles com os quais arquiteturas como o \textit{Transformer} foram originalmente projetadas para lidar. Além disso, nesse processo selecionamos um número menor de atributos fonológicos da língua de sinais e isso também contribuiu para tornar nosso vocabulário ainda mais compacto.
+Isso deu origem a um vocabulário que, por sua vez, é muito menos complexo do que aqueles com os quais arquiteturas como o \textit{Transformer} foram originalmente projetadas para lidar. Além disso, nesse processo foi selecionado um número menor de atributos fonológicos da língua de sinais e isso também contribuiu para tornar nosso vocabulário ainda mais compacto.
 
-Dessa forma, entendemos que a combinação desse conjunto de \textit{features} semanticamente mais coerentes e simplificadas, com a utilização de um modelo robusto no processamento de linguagens como o \textit{Transformer}, foram fatores que conduziram ao desempenho favorável acima.
+Dessa forma, entende-se que a combinação desse conjunto de \textit{features} semanticamente mais coerentes e simplificadas, com a utilização de um modelo robusto no processamento de linguagens como o \textit{Transformer}, foram fatores que conduziram ao desempenho favorável acima.
 Contudo, para os \textit{Encoder-Decoders} esse desempenho foi mais modesto.
 
 % encoder-decoders com desempenho proximo, mas GRU com uma leve vantagem

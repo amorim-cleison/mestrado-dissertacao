@@ -8,7 +8,7 @@ Esse tipo de informação fornece detalhes mais precisos acerca do corpo dos ind
 Além disso, essa representação é genérica e pode ser replicada para outras línguas de sinais.
 % %FIXME [cz] Importante enfatizar que as representações propostas são genéricas e podem servir como base para qualquer linguagem de sinais. --> [cca5] feito
 
-Para que fosse possível projetar as amostras do \acrshort{asllvd} dentro do espaço tridimensional, adotamos uma estratégia que consiste em combinar duas perspectivas 2D perpendiculares entre si -- a vista frontal e a vista lateral -- para reconstruir uma perspectiva 3D, conforme ilustra a \autoref{fig:our-strategy-3d}. Com isso, assumimos que enquanto a vista frontal nos fornece os eixos \(x\) e \(y\), a vista lateral nos fornecerá a dimensão de profundidade, correspondente ao eixo \( z\).
+Para que fosse possível projetar as amostras do \acrshort{asllvd} dentro do espaço tridimensional, foi adotada uma estratégia que consiste em combinar duas perspectivas 2D perpendiculares entre si -- a vista frontal e a vista lateral -- para reconstruir uma perspectiva 3D, conforme ilustra a \autoref{fig:our-strategy-3d}. Com isso, assume-se que enquanto a vista frontal fornece os eixos \(x\) e \(y\), a vista lateral fornecerá a dimensão de profundidade, correspondente ao eixo \( z\).
 
 
 \begin{figure}[ht!]
@@ -32,7 +32,7 @@ Para que fosse possível projetar as amostras do \acrshort{asllvd} dentro do esp
 \end{figure}
 
 
-Uma vez definida essa estratégia, nos baseamos no processo descrito por \citeonline{amorim-2019-stgcn-sl} para realizar a estimativa dos esqueletos para os indivíduos nas amostras. Esse processo é composto pelas etapas de obtenção de amostras, segmentação dos sinais, estimativa e normalização dos esqueletos, as quais sofreram adaptações no contexto do presente trabalho para acomodar a composição de esqueletos 3D e os desafios que encontramos para isso. Discutiremos a seguir as adaptações realizadas para superar as limitações dos \textit{datasets} existentes:
+Uma vez definida essa estratégia, foi considerado o processo descrito por \citeonline{amorim-2019-stgcn-sl} para realizar a estimativa dos esqueletos para os indivíduos nas amostras. Esse processo é composto pelas etapas de obtenção de amostras, segmentação dos sinais, estimativa e normalização dos esqueletos, as quais sofreram adaptações no contexto do presente trabalho para acomodar a composição de esqueletos 3D e os desafios encontrados para isso. Discutiremos a seguir as adaptações realizadas para superar as limitações dos \textit{datasets} existentes:
 
 % Os passos utilizados para gerar o ASL-Skeleton3D basearam-se no processamento realizado por \citeonline{amorim-2019-stgcn-sl} na construção de um \textit{dataset} de esqueletos 2D da \acrshort{asl}. De um modo geral, eles envolvem a obtenção das amostras, a segmentação dos sinais, a estimativa e a normalização dos esqueletos. Apesar disso, várias adaptações foram necessárias a cada passo para acomodar a estratégia descrita acima e lidar com os desafios encontrados aqui, conforme discutiremos a seguir:
 
@@ -40,11 +40,11 @@ Uma vez definida essa estratégia, nos baseamos no processo descrito por \citeon
     \item \textbf{Obtenção das amostras}: nessa etapa as amostras de vídeos são recuperadas a partir dos servidores do \acrshort{asllvd}, mas no contexto atual, fazemos isso para ambas as câmeras frontal e lateral.
 
           A saber, existem dois formatos nos quais os vídeos dessas câmeras podem ser disponibilizados: o \textit{mov}, que é compacto e mais fácil de processar; e o \textit{.vid}, que consiste no vídeo bruto, que é maior e mais pesado para baixar e processar.
-          Ao analisar as amostras, identificamos que parte delas possuía ambas câmeras disponíveis nos dois formatos; para outras, cada câmera estava em um formato distinto; contudo, nos piores casos uma das câmeras estava ausente ou corrompida, fazendo com que essas amostras fossem perdidas. Lidar com essa falta de homogeneidade acrescentou uma complexidade inesperada, mas que foi contornada resultando numa perda de apenas 0,16\% das amostras originais -- ou seja, 16 amostras de um total inicial de 9.763.
+          Ao analisar as amostras, identificou-se que parte delas possuía ambas câmeras disponíveis nos dois formatos; para outras, cada câmera estava em um formato distinto; contudo, nos piores casos uma das câmeras estava ausente ou corrompida, fazendo com que essas amostras fossem perdidas. Lidar com essa falta de homogeneidade acrescentou uma complexidade inesperada, mas que foi contornada resultando numa perda de apenas 0,16\% das amostras originais -- ou seja, 16 amostras de um total inicial de 9.763.
 
 
     \item \textbf{Segmentação dos sinais}: compreende a segmentação das sequências de vídeos do \acrshort{asllvd} em pedaços menores, contendo um único sinal.
-          Nessa etapa também reduzimos a taxa de quadros de 60 para 3 FPS, uma vez que consideramos que é pouco provável a articulação de mais de três movimentos relevantes em um único segundo.
+          Nessa etapa também reduziu-se a taxa de quadros de 60 para 3 FPS, uma vez que considera-se ser pouco provável a articulação de mais de três movimentos relevantes em um único segundo.
           Isso contribuiu para reduzir em cerca de 20 vezes o número de \textit{frames} a serem processados nas etapas seguintes.
 
 
@@ -59,7 +59,7 @@ Uma vez definida essa estratégia, nos baseamos no processo descrito por \citeon
                     % No entanto, vamos aplicar a estratégia descrita acima e posicioná-lo perpendicularmente ao esqueleto frontal (como no ~\autoref{subfig:front-side-persp-skeletons-persp}). Nesse caso, observamos que embora o eixo \(y\) fornecido aqui contenha as mesmas coordenadas que no esqueleto frontal, o eixo \(x\) descreverá coordenadas equivalentes às de profundidade. Dessa forma, tomaremos o eixo \(x\) do esqueleto lateral como sendo o eixo \(z\) (eixo de profundidade) para o nosso esqueleto 3D final.
           \end{enumerate}
 
-          Dessa forma, combinamos as coordenadas \(x\), \(y\) e \(z\) obtidas para dar origem ao nosso esqueleto 3D.
+          Dessa forma, são combinadas as coordenadas \(x\), \(y\) e \(z\) obtidas para dar origem ao esqueleto 3D.
 
           \begin{figure}[ht!]
               \centering
@@ -84,7 +84,7 @@ Uma vez definida essa estratégia, nos baseamos no processo descrito por \citeon
 
     \item \textbf{Normalização dos esqueletos 3D}: por fim, os esqueletos 3D são normalizados para remover variações decorrentes do posicionamento das câmeras e dos corpos dos indivíduos. Isso é importante porque o \acrshort{asllvd} foi capturado através de diferentes seções e envolveu diferentes sinalizadores.
 
-          Adotamos como referência para essa normalização a largura entre os ombros dos sinalizadores (vide \autoref{fig:shoulders-width}), a qual foi inspirada pela medida antropométrica de \textit{diâmetro biacromial} apresentada por \citeonline{stoudt-1970-skinfolds}. Dessa forma, a largura entre os ombros \(W_{shoulders}\) é definida aqui como a distância euclidiana \(d\) entre as coordenadas do ombro esquerdo \(S_{l}\) e do ombro direito \(S_ {r}\), conforme \autoref{eqn:shoulders-width}:
+          Adotou-se como referência para essa normalização a largura entre os ombros dos sinalizadores (vide \autoref{fig:shoulders-width}), a qual foi inspirada pela medida antropométrica de \textit{diâmetro biacromial} apresentada por \citeonline{stoudt-1970-skinfolds}. Dessa forma, a largura entre os ombros \(W_{shoulders}\) é definida aqui como a distância euclidiana \(d\) entre as coordenadas do ombro esquerdo \(S_{l}\) e do ombro direito \(S_ {r}\), conforme \autoref{eqn:shoulders-width}:
 
           \figura
           {fig:shoulders-width} % Label
@@ -110,7 +110,7 @@ Uma vez definida essa estratégia, nos baseamos no processo descrito por \citeon
 
 
 O \autoref{cod:sample-json-datasetTD} exemplifica uma amostra do ASL-Skeleton3D resultante do processamento acima, bem como suas propriedades. Observa-se no início do arquivo informações básicas extraídas do \acrshort{asllvd}, como rótulo, nome do indivíduo, sessão, cena, \textit{frames} de início e fim, entre outras. Na propriedade ``\textit{frames}'' estão listados os \textit{frames} para aquela sequência e o esqueleto 3D estimado para cada um deles. Cada esqueleto contém grupos referentes ao ``\textit{body}'' (corpo), ``\textit{face}'' (face), ``\textit{hand left}'' (mão esquerda) e ``\textit{hand right}'' (mão direita) que, por sua vez, contêm propriedades que listam o nome da coordenada, o ``\textit{score}'' (ou acurácia) de sua estimativa e os respectivos eixos \(x\), \(y\) e \(z\).
-Por exemplo, se observarmos o primeiro índice das propriedades do grupo ``\textit{body}'' veremos que ele corresponde à coordenada ``\textit{nose}'' (nariz), apresenta um \textit{score} de aproximadamente 90\% e coordenadas \(x\), \(y\) e \(z\) localizadas em 4,488, 1,696 e 2,872.
+Por exemplo, ao observar o primeiro índice das propriedades do grupo ``\textit{body}'' percebe-se que ele corresponde à coordenada ``\textit{nose}'' (nariz), apresenta um \textit{score} de aproximadamente 90\% e coordenadas \(x\), \(y\) e \(z\) localizadas em 4,488, 1,696 e 2,872.
 
 % \figura
 % {fig:sample-json-datasetTD} % Label
