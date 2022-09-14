@@ -58,7 +58,7 @@ Para isso, serão compactados os valores informados para os atributos fonológic
 
 Por exemplo, considerando-se um \textit{frame} contendo dois atributos com os valores ``\textit{valor\_atributo\_1}'' e ``\textit{valor\_atributo\_2}'', ao compactá-los, eles primeiro seriam abreviados para ``\textit{va1}'' e ``\textit{va2}'' e, em seguida, concatenados para formar uma palavra ``\textit{va1-va2}''.  A sequência de \textit{frames} da amostra tornaria-se, portanto, algo semelhante a uma sequência de palavras \textit{\{``va1-va2'', ``va3-va4'', \dots, ``vaN-vaN''\}}.
 
-Observe na \autoref{tab:codificacao-bloco} um exemplo mais próximo do contexto real para esse processo. Na primeira linha temos os valores originais dos atributos do \textit{frame}; na segunda, os valores abreviados; e, na terceira, a palavra formada através da concatenação deles.
+Observe na \autoref{tab:codificacao-bloco} um exemplo mais próximo do contexto real para esse processo. Na primeira linha estão os valores originais dos atributos do \textit{frame}; na segunda, os valores abreviados; e, na terceira, a palavra formada através da concatenação deles.
 
 % Para tornar as amostras do ASL-Phono compatíveis com a entrada dos modelos que serão utilizados mais adiante, aplicamos uma transformação simples que consiste em codificar seus atributos fonológicos como blocos ou ``palavras'' únicas, mais compactas. Ou seja, ao invés de utilizar como entrada sequências de frames que contêm propriedades aninhadas, adotamos aqui sequências de blocos compactos que codificam a mesma informação de uma forma mais amigável a modelos sequenciais.
 

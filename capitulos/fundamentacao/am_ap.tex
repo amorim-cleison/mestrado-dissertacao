@@ -1,0 +1,410 @@
+% APRENDIZAGEM PROFUNDA
+
+\subsection{Aprendizagem profunda e modelos sequenciais}
+\label{sec:am-ap}
+
+Segundo \citeonline{goodfellow-2016-deep-learning,lecun-2015-deep-learning}, a \acrfull{dl} consiste num tipo de \acrlong{ml} baseado em \acrshortpl{ann} que adotam um número muito grande de camadas de processamento para extrair progressivamente representações de níveis mais elevados a partir dos dados.
+A esse tipo particular de \acrshort{ann} atribui-se o nome de \acrfull{dnn}.
+
+Por conta de sua estrutura robusta, essas redes têm sido capazes de lidar com problemas muito complexos ao longo das últimas décadas e produzir progressos extremamente promissores para problemas que resistiram por muito tempo às melhores tentativas de avanço pela comunidade de \acrshort{ia}, principalmente aqueles envolvendo linguagem -- e que são abordados pela área de \acrfull{nlp}.
+
+
+% Compreende-se a \acrfull{dl} como um ramo da \acrlong{ml} que estuda um tipo particular de \acrshortpl{ann} denominado \acrfull{dnn}. 
+% Essas redes diferenciam-se daquelas discutidas até aqui por apresentarem um número muito grande de camadas e, consequentemente, de unidades interconectadas dentro delas -- o que lhes concede o aspecto de profundidade a que seu nome refere-se.
+% Segundo \citeonline{goodfellow-2016-deep-learning,lecun-2015-deep-learning}, essa estrutura robusta possibilita a elas lidar com problemas muito complexos, descobrindo e aprendendo automaticamente representações de dados com múltiplos níveis de abstração.
+% Essas redes têm produzido ao longo das últimas décadas progressos extremamente promissores para problemas que resistiram por muito tempo às melhores tentativas de avanço pela comunidade de \acrshort{ia}, principalmente em tarefas de \acrfull{nlp} como a classificação de tópicos, análise de sentimentos, tradução de idiomas,  processamento de imagens, vídeos e fala, entre outras.
+
+% \cite{lecun-2015-deep-learning}
+% A deep-learning architecture is a multilayer stack of simple modules, all (or most) of which are subject to learning, and many of which compute non-linear input–output mappings. Each module in the stack transforms its input to increase both the selectivity and the invariance of the representation. With multiple non-linear layers, say a depth of 5 to 20, a system can implement extremely intricate functions of its inputs that are simultaneously sensitive to minute details — distinguishing Samoyeds from white wolves — and insensitive to large irrelevant variations such as the background, pose, lighting and surrounding objects.
+
+
+
+
+% O aprendizado profundo moderno fornece uma estrutura poderosa para aprendizado supervisionado. Ao adicionar mais camadas e mais unidades dentro de uma camada, uma rede profunda pode representar funções de complexidade crescente. A maioria das tarefas que consistem em mapear um vetor de entrada para um vetor de saída, e que são fáceis para uma pessoa fazer rapidamente, podem ser realizadas por meio de aprendizado profundo, com modelos suficientemente grandes e conjuntos de dados suficientemente grandes de exemplos de treinamento rotulados. Outras tarefas, que não podem ser descritas como associar um vetor a outro, ou que são difíceis o suficiente para que uma pessoa precise de tempo para pensar e refletir para realizar a tarefa, permanecem além do escopo do aprendizado profundo por enquanto.
+
+% \citeonline{goodfellow-2016-deep-learning}
+% Modern deep learning provides a powerful framework for supervised learning. By adding more layers and more units within a layer, a deep network can represent functions of increasing complexity. Most tasks that consist of mapping an input vector to an output vector, and that are easy for a person to do rapidly, can be accomplished via deep learning, given sufficiently large models and sufficiently large datasets of labeled training examples. Other tasks, that cannot be described as associating one vector to another, or that are difficult enough that a person would require time to think and reflect in order to accomplish the task, remain beyond the scope of deep learning for now.
+
+
+% \cite{lecun-2015-deep-learning}
+% Deep learning allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction. These methods have dramatically improved the state-of-the-art in speech recognition, visual object recognition, object detection and many other domains such as drug discovery and genomics. Deep learning discovers intricate structure in large data sets by using the backpropagation algorithm to indicate how a machine should change its internal parameters that are used to compute the representation in each layer from the representation in the previous layer. Deep convolutional nets have brought about breakthroughs in processing images, video, speech and audio, whereas recurrent nets have shone light on sequential data such as text and speech.
+
+% Representation learning is a set of methods that allows a machine to be fed with raw data and to automatically discover the representations needed for detection or classification. Deep-learning methods are representation-learning methods with multiple levels of representation, obtained by composing simple but non-linear modules that each transform the representation at one level (starting with the raw input) into a representation at a higher, slightly more abstract level. With the composition of enough such transformations, very complex functions can be learned.
+
+% Deep learning is making major advances in solving problems that have resisted the best attempts of the artificial intelligence community for many years. It has turned out to be very good at discovering intricate structures in high-dimensional data and is therefore applicable to many domains of science, business and government. [...]
+% Perhaps more surprisingly, deep learning has produced extremely promising results for various tasks in natural language understanding, particularly topic classification, sentiment analysis, question answering and language translation.
+
+
+
+%% TODO: função de ativação, treinamento, função de perda, backpropagation ?
+
+% treinamento (geral) x
+% algoritmo de otimização (SGD) x
+% treinamento, validação, testes x
+% validação cruzada (k-fold) x
+% busca automática de parâmetros (Grid Search) x
+% função de perda (Cross-Entropy Loss) x
+% Batches x
+
+
+% \cite{lecun-2015-deep-learning}
+% Supervised learning
+% The most common form of machine learning, deep or not, is supervised learning. Imagine that we want to build a system that can classify images as containing, say, a house, a car, a person or a pet. We first collect a large data set of images of houses, cars, people and pets, each labelled with its category. During training, the machine is shown an image and produces an output in the form of a vector of scores, one for each category. We want the desired category to have the highest score of all categories, but this is unlikely to happen before training. We compute an objective function that measures the error (or distance) between the output scores and the desired pattern of scores. The machine then modifies its internal adjustable parameters to reduce this error. These adjustable parameters, often called weights, are real numbers that can be seen as ‘knobs’ that define the input–output function of the machine. In a typical deep-learning system, there may be hundreds of millions of these adjustable weights, and hundreds of millions of labelled examples with which to train the machine.
+% To properly adjust the weight vector, the learning algorithm computes a gradient vector that, for each weight, indicates by what amount the error would increase or decrease if the weight were increased by a tiny amount. The weight vector is then adjusted in the opposite direction to the gradient vector.
+% The objective function, averaged over all the training examples, can be seen as a  kind of hilly landscape in the high-dimensional space of weight values. The negative gradient vector indicates the direction of steepest descent in this landscape, taking it closer to a minimum, where the output error is low on average.
+% In practice, most practitioners use a procedure called stochastic gradient descent (SGD). This consists of showing the input vector for a few examples, computing the outputs and the errors, computing the average gradient for those examples, and adjusting the weights accordingly. The process is repeated for many small sets of examples from the training set until the average of the objective function stops decreasing. It is called stochastic because each small set of examples gives a noisy estimate of the average gradient over all examples. This simple procedure usually finds a good set of weights surprisingly quickly when compared with far more elaborate optimization techniques18. After training, the performance of the system is measured on a different set of examples called a test set. This serves to test the generalization ability of the machine — its ability to produce sensible answers on new inputs that it has never seen during training.
+
+
+% \cite{russell-2010-modern-approach}
+% In supervised learning the agent observes some example input–output pairs and learns a function that maps from input to output. In component 1 above, the inputs are percepts and the output are provided by a teacher who says “Brake!” or “Turn left.” In component 2, the
+% inputs are camera images and the outputs again come from a teacher who says “that’s a bus.”
+% In 3, the theory of braking is a function from states and braking actions to stopping distance in feet. In this case the output value is available directly from the agent’s percepts (after the fact); the environment is the teacher.
+
+
+% \cite{goodfellow-2016-deep-learning}
+
+% 8.3.1 Stochastic Gradient Descent
+% Stochastic gradient descent (SGD) and its variants are probably the most usedoptimization algorithms for machine learning in general and for deep learningin particular. As discussed in section 8.1.3, it is possible to obtain an unbiasedestimate of the gradient by taking the average gradient on a minibatch ofmexamples drawn i.i.d from the data-generating distribution.
+% -> momentum
+% -> nesterov momentum
+
+    % 5.9 Stochastic Gradient Descent
+    % Nearly all of deep learning is powered by one very important algorithm:stochasticgradient descent(SGD). Stochastic gradient descent is an extension of thegradient descent algorithm introduced in section 4.3.A recurring problem in machine learning is that large training sets are necessaryfor good generalization, but large training sets are also more computationallyexpensive.
+
+
+% 5.3 Hyperparameters and Validation Sets
+% Most machine learning algorithms have hyperparameters, settings that we can use to control the algorithm’s behavior. The values of hyperparameters are not adapted by the learning algorithm itself (though we can design a nested learning procedure in which one learning algorithm learns the best hyperparameters for another learning algorithm)
+% ...
+% Sometimes a setting is chosen to be a hyperparameter that the learning algorithm does not learn because the setting is difficult to optimize. More frequently,the setting must be a hyperparameter because it is not appropriate to learn that hyperparameter on the training set. This applies to all hyperparameters that control model capacity. If learned on the training set, such hyperparameters would always choose the maximum possible model capacity, resulting in overfitting (referto figure 5.3). For example, we can always ﬁt the training set better with a higher-degree polynomial and a weight decay setting of λ= 0 than we could with a lower-degree polynomial and a positive weight decay setting.
+% To solve this problem, we need a validation set of examples that the training algorithm does not observe.
+% Earlier we discussed how a held-out test set, composed of examples coming from the same distribution as the training set, can be used to estimate the generalization error of a learner, after the learning process has completed. It is important that the test examples are not used in any way to make choices about the model, including its hyperparameters. For this reason, no example from the test set can be used in the validation set. Therefore, we always construct the validation set from the training data. Speciﬁcally, we split the training data into two disjoint subsets.One of these subsets is used to learn the parameters. The other subset is our validation set, used to estimate the generalization error during or after training,allowing for the hyperparameters to be updated accordingly. The subset of data used to learn the parameters is still typically called the training set, even though this may be confused with the larger pool of data used for the entire training process. The subset of data used to guide the selection of hyperparameters is called the validation set. Typically, one uses about 80 percent of the training data for training and 20 percent for validation. Since the validation set is used to “train” the hyperparameters, the validation set error will underestimate the generalization error, though typically by a smaller amount than the training error does. After all hyperparameter optimization is complete, the generalization error may be estimated using the test set.
+% In practice, when the same test set has been used repeatedly to evaluate performance of diﬀerent algorithms over many years, and especially if we consider all the attempts from the scientiﬁc community at beating the reported state-of-the-art performance on that test set, we end up having optimistic evaluations with the test set as well. Benchmarks can thus become stale and then do not reﬂect the true ﬁeld performance of a trained system. Thankfully, the community tends to move on to new (and usually more ambitious and larger) benchmark datasets.
+
+% 5.3.1 Cross-Validation
+% Dividing the dataset into a ﬁxed training set and a ﬁxed test set can be problematic if it results in the test set being small. A small test set implies statistical uncertainty around the estimated average test error, making it diﬃcult to claim that algorithmA works better than algorithm B on the given task.When the dataset has hundreds of thousands of examples or more, this is nota serious issue. When the dataset is too small, alternative procedures enable one to use all the examples in the estimation of the mean test error, at the price of increased computational cost. These procedures are based on the idea of repeating the training and testing computation on diﬀerent randomly chosen subsets or splits of the original dataset. The most common of these is the k-fold cross-validation procedure, shown in algorithm 5.1, in which a partition of the dataset is formed by splitting it into k non overlapping subsets. The test error may then be estimated by taking the average test error across k trials. On trial i, the i-th subset of the data is used as the test set, and the rest of the data is used as the training set.One problem is that no unbiased estimators of the variance of such average error estimators exist (Bengio and Grandvalet, 2004), but approximations are typically used.
+
+
+
+% 11.4 Selecting Hyperparameters
+% Most deep learning algorithms come with several hyperparameters that controlmany aspects of the algorithm’s behavior. Some of these hyperparameters aﬀect thetime and memory cost of running the algorithm. Some of these hyperparametersaﬀect the quality of the model recovered by the training process and its ability to infer correct results when deployed on new inputs.There are two basic approaches to choosing these hyperparameters: choosing them manually and choosing them automatically. Choosing the hyperparameters manually requires understanding what the hyperparameters do and how machinelearning models achieve good generalization. Automatic hyperparameter selection algorithms greatly reduce the need to understand these ideas, but they are often much more computationally costly.
+
+% 11.4.2 Automatic Hyperparameter Optimization Algorithms
+% The ideal learning algorithm just takes a dataset and outputs a function, without requiring hand tuning of hyperparameters. The popularity of several learning algorithms such as logistic regression and SVMs stems in part from their ability to perform well with only one or two tuned hyperparameters. Neural networks can sometimes perform well with only a small number of tuned hyperparameters, but often beneﬁt signiﬁcantly from tuning of forty or more. Manual hyperparameter tuning can work very well when the user has a good starting point, such as one determined by others having worked on the same type of application and architecture, or when the user has months or years of experience in exploring hyperparameter values for neural networks applied to similar tasks. For many applications, however, these starting points are not available. In these cases,automated algorithms can ﬁnd useful values of the hyperparameters.
+% ...
+
+% 11.4.3 Grid Search
+% When there are three or fewer hyperparameters, the common practice is to perform grid search. For each hyperparameter, the user selects a small ﬁnite set of values to explore. The grid search algorithm then trains a model for every joint speciﬁcation of hyperparameter values in the Cartesian product of the set of values for each individual hyperparameter. The experiment that yields the best validation set error is then chosen as having found the best hyperparameters. See the left ofﬁgure 11.2 for an illustration of a grid of hyperparameter values.
+% ...
+% The obvious problem with grid search is that its computational cost grows exponentially with the number of hyperparameters. If there are m hyperparameters, each taking at most n values, then the number of training and evaluation trials required grows as O(nm). The trials may be run in parallel and exploit loose parallelism (with almost no need for communication between diﬀerent machines carrying out the search). Unfortunately, because of the exponential cost of grid search, even parallelization may not provide a satisfactory size of search.
+
+
+
+
+
+
+
+
+% \subsection{Processamento de Linguagem Natural}
+% \label{sec:nlp}
+
+\citeonline{jurafsky-2022-speech-lang-processing}, por sua vez, definem a linguagem como sendo um fenômeno inerentemente temporal. Os autores afirmam que ela pode ser compreendida como uma sequência de eventos que desdobram-se ao longo do tempo como um fluxo contínuo de dados.
+Dessa forma, para que fosse possível abordar esse aspecto temporal e lidar com dados organizados de maneira sequencial, foram estabelecidas arquiteturas específicas de \acrshortpl{dnn} que atualmente são conhecidas como redes neurais sequenciais ou modelos sequenciais.
+Dentre as mais populares dessas arquiteturas estão a \acrfull{rnn} (e suas extensões, como o \acrfull{lstm} e a \acrfull{gru}) e o \textit{Transformer}.
+
+% Na \acrlong{dl}, existem arquiteturas ou estruturas de \acrshortpl{dnn} projetadas especialmente para capturar e explorar essa natureza temporal, as quais são conhecidas como ``redes neurais sequenciais'' ou ``modelos sequenciais''.
+% Os modelos sequenciais lidam diretamente com essa natureza, e são capazes de capturar e explorar tal aspecto temporal.
+% Os tipos de arquiteturas mais populares desses modelos são a \acrfull{rnn} (e suas extensões, dentre as quais o \acrfull{lstm} e a \acrfull{gru} são as mais utilizadas) e o \textit{Transformer}.
+
+% Devido a isso, neste trabalho selecionamos algumas dessas arquiteturas para avaliar a eficácia da abordagem proposta, as quais são: \acrfull{lstm}~\cite{hochreiter-1997-lstm} e \acrfull{gru}~\cite{cho-2014-gru} -- que são extensões da arquitetura \acrfull{rnn}~\cite{mikolov-2010-rnn} -- e o \textit{Transformer}~\cite{vaswani-2017-transformer}. 
+
+As \acrshortpl{rnn} baseiam-se no trabalho de \citeonline{rumelhart-1986-rnns} e consistem de redes neurais que contêm ciclos (ou recorrências) em suas conexões, os quais fazem com que o valor de suas unidades sejam direta ou indiretamente dependentes de suas próprias saídas anteriores.
+De um modo geral, elas funcionam processando cada palavra da sequência e combinando ela com o contexto ou estado oculto anterior para tentar prever a próxima palavra da sequência. Esse contexto, por sua vez, é capaz de representar as informações de todas as palavras anteriores daquela sequência.
+
+% Elas processam sequências uma palavra por vez, tentando prever a próxima palavra com base na atual e no contexto (ou estado oculto) anterior que, por sua vez, pode representar as informações de todas as palavras anteriores da sequência \cite{jurafsky-2022-speech-lang-processing}.
+
+Contudo, \citeonline{lecun-2015-deep-learning,goodfellow-2016-deep-learning,graves-2012-rnns} ressaltam que essas redes apresentaram limitações em armazenar informações por um período muito longo de tempo, dentre as quais estão os problemas conhecidos de \textit{gradient vanishing} (ou desaparecimento do gradiente) e \textit{gradient exploding} (ou explosão do gradiente). Isso demandou com que extensões dessa arquitetura fossem desenvolvidas no decorrer dos anos com o intuito abordar melhor essas questões.
+
+% \citeonline{lecun-2015-deep-learning} afirmam que apesar do principal objetivo das \acrshortpl{rnn} ser aprender dependências de longo prazo, evidências teóricas e empíricas mostram que há desafios em aprender a armazenar informações por um tempo muito longo. Entre esses desafios estão os problemas de desaparecimento e explosão de gradientes, aos quais as \acrshortpl{rnn} estão passíveis. Devido a isso, várias extensões dessa arquitetura foram desenvolvidas no decorrer dos anos com o intuito de abordar melhor esses problemas.
+
+Uma das principais extensões é a \acrshort{lstm}, que foi introduzida por \citeonline{hochreiter-1997-lstm}. De acordo com \citeonline{graves-2012-rnns,jurafsky-2022-speech-lang-processing}, a principal inovação dessa rede é a capacidade de aprender a gerenciar o contexto de forma automática, decidindo quando informações são necessárias e quando podem ser removidas, sem necessitar que uma estratégia explícita seja codificada para isso. Ele utiliza uma camada específica para representar esse contexto e um conjunto de portas, as quais controlam o fluxo de informações para dentro e para fora de suas células.
+Segundo \citeonline{goodfellow-2016-deep-learning,lecun-2015-deep-learning}, essas redes são extremamente bem-sucedidas em diferentes tipos de aplicações, como reconhecimento e geração de caligrafia, reconhecimento de fala, \acrfull{mt}, legendagem de imagens e análise sintática.
+
+%O \acrshort{lstm} é a mais popular delas e divide o gerenciamento do contexto em duas partes: na primeira, está a adição de informação que provavelmente será necessária para tomada de decisão posterior ao contexto; na segunda, está a remoção de informação que não é mais necessária. Com isso, o \acrshort{lstm} é capaz de aprender como gerenciar esse contexto e lidar com ambas as partes, e não exige que uma estratégia para isso seja codificada na arquitetura.
+%Isso é feito utilizando-se uma camada explícita para representar o contexto e também unidades neurais especializadas que utilizam três portas (\textit{update gate}, \textit{forget gate} e \textit{output gate}) para controlar o fluxo de informações para dentro e para fora das unidades que compõem as camadas da rede neural. Essas portas, por sua vez, são implementadas como pesos adicionais que são ajustados durante o processo de treinamento e operam sequencialmente na entrada, na camada oculta e nas camadas de contexto anteriores \cite{jurafsky-2022-speech-lang-processing}.
+
+% \citeonline{goodfellow-2016-deep-learning,lecun-2015-deep-learning} ressaltam que as redes \acrshort{lstm} mostraram ser extremamente bem-sucedidas em diferentes tipos de aplicações, como reconhecimento de caligrafia, reconhecimento de fala, geração de caligrafia, tradução automática, legendagem de imagens e análise sintática.
+
+
+A \acrshort{gru} é também uma extensão muito popular das \acrshortpl{rnn} e foi criada por \citeonline{cho-2014-gru} com o intuito de simplificar o desenho das unidades internas do \acrshort{lstm}. 
+De acordo com \citeonline{goodfellow-2016-deep-learning,ravanelli-2018-li-gru}, elas diferenciam-se apenas pela forma como controlam o fluxo de informações entre suas camadas: enquanto o \acrshort{lstm} utiliza três portas em suas células internas (\textit{update gate}, \textit{forget gate} e \textit{output gate}), o \acrshort{gru} propõe a adoção de apenas duas portas para isso (\textit{update gate} e \textit{reset gate}).
+
+% A \acrshort{gru}~\cite{cho-2014-gru}, por sua vez, é uma evolução do \acrshort{lstm}. De acordo com \citeonline{goodfellow-2016-deep-learning}, a principal diferença está na forma como elas controlam o fluxo de informações entre suas camadas: enquanto o \acrshort{lstm} adota três portas em suas células internas para isso (\textit{update gate}, \textit{forget gate} e \textit{output gate}), o \acrshort{gru} propõe uma simplificação das células e utiliza apenas duas portas (\textit{update gate} e \textit{reset gate}) \cite{ravanelli-2018-li-gru,goodfellow-2016-deep-learning}.
+
+% A arquitetura \acrshort{gru} surgiu com o objetivo de simplificar o desenho das unidades internas do \acrshort{lstm} e, devido a isso, é considerada uma evolução desta. Segundo \citeonline{goodfellow-2016-deep-learning}, a principal diferença entre elas está na forma como elas controlam o fluxo de informação entre suas camadas. Enquanto que nas unidades do \acrshort{lstm} são utilizadas três portas para controlar a atualização, esquecimento e a saída de informação, no \acrshort{gru} uma única porta realiza o controle simultâneo do fator de esquecimento e da atualização do estado da unidade -- o que faz com que ela apresentem um total duas portas (denominadas \textit{update gate} e \textit{reset gate}) \cite{ravanelli-2018-li-gru,goodfellow-2016-deep-learning}.
+
+
+
+Um outro tipo de arquitetura bastante utilizada no \acrshort{nlp} é a \textit{Sequence-to-Sequence} (ou Sequência para Sequência), também conhecida como \textit{Encoder-Decoder} (ou Codificador Decodificador). Ela foi apresentada por \citeonline{cho-2014-encoder-decoder,sutskever-2014-seq-to-seq} e sua estrutura é composta por duas redes neurais: uma codificadora, que recebe uma sequência de entrada e gera uma representação contextualizada dela -- que seria o contexto; e uma decodificadora, que produz uma sequência de saída específica para a tarefa em questão, conforme ilustrado na \autoref{fig:encoder-decoder-arquitetura}. 
+Esses redes codificadoras e decodificadoras são geralmente implementados utilizando-se \acrshortpl{rnn}, como o \acrshort{lstm} e o \acrshort{gru}. Além disso, algumas otimizações dessa arquitetura consideram a adição de uma camada de \textit{attention} (ou atenção) antes do decodificador com o objetivo de eliminar um gargalo observado ali por \citeonline{bahdanau-2015-mt-align-translate}.
+
+\figura[p. 220]
+{fig:encoder-decoder-arquitetura}
+{capitulos/fundamentacao/imagens/encoder_decoder_arquitetura}
+{width=0.90\textwidth}
+{Arquitetura do \textit{Encoder-Decoder}: a sequência de entrada \(\{x_1, x_2, x_3, x_n\}\) é recebida pelo \textit{encoder} (à esquerda) e utilizada para gerar o contexto \(c\) (em verde), o qual é utilizado pelo \textit{decoder} (à direita) para produzir a sequência \(\{y_1, y_2, y_3, y_n\}\)}
+{jurafsky-2022-speech-lang-processing}
+
+% Essas redes codificadoras e decodificadoras são implementadas utilizando-se redes \acrshortpl{rnn}, e algumas otimizações consideram também a adição de uma camada de \textit{attention} antes do decodificador para eliminar um gargalo observado ali por \citeonline{bahdanau-2015-mt-align-translate}.
+
+
+
+
+O \textit{Transformer}, por sua vez, consiste num tipo de arquitetura que não é recorrente e, ao invés disso, baseia-se num mecanismo de \textit{attention} para estabelecer dependências globais entre os dados de entrada e saída.
+Ele foi introduzido por \citeonline{vaswani-2017-transformer} e baseia-se na estrutura do \textit{Encoder-Decoder}, porém seus codificadores e decodificadores são compostos por blocos empilhados de redes multicamadas que combinam camadas lineares simples, redes \textit{feed-forward} e camadas de \textit{self-attention} (ou auto-atenção) -- as quais são a principal inovação aqui --, conforme ilustra a \autoref{fig:transformer-arquitetura}.
+% Devido à sua estrutura escalável e capaz de capturar o contexto de sequências muito longas, \citeonline{wolf-2020-transformers,jurafsky-2022-speech-lang-processing} afirmam que os \textit{Transformers} tornaram-se rapidamente a arquitetura dominante entre tarefas de \acrshort{nlp}, superando redes como a \acrfull{cnn} e as \acrshortpl{rnn}.
+
+\figura[p. 3]
+{fig:transformer-arquitetura}
+{capitulos/fundamentacao/imagens/transformer_arquitetura}
+{width=0.45\textwidth}
+{Arquitetura do \textit{Transformer}: são utilizados blocos empilhados que combinam redes \textit{feed-forward} e camadas de \textit{self-attention} para o \textit{encoder} (à esquerda) e o \textit{decoder} (à direita); os \textit{embeddings} (abaixo) recebem uma codificação posicional para que seja considerada a ordem de suas sequências}
+{vaswani-2017-transformer}
+
+
+% Por outro lado, o \textit{Transformer}~\cite{vaswani-2017-transformer} é uma arquitetura que não é recorrente -- ao invés disso, baseia-se inteiramente num mecanismo de \textit{attention} (ou atenção) para estabelecer dependências globais entre os dados de entrada e saída.
+% Ele é composta por blocos empilhados de redes multicamadas, as quais combinam camadas lineares simples, redes \textit{feed-forward} e camadas de \textit{self-attention} (ou auto-atenção) -- que, por sua vez, é a principal inovação desse tipo de arquitetura.
+% \citeonline{wolf-2020-transformers} afirmam que o \textit{Transformer} tornou-se rapidamente a arquitetura dominante para o \acrshort{nlp} e tem superado modelos alternativos como \acrshortpl{cnn} e \acrshortpl{rnn} sobretudo em tarefas de compreensão e geração de linguagem natural. Além disso, sua arquitetura escalável facilita o treinamento paralelo eficiente e a captura do contexto de sequências muito longas
+% \cite{vaswani-2017-transformer,jurafsky-2022-speech-lang-processing,wolf-2020-transformers}.
+
+
+Segundo \citeonline{wolf-2020-transformers}, o \textit{Transformer} é escalável e capaz de capturar o contexto de sequências muito longas, e isso possibilitou a construção e aplicação de modelos de maior capacidade para uma grande variedade de tarefas. 
+Devido a disso, ele tornou-se rapidamente a arquitetura dominante no \acrshort{nlp}, superando o desempenho de redes alternativas como as \acrshortpl{rnn} e a \acrfull{cnn} para tarefas  de compreensão e geração de linguagem natural.
+
+
+% Por fim, se compararmos a estrutura do \textit{Transformer} (\autoref{fig:transformer-arquitetura}) com a do \textit{Encoder-Decoder} (\autoref{fig:encoder-decoder-arquitetura}), perceberemos que elas compartilham algumas semelhanças.
+
+
+%% TODO: concluir
+% Como pode-se observar, apesar de algumas apresentarem maior afinidade com problemas de PLN todas essas redes podem ser aplicadas para abordar esse tipo de tarefas  (apresenta particularidades ao abordar a natureza sequencial)
+
+% Mais adiante neste trabalho, serão selecionadas algumas variações do encoder-decoder e do transformer para modelar o problema do RLS.
+
+% semelhanças
+% - blocos de codificador, decodificador
+% - receber e produzir sequencias de caracteres
+
+Apesar disso, mesmo com as inovações introduzidas pelo \textit{Transformer}, é possível observar pela \autoref{fig:transformer-arquitetura} e \autoref{fig:encoder-decoder-arquitetura} que sua estrutura ainda preserva muitas semelhanças com o \textit{Encoder-Decoder}, da qual origina-se.
+Em ambas estruturas, percebem-se dois grandes blocos interconectados, que interagem para codificar uma representação de contexto a partir de uma sequência de dados de entrada, e para decodificá-lo gerando uma nova sequência de saída. 
+Essas sequências, por sua vez, podem possuir tamanhos distintos e permitem com que sejam modelados diferentes tipos de representações de linguagem como, por exemplo, uma sequência de texto que é traduzida de um idioma para outro, uma representação de fala que é transformada em texto (ou vice-versa), ou ainda uma resposta que é gerada para uma pergunta fornecida como entrada.
+
+Devido a essa afinidade para lidar com tarefas de linguagem, ambas arquiteturas \textit{Transformer} e \textit{Encoder-Decoder} serão consideradas para avaliação da abordagem introduzida mais adiante neste trabalho.
+
+
+% , se compararmos a estrutura do \textit{Transformer} (\autoref{fig:transformer-arquitetura}) com a do \textit{Encoder-Decoder} (\autoref{fig:encoder-decoder-arquitetura}), perceberemos que elas compartilham algumas semelhanças.
+
+
+
+% Dentro da área de \acrshort{nlp}, tarefas que lidam com a linguagem num contexto semelhante ao que estamos endereçando neste trabalho comumente adotam arquiteturas conhecidas como \textit{Encoder-Decoder} (Codificador-Decodificador) ou \textit{Sequence-to-Sequence} (Sequência-para-Sequência) \cite{cho-2014-encoder-decoder,sutskever-2014-seq-to-seq}.
+% Essas arquiteturas são compatíveis com diferentes tipos de modelagens sequenciais onde a sequência de saída é uma função complexa da sequência completa de entrada e ambas podem possuir comprimentos e ordens distintas \cite{jurafsky-2022-speech-lang-processing,goodfellow-2016-deep-learning}.
+
+% O \textit{Encoder-Decoder} é composto por uma rede codificadora que recebe uma sequência de entrada e gera uma representação contextualizada dela -- que seria o contexto. Essa representação é então passada para um decodificador que produz uma sequência de saída específica para a tarefa em questão, conforme ilustra a \autoref{fig:encoder-decoder-arquitetura}. Uma otimização proposta por \citeonline{bahdanau-2015-mt-align-translate} também adota uma camada de \textit{attention} antes do decodificador para eliminar um gargalo observado ali.
+% Por fim, o \textit{Encoder-Decoder} pode ser implementado utilizando-se \acrshortpl{rnn} e os \textit{Transformers}, por sua vez, já possuem uma arquitetura baseada nele \cite{jurafsky-2022-speech-lang-processing}.
+
+
+
+% Encoder-decoder or sequence-to-sequence models are used for a different kind of sequence modeling in which the output sequence is a complex function of the entire input sequencer; we must map from a sequence of input words or tokens to a sequence of tags that are not merely direct mappings from individual words. 
+% Machine translation is exactly such a task: the words of the target language don’t necessarily agree with the words of the source language in number or order.
+
+% Encoder-decoder networks are very successful at handling these sorts of complicated cases of sequence mappings. Indeed, the encoder-decoder algorithm is not just for MT; it’s the state of the art for many other tasks where complex mappings between two sequences are involved. These include summarization (where we map from a long text to its summary, like a title or an abstract), dialogue (where we map from what the user said to what our dialogue system should respond), semantic parsing (where we map from a string of words to a semantic representation like logic or SQL), and many others.
+% Encoder-decoder networks, or sequence-to-sequence networks, are models capable of generating contextually appropriate, arbitrary length, output sequences. Encoder-decoder networks have been applied to a very wide range of applications including machine translation, summarization, question answering, and dialogue.
+
+% \cite{goodfellow-2016-deep-learning}
+% This comes up inmany applications, such as speech recognition, machine translation and questionanswering, where the input and output sequences in the training set are generallynot of the same length (although their lengths might be related).
+
+
+
+
+
+
+
+
+% This chapter introduces two important deep learning architectures designed to address these challenges: recurrent neural networks and transformer networks. Both approaches have mechanisms to deal directly with the sequential nature of language that allow them to capture and exploit the temporal nature of language. The recurrent network offers a new way to represent the prior context, allowing the model’s decision to depend on information from hundreds of words in the past. The transformer offers new mechanisms (self-attention and positional encodings) that help represent time and help focus on how words relate to each other over long distances.
+
+
+% LSTM
+% LSTM networks have been shown to learn long-term dependencies more easilythan the simple recurrent architectures, ﬁrst on artiﬁcial datasets designed fortesting the ability to learn long-term dependencies (Bengio et al., 1994; Hochreiterand Schmidhuber, 1997; Hochreiter et al., 2001), then on challenging sequenceprocessing tasks where state-of-the-art performance was obtained (Graves, 2012;Graves et al., 2013; Sutskever et al., 2014). Variants and alternatives to the LSTMthat have been studied and used are discussed next.
+% The LSTM has been found extremely successfulin many applications, such as unconstrained handwriting recognition (Graveset al., 2009), speech recognition (Graves et al., 2013; Graves and Jaitly, 2014),handwriting generation (Graves, 2013), machine translation (Sutskever et al., 2014),image captioning (Kiros et al., 2014b; Vinyals et al., 2014b; Xu et al., 2015), andparsing (Vinyals et al., 2014a).
+% \cite{goodfellow-2016-deep-learning}
+
+
+% GRU
+% Which pieces of the LSTM architecture are actually necessary? What other successful architectures could be designed that allow the network to dynamicallycontrol the time scale and forgetting behavior of diﬀerent units? Some answers to these questions are given with the recent work on gated RNNs, whose units are also known as gated recurrent units, or GRUs (Cho et al., 2014b;Chung et al., 2014, 2015a; Jozefowicz et al., 2015; Chrupala et al., 2015).
+% \cite{goodfellow-2016-deep-learning}
+
+% The main difference with the LSTM is that a single gating unit simultaneously controls the forgetting factor and the decision to update the state unit.
+% \cite{goodfellow-2016-deep-learning}
+
+% This evolution has recently led to a novel architecture called Gated Recurrent Unit (GRU) [8], that simplifies the complex LSTM cell design.
+% [...]
+% A noteworthy attempt to simplify LSTMs has recently led to a novel model called Gated Recurrent Unit (GRU) [8], [47], that is based on just two multiplicative gates.
+% \cite{ravanelli-2018-li-gru}
+
+
+% TRANSFORMER
+% \cite{jurafsky-2022-speech-lang-processing}
+% transformers – an approach to sequence processing that eliminates recurrent connections and returns to architectures reminiscent of the fully connected networks described earlier in Chapter 7.
+% Transformers map sequences of input vectors (x1; :::;xn) to sequences of output vectors (y1; :::;yn) of the same length. 
+% Transformers are made up of stacks of transformer blocks, which are multilayer networks made by combining simple linear layers, feedforward networks, and self-attention layers, the key innovation of transformers. Self-attention allows a network to directly extract and use information from arbitrarily large contexts without the need to pass it through intermediate recurrent connections as in RNNs. We’ll start by describing how self-attention works and then return to how it fits into larger transformer blocks.
+
+
+% \cite{vaswani-2017-transformer}
+% In this work we propose the Transformer, a model architecture eschewing recurrence and instead relying entirely on an attention mechanism to draw global dependencies between input and output. The Transformer allows for significantly more parallelization and can reach a new state of the art in translation quality after being trained for as little as twelve hours on eight P100 GPUs.
+
+
+% \cite{wolf-2020-transformers}
+% Transformer architectures have facilitated building higher-capacity models and pretraining has made it possible to effectively utilize this capacity for a wide variety of tasks.
+
+% The Transformer (Vaswani et al., 2017) has rapidly become the dominant architecture for natural language processing, surpassing alternative neural models such as convolutional and recurrent neural networks in performance for tasks in both natural language understanding and natural language generation. The architecture scales with training data and model size, facilitates efficient parallel training, and captures long-range sequence features
+
+
+
+% 10. MACHINE TRANSLATION AND ENCODER-DECODER MODELS
+% \cite{jurafsky-2022-speech-lang-processing}
+
+% This chapter introduces machine translation (MT), the use of computers to translate from one language to another.
+% Of course translation, in its full generality, such as the translation of literature, or poetry, is a difficult, fascinating, and intensely human endeavor, as rich as any other area of human creativity.
+% Machine translation in its present form therefore focuses on a number of very practical tasks. Perhaps the most common current use of machine translation is information for information access.
+
+% Another common use of machine translation is to aid human translators. MT systems are routinely used to produce a draft translation that is fixed up in a post-editing phase by a human translator. This task is often called computer-aided translation or CAT. CAT is commonly used as part of localization: the task of adapting content or a product to a particular language community.
+
+% Finally, a more recent application of MT is to in-the-moment human communication needs. This includes incremental translation, translating speech on-the-fly before the entire sentence is complete, as is commonly used in simultaneous interpretation. Image-centric translation can be used for example to use OCR of the text on a phone camera image as input to an MT system to translate menus or street signs.
+
+% The standard algorithm for MT is the encoder-decoder network, also called the sequence to sequence network, an architecture that can be implemented with RNNs or with Transformers. We’ve seen in prior chapters that RNN or Transformer architecture can be used to do classification (for example to map a sentence to a positive or negative sentiment tag for sentiment analysis), or can be used to do sequence labeling (for example to assign each word in an input sentence with a part-of-speech, or with a named entity tag). For part-of-speech tagging, recall that the output tag is associated directly with each input word, and so we can just model the tag as output yt for each input word xt .
+% Encoder-decoder or sequence-to-sequence models are used for a different kind of sequence modeling in which the output sequence is a complex function of the entire input sequencer; we must map from a sequence of input words or tokens to a sequence of tags that are not merely direct mappings from individual words. 
+% Machine translation is exactly such a task: the words of the target language don’t necessarily agree with the words of the source language in number or order.
+% [...]
+% Encoder-decoder networks are very successful at handling these sorts of complicated cases of sequence mappings. Indeed, the encoder-decoder algorithm is not just for MT; it’s the state of the art for many other tasks where complex mappings between two sequences are involved. These include summarization (where we map from a long text to its summary, like a title or an abstract), dialogue (where we map from what the user said to what our dialogue system should respond), semantic parsing (where we map from a string of words to a semantic representation like logic or SQL), and many others.
+
+% 10.2 The Encoder-Decoder Model
+% Encoder-decoder networks, or sequence-to-sequence networks, are models capable of generating contextually appropriate, arbitrary length, output sequences. Encoder-decoder networks have been applied to a very wide range of applications including machine translation, summarization, question answering, and dialogue.
+% The key idea underlying these networks is the use of an encoder network that takes an input sequence and creates a contextualized representation of it, often called the context. This representation is then passed to a decoder which generates a task specific output sequence. Fig. 10.3 illustrates the architecture
+% [FIGURE]
+
+% Encoder-decoder networks consist of three components:
+% 1. An encoder that accepts an input sequence, xn1, and generates a corresponding sequence of contextualized representations, hn1. LSTMs, convolutional networks, and Transformers can all be employed as encoders.
+% 2. A context vector, c, which is a function of hn1, and conveys the essence of the input to the decoder.
+% 3. A decoder, which accepts c as input and generates an arbitrary length sequence of hidden states hm1, from which a corresponding sequence of output states ym1, can be obtained. Just as with encoders, decoders can be realized by any kind of sequence architecture.
+
+% 10.3 Encoder-Decoder with RNNs
+% [...]
+
+% 10.4 Attention
+% The simplicity of the encoder-decoder model is its clean separation of the encoder—
+% which builds a representation of the source text—from the decoder, which uses this
+% context to generate a target text. In the model as we’ve described it so far, this
+% context vector is hn, the hidden state of the last (nth) time step of the source text.
+% This final hidden state is thus acting as a bottleneck: it must represent absolutely
+% everything about the meaning of the source text, since the only thing the decoder
+% knows about the source text is what’s in this context vector (Fig. 10.8). Information
+% at the beginning of the sentence, especially for long sentences, may not be equally
+% well represented in the context vector.
+% The attention mechanism is a solution to the bottleneck problem, a way of
+% allowing the decoder to get information from all the hidden states of the encoder,
+% not just the last hidden state.
+
+% The idea of attention is instead to create the single fixed-length vector c by taking
+% a weighted sum of all the encoder hidden states. The weights focus on (‘attend
+% to’) a particular part of the source text that is relevant for the token the decoder is
+% currently producing. Attention thus replaces the static context vector with one that
+% is dynamically derived from the encoder hidden states, different for each token in
+% decoding.
+% [...]
+% The weights Ws, which are then trained during normal end-to-end training, give the
+% network the ability to learn which aspects of similarity between the decoder and
+% encoder states are important to the current application. This bilinear model also
+% allows the encoder and decoder to use different dimensional vectors, whereas the
+% simple dot-product attention requires that the encoder and decoder hidden states
+% have the same dimensionality.
+
+% 10.5 Beam Search
+% [...]
+
+% 10.6 Encoder-Decoder with Transformers
+% The encoder-decoder architecture can also be implemented using transformers (rather
+% than RNN/LSTMs) as the component modules. At a high-level, the architecture,
+% sketched in Fig. 10.15, is quite similar to what we saw for RNNs. It consists of an
+% encoder that takes the source language input words X = x1; :::;xT and maps them
+% to an output representation Henc = h1; :::;hT ; usually via N = 6 stacked encoder
+% blocks. The decoder, just like the encoder-decoder RNN, is essentially a conditional
+% language model that attends to the encoder representation and generates the target
+% words one by one, at each timestep conditioning on the source sentence and the
+% previously generated target language words.
+% [IMAGE]
+% But the components of the architecture differ somewhat from the RNN and also
+% from the transformer block we’ve seen. First, in order to attend to the source language,
+% the transformer blocks in the decoder has an extra cross-attention layer.
+% Recall that the transformer block of Chapter 9 consists of a self-attention layer that
+% attends to the input from the previous layer, followed by layer norm, a feed forward
+% layer, and another layer norm. The decoder transformer block includes an
+% extra layer with a special kind of attention, cross-attention (also sometimes called
+% encoder-decoder attention or source attention). Cross-attention has the same form
+% as the multi-headed self-attention in a normal transformer block, except that while
+% the queries as usual come from the previous layer of the decoder, the keys and values
+% come from the output of the encoder.
+
+
+
+
+% \cite{goodfellow-2016-deep-learning}
+% https://www.deeplearningbook.org/contents/rnn.html
+
+% 10.4 Encoder-Decoder Sequence-to-Sequence Architectures
+% Here we discuss how an RNN can be trained to map an input sequence to anoutput sequence which is not necessarily of the same length. This comes up inmany applications, such as speech recognition, machine translation and questionanswering, where the input and output sequences in the training set are generallynot of the same length (although their lengths might be related).
+% [IMAGE]
+% The simplest RNN architecture for mapping a variable-length sequence toanother variable-length sequence was ﬁrst proposed by Cho et al. (2014a) [https://aclanthology.org/D14-1179/] and shortly after by Sutskever et al. (2014) [https://arxiv.org/abs/1409.3215], who independently developed that architecture and were the ﬁrst to obtain state-of-the-art translation using this approach.
+
+% The former system is based on scoring proposals generated by another machinetranslation system, while the latter uses a standalone recurrent network to generatethe translations. These authors respectively called this architecture, illustratedin ﬁgure 10.12, the encoder-decoder or sequence-to-sequence architecture. Theidea is very simple: (1) AnencoderorreaderorinputRNN processes the inputsequence. The encoder emits the contextC, usually as a simple function of itsﬁnal hidden state. (2) AdecoderorwriteroroutputRNN is conditioned onthat ﬁxed-length vector (just as in ﬁgure 10.9) to generate the output sequenceY= (y(1), . . . , y(ny)). 
+
+% One clear limitation of this architecture is when the contextCoutput by theencoder RNN has a dimension that is too small to properly summarize a longsequence. This phenomenon was observed by Bahdanau et al. (2015) in the contextof machine translation. They proposed to makeCa variable-length sequence ratherthan a ﬁxed-size vector. Additionally, they introduced anattention mechanismthat learns to associate elements of the sequenceCto elements of the outputsequence. See section 12.4.5.1 for more details.
+
+
+
+
+
+
+
+% \cite{jurafsky-2022-speech-lang-processing}
+% The most commonly used such extension to RNNs is the Long short-term
+% memory (LSTM) network (Hochreiter and Schmidhuber, 1997). LSTMs divide the context management problem into two sub-problems: removing information no longer needed from the context, and adding information likely to be needed for later decision making. The key to solving both problems is to learn how to manage this context rather than hard-coding a strategy into the architecture. LSTMs accomplish this by first adding an explicit context layer to the architecture (in addition to the usual recurrent hidden layer), and through the use of specialized neural units that make use of gates to control the flow of information into and out of the units that comprise the network layers. These gates are implemented through the use of additional weights that operate sequentially on the input, and previous hidden layer, and previous context layers.
+% The gates in an LSTM share a common design pattern; each consists of a feedforward layer, followed by a sigmoid activation function, followed by a pointwise multiplication with the layer being gated. The choice of the sigmoid as the activation function arises from its tendency to push its outputs to either 0 or 1. Combining this with a pointwise multiplication has an effect similar to that of a binary mask. Values in the layer being gated that align with values near 1 in the mask are passed through nearly unchanged; values corresponding to lower values are essentially erased.
+
+
+
+% ======================================
+% \cite{goodfellow-2016-deep-learning}
+% 
+% Chapter 10
+% https://www.deeplearningbook.org/contents/rnn.html
+%
+% 10.10 The Long Short-Term Memory and Other GatedRNNs (pg 404)
+% As of this writing, the most effective sequence models used in practical applications are called gated RNNs. These include the long short-term memory and networks based on the gated recurrent unit.
+% Like leaky units, gated RNNs are based on the idea of creating paths through time that have derivatives that neither vanish nor explode. Leaky units did this with connection weights that were either manually chosen constants or were parameters. Gated RNNs generalize this to connection weights that may change at each time step.
+% Leaky units allow the network to accumulate information (such as evidence fora particular feature or category) over a long duration. Once that information has been used, however, it might be useful for the neural network to forget the old state. For example, if a sequence is made of subsequences and we want a leaky unit to accumulate evidence inside each sub-subsequence, we need a mechanism to forget the old state by setting it to zero. Instead of manually deciding when to clear the state, we want the neural network to learn to decide when to do it. This is what gated RNNs do.
+
+% 10.10.1 LSTM
+% The clever idea of introducing self-loops to produce paths where the gradientcan ﬂow for long durations is a core contribution of the initiallong short-termmemory(LSTM) model (Hochreiter and Schmidhuber, 1997). A crucial additionhas been to make the weight on this self-loop conditioned on the context, rather thanﬁxed (Gers et al., 2000). By making the weight of this self-loop gated (controlledby another hidden unit), the time scale of integration can be changed dynamically.In this case, we mean that even for an LSTM with ﬁxed parameters, the time scaleof integration can change based on the input sequence, because the time constantsare output by the model itself. 
+% The LSTM has been found extremely successfulin many applications, such as unconstrained handwriting recognition (Graveset al., 2009), speech recognition (Graves et al., 2013; Graves and Jaitly, 2014),handwriting generation (Graves, 2013), machine translation (Sutskever et al., 2014),image captioning (Kiros et al., 2014b; Vinyals et al., 2014b; Xu et al., 2015), andparsing (Vinyals et al., 2014a).
+% [...]
+% Deeper architectures have also been successfully used (Graves et al.,2013; Pascanu et al., 2014a). Instead of a unit that simply applies an element-wisenonlinearity to the aﬃne transformation of inputs and recurrent units, LSTMrecurrent networks have “LSTM cells” that have an internal recurrence (a self-loop),in addition to the outer recurrence of the RNN. Each cell has the same inputs andoutputs as an ordinary recurrent network, but also has more parameters and asystem of gating units that controls the ﬂow of information.
+% LSTM networks have been shown to learn long-term dependencies more easilythan the simple recurrent architectures, ﬁrst on artiﬁcial datasets designed fortesting the ability to learn long-term dependencies (Bengio et al., 1994; Hochreiterand Schmidhuber, 1997; Hochreiter et al., 2001), then on challenging sequenceprocessing tasks where state-of-the-art performance was obtained (Graves, 2012;Graves et al., 2013; Sutskever et al., 2014). Variants and alternatives to the LSTMthat have been studied and used are discussed next.
+
+% 10.10.2 Other Gated RNNs
+% Which pieces of the LSTM architecture are actually necessary? What other successful architectures could be designed that allow the network to dynamically control the time scale and forgetting behavior of different units? Some answers to these questions are given with the recent work on gated RNNs,whose units are also known as gated recurrent units, or GRUs (Cho et al., 2014b;Chung et al., 2014, 2015a; Jozefowicz et al., 2015; Chrupala et al., 2015). The main difference with the LSTM is that a single gating unit simultaneously controls the forgetting factor and the decision to update the state unit.
+
+
+
+% ================================
+% \cite{lecun-2015-deep-learning}
+% RNNs, once unfolded in time (Fig. 5), can be seen as very deep feedforward networks in which all the layers share the same weights. Although their main purpose is to learn long-term dependencies, theoretical and empirical evidence shows that it is difficult to learn to store information for very long78.
+% To correct for that, one idea is to augment the network with an explicit memory. The first proposal of this kind is the long short-term memory (LSTM) networks that use special hidden units, the natural behaviour of which is to remember inputs for a long time79. A special unit called the memory cell acts like an accumulator or a gated leaky neuron: it has a connection to itself at the next time step that has a weight of one, so it copies its own real-valued state and accumulates the external signal, but this self-connection is multiplicatively gated by another unit that learns to decide when to clear the content of the memory.
+% LSTM networks have subsequently proved to be more effective than conventional RNNs, especially when they have several layers for each time step87, enabling an entire speech recognition system that goes all the way from acoustics to the sequence of characters in the transcription. LSTM networks or related forms of gated units are also currently used for the encoder and decoder networks that perform so well at machine translation17,72,76
