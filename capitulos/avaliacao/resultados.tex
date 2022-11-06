@@ -6,15 +6,10 @@ Para cada modelo, são listadas as métricas\footnote{
     Uma vez que o reconhecimento de sinais consiste numa classificação multi-classes, os valores das métricas binárias de precisão, \textit{recall} e \textit{F1-score} foram consolidados utilizando-se a média ponderada pelo número de amostras em cada classe.
 } de acurácia, precisão, \textit{recall} e \textit{F1-score}, bem como o erro médio calculado.
 
-% precisao, recall, f1 calculados com média ponderada entre classes (weighted average)
-% precisao, recall, f1 consistentes com acurácia (justificar)
-
 \input{capitulos/avaliacao/tabelas/resultados-modelos}
 
-% %FIXME: [cz] eu sei que na proxima secao vc vai apresentar a comparação com os trabalhos relacionados, mas aqui senti falta de um baseline que pudesse comparar com a abordagem original qual foi a melhora usando a estratégia linguistica em relacao a usar somente as imagens --> [cca5] um pouco mais a frente eu acabo discutindo essas diferenças (que basicamente giram em torno do nível semântico que aqui é maior e faz mais sentido perante a língua)
-
 Primeiramente, observa-se que os modelos baseados na arquitetura \textit{Encoder-Decoder} apresentaram resultados muito semelhantes entre si de um modo geral.
-% De um modo geral, percebe-se entre os modelos baseados na arquitetura \textit{Encoder-Decoder} resultados muito semelhantes entre si, mas não muito expressivos.
+
 Dentre eles, percebe-se também que a versão implementada utilizando codificador e decodificador baseados em redes \acrshort{gru} obteve uma pequena vantagem em comparação àquela que utilizou redes \acrshort{lstm} -- ao passo que a primeira alcançou uma acurácia de 88,00\%, a segunda obteve 87,21\%.
 O valor das demais métricas e do erro médio computado para ambos os casos replicaram esse mesmo comportamento da acurácia e reforçam tal análise.
 
@@ -31,12 +26,6 @@ Isso deu origem a um vocabulário que, por sua vez, é muito menos complexo do q
 Dessa forma, entende-se que a combinação desse conjunto de \textit{features} semanticamente mais coerentes e simplificadas, com a utilização de modelos robustos no processamento de linguagens como o \textit{Transformer} e os \textit{Encoder-Decoders} foram fatores que conduziram ao desempenho favorável acima.
 
 
-% encoder-decoders com desempenho proximo, mas GRU com uma leve vantagem
-% transformer com desempenho muito superior
-% - provavelmente pela combinação: 
-%   - o transformer é muito robusto e projetado para lidar problemas muito complexos de linguagem. / ele está super-dimensionado para o problema em questão?
-%   - essa abordagem super-simplifica o problema da língua de sinais produzindo um conjunto de features predominantemente discretas, como se tivéssemos um vocabulário de texto --> em oposição ao que ocorre quando opta-se por abordagens de visão computacional com dados brutos
-
 
 
 
@@ -50,18 +39,3 @@ Com relação à memória de CPU utilizada, os três modelos apresentaram um con
 Ao analisar os recursos de GPU, percebe-se que dessa vez o \textit{Encoder-Decoder} (\acrshort{lstm}) demandou o maior tempo (3,101 segundos), seguido pelo \textit{Encoder-Decoder} (\acrshort{gru}) (2,628 segundos) e pelo \textit{Transformer} (com 1,884 segundos). A utilização de memória, por sua vez, manteve-se dentro de uma faixa que oscilou de 24 GB (no caso do \textit{Encoder-Decoder} (\acrshort{gru})) a 30 GB (no caso do \textit{Encoder-Decoder} (\acrshort{lstm})).
 
 Por fim, ao avaliar o número de \acrshort{flops} nota-se que os modelos baseados na arquitetura \textit{Encoder-Decoder} apresentaram o mesmo número de operações. Contudo, no caso do \textit{Transformer} observa-se um número de operações que é aproximadamente cinco vezes maior que os demais modelos.
-
-
-
-
-
-% -> Precision is the fraction of detections reported by the model that were correct, while recall is the fraction of true events that were detected.
-% In many cases, we wish to summarize the performance of the classifier with a single number rather than a curve. To do so, we can convert precision p and recall r into an F-score (or F-measure) given by:
-%     F = 2pr / p + r.
-% Another option is to report the total area lying beneath the PR curve.
-
-
-
-% averaging techniques applicable to multiclass classification -------------
-% (https://towardsdatascience.com/comprehensive-guide-on-multiclass-classification-metrics-af94cfb83fbd)
-% weighted: accounts for class imbalance by computing the average of binary metrics weighted by the number of samples of each class in the target. If 3 (precision scores) for 3 classes are: Class 1 (0.85), class 2 (0.80), and class 3 (0.89), the weighted average will be calculated by multiplying each score by the number of occurrences of each class and dividing by the total number of samples.

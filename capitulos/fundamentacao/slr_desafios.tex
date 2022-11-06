@@ -7,61 +7,26 @@ Apesar de serem constatados vários avanços e um aumento no interesse por essa 
 Dessa forma, essa discussão ajudará a conscientizar acerca deles e compreender a jornada ainda a ser percorrida pela área, bem como a direção que precisa ser adotar para isso.
 Sendo assim, esses desafios podem ser enumerados como:
 
-% Embora possamos constatar avanços recentes e um aumento no interesse pela área de \acrshort{slr} nos últimos anos, ainda há desafios importantes que precisam ser resolvidos para conduzir a progressos mais expressivos, os quais discutiremos brevemente a seguir.
-
-% Esta seção objetiva conscientizar acerca dos principais problemas e desafios identificados até aqui por diferentes autores em \acrshort{slr}, afim de ilustrar a jornada ainda por ser percorrida por essa área, bem como a direção que precisa-se adotar para produzir avanços mais consistentes. No entanto, compreende-se que estes são desafios complexos e que um único estudo não é capaz de abordá-los ou solucioná-los de uma só vez, mas apenas contribuir com passos na direção estabelecida -- e o mesmo é verdadeiro para a presente pesquisa.
-
-
-
-% \cite{cooper-2011-slr}
-% Although SLR and speech recognition are drastically different in many respects, they both suffer from similar issues; co-articulation between signs means that a sign will be modified by those either side of it. 
-% Inter-signer differences are large; every signer has their own style, in the same way that everyone has their own accent or handwriting. Also similar to handwriting, signers can be either left hand or right hand dominant. For a left handed signer, most signs will be mirrored, but time line specific ones will be kept consistent with the cultural ‘left to right’ axis. While it is not obvious how best to include these higher level linguistic constructs of the language, it is obviously essential if true, continuous SLR is to become reality.
-
-
 
 \begin{enumerate}
       \item \textbf{Abordagem inadequada}:
             de acordo com \citeonline{bragg-2019-slr-interdisciplinary}, muitas pesquisas em \acrshort{slr} ocorrem em silos disciplinares e, por conta disso, acabam por não abordar esse problema de forma abrangente.
             Por exemplo, publicações que limitam-se a rotular imagens de mãos estáticas em determinadas configurações deixam de considerar o contexto em volta delas ou a forma com que aquilo se conecta à linguística.
             Em outros casos, \citeonline{cooper-2011-slr} afirmam que o \acrshort{slr} é tratado como uma tarefa simples de reconhecimento de gestos, na qual os sinais são considerados apenas um conjunto de possibilidades bem definidas a serem rotuladas.
-            %   Por exemplo, muitas publicações apresentam algoritmos de detecção ou reconhecimento de sinais, mas poucas realizam a tradução para uma outra língua; ou ainda, várias pesquisas limitam-se a rotular imagens de mãos paradas na configuração de uma letra ou número isolados, mas não observam o contexto real em volta delas ou o que aquilo significa perante a linguística.
-
-            %   Segundo \citeonline{cooper-2011-slr}, notam-se também trabalhos abordando o problema como sendo um reconhecimento de gestos, onde busca-se identificar parâmetros e métodos para rotular os sinais dentro de um conjunto de possibilidades. No entanto, as línguas de sinais vão muito mais além do que uma coleção de gestos bem especificados.
-
-
-
-            %   Além disso, por conta da complexidade maior que representa reconhecer sinais contínuos, percebe-se que há uma preferência nesses estudos por reconhecer sinais isolados, bem como uma oferta maior de \textit{datasets} com sinais isolados. Essa complexidade se dá principalmente porque, na língua de sinais, a transição entre os sinais não é claramente demarcada, uma vez que as mãos estarão sempre se movendo para a posição inicial do próximo sinal. Isso é conhecido como epêntese de movimento ou co-articulação -- termos emprestados da terminologia da fala.
-            %   Contudo, \citeonline{cooper-2011-slr} ressaltam que quando consideramos sistemas de reconhecimento de línguas de sinais que sejam aplicáveis ao mundo real, há uma demanda por enfatizar os sinais contínuos ou ao menos desenvolver técnicas que possam ser evoluídas para utilização nesse contexto.
+         
 
             Um outro fator apontado por \citeonline{bragg-2019-slr-interdisciplinary} é de que equipes desenvolvendo algoritmos para as línguas sinais comumente carecem de maior propriedade acerca delas, seja pelo envolvimento de membros Surdos, pela exposição a essa cultura, pelo aprofundamento das complexidades linguísticas que esses algoritmos deveriam considerar, ou pela empatia com os problemas reais que eles deveriam resolver.
 
             Muito frequentemente também, utilizam-se \textit{datasets} que não refletem contextos reais de uso para treinar tais algoritmos, como no caso daqueles que envolvem indivíduos não-nativos na língua ou que são coletados da internet e cuja procedência não pode ser confirmada.
 
-            %   , por exemplo, no reconhecimento de mãos estáticas individuais fora do contexto do sinalizador. Todos esses fatores resultam em abordagens que têm um valor bastante limitado no mundo real.
-
-            %     Copper - The task of recognition is often simplified by forcing the possible word sequence to conform to a grammar which limits the potential choices and thereby improves recognition rates [91, 104, 12, 45].
-
-
 
       \item \textbf{Natureza visual}:
             as línguas de sinais apresentam o desafio de serem multicanais, ou sejam, elas transmitem significado através de vários canais visuais simultâneos que precisam ser considerados -- como os movimentos das mãos, do corpo, expressões da face, entre outros.
-
-            %   As línguas de sinais são visuais e apresentam o desafio de serem multicanais, ou seja, o significado é transmitido através de vários modos ao mesmo tempo \cite{cooper-2011-slr}. Por exemplo, a informação é articulada através de ambas as mãos, mas também seu significado depende da relação delas com o corpo do articulador e com o espaço à sua frente; além disso, também fazem parte as expressões não-manuais que ocorrem simultaneamente, as quais podem alterar o discurso; todos esses canais compõem a mensagem sendo transmitida e precisam ser levados em consideração.
 
             Dessa forma, \citeonline{bragg-2019-slr-interdisciplinary} comentam que não é suficiente simplesmente replicar para o \acrshort{slr} as técnicas utilizadas com sucesso por outras áreas, como o reconhecimento de línguas faladas ou escritas, uma vez que elas assumem a existência de um canal único.
             Além disso, técnicas assim comumente adotam algum tipo de anotação no formato de texto como entrada, no entanto, as línguas de sinais não possuem uma forma escrita ou uma anotação padrão.
 
             Sendo assim, existe uma necessidade de que técnicas específicas sejam estabelecidas com o intuito de acomodar adequadamente as particularidades dos sinais.
-
-            %   \citeonline{bragg-2019-slr-interdisciplinary} comentam que um dos principais desafios enfrentados na modelagem e processamento das línguas de sinais é a impossibilidade de aplicar métodos de \acrshort{mt} e \acrshort{nlp} poderosos que já são utilizados por línguas faladas ou escritas devido às diferenças estruturais que elas apresentam. Segundo eles, a aplicação direta desses métodos deixaria de capturar aspectos importantes dos sinais ou simplesmente não funcionaria. Isso porque muitos desses métodos assumem a existência de uma única palavra executada por vez ou consideram que o contexto não altera a palavra sendo pronunciada, o que não é o caso das línguas de sinais: estas adotam diferentes canais simultâneos e sua interpretação depende da forma como o conteúdo é organizado no contexto espacial.
-
-
-            %   Além disso, técnicas de \acrshort{mt} e \acrshort{nlp} geralmente utilizam algum tipo de anotação (geralmente no formato de texto) como informação de entrada. As línguas de sinais, em contrapartida, não possuem uma forma escrita ou anotação padrão e, devido a isso, há uma escassez de dados anotados confiáveis e em larga escala para alimentar essas técnicas.
-            %   Ainda que pesquisadores optassem por selecionar um sistema de anotação em particular para descrever os sinais, este seria um processo demorado e suscetível a erros. Isso também demandaria um treinamento extensivo para que esses indivíduos alcançassem proficiência na língua de sinais e no sistema de anotação escolhido, o que seria caro e restringiria o número de pessoas capazes de contribuir com essa tarefa. Esse problema conduz a uma dificuldade em combinar \textit{datasets} distintos afim de aumentar o poder dos algoritmos desenvolvidos ou possibilitar que eles aprendam a partir de conteúdos gerados naturalmente \cite{bragg-2019-slr-interdisciplinary}.
-
-            %   De acordo com os autores, grande parte da informação de um sinal é transmitida através desse canal e, particularmente, há sinais que distinguem-se exclusivamente por meio desses traços não-manuais -- conforme discutimos nas seções anteriores. Com isso, percebe-se uma lacuna importante em que parte da mensagem transmitida pelo interlocutor deixa de ser capturada ou interpretada corretamente nesse processo de reconhecimento.
-
-            %   Finalmente, \citeonline{cooper-2011-slr} ressaltam a pouca atenção que os parâmetros não-manuais têm recebido pelos estudos em \acrshort{slr}. De acordo com os autores, grande parte da informação de um sinal é transmitida através desse canal e, particularmente, há sinais que distinguem-se exclusivamente por meio desses traços não-manuais -- conforme discutimos nas seções anteriores. Com isso, percebe-se uma lacuna importante em que parte da mensagem transmitida pelo interlocutor deixa de ser capturada ou interpretada corretamente nesse processo de reconhecimento.
 
 
 
@@ -71,224 +36,17 @@ Sendo assim, esses desafios podem ser enumerados como:
             \citeonline{cooper-2011-slr} também ressaltam a pouca atenção que é recebida pelos parâmetros não-manuais nessas pesquisas, que comumente se concentram apenas em recortes das mãos dos indivíduos -- conforme discutimos na \autoref{sec:slr-breve-panorama}.
             Apesar disso, a \autoref{sec:linguistica} nos mostra que muito da carga linguística dos sinais é transmitida através desses parâmetros e isso os torna elementos essenciais da língua que precisam ser endereçados.
 
-            % Conforme discutimos nas seções anteriores, as línguas de sinais possuem um sistema linguístico próprio desenvolvido em torno do espaço e dos diferentes canais disponíveis ao interlocutor para produzir significado -- o que as difere das línguas faladas, que por sua vez se desenvolvem primariamente em torno de um único canal representado pela voz.
-
-            % Essas particularidades tornam a \acrshort{slr} um universo ainda cheia de desafios e variáveis a serem exploradas para que possa alcançar a mesma maturidade que a área de reconhecimento de voz -- que já dispõe de soluções comerciais bastantes confiáveis. Segundo \citeonline{bragg-2019-slr-interdisciplinary}, compreender e abordar corretamente a representação dessa língua requer exposição à cultura Surda e à sua linguística, que é algo que as comunidades que impulsionam o progresso de subáreas da \acrshort{slr} (como a visão computacional, por exemplo) geralmente não possuem.
-
-            % Portanto, ao mesmo tempo em que há uma demanda para que se desenvolvam técnicas que abordem as particularidades das línguas de sinais -- ao invés de replicar aquelas desenvolvidas para línguas faladas -- afim produzir progressos mais efetivos, há primeiro  uma necessidade de que os pesquisadores envolvidos nessa área reconheçam e se apropriem dessas particularidades.
-
-
 
       \item \textbf{\textit{Datasets} limitados}:
             segundo \citeonline{cooper-2011-slr,bragg-2019-slr-interdisciplinary}, os \textit{datasets} disponíveis publicamente para as línguas de sinais costumam ser limitados em quantidade e qualidade.
             Como consequência, isso acaba também limitando a variedade e o desempenho dos algoritmos que poderiam ser aplicados ao \acrshort{slr}, uma vez que técnicas recentes como a \acrlong{dl} demandam uma grande quantidade de dados para funcionar adequadamente.
             Em áreas como o reconhecimento da fala, por exemplo, o estado da arte foi alcançado graças à utilização de corpus com milhões de amostras de palavras; no caso das línguas de sinais, no entanto, os \textit{datasets} não costumam ultrapassar 10.000 amostras.
 
-            % De acordo com \citeonline{cooper-2011-slr} e \citeonline{bragg-2019-slr-interdisciplinary}, os conjuntos de dados disponíveis publicamente para línguas de sinais são limitados em quantidade e qualidade, e essas deficiências limitam o poder e a capacidade de generalização dos algoritmos de aprendizagem de máquina aplicados ao \acrshort{slr}, tornando muitos deles inadequados para abordar os desafios apresentados por essa área.
-
-            % \textit{Datasets} maiores e mais diversos são essenciais para treinar modelos mais generalizáveis e independentes perante amostras nunca vistas antes. Além disso, as técnicas mais modernas atualmente disponíveis (como a aprendizagem profunda) funcionam melhor em cenários ricos em dados. Em áreas como o reconhecimento da fala, por exemplo, o sucesso foi possível graças ao treinamento utilizando corpus contendo milhões de amostras de palavras; no caso do reconhecimento de sinais, os \textit{datasets} são várias ordens de magnitude menores e normalmente contêm abaixo de 10.000 ou 100.000 sinais.
-
 
             \citeonline{bragg-2019-slr-interdisciplinary} também destacam que há uma representatividade limitada de indivíduos e situações nesses \textit{datasets}, que ocorre porque eles geralmente são criados em ambientes controlados envolvendo consultores ou intérpretes da língua.
             Representatividade nesse contexto refere-se à variedade de características como idade, geografia, tom de pele, deficiência, proficiência, condições do ambiente, qualidade da câmera, ângulos de captura, entre outras.
 
 
-            % Outro problema destacado por \citeonline{bragg-2019-slr-interdisciplinary} corresponde à baixa diversidade de usuários representada nesses \textit{datasets}, que ocorre por serem pequenos e também por dependerem excessivamente de conteúdo produzido por intérpretes ou consultores. Para refletir com precisão a população Surda e cenários mais realistas de uso, seria necessário abranger uma variedade maior de gênero, idade, roupas, geografia, cultura, tom de pele, proporções corporais, deficiências, fluência, planos de fundo, condições de iluminação, qualidade e ângulos de câmera, entre outros. Também é importante explorar uma diversidade maior de línguas de sinais, uma vez que a abrangência geralmente se concentra em torno de duas ou três línguas.
-
-            % Além disso, muitos desses \textit{datasets} permitem a contribuição de usuários não-nativos da língua de sinais, como pessoas inexperientes ou estudantes da língua. Permitem também que sejam incluídas amostras recortadas de fontes online, como o YouTube, cuja procedência e nível de habilidade dos usuários são desconhecidos.
-            % Isso conduz a uma representação inadequada do contexto real de uso da língua pelo grupo de usuários central nessas pesquisas, que são os Surdos e nativos na língua.
-
-
             Além disso, os autores ressaltam a importância de se desenvolverem mais \textit{datasets} com sinais contínuos, envolvendo sequências completas de diálogos e enunciados mais longos, uma vez que isso reflete melhor contextos reais de utilização da língua.
 
-            % Por fim, uma vez que casos de uso reais das línguas de sinais envolvem conversação natural com frases completas e enunciados mais longos, impulsionar o surgimento de mais \textit{datasets} abrangendo sinais contínuos é certamente um passo importante para superar alguns dos desafios que discutimos acima \cite{bragg-2019-slr-interdisciplinary}.
-
 \end{enumerate}
-
-
-
-
-
-
-
-
-
-
-% ----------------------------------------------------
-% abordagem inadequada
-%     disciplinary silos (recognizing x translating)
-%     continuous sign recognition
-
-% \cite{bragg-2019-slr-interdisciplinary}
-% Current research in sign language processing occurs in disciplinary silos, and as a result does not address the problem comprehensively. For example, there are many computer science publications presenting algorithms for recognizing (and less frequently translating) signed content. 
-
-% \cite{cooper-2011-slr}
-% Many approaches to SLR incorrectly treat the problem as Gesture Recognition (GR). So research has thus far focused on identifying optimal features and classification methods to correctly label a given sign from a set of possible signs. However, sign language is far more than just a collection of well specified gestures.
-
-% 5.1 Continuous Sign Recognition
-% The majority of work on SLR has been focused on recognising isolated instances of signs, this is not applicable to a real world sign language recognition system. The task of recognising continuous sign language is complicated primarily by the problem that in natural sign language, the transition between signs is not clearly marked because the hands will be moving to the starting position of the next sign. This is referred to as the movement epenthesis or co-articulation (which borrows from speech terminology).
-% [...]
-
-% \cite{bragg-2019-slr-interdisciplinary}
-% The teams creating these algorithms often lack Deaf members with lived experience of the problems the technology could or should solve, and lack knowledge of the linguistic complexities of the language for which their algorithms must account. The algorithms are also often trained on datasets that do not reflect real-world use cases. As a result, such single-disciplinary approaches to sign language processing have limited real-world value [39].
-
-
-
-% ----------------------------------------------------
-% natureza visual
-%     fusing multi-modal sign data??
-%     depiction/lack of domain expertise (lack of deaf members)
-%     modeling / natural language processing
-
-% \cite{cooper-2011-slr}
-% Sign languages pose the challenge that they are multi-channel; conveying meaning through many modes at once. While the studies of sign language linguistics are still in their early stages, it is already apparent that this makes many of the techniques used by speech recognition unsuitable for SLR. 
-% [depiction] However, even given the lack of translation tools, most public services are not translated into sign. There is no commonly-used, written form of sign language, so all written communication is in the local spoken language.
-% [...]
-% Although SLR and speech recognition are drastically different in many respects, they both suffer from similar issues; co-articulation between signs means that a sign will be modified by those either side of it. 
-% Inter-signer differences are large; every signer has their own style, in the same way that everyone has their own accent or handwriting. Also similar to handwriting, signers can be either left hand or right hand dominant. For a left handed signer, most signs will be mirrored, but time line specific ones will be kept consistent with the cultural ‘left to right’ axis. While it is not obvious how best to include these higher level linguistic constructs of the language, it is obviously essential if true, continuous SLR is to become reality.
-
-
-% \cite{bragg-2019-slr-interdisciplinary}
-% Modeling & Natural Language Processing
-% The main challenge facing modeling and NLP is the inability to apply powerful methods used for spoken/written languages due to language structure differences and lack of annotations.
-% - Structural Complexity: Many MT (machine translation) and NLP methods were developed for spoken/written languages. However, sign languages have a number of structural differences from these languages. These differences mean that straightforward application of MT and NLP methods will fail to capture some aspects of sign languages or simply not work. In particular, many methods assume that one word or concept is executed at a time. However, many sign languages are multi-channel, for instance conveying an object and its description simultaneously. Many methods also assume that context does not change the word being uttered; however, in sign languages, content can be spatially organized and interpretation directly dependent on that spatial context.
-% - Annotations: Lack of reliable, large-scale annotations are a barrier to applying powerful MT and NLP methods to sign languages. These methods typically take annotations as input, commonly text. Because sign languages do not have a standard written form or a standard annotation form, we do not have large-scale annotations to feed these methods. Lack of large-scale annotated data is similarly a problem for training recognition systems, as described in the previous section.
-
-
-% \cite{bragg-2019-slr-interdisciplinary}
-% Recognition & Computer Vision
-% Despite the large improvements in recent years, there are still many important and unsolved recognition problems, which hinder real-world applicability.
-% - Depiction: Depiction refers to visually representing or enacting content in sign languages (see Background & Related Work), and poses unique challenges for recognition and translation. Understanding depiction requires exposure to Deaf culture and linguistics, which the communities driving progress in computer vision generally lack. Sign recognition algorithms are often based on speech recognition, which does not handle depictions (which are uncommon and unimportant in speech). As a result, current techniques cannot handle depictions. It is also difficult to create depiction annotations. Countless depictions can express the same concept, and annotation systems do not have a standard way to encode this richness.
-% - Annotations: Producing sign language annotations, the machine-readable inputs needed for supervised training of AI models, is time consuming and error prone. There is no standardized annotation system or level of annotation granularity. As a result, researchers are prevented from combining annotated datasets to increase power, and must handle low inter-annotator agreement. Annotators must also be trained extensively to reach sufficient proficiency in the desired annotation system. Training is expensive, and constrains the set of people who can provide annotations beyond the already restricted set of fluent signers. The lack of a standard written form also prevents learning from naturally generated text – e.g., NLP methods that expect text input, using parallel text corpora to learn corresponding grammar and vocabulary, and more generally leveraging ubiquitous text resources.
-
-
-% \cite{cooper-2011-slr}
-% 5.3 Fusing Multi-Modal Sign Data
-% From the review of SLR by Ong and Ranganath [82], one of their main observations is the lack of attention that non-manual features has received in the literature. This is still the case several years on. Much of the information in a sign is conveyed through this channel, and particularly there are signs that are identical in respect of the manual features and only distinguishable by the non-manual features accompanying the sign. The difficulty is identifying exactly which elements are important to the sign, and which elements are coincidental. For example, does the blink of the signer convey information valuable to the sign, or was the signer simply blinking?
-% This problem of identifying the parts of the sign that contains information relevant to the understanding of the sign makes SLR a complex problem to solve.
-% [...]
-
-
-% ----------------------------------------------------
-% linguística particular
-%     *using linguistics (understanding linguistics complexities)
-
-% \cite{cooper-2011-slr}
-% 5.4 Using Linguistics
-% The task of recognition is often simplified by forcing the possible word sequence to conform to a grammar which limits the potential choices and thereby improves recognition rates [91, 104, 12, 45].
-% [...]
-
-
-
-% ----------------------------------------------------
-% datasets limitados
-%     *datasets
-%     generalization (signer independence, generalizing more complex corpora)
-
-
-% \cite{cooper-2011-slr}
-% In addition, publicly available data sets are limited both in quantity and quality, rendering many traditional computer vision learning algorithms inadequate for the task of building classifiers.
-
-
-% \cite{bragg-2019-slr-interdisciplinary}
-% Datasets
-% Public sign language datasets have shortcomings that limit the power and generalizability of systems trained on them.
-% - Size: Modern, data-driven machine learning techniques work best in data-rich scenarios. Success in speech recognition, which in many ways is analogous to sign recognition, has been made possible by training on corpora containing millions of words. In contrast, sign language corpora, which are needed to fuel the development of sign language recognition, are several orders of magnitude smaller, typically containing fewer than 100,000 articulated signs. (See Table 2 for a comparison between speech and sign language datasets.)
-% - Continuous Signing: Many existing sign language datasets contain individual signs. Isolated sign training data may be important for certain scenarios (i.e., creating a sign language dictionary), but most real-world use cases of sign language processing involve natural conversational with complete sentences and longer utterances.
-% - Native Signers: Many datasets allow novices (i.e., students) to contribute, or contain data scraped from online sources (e.g., YouTube [62]) where signer provenance and skill is unknown. Professional interpreters, who are highly skilled but are often not native signers, are also used in many datasets (e.g., [42]). The act of interpreting also changes the execution (e.g., by simplifying the style and vocabulary, or signing slower for understandability). Datasets of native signers are needed to build models that refect this core user group.
-% - Signer Variety: The small size of current signing datasets and over-reliance on content from interpreters mean that current datasets typically lack signer variety. To accurately refect the signing population and realistic recognition scenarios, datasets should include signers that vary by: gender, age, clothing, geography, culture, skin tone, body proportions, disability, fuency, background scenery, lighting conditions, camera quality, and camera angles. It is also crucial to have signer-independent datasets, which allow people to assess generalizability by training and testing on different signers. Datasets must also be generated for different sign languages (i.e., in addition to ASL).
-
-
-% \cite{cooper-2011-slr}
-% 5.5 Generalising to More Complex Corpora
-% Due to the lack of adequately labelled data sets, research has turned to weakly supervised approaches. Several groups have presented work aligning subtitles with signed TV broadcasts.
-% [...]
-
-% 5.2 Signer Independence
-% A major problem relating to recognition is that of applying the system to a signer on whom the system has not been trained.
-% [...]
-
-
-% \cite{bragg-2019-slr-interdisciplinary}
-% - Generalization: Generalization to unseen situations and individuals is a major difficulty of machine learning, and sign language recognition is no exception. Larger, more diverse datasets are essential for training generalizable models. We outlined key characteristics of such datasets in the prior section on dataset challenges. However, generating such datasets can be extremely time-consuming and expensive.
-
-
-
-
-
-
-
-
-
-
-% -----------------------------------------------------
-% - Challenges
-% Embora a tendência geral dos modelos propostos indique uma melhora significativa na precisão do reconhecimento de linguagem de sinais, ainda existem alguns desafios que precisam ser resolvidos.
-%\cite{rastgoo-2021-slr-deep-survey}
-
-
-% \cite{cooper-2011-slr}
-% Many approaches to SLR incorrectly treat the problem as Gesture Recognition (GR). So research has thus far focused on identifying optimal features and classification methods to correctly label a given sign from a set of possible signs. However, sign language is far more than just a collection of well specified gestures.
-% Sign languages pose the challenge that they are multi-channel; conveying meaning through many modes at once. While the studies of sign language linguistics are still in their early stages, it is already apparent that this makes many of the techniques used by speech recognition unsuitable for SLR. In addition, publicly available data sets are limited both in quantity and quality, rendering many traditional computer vision learning algorithms inadequate for the task of building classifiers.
-% However, even given the lack of translation tools, most public services are not translated into sign. There is no commonly-used, written form of sign language, so all written communication is in the local spoken language.
-% [...]
-% Although SLR and speech recognition are drastically different in many respects, they both suffer from similar issues; co-articulation between signs means that a sign will be modified by those either side of it. Inter-signer differences are large; every signer has their own style, in the same way that everyone has their own accent or handwriting. Also similar to handwriting, signers can be either left hand or right hand dominant. For a left handed signer, most signs will be mirrored, but time line specific ones will be kept consistent with the cultural ‘left to right’ axis. While it is not obvious how best to include these higher level linguistic constructs of the language, it is obviously essential if true, continuous SLR is to become reality.
-% ---
-% 5 Research Frontiers
-% There are many facets of SLR which have attracted attention in the computer vision community. This section serves to outline the areas which are currently generating the most interest due to the challenges they propose. While some of these are recent topics, others have been challenging computer vision experts for many years. Offered here is a brief overview of the seminal work and the current state of the art in each area.
-
-% 5.1 Continuous Sign Recognition
-% The majority of work on SLR has been focused on recognising isolated instances of signs, this is not applicable to a real world sign language recognition system. The task of recognising continuous sign language is complicated primarily by the problem that in natural sign language, the transition between signs is not clearly marked because the hands will be moving to the starting position of the next sign. This is referred to as the movement epenthesis or co-articulation (which borrows from speech terminology).
-% [...]
-
-% 5.2 Signer Independence
-% A major problem relating to recognition is that of applying the system to a signer on whom the system has not been trained.
-% [...]
-
-% 5.3 Fusing Multi-Modal Sign Data
-% From the review of SLR by Ong and Ranganath [82], one of their main observations is the lack of attention that non-manual features has received in the literature. This is still the case several years on. Much of the information in a sign is conveyed through this channel, and particularly there are signs that are identical in respect of the manual features and only distinguishable by the non-manual features accompanying the sign. The difficulty is identifying exactly which elements are important to the sign, and which elements are coincidental. For example, does the blink of the signer convey information valuable to the sign, or was the signer simply blinking?
-% This problem of identifying the parts of the sign that contains information relevant to the understanding of the sign makes SLR a complex problem to solve.
-% [...]
-
-% 5.4 Using Linguistics
-% The task of recognition is often simplified by forcing the possible word sequence to conform to a grammar which limits the potential choices and thereby improves recognition rates [91, 104, 12, 45].
-% [...]
-
-% 5.5 Generalising to More Complex Corpora
-% Due to the lack of adequately labelled data sets, research has turned to weakly supervised approaches. Several groups have presented work aligning subtitles with signed TV broadcasts.
-% [...]
-
-
-
-% \cite{bragg-2019-slr-interdisciplinary}
-% Current research in sign language processing occurs in disciplinary silos, and as a result does not address the problem comprehensively. For example, there are many computer science publications presenting algorithms for recognizing (and less frequently translating) signed content. The teams creating these algorithms often lack Deaf members with lived experience of the problems the technology could or should solve, and lack knowledge of the linguistic complexities of the language for which their algorithms must account. The algorithms are also often trained on datasets that do not reflect real-world use cases. As a result, such single-disciplinary approaches to sign language processing have limited real-world value [39].
-
-
-
-% \cite{bragg-2019-slr-interdisciplinary}
-% Q2: WHAT ARE THE FIELD’S BIGGEST CHALLENGES?
-
-% Datasets
-% Public sign language datasets have shortcomings that limit the power and generalizability of systems trained on them.
-% - Size: Modern, data-driven machine learning techniques work best in data-rich scenarios. Success in speech recognition, which in many ways is analogous to sign recognition, has been made possible by training on corpora containing millions of words. In contrast, sign language corpora, which are needed to fuel the development of sign language recognition, are several orders of magnitude smaller, typically containing fewer than 100,000 articulated signs. (See Table 2 for a comparison between speech and sign language datasets.)
-% - Continuous Signing: Many existing sign language datasets contain individual signs. Isolated sign training data may be important for certain scenarios (i.e., creating a sign language dictionary), but most real-world use cases of sign language processing involve natural conversational with complete sentences and longer utterances.
-% - Native Signers: Many datasets allow novices (i.e., students) to contribute, or contain data scraped from online sources (e.g., YouTube [62]) where signer provenance and skill is unknown. Professional interpreters, who are highly skilled but are often not native signers, are also used in many datasets (e.g., [42]). The act of interpreting also changes the execution (e.g., by simplifying the style and vocabulary, or signing slower for understandability). Datasets of native signers are needed to build models that refect this core user group.
-% - Signer Variety: The small size of current signing datasets and over-reliance on content from interpreters mean that current datasets typically lack signer variety. To accurately refect the signing population and realistic recognition scenarios, datasets should include signers that vary by: gender, age, clothing, geography, culture, skin tone, body proportions, disability, fuency, background scenery, lighting conditions, camera quality, and camera angles. It is also crucial to have signer-independent datasets, which allow people to assess generalizability by training and testing on different signers. Datasets must also be generated for different sign languages (i.e., in addition to ASL).
-
-% Recognition & Computer Vision
-% Despite the large improvements in recent years, there are still many important and unsolved recognition problems, which hinder real-world applicability.
-% - Depiction: Depiction refers to visually representing or enacting content in sign languages (see Background & Related Work), and poses unique challenges for recognition and translation. Understanding depiction requires exposure to Deaf culture and linguistics, which the communities driving progress in computer vision generally lack. Sign recognition algorithms are often based on speech recognition, which does not handle depictions (which are uncommon and unimportant in speech). As a result, current techniques cannot handle depictions. It is also diffcult to create depiction annotations. Countless depictions can express the same concept, and annotation systems do not have a standard way to encode this richness.
-% - Annotations: Producing sign language annotations, the machine-readable inputs needed for supervised training of AI models, is time consuming and error prone. There is no standardized annotation system or level of annotation granularity. As a result, researchers are prevented from combining annotated datasets to increase power, and must handle low inter-annotator agreement. Annotators must also be trained extensively to reach suffcient profciency in the desired annotation system. Training is expensive, and constrains the set of people who can provide annotations beyond the already restricted set of fuent signers. The lack of a standard written form also prevents learning from naturally generated text – e.g., NLP methods that expect text input, using parallel text corpora to learn corresponding grammar and vocabulary, and more generally leveraging ubiquitous text resources.
-% - Generalization: Generalization to unseen situations and individuals is a major diffculty of machine learning, and sign language recognition is no exception. Larger, more diverse datasets are essential for training generalizable models. We outlined key characteristics of such datasets in the prior section on dataset challenges. However, generating such datasets can be extremely time-consuming and expensive.
-
-% Modeling & Natural Language Processing
-% The main challenge facing modeling and NLP is the inability to apply powerful methods used for spoken/written languages due to language structure differences and lack of annotations.
-% - Structural Complexity: Many MT (machine translation) and NLP methods were developed for spoken/written languages. However, sign languages have a number of structural differences from these languages. These differences mean that straightforward application of MT and NLP methods will fail to capture some aspects of sign languages or simply not work. In particular, many methods assume that one word or concept is executed at a time. However, many sign languages are multi-channel, for instance conveying an object and its description simultaneously. Many methods also assume that context does not change the word being uttered; however, in sign languages, content can be spatially organized and interpretation directly dependent on that spatial context.
-% - Annotations: Lack of reliable, large-scale annotations are a barrier to applying powerful MT and NLP methods to sign languages. These methods typically take annotations as input, commonly text. Because sign languages do not have a standard written form or a standard annotation form, we do not have large-scale annotations to feed these methods. Lack of large-scale annotated data is similarly a problem for training recognition systems, as described in the previous section.
-
-% [...]
-% Avatars & Computer Graphics
-% UI/UX Design
-
-
-

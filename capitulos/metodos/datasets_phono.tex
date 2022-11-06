@@ -8,8 +8,6 @@ Além disso, a abordagem utilizada para computar esses atributos pode ser replic
 Por se tratar de uma versão inicial da representação proposta, neste trabalho será selecionado apenas um subconjunto dos parâmetros fonológicos introduzidos na \autoref{sec:linguistica} para que, dessa forma, seja possível validar sua efetividade e traçar uma direção para iterações futuras.
 Sendo assim, descrevem-se a seguir esses parâmetros, bem como a estratégia utilizada para calculá-los e representá-los computacionalmente:
 
-% Como trata-se de uma versão inicial da representação proposta, optamos por selecionar um subconjunto de quatro parâmetros fonológicos dentre aqueles discutidos na \autoref{sec:linguistica-fonologia}, os quais podem ser expandidos em incrementos futuros desta pesquisa. Esses parâmetros incluem a configuração de mão, o movimento da mão, a orientação da palma e uma expressão não-manual refente à abertura da boca, conforme discutiremos a seguir:
-
 \begin{enumerate}
     \item \textbf{Configuração de mão}: é a configuração de mão utilizada pelo sinalizador na articulação do sinal.
 
@@ -24,15 +22,11 @@ Sendo assim, descrevem-se a seguir esses parâmetros, bem como a estratégia uti
           Para calculá-la, foi utilizada álgebra linear para explorar a relação das mãos com o espaço tridimensional em que suas coordenadas estão inseridas.
           Primeiramente, assumiu-se que cada palma é um plano cartesiano que atravessa as coordenadas estimadas para as mãos (vide \autoref{subfig:palm-orientation}). Selecionaram-se então três dessas coordenadas para descrever o plano: \(W\), que corresponde à coordenada do pulso; \(L\), localizada na base do dedo mínimo; e \(I\), localizada na base do dedo indicador.
 
-          % %FIXME: acho que na legenda da figura poderia explicar o que é a) e b). a descricao esta no texto, mas para a figura ficar autocontida
           \begin{figure}[ht!]
               \centering
               \caption{
                   \textmd{
                       As coordenadas \(W\), \(L\) e \(I\) são utilizados para obter a normal \(\protect \overrightarrow{n}\) da palma da mão~(\subref{subfig:palm-orientation}), a qual é utilizada para calcular a orientação da palma \(O_{palm}\)~(\subref{subfig:palm-directions})
-                      %   A orientação da palma \(O_{palm}\) é calculada a partir da normal \(\protect \overrightarrow{n}\) do plano cartesiano que representa a palma da mão
-                      % As coordenadas \(W\), \(L\) e \(I\) e os vetores auxiliares são utilizados para obter a normal \(\protect \overrightarrow{n}\) da palma da mão~(\subref{subfig:palm-orientation}).
-                      % A direção da palma \(O_{palm}\) é então calculada a partir de \(\protect \overrightarrow{n}\) e descrita dentre um conjunto de direções possíveis~(\subref{ subfig:palm-directions}).
                   }
               }
               \borda[0.60\textwidth]{
@@ -51,8 +45,6 @@ Sendo assim, descrevem-se a seguir esses parâmetros, bem como a estratégia uti
           A partir dessas coordenadas, \citeonline{anton-2013-algebra} afirmam que pode-se estabelecer dois vetores auxiliares em termos dos quais esse mesmo plano cartesiano também é descrito (vide \autoref{subfig:palm-orientation}): \(\overrightarrow{WL}\), indicado pela seta azul e \(\overrightarrow{WI}\), indicado pela seta verde.
           Por meio deles, calculou-se o vetor normal \(\overrightarrow{n}\) utilizando a \autoref{eqn:normal-palm-left} (para a mão esquerda) e \autoref{eqn:normal-palm-right} (para a mão direita). \(\overrightarrow{n}\), que é perpendicular à palma da mão, é ilustrado na \autoref{subfig:palm-orientation} como uma seta tracejada vermelha.
 
-          %   Por meio desses vetores deles, é possível estabelecer o vetor normal \(\overrightarrow{n}\) perpendicular ao plano da palma, que é indicado pela seta vermelha tracejada, e calculado conforme \autoref{eqn:normal-palm-left} (para a mão esquerda) e \autoref{eqn:normal-palm-right} (para a mão direita):
-
           % Palm orientation:
           \begin{equation}
               \label{eqn:normal-palm-left}
@@ -67,9 +59,6 @@ Sendo assim, descrevem-se a seguir esses parâmetros, bem como a estratégia uti
           Por fim, utilizou-se os valores das coordenadas de \(\overrightarrow{n}\) para definir a orientação da palma \(O_{palm}\), conforme \autoref{eqn:palm-orientation-directions}.
           Essa orientação consiste na combinação de até três das seguintes direções: \textit{right} (direita), \textit{left} (esquerda), \textit{up} (para cima), \textit{down} (para baixo), \textit{body} (voltada para o corpo) ou \textit{front} (para frente).
           Por exemplo, ``\textit{right\_front\_down}'' seria uma orientação válida indicando que a palma da mão está inclinada, conforme ilustrado na \autoref{subfig:palm-directions}.
-
-          %   Finalmente, ao avaliar os valores dos eixos \(x\), \(y\) e \(z\) da normal \(\overrightarrow{n}\), é possível definir a orientação da palma \(O_{palm}\) como sendo a combinação de até três direções, cujas opções são: \textit{right} (direita), \textit{left} (esquerda), \textit{up} (para cima), \textit{down} (para baixo), \textit{body} (para o corpo) ou \textit{front} (para frente).
-          %   Por exemplo, ``\textit{right\_down}'' e ``\textit{left\_up\_body}'' seriam orientações válidas. Essa avaliação é realizada conforme \autoref{eqn:palm-orientation-directions}:
 
           % Directions
           \begin{equation}
@@ -98,9 +87,6 @@ Sendo assim, descrevem-se a seguir esses parâmetros, bem como a estratégia uti
               \caption{
                   \textmd{
                       O vetor de movimento \(\protect \overrightarrow{m}\) é obtido através da trajetória da coordenada \(M\) entre os frames anterior (\(t-1\)) e atual (\(t\))~(\subref{subfig:hand-movement}); \(\protect \overrightarrow{m}\) é então utilizado para calcular o movimento da mão \(V_{hand}\)~(\subref{subfig:hand-directions})
-                      %   O movimento da mão \(V_{hand}\) é calculado a partir da trajetória da coordenada \(M\) entre os \textit{frames} anterior (\(t-1\)) e atual (\(t\))
-                      %   O vetor de movimento \(\protect \overrightarrow{m}\) é calculado pela trajetória da coordenada \(M\) entre os frames anterior (\(t-1\)) e atual (\(t\))~(\subref{subfig:hand-movement}).
-                      %   O movimento da mão \(V_{hand}\) é então obtido a partir de \(\protect \overrightarrow{m}\) e descrito dentre um conjunto de direções possíveis~(\subref{subfig:hand-directions}).
                   }
               }
               \borda[0.7\textwidth]{
@@ -125,8 +111,6 @@ Sendo assim, descrevem-se a seguir esses parâmetros, bem como a estratégia uti
           A partir de \(\overrightarrow{m}\), pode-se então calcular o movimento da mão \(V_{hand}\) através da \autoref{eqn:hand-movement-directions}, que consiste numa operação semelhante àquela utilizada para a orientação da mão.
           Com isso, \(V_{hand}\) também consistirá na combinação de até três direções: \textit{right} (direita), \textit{left} (esquerda), \textit{up} (para cima), \textit{down} (para baixo), \textit{body} (para o corpo) ou \textit{front} (para frente).
           A \autoref{subfig:hand-directions} ilustra um movimento categorizado com a direção ``\textit{front}''.
-
-          %   uma operação semelhante àquela utilizada para a orientação da mão, para definir o movimento da mão \(V_{hand}\) como a combinação de até três direções, cujas opções são: \textit{right} (direita), \textit{left} (esquerda), \textit{up} (para cima), \textit{down} (para baixo), \textit{body} (para o corpo) ou \textit{front} (para frente). Essa operação é detalhada na \autoref{eqn:hand-movement-directions} e a \autoref{subfig:hand-directions} ilustra ela segundo a perspectiva do sinalizador:
 
           % Directions
           \begin{equation}
@@ -173,13 +157,6 @@ Essas são as \textit{features} extraídas para o ASL-Phono.
 O \autoref{cod:sample-json-phono} exemplifica uma amostra resultante desse processo, bem como a disposição dos atributos fonológicos em suas propriedades.
 Sua estrutura é muito semelhante àquela apresentada para o ASL-Skeleton3D, exceto pela propriedade ``\textit{frames}'' que, ao invés de coordenadas 3D, aqui contém os atributos computados acima. Além do seu respectivo valor computado, cada atributo pode apresentar também um \textit{score}, que é obtido a partir da precisão estimada para as coordenadas envolvidas no seu cálculo.
 
-% \figura
-% {fig:sample-json-phono} % Label
-% {capitulos/metodos/imagens/code_phono} % Path
-% {width=0.65\linewidth} % Size
-% {Exemplo de amostra do ASL-Phono. Atributos com sufixo ``dh'' referem-se à \textit{dominant hand} (mão dominante) e aqueles com ``ndh'' referem-se à \textit{non-dominant hand} (mão não-dominante)} % Caption
-% {} % Citation
-
 \codigo
     {cod:sample-json-phono}
     {capitulos/metodos/codigos/exemplo_phono.m}
@@ -192,8 +169,6 @@ Sua estrutura é muito semelhante àquela apresentada para o ASL-Skeleton3D, exc
 % Estatísticas:
 A \autoref{tab:dataset-phono-stats}, por sua vez, apresenta estatísticas calculadas para o \textit{dataset} resultante que nos fornecem um panorama da distribuição final de suas amostras, bem como do número de movimentos, orientações, configurações de mão e variação na abertura de boca computados acima.
 
-% Na \autoref{tab:dataset-phono-stats}, podemos observar algumas estatísticas calculadas a partir do ASL-Phono, que nos permitem compreender como as amostras ficaram organizadas no \textit{dataset} após o processamento acima.
-
 \input{capitulos/metodos/tabelas/dataset_phono_stats}
 
 Existem três agrupamentos contidos nessa tabela:
@@ -205,12 +180,9 @@ Existem três agrupamentos contidos nessa tabela:
     \item Por amostra: fornece estatísticas de mínimo, máximo, média e desvio padrão calculadas agrupando-se o \textit{dataset} por amostra.
           Por exemplo, há em média 3,02 \textit{frames} por amostra e esse número varia de 1 a 12 \textit{frames}; de maneira semelhante, as amostras têm em média 1,94 movimentos distintos para a mão dominante, o que varia entre 0 e 10 movimentos.
 
-          % contém estatísticas de números mínimos, máximos, médios e desvio padrão para os parâmetros computados acima. Por exemplo, lê-se que, em média, as amostras possuem 3,02 frames, sendo que a mais curta contém apenas 1 frame e a mais longa possui 12 frames. De maneira semelhante, as amostras têm em média de 1,94 movimentos e 2,20 orientações de mão distintas para a mão dominante.
-
     \item Por sinal: fornece estatísticas de mínimo, máximo, média e desvio padrão calculadas agrupado-se o \textit{dataset} por sinal.
           Por exemplo, cada sinal tem em média 3,68 amostras e isso pode variar de 1 até 59 -- no entanto, o desvio padrão nos revela que tal variação concentra-se muito mais em torno da média; nota-se também que a mão dominante realiza em média 6,04 movimentos distintos em um único sinal, o que pode variar de 1 a 24 para outros.
 
-          % contém estatísticas de números mínimos, máximos, médios e desvio padrão para os sinais contidos no \textit{dataset}. Por exemplo, lê-se que cada sinal possui em média de 3,68 amostras, sendo que alguns deles possuem apenas 1 e outros possuem valores atípicos de 59 amostras (a considerar pelo desvio padrão apresentado). Além disso, cada sinal apresenta em média 6,04 movimentos e 5,37 orientações de mão distintas para a mão dominante.
 \end{itemize}
 
 

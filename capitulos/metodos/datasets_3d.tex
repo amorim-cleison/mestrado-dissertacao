@@ -1,12 +1,9 @@
 \subsection{ASL-Skeleton3D}
 \label{sec:metodos-datasets-3d}
 
-% %FIXME: [cz] como é uma contribuição relevante do seu trabalho eu acho que isso deveria ser uma seção nova
-
 O ASL-Skeleton3D é um \textit{dataset} intermediário que introduz a representação em coordenadas 3D das amostras do \acrshort{asllvd}. 
 Esse tipo de informação fornece detalhes mais precisos acerca do corpo dos indivíduos enquanto eles articulam os sinais, o que possibilita a pesquisadores em \acrshort{slr} extrair diferentes tipos de \textit{features}, explorar novas técnicas, ou ainda derivar outros novos \textit{datasets}.
 Além disso, essa representação é genérica e pode ser replicada para outras línguas de sinais.
-% %FIXME [cz] Importante enfatizar que as representações propostas são genéricas e podem servir como base para qualquer linguagem de sinais. --> [cca5] feito
 
 Para que fosse possível projetar as amostras do \acrshort{asllvd} dentro do espaço tridimensional, foi adotada uma estratégia que consiste em combinar duas perspectivas 2D perpendiculares entre si -- a vista frontal e a vista lateral -- para reconstruir uma perspectiva 3D, conforme ilustra a \autoref{fig:our-strategy-3d}. Com isso, assume-se que enquanto a vista frontal fornece os eixos \(x\) e \(y\), a vista lateral fornecerá a dimensão de profundidade, correspondente ao eixo \( z\).
 
@@ -34,8 +31,6 @@ Para que fosse possível projetar as amostras do \acrshort{asllvd} dentro do esp
 
 Uma vez definida essa estratégia, foi considerado o processo descrito por \citeonline{amorim-2019-stgcn-sl} para realizar a estimativa dos esqueletos para os indivíduos nas amostras. Esse processo é composto pelas etapas de obtenção de amostras, segmentação dos sinais, estimativa e normalização dos esqueletos, as quais sofreram adaptações no contexto do presente trabalho para acomodar a composição de esqueletos 3D e os desafios encontrados para isso. Serão discutidas a seguir as adaptações realizadas para superar as limitações dos \textit{datasets} existentes:
 
-% Os passos utilizados para gerar o ASL-Skeleton3D basearam-se no processamento realizado por \citeonline{amorim-2019-stgcn-sl} na construção de um \textit{dataset} de esqueletos 2D da \acrshort{asl}. De um modo geral, eles envolvem a obtenção das amostras, a segmentação dos sinais, a estimativa e a normalização dos esqueletos. Apesar disso, várias adaptações foram necessárias a cada passo para acomodar a estratégia descrita acima e lidar com os desafios encontrados aqui, conforme discutiremos a seguir:
-
 \begin{enumerate}
     \item \textbf{Obtenção das amostras}: nessa etapa as amostras de vídeos são recuperadas a partir dos servidores do \acrshort{asllvd}, mas no contexto atual, isso é realizado para ambas as câmeras frontal e lateral.
 
@@ -52,11 +47,9 @@ Uma vez definida essa estratégia, foi considerado o processo descrito por \cite
 
           \begin{enumerate}
               \item \textit{Esqueleto frontal} (\autoref{subfig:front-side-persp-skeletons-front}), contendo as coordenadas plotadas sobre o eixos \(x\) e \(y\) que correspondem às mesmas coordenadas \(x\) e \(y\) de quando imagina-se o indivíduo representado no espaço tridimensional (vide \autoref{subfig:front-side-persp-skeletons-persp}).
-                    % Essas coordenadas descrevem a mesma visão frontal que esperamos obter ao imaginar o nosso esqueleto 3D final observado de frente. Por conta disso, utilizamos essas coordenadas \(x\) e \(y\) da forma como são fornecidas para ancorar o indivíduo no espaço tridimensional. Precisaremos apenas adicionar a dimensão de profundidade.
 
               \item \textit{Esqueleto lateral} (\autoref{subfig:front-side-persp-skeletons-side}), que também é estimado com um par de coordenadas \(x\) e \(y\) mas que, quando posicionados perpendicularmente ao esqueleto frontal (vide \autoref{subfig:front-side-persp-skeletons-persp}), denotam a dimensão de profundidade e correspondem aos eixos \(z\) e \(y\) do indivíduo no espaço tridimensional, respectivamente. Uma vez que \(y\) já foi obtido por meio do esqueleto frontal, ele pode ser então descartado.
 
-                    % No entanto, vamos aplicar a estratégia descrita acima e posicioná-lo perpendicularmente ao esqueleto frontal (como no ~\autoref{subfig:front-side-persp-skeletons-persp}). Nesse caso, observamos que embora o eixo \(y\) fornecido aqui contenha as mesmas coordenadas que no esqueleto frontal, o eixo \(x\) descreverá coordenadas equivalentes às de profundidade. Dessa forma, tomaremos o eixo \(x\) do esqueleto lateral como sendo o eixo \(z\) (eixo de profundidade) para o nosso esqueleto 3D final.
           \end{enumerate}
 
           Dessa forma, são combinadas as coordenadas \(x\), \(y\) e \(z\) obtidas para dar origem ao esqueleto 3D.
@@ -111,13 +104,6 @@ Uma vez definida essa estratégia, foi considerado o processo descrito por \cite
 
 O \autoref{cod:sample-json-datasetTD} exemplifica uma amostra do ASL-Skeleton3D resultante do processamento acima, bem como suas propriedades. Observa-se no início do arquivo informações básicas extraídas do \acrshort{asllvd}, como rótulo, nome do indivíduo, sessão, cena, \textit{frames} de início e fim, entre outras. Na propriedade ``\textit{frames}'' estão listados os \textit{frames} para aquela sequência e o esqueleto 3D estimado para cada um deles. Cada esqueleto contém grupos referentes ao ``\textit{body}'' (corpo), ``\textit{face}'' (face), ``\textit{hand left}'' (mão esquerda) e ``\textit{hand right}'' (mão direita) que, por sua vez, contêm propriedades que listam o nome da coordenada, o ``\textit{score}'' (ou acurácia) de sua estimativa e os respectivos eixos \(x\), \(y\) e \(z\).
 Por exemplo, ao observar o primeiro índice das propriedades do grupo ``\textit{body}'' percebe-se que ele corresponde à coordenada ``\textit{nose}'' (nariz), apresenta um \textit{score} de aproximadamente 90\% e coordenadas \(x\), \(y\) e \(z\) localizadas em 4,488, 1,696 e 2,872.
-
-% \figura
-% {fig:sample-json-datasetTD} % Label
-% {capitulos/metodos/imagens/code_3d} % Path
-% {width=0.7\linewidth} % Size
-% {Exemplo de amostra do ASL-Skeleton3D} % Caption
-% {} % Citation
 
 \codigo
     {cod:sample-json-datasetTD}
