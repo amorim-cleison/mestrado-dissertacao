@@ -1,4 +1,5 @@
 % Please add the following required packages to your document preamble:
+% \usepackage{multirow}
 % \usepackage{graphicx}
 % \usepackage[table,xcdraw]{xcolor}
 % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
@@ -6,14 +7,28 @@
     \centering
     \caption{Resultados dos modelos utilizados neste trabalho}
     \label{tab:resultados-modelos}
-    \resizebox{0.85\textwidth}{!}{%
-        \begin{tabular}{l|c|c|c|c|c}
+    \resizebox{0.95\textwidth}{!}{%
+        \begin{tabular}{l|l|rrr}
             \hline
             \rowcolor[HTML]{EFEFEF}
-            Modelo                 & Acurácia & Precisão & Recall   & F1-score & Erro médio/perda   \\ \hline
-            Encoder-Decoder (LSTM) & 45,99\%  & 50,19\%  & 45,99\%  & 45,82\%  & 4,88312 \\
-            Encoder-Decoder (GRU)  & 46,98\%  & 52,71\%  & 46,98\%  & 47,70\%  & 4,57513 \\
-            Transformer            & 100,00\% & 100,00\% & 100,00\% & 100,00\% & 0,00101 \\ \hline
+            \cellcolor[HTML]{EFEFEF}                        & \cellcolor[HTML]{EFEFEF}                            & \multicolumn{3}{c}{\cellcolor[HTML]{EFEFEF}Modelo}                                                                                                                                            \\ \cline{3-5}
+            \rowcolor[HTML]{EFEFEF}
+            \multirow{-2}{*}{\cellcolor[HTML]{EFEFEF}Etapa} & \multirow{-2}{*}{\cellcolor[HTML]{EFEFEF}Métrica}   & \multicolumn{1}{r|}{\cellcolor[HTML]{EFEFEF}\textbf{Encoder-Decoder (LSTM)}} & \multicolumn{1}{r|}{\cellcolor[HTML]{EFEFEF}\textbf{Encoder-Decoder (GRU)}} & \textbf{Transformer}             \\ \hline
+                                                            & Acurácia                                            & \multicolumn{1}{r|}{88,93\%}                                                 & \multicolumn{1}{r|}{97,14\%}                                                & 100,00\%                         \\
+                                                            & Precisão                                            & \multicolumn{1}{r|}{90,46\%}                                                 & \multicolumn{1}{r|}{97,81\%}                                                & 100,00\%                         \\
+                                                            & Recall                                              & \multicolumn{1}{r|}{88,93\%}                                                 & \multicolumn{1}{r|}{97,14\%}                                                & 100,00\%                         \\
+                                                            & F1-score                                            & \multicolumn{1}{r|}{87,66\%}                                                 & \multicolumn{1}{r|}{97,05\%}                                                & 100,00\%                         \\
+            \multirow{-5}{*}{Treinamento}                   & Erro médio (\acrshort{cel})                         & \multicolumn{1}{r|}{1,268112}                                                & \multicolumn{1}{r|}{0,618142}                                               & 0,001205                         \\ \hline
+                                                            & Acurácia                                            & \multicolumn{1}{r|}{42,40\%}                                                 & \multicolumn{1}{r|}{43,56\%}                                                & 100,00\%                         \\
+                                                            & Precisão                                            & \multicolumn{1}{r|}{29,03\%}                                                 & \multicolumn{1}{r|}{31,22\%}                                                & 100,00\%                         \\
+                                                            & Recall                                              & \multicolumn{1}{r|}{42,40\%}                                                 & \multicolumn{1}{r|}{43,56\%}                                                & 100,00\%                         \\
+                                                            & F1-score                                            & \multicolumn{1}{r|}{32,42\%}                                                 & \multicolumn{1}{r|}{34,62\%}                                                & 100,00\%                         \\
+            \multirow{-5}{*}{Validação}                     & Erro médio (\acrshort{cel})                         & \multicolumn{1}{r|}{5,184689}                                                & \multicolumn{1}{r|}{4,520252}                                               & 0,000000                         \\ \hline
+                                                            & \cellcolor[HTML]{FFF5E1}Acurácia                    & \multicolumn{1}{r|}{\cellcolor[HTML]{FFF5E1}87,21\%}                         & \multicolumn{1}{r|}{\cellcolor[HTML]{FFF5E1}88,00\%}                        & \cellcolor[HTML]{FFF5E1}100,00\% \\
+                                                            & Precisão                                            & \multicolumn{1}{r|}{89,69\%}                                                 & \multicolumn{1}{r|}{90,35\%}                                                & 100,00\%                         \\
+                                                            & Recall                                              & \multicolumn{1}{r|}{87,21\%}                                                 & \multicolumn{1}{r|}{88,00\%}                                                & 100,00\%                         \\
+                                                            & F1-score                                            & \multicolumn{1}{r|}{87,24\%}                                                 & \multicolumn{1}{r|}{88,17\%}                                                & 100,00\%                         \\
+            \multirow{-5}{*}{\textbf{Testes}}               & \cellcolor[HTML]{FFF5E1}Erro médio (\acrshort{cel}) & \multicolumn{1}{r|}{\cellcolor[HTML]{FFF5E1}1,343880}                        & \multicolumn{1}{r|}{\cellcolor[HTML]{FFF5E1}1,136651}                       & \cellcolor[HTML]{FFF5E1}0,000000 \\ \hline
         \end{tabular}%
     }
     \nomefonte{}

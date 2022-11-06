@@ -128,7 +128,7 @@ Obviamente, um problema relevante desse algoritmo é o seu custo computacional, 
 
 Para essa seleção automática de hiperparâmetros é introduzido um novo subconjunto de amostras denominado subconjunto de validação.
 Ele é importante para evitar que nesse processo sejam utilizadas as mesmas amostras para treinar e validar o desempenho das redes para cada combinação de hiperparâmetros.
-Sendo assim, esse subconjunto é criado a partir de uma divisão do subconjunto de treinamento na qual, tipicamente, 20\% das amostras do subconjunto de treinamento são direcionadas para validação de hiperparâmetros e 80\% permanecem sendo utilizadas para treinamento.
+Sendo assim, esse subconjunto é criado a partir de uma divisão do subconjunto de treinamento na qual, tipicamente, 20\% das amostras são direcionadas para validação de hiperparâmetros e 80\% permanecem sendo utilizadas para treinamento.
 O subconjunto de testes, por sua vez, permanece inalterado e não é envolvido na seleção de hiperparâmetros.
 
 % Nessa otimização, também não é possível que sejam utilizadas as mesmas amostras do subconjunto de treinamento, uma vez que isso tornaria a rede enviesada a esse subconjunto e comprometeria sua capacidade de generalização para novas amostras.

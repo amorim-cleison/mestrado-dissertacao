@@ -23,9 +23,9 @@ Tomando como referência a discussão introduzida na \autoref{sec:am-ap}, serão
 
 Para estabelecer os parâmetros dessas arquiteturas, as estratégias de otimização e de treinamento, bem como as métricas utilizadas nos experimentos, foram consideradas as discussões apresentadas por \citeonline{goodfellow-2016-deep-learning} e pela \autoref{sec:am}.
 
-Dessa forma, o algoritmo de otimização dos modelos será definido como o \acrfull{sgd} com \textit{momentum} de 0,9 \cite{bengio-2013-optimizing-rnns}. Ele será combinado a uma estratégia de redução da taxa de aprendizagem por um fator de 0,2 sempre que o valor do erro médio calculado atingir um platô por 5 épocas seguidas.
+Dessa forma, o algoritmo de otimização dos modelos será definido como o \acrfull{sgd} com \textit{momentum} de 0,9 \cite{robbins-2007-stochastic}. Ele será combinado a uma estratégia de redução da taxa de aprendizagem por um fator de 0,2 sempre que o valor do erro médio calculado atingir um platô por 5 épocas seguidas.
 
-A função objetivo (ou função de perda), por sua vez, será a \textit{Cross-Entropy Loss} (ou Perda de Entropia Cruzada) \cite{mitchell-1997-ml}, conforme \autoref{eqn:cross-entropy-loss}. Na equação, \(p\) representa as probabilidades ou pontuações estimadas pelo modelo para as amostras e \(y\) corresponde ao valor correto esperado para essas estimativas:
+A função objetivo (ou função de perda), por sua vez, será a \acrfull{cel} \cite{mitchell-1997-ml}, que é apresentada na \autoref{eqn:cross-entropy-loss}. Nela, \(p\) representa as probabilidades ou pontuações estimadas pelo modelo para as amostras e \(y\) corresponde ao valor correto esperado para essas estimativas:
 
 \begin{equation}
     \label{eqn:cross-entropy-loss}
@@ -68,17 +68,16 @@ Os dados serão particionados numa proporção de 15\% para o subconjunto de val
 % \end{figure}
 
 
-A seleção dos hiperparâmetros dos modelos foi realizada utilizando-se o algoritmo \textit{Grid Search} (ou busca em grade) com validação cruzada de 5 \textit{folds}. O conjunto de valores de hiperparâmetros utilizados na busca, bem como as melhores combinações encontradas para cada modelo foram os seguintes:
+A seleção dos hiperparâmetros dos modelos foi realizada utilizando-se o algoritmo \textit{Grid Search} (ou busca em grade) com validação cruzada de 5 \textit{folds}. O conjunto de valores de hiperparâmetros utilizados na busca estão apresentados na \autoref{tab:otim-params} e as combinações que melhor reduziram o erro médio para cada modelo foram as seguintes:
 
-\input{capitulos/metodos/tabelas/otim_params_encdec}
-\input{capitulos/metodos/tabelas/otim_params_transf}
+\input{capitulos/metodos/tabelas/otim_params}
 
 \begin{itemize}
-    \item Para o \textit{Encoder-Decoder} com \acrshort{lstm}, utilizaram-se os valores apresentados na \autoref{tab:otim-params-encdec} e a configuração que melhor reduziu o erro médio do modelo foi a taxa de aprendizagem de 0,1; \textit{dropout} de 0,1; utilização de 2 camadas de \acrshort{lstm} no \textit{encoder} e no \textit{decoder}; camadas ocultas com dimensão de 128; e \textit{embeddings} com dimensão de 1024.
+    \item \textit{Encoder-Decoder} com \acrshort{lstm}: taxa de aprendizagem de 0,1; \textit{dropout} de 0,1; \textit{embeddings} com dimensão de 1024; camadas ocultas com dimensão de 512; e utilização de 2 camadas de \acrshort{lstm} no \textit{encoder} e no \textit{decoder}.
 
-    \item Para o \textit{Encoder-Decoder} com \acrshort{gru}, os valores também são mostrados na \autoref{tab:otim-params-encdec} e a melhor combinação obtida foi a taxa de aprendizagem de 0,01; \textit{dropout} de 0,1; utilização de 2 camadas de \acrshort{gru} no \textit{encoder} e no \textit{decoder}; camadas ocultas com dimensão de 256; e \textit{embeddings} com dimensão de 512.
+    \item \textit{Encoder-Decoder} com \acrshort{gru}: taxa de aprendizagem de 0,01; \textit{dropout} de 0,1; \textit{embeddings} com dimensão de 1024; camadas ocultas com dimensão de 512; e utilização de 2 camadas de \acrshort{gru} no \textit{encoder} e no \textit{decoder}.
 
-    \item Para o \textit{Transformer}, os valores utilizados na busca são mostrados na \autoref{tab:otim-params-transf}. A melhor combinação obtida foi a taxa de aprendizagem de 0,1; \textit{dropout} de 0,5; utilização de 2 camadas; camadas ocultas com dimensão de 256; \textit{embeddings} com dimensão de 128; e utilização de 2 cabeças de \textit{attention}.
+    \item \textit{Transformer}: taxa de aprendizagem de 0,1; \textit{dropout} de 0,5; \textit{embeddings} com dimensão de 512; camadas ocultas com dimensão de 512; utilização de 2 camadas e de 8 cabeças de \textit{attention}.
 \end{itemize}
 
 
