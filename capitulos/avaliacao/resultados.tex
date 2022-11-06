@@ -41,7 +41,15 @@ Dessa forma, entende-se que a combinação desse conjunto de \textit{features} s
 
 
 
+A \autoref{tab:custo-modelos} apresenta o custo computacional calculado para os modelos adotados neste trabalho ao realizar a inferência de 1.821 amostras durante a etapa de testes. Ela apresenta métricas de tempo e memória para CPU e GPU, bem como o número de \acrfull{flops} para cada um desses modelos.
+Ao observar a métrica de tempo de CPU, percebe-se que o \textit{Encoder-Decoder} (\acrshort{gru}) foi aquele que demandou o maior tempo (5,790 segundos), seguido pelo \textit{Transformer} (com 3,378 segundos) e o \textit{Encoder-Decoder} (\acrshort{lstm}) (com 2,912 segundos). 
+Com relação à memória de CPU utilizada, os três modelos apresentaram um consumo homogêneo, permanecendo numa faixa entre 335 e 337 MB.
 
+\input{capitulos/avaliacao/tabelas/custo-modelos}
+
+Ao analisar os recursos de GPU, percebe-se que dessa vez o \textit{Encoder-Decoder} (\acrshort{lstm}) demandou o maior tempo (3,101 segundos), seguido pelo \textit{Encoder-Decoder} (\acrshort{gru}) (2,628 segundos) e pelo \textit{Transformer} (com 1,884 segundos). A utilização de memória, por sua vez, manteve-se dentro de uma faixa que oscilou de 24 GB (no caso do \textit{Encoder-Decoder} (\acrshort{gru})) a 30 GB (no caso do \textit{Encoder-Decoder} (\acrshort{lstm})).
+
+Por fim, ao avaliar o número de \acrshort{flops} nota-se que os modelos baseados na arquitetura \textit{Encoder-Decoder} apresentaram o mesmo número de operações. Contudo, no caso do \textit{Transformer} observa-se um número de operações que é aproximadamente cinco vezes maior que os demais modelos.
 
 
 

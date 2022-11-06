@@ -1,0 +1,24 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage{graphicx}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[ht!]
+    \centering
+    \caption{Custo computacional calculado para os modelos ao inferir 1.821 amostras na etapa de testes}
+    \label{tab:custo-modelos}
+    \resizebox{0.95\textwidth}{!}{%
+        \begin{tabular}{ll|r|r|r}
+            \hline
+            \rowcolor[HTML]{EFEFEF}
+            \multicolumn{2}{l|}{\cellcolor[HTML]{EFEFEF}Métrica} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{Encoder-Decoder (LSTM)}} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{Encoder-Decoder (GRU)}} & \multicolumn{1}{c}{\cellcolor[HTML]{EFEFEF}\textbf{Transformer}}                \\ \hline
+            \multicolumn{1}{l|}{}                                & Tempo                                                                        & 2,912s                                                                      & 5,790s                                                           & 3,378s       \\
+            \multicolumn{1}{l|}{\multirow{-2}{*}{CPU}}           & Memória                                                                      & 335 MB                                                                      & 335 MB                                                           & 337 MB       \\ \hline
+            \multicolumn{1}{l|}{}                                & Tempo                                                                        & 3,101s                                                                      & 2,628s                                                           & 1,884s       \\
+            \multicolumn{1}{l|}{}                                & Memória                                                                      & 30 GB                                                                       & 24 GB                                                            & 28 GB        \\
+            \multicolumn{1}{l|}{\multirow{-3}{*}{GPU}}           & Tipo                                                                         & 2x GeForce GTX 980 Ti                                                       & 2x GeForce GTX 980 Ti                                            & 3x Tesla M60 \\ \hline
+            \multicolumn{2}{l|}{\acrshort{flops}}                & 245.317 x \(10^6\)                                                           & 245.317 x \(10^6\)                                                          & 1.360.837 x \(10^6\)                                                            \\ \hline
+        \end{tabular}%
+    }
+    \nomefonte{}
+\end{table}
