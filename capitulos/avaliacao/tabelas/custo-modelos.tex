@@ -5,20 +5,43 @@
 % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 \begin{table}[ht!]
     \centering
-    \caption{Custo computacional calculado para os modelos ao inferir 1.821 amostras na etapa de testes}
+    \caption{Custo computacional calculado para os modelos utilizados neste trabalho durante a etapa de testes}
     \label{tab:custo-modelos}
     \resizebox{0.85\textwidth}{!}{%
-        \begin{tabular}{ll|r|r|r}
-            \hline
-            \rowcolor[HTML]{EFEFEF}
-            \multicolumn{2}{l|}{\cellcolor[HTML]{EFEFEF}Métrica} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{Encoder-Decoder (LSTM)}} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{Encoder-Decoder (GRU)}} & \multicolumn{1}{c}{\cellcolor[HTML]{EFEFEF}\textbf{Transformer}}                \\ \hline
-            \multicolumn{1}{l|}{}                                & Tempo                                                                        & 2,912s                                                                      & 5,790s                                                           & 3,378s       \\
-            \multicolumn{1}{l|}{\multirow{-2}{*}{CPU}}           & Memória                                                                      & 335 MB                                                                      & 335 MB                                                           & 337 MB       \\ \hline
-            \multicolumn{1}{l|}{}                                & Tempo                                                                        & 3,101s                                                                      & 2,628s                                                           & 1,884s       \\
-            \multicolumn{1}{l|}{}                                & Memória                                                                      & 30 GB                                                                       & 24 GB                                                            & 28 GB        \\
-            \multicolumn{1}{l|}{\multirow{-3}{*}{GPU}}           & Tipo                                                                         & 2x GeForce GTX 980 Ti                                                       & 2x GeForce GTX 980 Ti                                            & 3x Tesla M60 \\ \hline
-            \multicolumn{2}{l|}{\acrshort{flops}}                & 245.317 x \(10^6\)                                                           & 245.317 x \(10^6\)                                                          & 1.360.837 x \(10^6\)                                                            \\ \hline
+    \begin{tabular}{l|lr|r|r|r}
+        \hline
+        \rowcolor[HTML]{EFEFEF} 
+        Etapa                             & \multicolumn{2}{l|}{\cellcolor[HTML]{EFEFEF}Métrica}                                                    & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{\begin{tabular}[c]{@{}c@{}}Encoder-Decoder\\ (LSTM)\end{tabular}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{\begin{tabular}[c]{@{}c@{}}Encoder-Decoder\\ (GRU)\end{tabular}}} & \multicolumn{1}{c}{\cellcolor[HTML]{EFEFEF}\textbf{Transformer}} \\ \hline
+                                          & \multicolumn{1}{l|}{}                                                                             & CPU & 1,609                                                                                                                  & 2,032                                                                                                                 & 1,883                                                            \\
+                                          & \multicolumn{1}{l|}{\multirow{-2}{*}{\begin{tabular}[c]{@{}l@{}}Tempo\\ (segundos)\end{tabular}}} & GPU & 0,249                                                                                                                  & 0,478                                                                                                                 & 0,687                                                            \\ \cline{2-6} 
+                                          & \multicolumn{1}{l|}{}                                                                             & CPU & 50,326                                                                                                                 & 50,327                                                                                                                & 50,615                                                           \\
+                                          & \multicolumn{1}{l|}{\multirow{-2}{*}{\begin{tabular}[c]{@{}l@{}}Memória\\ (MB)\end{tabular}}}     & GPU & 2.163,952                                                                                                              & 3.605,349                                                                                                             & 7.088,787                                                        \\ \cline{2-6} 
+        \multirow{-5}{*}{\textbf{Testes}} & \multicolumn{2}{l|}{M\acrshort{flops}}                                                 & 10.757,944                                                                                                             & 36.791,542                                                                                                            & 656.413,102                                                      \\ \hline
         \end{tabular}%
     }
     \nomefonte{}
 \end{table}
+
+
+% TODO: incluir isto no texto
+% ---------------------
+% ED
+% ---------------------
+% Cluster - CETENE Neumann II
+% (4 vCPUs, 32 GB memória total)
+
+% 2 GPUs - GeForce GTX 980 Ti
+% (6 GB memória cada)
+
+
+% ---------------------
+% Transformer
+% ---------------------
+% 3 VMs - Azure Standard NV6
+% (6 vCPUs, 56 GB memória cada)
+
+% 3 GPUs - Tesla M60
+% (8 GB memória cada)
+
+
+
