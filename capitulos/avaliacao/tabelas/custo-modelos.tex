@@ -7,41 +7,17 @@
     \centering
     \caption{Custo computacional calculado para os modelos utilizados neste trabalho durante a etapa de testes}
     \label{tab:custo-modelos}
-    \resizebox{0.85\textwidth}{!}{%
-    \begin{tabular}{l|lr|r|r|r}
-        \hline
-        \rowcolor[HTML]{EFEFEF} 
-        Etapa                             & \multicolumn{2}{l|}{\cellcolor[HTML]{EFEFEF}Métrica}                                                    & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{\begin{tabular}[c]{@{}c@{}}Encoder-Decoder\\ (LSTM)\end{tabular}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{\begin{tabular}[c]{@{}c@{}}Encoder-Decoder\\ (GRU)\end{tabular}}} & \multicolumn{1}{c}{\cellcolor[HTML]{EFEFEF}\textbf{Transformer}} \\ \hline
-                                          & \multicolumn{1}{l|}{}                                                                             & CPU & 1,609                                                                                                                  & 2,032                                                                                                                 & 1,883                                                            \\
-                                          & \multicolumn{1}{l|}{\multirow{-2}{*}{\begin{tabular}[c]{@{}l@{}}Tempo\\ (segundos)\end{tabular}}} & GPU & 0,249                                                                                                                  & 0,478                                                                                                                 & 0,687                                                            \\ \cline{2-6} 
-                                          & \multicolumn{1}{l|}{}                                                                             & CPU & 50,326                                                                                                                 & 50,327                                                                                                                & 50,615                                                           \\
-                                          & \multicolumn{1}{l|}{\multirow{-2}{*}{\begin{tabular}[c]{@{}l@{}}Memória\\ (MB)\end{tabular}}}     & GPU & 2.163,952                                                                                                              & 3.605,349                                                                                                             & 7.088,787                                                        \\ \cline{2-6} 
-        \multirow{-5}{*}{\textbf{Testes}} & \multicolumn{2}{l|}{M\acrshort{flops}}                                                 & 10.757,944                                                                                                             & 36.791,542                                                                                                            & 656.413,102                                                      \\ \hline
+    \resizebox{0.84\textwidth}{!}{%
+        \begin{tabular}{l|lr|
+                >{\columncolor[HTML]{FFF5E1}}r |r|r}
+            \hline
+            \cellcolor[HTML]{EFEFEF}Etapa     & \multicolumn{2}{l|}{\cellcolor[HTML]{EFEFEF}Métrica} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{\begin{tabular}[c]{@{}c@{}}Encoder-Decoder\\ (LSTM)\end{tabular}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{\begin{tabular}[c]{@{}c@{}}Encoder-Decoder\\ (GRU)\end{tabular}}} & \multicolumn{1}{c}{\cellcolor[HTML]{EFEFEF}\textbf{Transformer}}                           \\ \hline
+                                              & \multicolumn{1}{l|}{}                                & CPU                                                                                                                    & 1,609s                                                                                                                & 2,032s                                                           & 1,883s                  \\
+                                              & \multicolumn{1}{l|}{\multirow{-2}{*}{Tempo}}         & GPU                                                                                                                    & 0,249s                                                                                                                & 0,478s                                                           & 0,687s                  \\ \cline{2-6}
+                                              & \multicolumn{1}{l|}{}                                & CPU                                                                                                                    & 50,326 \acrshort{mb}                                                                                                  & 50,327 \acrshort{mb}                                             & 50,615 \acrshort{mb}    \\
+                                              & \multicolumn{1}{l|}{\multirow{-2}{*}{Memória}}       & GPU                                                                                                                    & 2.163,952 \acrshort{mb}                                                                                               & 3.605,349 \acrshort{mb}                                          & 7.088,787 \acrshort{mb} \\ \cline{2-6}
+            \multirow{-5}{*}{\textbf{Testes}} & \multicolumn{2}{l|}{Operações}                & 10.758 M\acrshort{flops}                                                                                               & 36.791 M\acrshort{flops}                                                                                              & 656.413 M\acrshort{flops}                                                                  \\ \hline
         \end{tabular}%
     }
     \nomefonte{}
 \end{table}
-
-
-% TODO: incluir isto no texto
-% ---------------------
-% ED
-% ---------------------
-% Cluster - CETENE Neumann II
-% (4 vCPUs, 32 GB memória total)
-
-% 2 GPUs - GeForce GTX 980 Ti
-% (6 GB memória cada)
-
-
-% ---------------------
-% Transformer
-% ---------------------
-% 3 VMs - Azure Standard NV6
-% (6 vCPUs, 56 GB memória cada)
-
-% 3 GPUs - Tesla M60
-% (8 GB memória cada)
-
-
-

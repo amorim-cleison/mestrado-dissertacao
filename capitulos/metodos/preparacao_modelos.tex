@@ -3,7 +3,7 @@
 
 % SELEÇÃO DOS MODELOS -------------------------------------------
 
-Tomando como referência a discussão introduzida na \autoref{sec:am-ap}, serão adotados nos experimentos deste trabalho três das principais arquiteturas utilizadas em tarefas de \acrfull{nlp}: o \textit{Encoder-Decoder} em uma versão com \acrfull{lstm} e outra com \acrfull{gru}, e também o \textit{Transformer}.
+Tomando como referência a discussão introduzida na \autoref{sec:am-ap}, serão adotados nos experimentos deste trabalho três das principais arquiteturas utilizadas em tarefas de \acrfull{nlp}: o \textit{Encoder-Decoder} em uma versão com \acrfull{lstm} e outra com \acrfull{gru}, além do \textit{Transformer}.
 
 Para estabelecer os parâmetros dessas arquiteturas, as estratégias de otimização e de treinamento, bem como as métricas utilizadas nos experimentos, foram consideradas as discussões apresentadas por \citeonline{goodfellow-2016-deep-learning} e pela \autoref{sec:am}.
 
@@ -17,7 +17,7 @@ A função objetivo (ou função de perda), por sua vez, será a \acrfull{cel} \
 \end{equation}
 
 
-Os dados serão particionados numa proporção de 15\% para o subconjunto de validação, 15\% para o de testes e o restante para o subconjunto treinamento. Os \textit{batches} (ou lotes), por sua vez, possuirão tamanho de 50 amostras.
+Os dados serão particionados numa proporção de 15\% para o subconjunto de validação, 15\% para o de testes e os 70\% restantes para o subconjunto de treinamento. Os \textit{batches} (ou lotes), por sua vez, possuirão tamanho de 50 amostras.
 
 
 
@@ -26,13 +26,28 @@ A seleção dos hiperparâmetros dos modelos foi realizada utilizando-se o algor
 \input{capitulos/metodos/tabelas/otim_params}
 
 \begin{itemize}
-    \item \textit{Encoder-Decoder} com \acrshort{lstm}: taxa de aprendizagem de 0,1; \textit{dropout} de 0,1; \textit{embeddings} com dimensão de 1024; camadas ocultas com dimensão de 512; e utilização de 2 camadas de \acrshort{lstm} no \textit{encoder} e no \textit{decoder}.
+    \item \textit{Encoder-Decoder} com \acrshort{lstm}: taxa de aprendizagem de 0,1; \textit{dropout} de 0,1; \textit{embeddings} com dimensão de 1024; camadas ocultas com dimensão de 256; e utilização de 2 camadas de \acrshort{lstm} no codificador e no decodificador.
 
-    \item \textit{Encoder-Decoder} com \acrshort{gru}: taxa de aprendizagem de 0,01; \textit{dropout} de 0,1; \textit{embeddings} com dimensão de 1024; camadas ocultas com dimensão de 512; e utilização de 2 camadas de \acrshort{gru} no \textit{encoder} e no \textit{decoder}.
+    \item \textit{Encoder-Decoder} com \acrshort{gru}: taxa de aprendizagem de 0,01; \textit{dropout} de 0,1; \textit{embeddings} com dimensão de 1024; camadas ocultas com dimensão de 512; e utilização de 2 camadas de \acrshort{gru} no codificador e no decodificador.
 
-    \item \textit{Transformer}: taxa de aprendizagem de 0,1; \textit{dropout} de 0,5; \textit{embeddings} com dimensão de 512; camadas ocultas com dimensão de 512; utilização de 2 camadas e de 8 cabeças de \textit{attention}.
+    \item \textit{Transformer}: taxa de aprendizagem de 0,1; \textit{dropout} de 0,1; \textit{embeddings} com dimensão de 1024; camadas ocultas com dimensão de 256; utilização de 2 camadas de codificadores e decodificadores e de 8 cabeças de \textit{attention}.
 \end{itemize}
 
+
+Para a execução dos experimentos -- que contemplaram ciclos completos de busca de parâmetros, treinamento, validação e testes de cada um dos modelos, bem como a análise de custo computacional a ser discutida adiante -- foram adotadas as seguintes configurações:
+
+\begin{itemize}
+    \item Para o \textit{Encoder-Decoder} (\acrshort{lstm}) e o \textit{Encoder-Decoder} (\acrshort{gru}) foi utilizado o \textit{cluster} Neumann II, que é provido pelo \acrfull{cetene}\footnote{
+              O \acrshort{cetene} é uma unidade de pesquisa do Ministério da Ciência, Tecnologia e Inovações do Brasil que objetiva desenvolver, introduzir e aperfeiçoar inovações tecnológicas estratégicas para o desenvolvimento do Nordeste. Mais detalhes em \url{http://antigo.cetene.gov.br/cluster}.
+          }.
+          Por meio dele, cada modelo teve à disposição 4 vCPUs, 32 \acrshort{gb} de memória e 2 GPUs do tipo GeForce GTX 980 Ti (com 6 \acrshort{gb} de memória cada).
+
+    \item Para o \textit{Transformer}, no entanto, não foi possível utilizar o Neumann II uma vez que esse modelo necessitou de recursos de GPU e de tempo total de processamento que excediam as restrições estabelecidas pelo \textit{cluster}.
+          Por conta disso, foram adotadas 3 máquinas virtuais do tipo \textit{Standard} NV6 providas pela Azure\footnote{
+              A Azure é uma plataforma de computação em nuvem composta por mais de 200 produtos e serviços providos pela Microsoft. Mais detalhes em \url{https://azure.microsoft.com/}
+          }. Cada uma dessas máquinas disponibilizou 6 vCPUs, 56 \acrshort{gb} de memória e 3 GPUs do tipo Tesla M60 (com 8 \acrshort{gb} de memória cada).
+
+\end{itemize}
 
 
 O código-fonte utilizado nos experimentos deste trabalho foi disponibilizado através do endereço indicado abaixo\footnote{

@@ -8,12 +8,12 @@ Para cada modelo, são listadas as métricas\footnote{
 
 \input{capitulos/avaliacao/tabelas/resultados-modelos}
 
-Primeiramente, observa-se que os modelos baseados na arquitetura \textit{Encoder-Decoder} apresentaram resultados muito semelhantes entre si de um modo geral.
+Primeiramente, observa-se que os modelos baseados na arquitetura \textit{Encoder-Decoder} apresentaram resultados muito semelhantes entre si, apesar de ainda não muito expressivos de um modo geral.
 
-Dentre eles, percebe-se também que a versão implementada utilizando codificador e decodificador baseados em redes \acrshort{gru} obteve uma pequena vantagem em comparação àquela que utilizou redes \acrshort{lstm} -- ao passo que a primeira alcançou uma acurácia de 88,00\%, a segunda obteve 87,21\%.
-O valor das demais métricas e do erro médio computado para ambos os casos replicaram esse mesmo comportamento da acurácia e reforçam tal análise.
+Dentre eles, percebe-se também que a versão implementada utilizando codificador e decodificador baseados em redes \acrshort{gru} obteve uma pequena vantagem em comparação àquela que utilizou redes \acrshort{lstm} -- ao passo que a primeira alcançou uma acurácia de 42,78\%, a segunda obteve 42,56\%.
+O valor das demais métricas e do erro médio computado para ambos os casos replicaram esse mesmo comportamento e reforçam tal análise.
 
-Por outro lado, quando analisados os resultados do \textit{Transformer} observa-se um desempenho expressivo com uma acurácia de 100,00\%, a qual excede aquelas apresentadas pelos \textit{Encoder-Decoders} e é reiterada consistentemente pelo valor das demais métricas e também da perda computada.
+Por outro lado, quando analisados os resultados do \textit{Transformer} observa-se um desempenho bastante expressivo com uma acurácia de 99,56\%, a qual excede aquelas apresentadas pelos \textit{Encoder-Decoders} e é reiterada consistentemente pelo valor das demais métricas e também do erro médio computado.
 
 Isso nos remete à argumentação de \citeonline{wolf-2020-transformers,jurafsky-2022-speech-lang-processing} citada na \autoref{sec:am-ap}, que afirma que essa arquitetura tem se mostrado extremamente bem-sucedida entre tarefas de \acrfull{nlp}, superando arquiteturas como as \acrshortpl{rnn}. Exatamente por isso, elas são atualmente dominantes nessa área.
 
@@ -23,19 +23,22 @@ Em primeiro lugar, entende-se que a escolha pelo uso da abordagem linguística d
 Em segundo lugar, a representação introduzida aqui foi capaz de transformar um conjunto de canais linguísticos complexos dos sinais do \acrshort{asllvd}, em \textit{features} discretas (ou ``palavras'', como aqui as denominamos) mais simples e bem definidas a serem consumidas pelos modelos.
 Isso deu origem a um vocabulário que, por sua vez, é muito menos complexo do que aqueles com os quais arquiteturas como o \textit{Transformer} foram originalmente projetadas para lidar. Além disso, nesse processo foi selecionado um número menor de atributos fonológicos da língua de sinais e isso também contribuiu para tornar o vocabulário utilizado aqui ainda mais compacto.
 
-Dessa forma, entende-se que a combinação desse conjunto de \textit{features} semanticamente mais coerentes e simplificadas, com a utilização de modelos robustos no processamento de linguagens como o \textit{Transformer} e os \textit{Encoder-Decoders} foram fatores que conduziram ao desempenho favorável acima.
+Dessa forma, entende-se que a combinação desse conjunto de \textit{features} semanticamente mais coerentes e simplificadas, com a utilização de modelos robustos no processamento de linguagens como o \textit{Transformer} foram fatores que conduziram ao desempenho favorável acima.
+Contudo, para os \textit{Encoder-Decoders} esse desempenho foi mais modesto.
 
 
-
-
-
-
-A \autoref{tab:custo-modelos} apresenta o custo computacional calculado para os modelos adotados neste trabalho ao realizar a inferência de 1.821 amostras durante a etapa de testes. Ela apresenta métricas de tempo e memória para CPU e GPU, bem como o número de \acrfull{flops} para cada um desses modelos.
-Ao observar a métrica de tempo de CPU, percebe-se que o \textit{Encoder-Decoder} (\acrshort{gru}) foi aquele que demandou o maior tempo (5,790 segundos), seguido pelo \textit{Transformer} (com 3,378 segundos) e o \textit{Encoder-Decoder} (\acrshort{lstm}) (com 2,912 segundos). 
-Com relação à memória de CPU utilizada, os três modelos apresentaram um consumo homogêneo, permanecendo numa faixa entre 335 e 337 MB.
+A \autoref{tab:custo-modelos} apresenta o custo computacional aferido para os modelos durante a etapa de testes que, por sua vez, contempla a inferência dos sinais para as 1.821 amostras que compõem o respectivo subconjunto de testes.
+Na tabela, são listadas as métricas de tempo de processamento (em segundos) e memória (em \acrfullpl{mb}) consumidas em ambas CPU e GPU, além do número de \acrfull{flops} (em M\acrshort{flops}, que corresponde a \(1\times 10^6\) \acrshort{flops}).
 
 \input{capitulos/avaliacao/tabelas/custo-modelos}
 
-Ao analisar os recursos de GPU, percebe-se que dessa vez o \textit{Encoder-Decoder} (\acrshort{lstm}) demandou o maior tempo (3,101 segundos), seguido pelo \textit{Encoder-Decoder} (\acrshort{gru}) (2,628 segundos) e pelo \textit{Transformer} (com 1,884 segundos). A utilização de memória, por sua vez, manteve-se dentro de uma faixa que oscilou de 24 GB (no caso do \textit{Encoder-Decoder} (\acrshort{gru})) a 30 GB (no caso do \textit{Encoder-Decoder} (\acrshort{lstm})).
 
-Por fim, ao avaliar o número de \acrshort{flops} nota-se que os modelos baseados na arquitetura \textit{Encoder-Decoder} apresentaram o mesmo número de operações. Contudo, no caso do \textit{Transformer} observa-se um número de operações que é aproximadamente cinco vezes maior que os demais modelos.
+Ao analisar a métrica de tempo de processamento em CPU, percebe-se que o \textit{Encoder-Decoder} (\acrshort{gru}) foi o modelo com o maior consumo (2,032 segundos), seguido pelo \textit{Transformer} (1,883 segundos) e pelo \textit{Encoder-Decoder} (\acrshort{lstm}) (1,609 segundos).
+No entanto, quando considerado o processamento em GPU, o \textit{Transformer} passa a figurar como aquele com o maior tempo (0,687 segundos), seguido pelo \textit{Encoder-Decoder} (\acrshort{gru}) (0,478 segundos) e pelo \textit{Encoder-Decoder} (\acrshort{lstm}) (0,249 segundos).
+
+Com relação ao consumo de memória de CPU, observa-se que os três modelos apresentaram números muito semelhantes entre si (em torno de 50 \acrshort{mb}) -- sendo o consumo do \textit{Transformer} de 50,615 \acrshort{mb}, o do \textit{Encoder-Decoder} (\acrshort{gru}) de 50,327 \acrshort{mb} e o do \textit{Encoder-Decoder} (\acrshort{lstm}) de 50,326 \acrshort{mb}.
+Em contrapartida, ao observar a memória de GPU constata-se uma diferença mais significativa, onde o \textit{Transformer} apresenta-se com o consumo mais elevado (de aproximadamente 7,089 \acrshort{gb}) e é seguido pelo \textit{Encoder-Decoder} (\acrshort{gru}) (com aproximadamente 3,605 \acrshort{gb}) e pelo \textit{Encoder-Decoder} (\acrshort{lstm}) (com cerca de 2,164 \acrshort{gb}).
+
+Finalmente, ao analisar o número de operações executadas, observa-se que o \textit{Transformer} realizou uma quantidade significativamente maior que os demais modelos (aproximadamente 656.413 M\acrshort{flops}). 
+Na sequência, aparecem o \textit{Encoder-Decoder} (\acrshort{gru}) com 36.791 M\acrshort{flops} e o \textit{Encoder-Decoder} (\acrshort{lstm}) (com 10.758 M\acrshort{flops}).
+Essa diferença ilustra de maneira mais concreta a discussão acima que ressalta que a arquitetura \textit{Transformer} apresenta um grau elevado de complexidade e robustez, sobretudo quando comparado às demais arquiteturas \textit{Encoder-Decoders} utilizadas neste trabalho.
