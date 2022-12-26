@@ -155,13 +155,15 @@ Sendo assim, descrevem-se a seguir esses parâmetros, bem como a estratégia uti
 
 Essas são as \textit{features} extraídas para o ASL-Phono.
 O \autoref{cod:sample-json-phono} exemplifica uma amostra resultante desse processo, bem como a disposição dos atributos fonológicos em suas propriedades.
-Sua estrutura é muito semelhante àquela apresentada para o ASL-Skeleton3D, exceto pela propriedade ``\textit{frames}'' que, ao invés de coordenadas 3D, aqui contém os atributos computados acima. Além do seu respectivo valor computado, cada atributo pode apresentar também um \textit{score}, que é obtido a partir da precisão estimada para as coordenadas envolvidas no seu cálculo.
+Atributos com sufixo ``dh'' referem-se à \textit{dominant hand} (mão dominante) e aqueles com ``ndh'' referem-se à \textit{non-dominant hand} (mão não-dominante).
+Sua estrutura é muito semelhante àquela apresentada para o ASL-Skeleton3D, exceto pela propriedade ``\textit{frames}'' que, ao invés de coordenadas 3D, aqui contém os atributos computados acima.
+Além do seu respectivo valor computado, cada atributo pode apresentar também um \textit{score}, que é obtido a partir da precisão estimada para as coordenadas envolvidas no seu cálculo.
 
 \codigo
     {cod:sample-json-phono}
     {capitulos/metodos/codigos/exemplo_phono.m}
     {ASLDataset}
-    {Exemplo de amostra do ASL-Phono: atributos com sufixo ``dh'' referem-se à \textit{dominant hand} (mão dominante) e aqueles com ``ndh'' referem-se à \textit{non-dominant hand} (mão não-dominante)}
+    {Exemplo de amostra do \textit{dataset} ASL-Phono}
     {}
 
 
